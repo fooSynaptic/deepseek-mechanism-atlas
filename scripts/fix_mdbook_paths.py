@@ -20,6 +20,20 @@ BOOK_TOML = REPO / "book.toml"
 SKIP_PREFIXES = ("http://", "https://", "//", "mailto:", "javascript:", "data:")
 ATTR_RE = re.compile(r'(href|src)="([^"]+)"')
 PATH_TO_ROOT_RE = re.compile(r'var path_to_root = "[^"]*";')
+MATHJAX_RE = re.compile(r"<!-- MathJax -->\s*<script async src=\"[^\"]+\"></script>")
+MATHJAX_BLOCK = """<!-- MathJax: enable $...$ (IDE / VS Code Preview delimiters) -->
+        <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [['$','$'], ['\\\\(','\\\\)']],
+            displayMath: [['$$','$$'], ['\\\\[','\\\\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script','noscript','style','textarea','pre','code']
+          }
+        });
+        </script>
+        <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>"""
 
 
 def read_site_url() -> str:
@@ -91,7 +105,12 @@ def patch_html(path: Path) -> None:
     text = path.read_text(encoding="utf-8")
     text = ATTR_RE.sub(repl, text)
     text = PATH_TO_ROOT_RE.sub(f'var path_to_root = "{SITE_URL}";', text)
+    text = patch_mathjax(text)
     path.write_text(text, encoding="utf-8")
+
+
+def patch_mathjax(text: str) -> str:
+    return MATHJAX_RE.sub(MATHJAX_BLOCK, text)
 
 
 def write_redirect_index() -> None:

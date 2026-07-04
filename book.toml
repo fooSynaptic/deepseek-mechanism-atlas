@@ -16,6 +16,7 @@ preferred-dark-theme = "navy"
 git-repository-url = "https://github.com/fooSynaptic/deepseek-tech-notes"
 site-url = "/deepseek-tech-notes/"
 additional-css = ["theme/mdbook.css"]
+additional-js = ["theme/mathjax-typeset.js"]
 
 [output.html.search]
 enable = true

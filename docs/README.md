@@ -8,7 +8,9 @@
 
 仓库 GitHub 首页为英文；**正文、成书读本与深度答疑以简体中文为主**，面向**中文技术社区**。
 
-**在线成书（公式 / 引用块推荐）：** [GitHub Pages mdBook](https://fooSynaptic.github.io/deepseek-tech-notes/) — 与本地 IDE Preview 同一套 Markdown + MathJax；GitHub 仓库内 `.md` 预览并非标准渲染器。
+### 为何单独建在线 Pages？
+
+本地 **IDE Preview**（VS Code / Cursor）与 **GitHub 仓库内 `.md` 预览** 使用不同的 Markdown / 公式渲染器：引用块、行内与块级公式、链接内的 `$...$` 等在 GitHub 上常会显示异常，在 IDE 里却正常。本仓库 **不为迁就 GitHub Preview 而修改源稿写法**；改为将 `docs/` 经 mdBook + MathJax 发布为 **[在线成书](https://fooSynaptic.github.io/deepseek-tech-notes/)**，与 IDE 阅读体验对齐。**在线阅读请用 Pages**；编辑与 PR 仍在本仓库进行。详见 [英文首页说明](../README.md#why-an-online-book-not-github-preview)。
 
 > **项目仍在完善中**：梗概补全、书中镜像、链接与图示校验仍在推进。阅读时请以各篇文首的 arXiv / 官方 PDF 为准；发现断链、口径不一致或表述错误，**欢迎提 issue**。
 

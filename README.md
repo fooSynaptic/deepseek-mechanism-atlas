@@ -1,13 +1,19 @@
 # deepseek-tech-notes
 
-📖 **[在线阅读 · Read online（mdBook）](https://fooSynaptic.github.io/deepseek-tech-notes/)** — 公式 / 图示 / 引用块与本地 Preview 一致；GitHub 仓库内 `.md` 预览勿作对照。
+📖 **[在线阅读 · Read online（mdBook）](https://fooSynaptic.github.io/deepseek-tech-notes/)** — 推荐从此进入；公式、图示、引用块与本地 IDE Preview 一致。
 
 > **Smooth, deep notes on frontier DeepSeek tech** — bidirectional navigation from V1 through **V4** (DSA, MoE, DSpark, Engram, and beyond): formulas, walkthroughs, and infra patches in wiki + book form. Unofficial; not affiliated with DeepSeek.
 >
 > **丝滑阅读 × 深度拆解 × 前沿跟进** — 非官方 DeepSeek 技术笔记（V1→V4）：双向引用 wiki + 成书读本，机制、公式与推理 infra 逐级展开。
 
 > **Primary language: Chinese.** Most articles, the book layout, and deep-dive notes in this repo are written in **简体中文**, aimed at the **Chinese-speaking community**.  
-> **→ [中文导读 · 在线成书](https://fooSynaptic.github.io/deepseek-tech-notes/)**（推荐） · [源稿 docs/README.md](docs/README.md)**
+> **→ [中文导读 · 在线成书](https://fooSynaptic.github.io/deepseek-tech-notes/)**（推荐） · [源稿 docs/README.md](docs/README.md)
+
+### Why an online book (not GitHub Preview)?
+
+**Local IDE Preview** (VS Code / Cursor) and **GitHub’s in-repo `.md` Preview** use different Markdown + math renderers — blockquotes, `$...$` / `$$...$$`, and inline math inside links often look wrong on GitHub even when they look fine in the IDE. We **do not change source Markdown** to chase GitHub Preview; instead, `docs/` is built into an **[mdBook site on GitHub Pages](https://fooSynaptic.github.io/deepseek-tech-notes/)** (MathJax, same source as the IDE). Use that for online reading; use the repo for editing and PRs.
+
+**为何单独建在线 Pages？** 本地 **IDE Preview** 与 **GitHub 仓库内 Markdown 预览** 的渲染引擎不同——引用块、行内/块级公式、链接里的 `$...$` 等在 GitHub 上常会错位，在 IDE 里却正常。源稿 `.md` **不为迁就 GitHub Preview 而改写法**；改为用 mdBook + MathJax 部署 **[在线成书](https://fooSynaptic.github.io/deepseek-tech-notes/)**，与 IDE 阅读体验对齐。在线请点 Pages；改稿、提 PR 仍走本仓库。**
 
 ---
 
@@ -21,9 +27,7 @@ Coverage includes:
 - **V4 inference stack** — **[DSpark](docs/versions/dspark-speculative-decoding.md)** speculative decoding, HiSparse, disk prefix cache.
 - **Adjacent infra work** layered on DeepSeek checkpoints — **[Index Share / IndexCache](docs/versions/index-share.md)** (Tsinghua + Zhipu) and **[ESS](docs/versions/ess-latent-cache-offload.md)** latent-cache offload (Baidu BaiGe), with a dedicated **infrastructure** thread alongside algorithm and MoE.
 
-Organized as wiki-style articles, SVG diagrams, and a book-style layout under [《ds-技术报告》/](《ds-技术报告》/01-总览/01-版本演进总览.md). For full navigation and article list, use the **[Chinese docs home](docs/README.md)**.
-
-**Online book (recommended for formulas & blockquotes):** [GitHub Pages mdBook](https://fooSynaptic.github.io/deepseek-tech-notes/) — same Markdown as local IDE preview; GitHub blob preview is not the canonical renderer.
+Organized as wiki-style articles, SVG diagrams, and a book-style layout under [《ds-技术报告》/](《ds-技术报告》/01-总览/01-版本演进总览.md). For full navigation and article list, use the **[Chinese docs home](docs/README.md)** or the **[online mdBook](https://fooSynaptic.github.io/deepseek-tech-notes/)**.
 
 ### Why reading here feels smooth
 
@@ -63,7 +67,7 @@ This repo is built for **bidirectional navigation**: every article, deep-dive, a
 | [`scripts/build_pages.sh`](scripts/build_pages.sh) | `build_book` → `SUMMARY.md` → `mdbook build` |
 | [`.github/workflows/pages.yml`](.github/workflows/pages.yml) | Deploy mdBook to GitHub Pages on push to `main` |
 
-**Reading:** Local IDE preview and [GitHub Pages mdBook](https://fooSynaptic.github.io/deepseek-tech-notes/) share the same Markdown + MathJax rendering. GitHub’s raw `.md` blob preview differs by design — use Pages for online reading.
+**Reading:** See [Why an online book](#why-an-online-book-not-github-preview) above — IDE Preview and GitHub blob Preview differ; [GitHub Pages mdBook](https://fooSynaptic.github.io/deepseek-tech-notes/) matches the IDE.
 
 ---
 
