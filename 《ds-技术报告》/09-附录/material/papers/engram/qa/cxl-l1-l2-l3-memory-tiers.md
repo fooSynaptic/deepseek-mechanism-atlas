@@ -1,6 +1,6 @@
 # L1 HBM / L2 DRAM / L3 CXL.mem：三级存储区别
 
-[← 返回 §CXL 三级存储](../../../../../07-Engram/02-Engram系列导读.md#体系结构三级存储分层) · [硬件拓扑 02b](../diagrams/engram-02b-cxl-hardware-topology.svg) · [访问时序 02c](../diagrams/engram-02c-cxl-cache-access.svg) · [答疑目录](README.md)
+[← 返回 §CXL 三级存储](../../../../../07-Engram/02-Engram系列导读.md#体系结构三级存储分层) · [硬件拓扑 02b](../diagrams/engram-02b-cxl-hardware-topology.svg) · [访问时序 02c](../diagrams/engram-02c-cxl-cache-access.svg) · [prefetch window](cxl-prefetch-window-cpu-gpu.md) · [CXL vs RDMA](cxl-vs-rdma-communication-pattern.md) · [答疑目录](README.md)
 
 ---
 

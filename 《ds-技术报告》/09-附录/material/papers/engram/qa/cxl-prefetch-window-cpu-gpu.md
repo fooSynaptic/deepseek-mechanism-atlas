@@ -1,6 +1,6 @@
 # Prefetch window：不是「CPU 比 GPU 强」，而是 CPU 先点火、GPU 腾出时间窗
 
-[← 返回 §缓存访问逻辑](../../../../../07-Engram/02-Engram系列导读.md#缓存访问逻辑一次-decode-的完整路径) · [02c 时序图](../diagrams/engram-02c-cxl-cache-access.svg) · [L1–L3 存储](cxl-l1-l2-l3-memory-tiers.md) · [答疑目录](README.md)
+[← 返回 §prefetch window](../../../../../07-Engram/02-Engram系列导读.md#缓存访问逻辑一次-decode-的完整路径) · [02c 时序图](../diagrams/engram-02c-cxl-cache-access.svg) · [L1–L3 存储](cxl-l1-l2-l3-memory-tiers.md) · [CXL vs RDMA](cxl-vs-rdma-communication-pattern.md) · [答疑目录](README.md)
 
 ---
 

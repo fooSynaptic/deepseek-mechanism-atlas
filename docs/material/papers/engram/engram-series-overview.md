@@ -1,6 +1,6 @@
 # DeepSeek Engram 系列导读
 
-> **系列上下文**：[版本演进总览 §7 Engram](../../../../../docs/reports/deepseek-version-lineage-20260625.md#7-与本仓库其他专题的关系) · [《ds-技术报告》](../../../../../《ds-技术报告》/01-总览/01-版本演进总览.md#7-与本仓库其他专题的关系)  
+> [← 中文导读](../../../README.md) · [← Engram 官方 README](../../../engram/README.md) · [← 演进总览 §7 Engram](../../../reports/deepseek-version-lineage-20260625.md#7-与本仓库其他专题的关系) · [《ds-技术报告》](../../../《ds-技术报告》/01-总览/01-版本演进总览.md#7-与本仓库其他专题的关系)  
 > 更新：2026-06-24  
 > PDF 目录：[src/](./src/)
 

@@ -97,6 +97,9 @@ V2/V3:   MLA — K/V 压入 latent c^KV [512] + 共享 RoPE 维 [64]
 
 ## 7. 参考
 
+- [V1 BBPE 词表专文](../versions/v1-bbpe-tokenizer.md)
+- [V1 技术报告精读 stub](./deepseek-llm-v1-highlights.md)
+
 1. DeepSeek-AI. *DeepSeek LLM: Scaling Open-Source Language Models with Longtermism.* arXiv:2401.02954, 2024.
 2. DeepSeek-AI. *DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model.* arXiv:2405.04434, 2024.
 3. DeepSeek-AI. *DeepSeek-V3 Technical Report.* arXiv:2412.19437, 2024.
