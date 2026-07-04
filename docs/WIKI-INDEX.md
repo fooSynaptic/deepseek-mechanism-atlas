@@ -1,5 +1,7 @@
 # 开发索引（非阅读入口）
 
+> [← 中文导读](./README.md) · [← 演进总览](./reports/deepseek-version-lineage-20260625.md)
+
 读者请从 **[版本演进总览](./reports/deepseek-version-lineage-20260625.md)** 进入；本页仅供维护源路径与构建。
 
 ---

@@ -1,6 +1,6 @@
 # Step 7 短卷积：感受野扩充常数
 
-[← 返回 Step 7](../../../../../07-Engram/02-Engram系列导读.md#step-7-短卷积扩感受野) · [答疑目录](README.md)
+[← 返回 Step 7](../../../../../07-Engram/02-Engram系列导读.md#step-7-短卷积扩感受野) · [Step 6 门控专文](step6-context-gating-rationale.md) · [答疑目录](README.md)
 
 ---
 

@@ -1,6 +1,6 @@
 # DeepSeek-R1 训练 Pipeline
 
-> **系列上下文**：[版本演进总览（§3.4 R1）](../../../../../docs/reports/deepseek-version-lineage-20260625.md#34-deepseek-r1) · [《ds-技术报告》](../../../../../《ds-技术报告》/01-总览/01-版本演进总览.md#34-deepseek-r1)  
+> [← 中文导读](../../../README.md) · [← RL 笔记索引](../../../rl/README.md) · [← 演进总览 §3.4 R1](../../../reports/deepseek-version-lineage-20260625.md#34-deepseek-r1) · [《ds-技术报告》](../../../《ds-技术报告》/01-总览/01-版本演进总览.md#34-deepseek-r1)  
 > **论文**：DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning  
 > **arXiv**：[2501.12948](https://arxiv.org/abs/2501.12948) · **PDF**：[src/deepseek-r1-2501.12948.pdf](./src/deepseek-r1-2501.12948.pdf)  
 > **基座**：DeepSeek-V3 Base

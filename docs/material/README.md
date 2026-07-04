@@ -1,5 +1,7 @@
 # 补充参考材料（material）
 
+> [← 中文导读](../README.md) · [← 演进总览](../reports/deepseek-version-lineage-20260625.md) · [书中副本](../../《ds-技术报告》/09-附录/material/README.md)
+
 本目录存放 **本仓内** 的深度参考材料，作为 `deepseek-everything` 正式文档树的一部分。
 
 | 子目录 | 内容 |

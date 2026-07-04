@@ -8,6 +8,12 @@ cd "$ROOT"
 echo "==> scripts/svg/check_svgs.py"
 python3 scripts/svg/check_svgs.py
 
+echo "==> scripts/validate_backlinks.py"
+python3 scripts/validate_backlinks.py
+
+echo "==> scripts/validate_refs.py"
+python3 scripts/validate_refs.py
+
 echo "==> build_book.py"
 python3 《ds-技术报告》/build_book.py
 

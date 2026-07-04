@@ -11,6 +11,7 @@
 | [figures/engram/](figures/engram/) | Engram 论文 assets 裁图 |
 | [doc_series_gate.sh](doc_series_gate.sh) | 文档系列 CI 门禁（校验 SVG + 成书） |
 | [validate_refs.py](validate_refs.py) | 仓内 Markdown 链接零断链校验 |
+| [validate_backlinks.py](validate_backlinks.py) | 双向引用校验（顶栏回链 + 成对反向链接） |
 | [export_png.py](export_png.py) | 全仓 SVG → `png/` 栅格导出（`cjk_png.py` 注入 Noto CJK 字体；`fonts.conf` 运行时生成，勿提交） |
 | [sanitize_sensitive_links.py](sanitize_sensitive_links.py) | 清理私有路径 / 失效 wiki 外链 |
 

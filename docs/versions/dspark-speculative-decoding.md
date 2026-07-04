@@ -348,6 +348,7 @@ $$
 | 材料 | 说明 |
 |------|------|
 | [酱紫君（GalAster）：DSpark 与投机解码](../reports/zhihu-jiangzijun-dspark-highlights-20260627.md) | 投机背景、半自回归 draft、验证截断、MTP 融合、draft 训练 vs fine-tune；[知乎原文](https://www.zhihu.com/question/2054255700407055156/answer/2054537823915619954) |
+| [批量验证机制笔记](../wiki/投机解码之批量验证.md) | 目标模型单次前向并行验 K 个 draft token |
 
 ---
 
