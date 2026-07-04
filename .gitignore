@@ -33,6 +33,8 @@ logs/
 scripts/svg/fonts/*.otf
 scripts/svg/fonts/*.ttc
 scripts/svg/fonts/fonts.conf
+scripts/svg/fonts/.uuid
 
 # fontconfig cache (generated at PNG export time)
 .cache/
+/tmp/fontconfig-deepseek-tech-notes-png/

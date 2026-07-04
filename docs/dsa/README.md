@@ -1,6 +1,6 @@
 # DeepSeek DSA 与 Index Share 系列
 
-> [← 中文导读](../README.md) · [← 仓库首页（EN）](../README.md) · **主题**：V3.2 的 **DeepSeek Sparse Attention (DSA)** 把长上下文注意力从 $O(L^2)$ 降到 $O(Lk)$；**Index Share（IndexCache）** 在 DSA 之上用跨层 index 复用砍掉冗余 indexer，纯 infra。  
+> [← 中文导读](../README.md) · [← 仓库首页（EN）](../../README.md) · **主题**：V3.2 的 **DeepSeek Sparse Attention (DSA)** 把长上下文注意力从 $O(L^2)$ 降到 $O(Lk)$；**Index Share（IndexCache）** 在 DSA 之上用跨层 index 复用砍掉冗余 indexer，纯 infra。  
 > **系列导读**：[dsa-logic.md](./dsa-logic.md) · [index-share-logic.md](./index-share-logic.md) · **[算法线导读](../reports/deepseek-algorithm-line.md)** · **[基础设施线导读](../reports/deepseek-infra-line.md)** · [← 演进总览 §3.6 V3.2](../reports/deepseek-version-lineage-20260625.md#36-deepseek-v32--v32-exp)
 
 ---
