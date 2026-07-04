@@ -1,4 +1,4 @@
-# torch-training 约定（副本）
+# torch-training 约定
 
 通用 PyTorch 分布式训练约定：显存估算、梯度累积与 checkpoint 策略等，与 DeepSeek 专题正文独立维护。
 

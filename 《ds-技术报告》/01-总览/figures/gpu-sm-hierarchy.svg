@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280" width="520" height="280">
+<style><![CDATA[
+  .t { font: 700 15px sans-serif; fill: #1a1a2e; text-anchor: middle; }
+  .st { font: 11px sans-serif; fill: #666; text-anchor: middle; }
+  .lb { font: 600 11px sans-serif; fill: #222; text-anchor: middle; }
+  .dt { font: 10px sans-serif; fill: #555; text-anchor: middle; }
+  .an { font: 9px sans-serif; fill: #2563eb; text-anchor: middle; }
+  .arr { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#gsma); }
+  .arr-b { stroke: #4A90D9; stroke-width: 1.5; fill: none; marker-end: url(#gsmab); }
+  .arr-g { stroke: #27AE60; stroke-width: 1.5; fill: none; marker-end: url(#gsmag); }
+  .arr-o { stroke: #E67E22; stroke-width: 1.5; fill: none; marker-end: url(#gsmao); }
+]]></style>
+<defs>
+  <marker id="gsma" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#666"/></marker>
+  <marker id="gsmab" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4A90D9"/></marker>
+  <marker id="gsmag" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#27AE60"/></marker>
+  <marker id="gsmao" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#E67E22"/></marker>
+</defs>
+<text x="260" y="22" class="t" text-anchor="middle">GPU 存储与计算层级</text><rect x="80" y="38" width="360" height="40" rx="6" fill="#fff0f0" stroke="#e8a0a0" stroke-width="1.5"/><text x="260" y="58" class="lb" text-anchor="middle">HBM（片外显存，容量大、带宽有限）</text><line x1="260" y1="78" x2="260" y2="92" class="arr"/><text x="340" y="86" class="an" text-anchor="middle">DMA / 内存控制器</text><rect x="100" y="92" width="320" height="40" rx="6" fill="#fff8ee" stroke="#fdba74" stroke-width="1.5"/><text x="260" y="112" class="lb" text-anchor="middle">L2 Cache（片上，全芯片共享）</text><line x1="260" y1="132" x2="260" y2="146" class="arr"/><rect x="60" y="148" width="400" height="40" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/><text x="260" y="168" class="lb" text-anchor="middle">SM x N（H100 ~132 SM）</text><polyline points="260,188 260,200 260,200" class="arr" fill="none"/><polyline points="260,200 100,200 100,206" class="arr" fill="none"/><rect x="25" y="220" width="150" height="36" rx="6" fill="#f8f9fc" stroke="#cbd5e1" stroke-width="1.5"/><text x="100" y="238" class="lb" text-anchor="middle">寄存器 / Shared Memory</text><polyline points="260,200 260,200 260,206" class="arr" fill="none"/><rect x="185" y="220" width="150" height="36" rx="6" fill="#f8f9fc" stroke="#cbd5e1" stroke-width="1.5"/><text x="260" y="238" class="lb" text-anchor="middle">CUDA Core</text><polyline points="260,200 420,200 420,206" class="arr" fill="none"/><rect x="345" y="220" width="150" height="36" rx="6" fill="#f8f9fc" stroke="#cbd5e1" stroke-width="1.5"/><text x="420" y="238" class="lb" text-anchor="middle">Tensor Core</text></svg>

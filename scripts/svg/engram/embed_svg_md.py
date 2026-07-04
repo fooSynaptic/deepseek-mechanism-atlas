@@ -18,13 +18,13 @@ INLINE_BLOCK = re.compile(
     r'<!-- inline: (?P<name>[^ ]+\.svg) -->\s*\n'
     r'<svg[\s\S]*?</svg>\s*\n+'
     r'</div>\s*\n+'
-    r'\[直接打开 SVG\]\((?P<link>[^)]+)\)',
+    r'\[图示详情\]\((?P<link>[^)]+)\)',
     re.MULTILINE,
 )
 
 IMG_BLOCK = re.compile(
     r'<img src="(?P<src>[^"]+\.svg)" alt="[^"]*"\s+width="\d+"/>\s*\n+'
-    r'\[直接打开 SVG\]\((?P<link>[^)]+)\)',
+    r'\[图示详情\]\((?P<link>[^)]+)\)',
     re.MULTILINE,
 )
 
@@ -40,7 +40,7 @@ def inline_svg(svg_path: Path, link: str) -> str:
         f"<!-- inline: {svg_path.name} -->\n"
         f"{raw}\n\n"
         f"</div>\n\n"
-        f"[直接打开 SVG]({link})\n"
+        f"[图示详情]({link})\n"
     )
 
 

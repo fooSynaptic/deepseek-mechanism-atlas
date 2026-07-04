@@ -20,6 +20,16 @@ BOOK_TOML = REPO / "book.toml"
 SKIP_PREFIXES = ("http://", "https://", "//", "mailto:", "javascript:", "data:")
 ATTR_RE = re.compile(r'(href|src)="([^"]+)"')
 PATH_TO_ROOT_RE = re.compile(r'var path_to_root = "[^"]*";')
+# 图示详情等静态资源保持相对路径：Pages 上相对 chapter 可解析，且便于本地 serve
+STATIC_ASSET_SUFFIXES = {
+    ".svg", ".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico",
+    ".css", ".js", ".woff", ".woff2", ".ttf", ".json",
+}
+
+
+def is_static_asset(href: str) -> bool:
+    path = href.split("#", 1)[0].split("?", 1)[0]
+    return PurePosixPath(unquote(path)).suffix.lower() in STATIC_ASSET_SUFFIXES
 MATHJAX_RE = re.compile(
     r"<!-- MathJax[^>]* -->[\s\S]*?"
     r"<script async src=\"[^\"]*(?:MathJax|mathjax)[^\"]*\"></script>\s*",
@@ -95,6 +105,8 @@ def patch_html(path: Path) -> None:
 
     def repl(m: re.Match[str]) -> str:
         attr, val = m.group(1), m.group(2)
+        if is_static_asset(val):
+            return m.group(0)
         new = resolve_relative(val, page_dir)
         return m.group(0) if new is None else f'{attr}="{new}"'
 
@@ -106,7 +118,7 @@ def patch_html(path: Path) -> None:
 
 
 def patch_mathjax(text: str) -> str:
-    if "<!-- KaTeX:" in text:
+    if "<!-- KaTeX:" in text or "katex.min.js" in text:
         return text
     if MATHJAX_RE.search(text):
         return MATHJAX_RE.sub(KATEX_HEAD, text, count=1)
@@ -130,6 +142,31 @@ def write_redirect_index() -> None:
 </html>
 """
     (OUT / "index.html").write_text(html, encoding="utf-8")
+
+
+def write_removed_page_redirects() -> None:
+    """Stub pages dropped from SUMMARY — old bookmarks land on the replacement chapter."""
+    removed: dict[str, str] = {
+        "00-前言/01-知识库导读.html": "02-中文导读.html",
+    }
+    for src_rel, target in removed.items():
+        out = OUT / src_rel
+        out.parent.mkdir(parents=True, exist_ok=True)
+        title = "已移除 · 跳转中文导读"
+        html = f"""<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <title>{title}</title>
+  <meta http-equiv="refresh" content="0; url={target}">
+  <script>location.replace("{target}");</script>
+</head>
+<body>
+  <p>「知识库导读」已并入 <a href="{target}">中文导读</a>。</p>
+</body>
+</html>
+"""
+        out.write_text(html, encoding="utf-8")
 
 
 def patch_searchindex() -> None:
@@ -157,6 +194,7 @@ def main() -> None:
         patch_html(html)
         n += 1
     write_redirect_index()
+    write_removed_page_redirects()
     patch_searchindex()
     print(f"OK fix_mdbook_paths: absolute URLs under {SITE_URL} ({n} chapter html files)")
 

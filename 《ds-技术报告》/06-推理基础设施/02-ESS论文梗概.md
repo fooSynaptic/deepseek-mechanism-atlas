@@ -1,7 +1,7 @@
-# ESS 论文梗概（arXiv:2512.10576）
+# ESS 论文梗概
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §5.2](../01-总览/01-版本演进总览.md#52-v32indexer-cache--latent-cache-分离--ess) · [← ESS 概念页](01-ESS概念.md) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [DSA](../05-DSA稀疏注意力/02-DSA梗概.md)  
-> **全文**：[arXiv:2512.10576](https://arxiv.org/abs/2512.10576) · Chen et al., 2025（百度 Baige AI）  
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 演进总览 §5.2](../01-总览/01-版本演进总览.md#52-v32indexer-cache--latent-cache-分离--ess) · [← ESS 概念页](01-ESS概念.md) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [DSA](../05-DSA稀疏注意力/02-DSA梗概.md)
+> **全文**：[arXiv:2512.10576](https://arxiv.org/abs/2512.10576) · Chen et al., 2025（百度 Baige AI）
 > **对象模型**：DeepSeek-V3.2-Exp · 框架：SGLang · 场景：**PD 分离** Decode 阶段
 
 ---
@@ -26,7 +26,7 @@
 
 ---
 
-## 系统划分（Fig.3）{#系统划分fig3}
+## 系统划分{#系统划分fig3}
 
 > **答疑**：[H2D / D2H 与 PD 时序中的 prefetch、写回](qa/h2d-d2h-pcie-transfer.md#2-在-ess--v32-里指什么)
 
@@ -45,7 +45,7 @@
 
 ## 关键图解读
 
-### Figure 1 — 吞吐 vs Batch Size（动机）
+### Figure 1 — 吞吐 vs Batch Size
 
 | 要点 | 内容 |
 |------|------|
@@ -58,7 +58,7 @@
 
 [直接打开](figures/paper/fig-1.png)
 
-### Figure 2 — 层内访问相似度（offload 可行性）
+### Figure 2 — 层内访问相似度
 
 | 要点 | 内容 |
 |------|------|
@@ -128,7 +128,7 @@
 - 在 DA 基础上 **按 batch 维切 Indexer**（含 `paged_mqa_logits` + Top-K）→ 长上下文下仍有足够计算量掩盖传输。
 - **Fig.7 时间线**：对比 DA vs DBA 的实际重叠程度。
 
-**Layer-Wise 选择规则（论文 §3.3）**
+**Layer-Wise 选择规则**
 
 | Miss 水平 / 上下文 | 更优策略 |
 |--------------------|----------|
@@ -145,7 +145,7 @@
 - **层维 miss 分布形态跨长度一致** → 可 **离线 profiling** 标出「高 miss 层」。
 - 用于 Layer-Wise Overlap 的 **静态分层配置**。
 
-### Figure 9 — 可扩展性（上下文越长越划算）
+### Figure 9 — 可扩展性
 
 <img src="figures/paper/fig-9.png" alt="Figure 9. Cache Miss Behavior Across Different Context Lengths" width="920"/>
 
@@ -181,7 +181,7 @@
 
 此表是 **Fig.1、Table 2 默认行** 的复现环境；改 MTP / 接受率 / 长度时只动 Table 2 中的变量。
 
-### Table 2 — 吞吐与 OTPS（核心结果） {#table-2-吞吐与-otps核心结果}
+### Table 2 — 吞吐与 OTPS {#table-2-吞吐与-otps核心结果}
 
 <img src="figures/paper/table-2.png" alt="Table 2. Throughput and OTPS Under Different MTP and Acceptance Settings" width="720"/>
 
@@ -201,7 +201,7 @@
 
 **MTP=4，Context=32K** — 接受率越高，绝对吞吐越高；ESS 仍随 Ratio 下降而扩容 batch。
 
-**MTP=2，Context=128K，Accept=1.7**（关闭 Two-Batch Overlap）
+**MTP=2，Context=128K，Accept=1.7**
 
 | Batch | Throughput | Ratio | 备注 |
 |-------|------------|-------|------|
@@ -217,7 +217,7 @@
 
 ---
 
-## 三大工程模块（对应 §3）
+## 三大工程模块
 
 PD 分离下每步流程（对应 Fig.3）：Prefill 结束 → Indexer 选 top-$K$ → **prefetch** 缺失 latent（H2D）→ Core MLA → 新 latent **写回 CPU**（D2H）。**Indexer 路径不搬**；仅 **Latent** 在 CPU↔GPU 间流动。
 
@@ -229,7 +229,7 @@ PD 分离下每步流程（对应 Fig.3）：Prefill 结束 → Indexer 选 top-
 
 ---
 
-## 与静态/动态 KV 压缩、相关工作的边界（§5）
+## 与静态/动态 KV 压缩、相关工作的边界
 
 | 类型 | 代表 | 与 ESS 区别 |
 |------|------|-------------|
@@ -239,11 +239,11 @@ PD 分离下每步流程（对应 Fig.3）：Prefill 结束 → Indexer 选 top-
 
 ---
 
-## 结论与局限（§6）
+## 结论与局限
 
 - **已验证**：仿真中高保真；**无损精度**（只搬存储，不改 attention 数学）。
 - **未做**：论文写明 **尚未并入生产框架**；未来或与 SnapKV 等 **有损压缩** 组合。
-- **本地对照**：[ess-latent-cache-offload.md](01-ESS概念.md) 概念页 · [dsa-sparse-attention.md](../05-DSA稀疏注意力/02-DSA梗概.md) 算法前置 · [Index Share](../05-DSA稀疏注意力/05-Index-Share梗概.md) 正交 infra 补丁。
+- **本地对照**：[ESS Latent offload](01-ESS概念.md) 概念页 · [DSA 稀疏注意力](../05-DSA稀疏注意力/02-DSA梗概.md) 算法前置 · [Index Share](../05-DSA稀疏注意力/05-Index-Share梗概.md) 正交 infra 补丁。
 
 ---
 
@@ -262,15 +262,3 @@ PD 分离下每步流程（对应 Fig.3）：Prefill 结束 → Indexer 选 top-
 | **Table 2** | **+69.4% / +123%** 主结果 |
 
 **论文 PDF**：[arXiv:2512.10576](https://arxiv.org/abs/2512.10576)
-
----
-
-## 章节导航
-
-| ← 上一章 | 下一章 → |
-|----------|----------|
-| [ESS：Latent-Cache Offload（V3.2）](01-ESS概念.md) | [投机解码自测加速比（已合并）](03-投机解码自测加速比.md) |
-
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §5.2](../01-总览/01-版本演进总览.md#52-v32indexer-cache--latent-cache-分离--ess) · [← ESS 概念页](01-ESS概念.md) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [DSA](../05-DSA稀疏注意力/02-DSA梗概.md)  
-> **全文**：[arXiv:2512.10576](https://arxiv.org/abs/2512.10576) · Chen et al., 2025（百度 Baige AI）  
-> **对象模型**：DeepSeek-V3.2-Exp · 框架：SGLang · 场景：**PD 分离** Decode 阶段

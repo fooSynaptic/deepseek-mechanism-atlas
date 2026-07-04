@@ -6,11 +6,11 @@ alwaysApply: true
 
 # SVG 图示数学排版约定
 
-论文导读 / qa 中 **Markdown 公式** 用 `$...$`（见 [`markdown-latex-katex.mdc`](./markdown-latex-katex.md)）。
+[论文导读 / qa 中 **Markdown 公式** 用 `$...$`](./markdown-latex-katex.md)。
 
 **SVG 架构图内的公式**不走 KaTeX，而用 **SVG `<tspan>` 排版**，使预览效果接近 LaTeX。
 
-## 标杆实现（两档）
+## 标杆实现
 
 | 档位 | 成品 SVG | 生成器 | 适用 |
 |------|----------|--------|------|
@@ -40,7 +40,7 @@ alwaysApply: true
 | `math_line()` 顶栏 + `parts` 列表拼接 | 手改成品 `.svg` |
 | 改图 = 改 `scripts/svg/gen_*_svg.py` + `scripts/svg/check_svgs.py` | 绕过生成器 |
 
-### `tspan` 片段 API（扩展版，对齐正文 LaTeX）
+### `tspan` 片段 API
 
 生成器内用 **片段组合** 拼公式，与正文 `$...$` **同一套符号**：
 
@@ -64,18 +64,18 @@ alwaysApply: true
 
 ```python
 math_line(W // 2, 48, [
-    t_supsub("h", "t", sup="'(k)"),
-    "<tspan> = </tspan>",
-    t_var("M", "k"),
-    "<tspan> [ </tspan>",
-    t_concat_norms(t_supsub("h", "t", sup="(k-1)"), t_emb("t+k")),
-    "<tspan> ]</tspan>",
+ t_supsub("h", "t", sup="'(k)"),
+ "<tspan> = </tspan>",
+ t_var("M", "k"),
+ "<tspan> [ </tspan>",
+ t_concat_norms(t_supsub("h", "t", sup="(k-1)"), t_emb("t+k")),
+ "<tspan> ]</tspan>",
 ])
 ```
 
 框内公式：`_box_math(cx, cy, w, h, fill, stroke, parts)`，节点标签与公式 **同一 `<text>` 内 tspan 拼接**。
 
-## 架构图布局（MTP 融合方案范式）
+## 架构图布局
 
 复杂机制图（训练/推理数据流、因果链）按 **分栏 phase + 横向链 + 侧向虚线** 组织，见 `mtp-fusion-scheme.svg`：
 
@@ -83,7 +83,7 @@ math_line(W // 2, 48, [
 |------|------|
 | **标题** | `plain(..., cls="t")` 中文 + 论文锚点（如 `V3 Eq.21-23`） |
 | **顶栏公式** | `math_line` 一行，与正文主公式一致 |
-| **Phase 虚线框** | `phase(x, y, w, h, "A  …")` 分 A/B/C…；A=主路径，B=展开链，C=训练 vs 推理对照 |
+| **Phase 虚线框** | `phase(x, y, w, h, "A …")` 分 A/B/C…；A=主路径，B=展开链，C=训练 vs 推理对照 |
 | **模块色** | 主网蓝 `#eef4fc` / MTP 绿 `#f0faf0` / 融合橙 `#fef3c7` / token 橙 `#fff8ee` / 头紫 `#ede9fe` |
 | **实线箭头** | 主数据流（`arr-b` 蓝 / `arr-g` 绿） |
 | **虚线箭头** | 侧向注入（embed、路由，`arr-d`） |

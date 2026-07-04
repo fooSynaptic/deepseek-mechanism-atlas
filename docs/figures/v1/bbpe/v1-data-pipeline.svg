@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 100" width="920" height="100">
+<style><![CDATA[
+  .t { font: 700 15px sans-serif; fill: #1a1a2e; text-anchor: middle; }
+  .st { font: 11px sans-serif; fill: #666; text-anchor: middle; }
+  .lb { font: 600 11px sans-serif; fill: #222; text-anchor: middle; }
+  .dt { font: 10px sans-serif; fill: #555; text-anchor: middle; }
+  .an { font: 9px sans-serif; fill: #2563eb; text-anchor: middle; }
+  .arr { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#bbpea); }
+  .arr-b { stroke: #4A90D9; stroke-width: 1.5; fill: none; marker-end: url(#bbpeab); }
+  .arr-g { stroke: #27AE60; stroke-width: 1.5; fill: none; marker-end: url(#bbpeag); }
+  .arr-o { stroke: #E67E22; stroke-width: 1.5; fill: none; marker-end: url(#bbpeao); }
+]]></style>
+<defs>
+  <marker id="bbpea" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#666"/></marker>
+  <marker id="bbpeab" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4A90D9"/></marker>
+  <marker id="bbpeag" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#27AE60"/></marker>
+  <marker id="bbpeao" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#E67E22"/></marker>
+</defs>
+<text x="460" y="22" class="t" text-anchor="middle">V1 数据管线</text><rect x="5" y="40" width="150" height="44" rx="6" fill="#f8f9fc" stroke="#94a3b8" stroke-width="1.5"/><text x="80" y="62" class="lb" text-anchor="middle">原始语料</text><line x1="155" y1="62" x2="195" y2="62" class="arr"/><rect x="195" y="40" width="150" height="44" rx="6" fill="#f8f9fc" stroke="#94a3b8" stroke-width="1.5"/><text x="270" y="62" class="lb" text-anchor="middle">去重</text><line x1="345" y1="62" x2="385" y2="62" class="arr"/><rect x="385" y="40" width="150" height="44" rx="6" fill="#f8f9fc" stroke="#94a3b8" stroke-width="1.5"/><text x="460" y="62" class="lb" text-anchor="middle">过滤</text><line x1="535" y1="62" x2="575" y2="62" class="arr"/><rect x="575" y="40" width="150" height="44" rx="6" fill="#f8f9fc" stroke="#94a3b8" stroke-width="1.5"/><text x="650" y="62" class="lb" text-anchor="middle">重混</text><line x1="725" y1="62" x2="765" y2="62" class="arr"/><rect x="765" y="40" width="150" height="44" rx="6" fill="#f8f9fc" stroke="#94a3b8" stroke-width="1.5"/><text x="840" y="62" class="lb" text-anchor="middle">BBPE 训练 / 预训练</text></svg>

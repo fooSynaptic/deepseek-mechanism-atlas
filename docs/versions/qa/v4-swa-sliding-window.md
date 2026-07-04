@@ -1,4 +1,4 @@
-# V4 里的 SWA（Sliding Window Attention）是什么？
+# V4 里的 SWA是什么？
 
 [← 返回 CSA/HCA 一句话](../csa-hca-mixed-attention.md#一句话) · [§4 异构 KV](../csa-hca-mixed-attention.md#v4-mixed-attention) · [KV Layout §State](../v4-kv-layout.md#state-cache) · [磁盘 Prefix §SWA 三档](../v4-disk-prefix-cache.md#swa-三档策略论文-352) · [答疑目录](./README.md)
 
@@ -6,7 +6,21 @@
 
 ## 一句话
 
-**SWA** 保存最近约 $n_{\text{win}}$（论文约 **128**）个 token 的 **精确、未压缩** K/V，给当前 query 提供 **局部因果邻域**；与 CSA/HCA **压缩 entry 分池**（State cache），eviction 与 **磁盘 prefix 策略** 均 **独立**——部署上 SWA 常常是 **per-token KV 体积大头**。
+**SWA** 保存最近约 $n_{\text{win}}$个 token 的 **精确、未压缩** K/V，给当前 query 提供 **局部因果邻域**；与 CSA/HCA **压缩 entry 分池**（State cache），eviction 与 **磁盘 prefix 策略** 均 **独立**——部署上 SWA 常常是 **per-token KV 体积大头**。
+
+<a id="行业链"></a>
+
+## 0. 四模块表里的 sliding window 指什么
+
+[Raschka 表 8-1](../reports/raschka-technical-deepseek-v3-v32.md#表-8-1-transformer-模块演进) 与 [演进总览 §1.2](../reports/deepseek-version-lineage-20260625.md#四模块演进) 的 **Attention 行业链** 中，`sliding window` 指 **Sliding Window Attention（SWA，滑动窗口注意力）**：
+
+| 维度 | 说明 |
+|------|------|
+| **机制** | 每个 query 只 attend **最近 $W$ 个** token 的 K/V（固定局部窗口），复杂度随序列长度 **线性** 而非 $O(L^2)$ |
+| **行业语境** | Mistral 等长上下文模型常用此路数，介于 **GQA**（减 KV 头）与 **MLA**（低秩 latent 压缩 KV）之间 |
+| **DeepSeek 落点** | V1–V3 主线走 **MLA → DSA → CSA/HCA**；**V4** 把 SWA 作为 **五类 KV 之一** 与压缩 entry **分池**（[KV Layout §State](../v4-kv-layout.md#state-cache)），保证最近邻域 **不丢 token 级精度** |
+
+即：表里的 sliding window 是 **行业演进节点**；DeepSeek 在 **V4** 才将其 **显式工程化** 进异构 cache，而非 V2 引入 MLA 时的同代产物。
 
 ---
 
@@ -25,7 +39,7 @@ CSA/HCA 把历史 **压短**；SWA 保证 **紧邻上下文** 不丢精度——
 
 ## 2. 为何不能只用压缩 entry
 
-块压缩（4:1 / 128:1）会 **损失 token 级精度**。最近几十个 token 对语法、指代、工具调用格式等 **极敏感**；SWA 用 **滑动窗口** 保留这部分 **dense 局部**，与 CSA top-$k$、HCA dense 摘要 **并行参与** 同一层 attention 融合（见 [CSA/HCA 专文 §4](../csa-hca-mixed-attention.md#v4-mixed-attention)）。
+块压缩（4:1 / 128:1）会 **损失 token 级精度**。最近几十个 token 对语法、指代、工具调用格式等 **极敏感**；SWA 用 **滑动窗口** 保留这部分 **dense 局部**，与 CSA top-$k$、HCA dense 摘要 **[并行参与](../csa-hca-mixed-attention.md#v4-mixed-attention)** 同一层 attention 融合。
 
 ---
 
@@ -52,6 +66,6 @@ CSA/HCA 把历史 **压短**；SWA 保证 **紧邻上下文** 不丢精度——
 
 | 文档 | 内容 |
 |------|------|
-| [v4-kv-layout.md](../v4-kv-layout.md) | Classical vs State 双池；SWA 进 State |
-| [v4-disk-prefix-cache.md](../v4-disk-prefix-cache.md) | SWA 三档落盘策略 |
-| [v4-hisparse.md](../v4-hisparse.md) | SWA 与 C4 offload 的容量权衡 |
+| [V4 KV Layout](../v4-kv-layout.md) | Classical vs State 双池；SWA 进 State |
+| [V4 磁盘 Prefix Cache](../v4-disk-prefix-cache.md) | SWA 三档落盘策略 |
+| [V4 HiSparse](../v4-hisparse.md) | SWA 与 C4 offload 的容量权衡 |

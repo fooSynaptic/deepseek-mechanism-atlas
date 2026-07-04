@@ -1,8 +1,8 @@
-# MTP 中间 token 融合方案（读图指南）
+# MTP 中间 token 融合方案
 
 [← V3 §三 MTP](../../02-基座架构/01-V3基座.md#三mtp-multi-token-predictionv3-新增顶层结构) · [← 投机解码专文 §2](../04-DSpark投机解码.md#2-deepseek-路线mtpv3--v4) · [融合 scheme SVG](../figures/mtp-fusion-scheme.svg) · [答疑目录](../../01-总览/qa/README.md)
 
-> [← 中文导读](../../00-前言/02-中文导读.md) · [← 仓库首页（EN）](../../../README.md) · 旧图 [mtp-speculative.svg](../figures/mtp-speculative.svg) 是「训练结构 + 投机对照」总览；**本文 + [mtp-fusion-scheme.svg](../figures/mtp-fusion-scheme.svg)** 只讲 **中间 token 怎么融进 MTP 链**。
+> [← 中文导读](../../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · 旧图 [MTP 投机解码总览图](../figures/mtp-speculative.svg) 是「训练结构 + 投机对照」总览；**本文 + [MTP 融合 scheme 图](../figures/mtp-fusion-scheme.svg)** 只讲 **中间 token 怎么融进 MTP 链**。
 
 ---
 
@@ -32,11 +32,11 @@
 
 <img src="../figures/mtp-draft-chain-depth.svg" alt="MTP draft 串行计算链：链深度 0/1/2，共享 OutHead，逐步 Emb 注入" width="920"/>
 
-[直接打开 SVG](../figures/mtp-draft-chain-depth.svg)
+[图示详情](../figures/mtp-draft-chain-depth.svg)
 
 ---
 
-## 2. 融合公式（V3 论文 Eq.21–23）
+## 2. 融合公式
 
 对位置 $t$、MTP 深度 $k$：
 
@@ -71,24 +71,24 @@ $$
 
 ```
 整段序列 x_{1:T}
-  -> 主 Transformer 【1 次前向】-> 所有位置的 h_t^(0)
-  -> 各 t 上批量跑 MTP-1, MTP-2, ...（浅块，不重跑主网 L 层）
-  -> 中间 token 用 teacher forcing 真值 Emb(x_{t+k})
+ -> 主 Transformer 【1 次前向】-> 所有位置的 h_t^(0)
+ -> 各 t 上批量跑 MTP-1, MTP-2, ...（浅块，不重跑主网 L 层）
+ -> 中间 token 用 teacher forcing 真值 Emb(x_{t+k})
 ```
 
 - **1 次前向** = 主网对 **整批序列** 只跑一遍 L 层 Transformer。
 - MTP 是在 **已有 $h_t^{(0)}$** 上叠 **浅 MTP Block**，算力远小于「主网 × K 遍」。
 
-### 3.2 推理（MTP 当 speculative draft）
+### 3.2 推理
 
 每个 decode **轮**：
 
 ```
 1) 主网 【1 次】target forward -> verify 已 propose 的 K 个候选
 2) MTP 链 【K 小步】串行：
-     Emb(x_hat_{t+1}) + MTPBlock_1 -> 猜 x_hat_{t+2}
-     Emb(x_hat_{t+2}) + MTPBlock_2 -> 猜 x_hat_{t+3}
-     ...
+ Emb(x_hat_{t+1}) + MTPBlock_1 -> 猜 x_hat_{t+2}
+ Emb(x_hat_{t+2}) + MTPBlock_2 -> 猜 x_hat_{t+3}
+ ...
 ```
 
 - **不是** 一个 softmax 无依赖吐出 $t{+}1,\ldots,t{+}K$。
@@ -106,7 +106,7 @@ $$
 
 ---
 
-## 5. 与 DSpark 对照（只看 draft 生成）
+## 5. 与 DSpark 对照
 
 | | **MTP** | **DSpark** |
 |--|---------|------------|
@@ -132,8 +132,8 @@ MTP 首要目的是 **训练信号 densify / 表征 pre-plan**；推理时可 **
 
 | 文档 | 说明 |
 |------|------|
-| [mtp-fusion-scheme.svg](../figures/mtp-fusion-scheme.svg) | 融合 scheme 总览 |
-| [mtp-draft-chain-depth.svg](../figures/mtp-draft-chain-depth.svg) | §1.1 串行 draft 链深度计算图 |
+| [MTP 融合 scheme 图](../figures/mtp-fusion-scheme.svg) | 融合 scheme 总览 |
+| [MTP draft 链深度图](../figures/mtp-draft-chain-depth.svg) | §1.1 串行 draft 链深度计算图 |
 | [酱紫君解读 §MTP](../../08-外部解读/03-酱紫君DSpark阅读笔记.md#mtp一次前向如何融合中间-token) |
 | [投机解码专文 §2](../04-DSpark投机解码.md#2-deepseek-路线mtpv3--v4) |
 | [V3 论文 Figure 3 原文](https://arxiv.org/pdf/2412.19437)（Eq.21–23） |

@@ -33,7 +33,7 @@
 V3 每层 MoE 要对 **全体 routed expert** 算亲和度（256 维量级），再 top-8。浅层 **层数少但 token 吞吐相同**，若前几层原是 **dense FFN 或 MoE**，改成 Hash MoE 可以：
 
 - 去掉 **$e_i$、router GEMM** 与部分 aux 路径；
-- 仍走 **EP + shared**（见 [EP 答疑](moe-expert-parallel-ep.md)），**id 确定后引擎与 V3 同族**。
+- 仍走 **[EP + shared](moe-expert-parallel-ep.md)**，**id 确定后引擎与 V3 同族**。
 
 动机表里写的 **「省路由算力与参数；浅层更偏通用变换」** 即此。
 
@@ -43,7 +43,7 @@ Hash 层 **不随 batch 调 $b_i$**。浅层 expert 负载若天然较匀、且 
 
 ---
 
-## 3. 为何深层不动（仍 centroid）
+## 3. 为何深层不动
 
 ### 3.1 深层需要「按内容选 expert」
 
@@ -63,13 +63,13 @@ Hash 省的是 **router 侧** FLOPs 与参数；深层 FFN **expert 本体** 仍
 
 ---
 
-## 4. 混合栈长什么样（读法）
+## 4. 混合栈长什么样
 
 <img src="../../04-版本代际/figures/v4/hash-moe-routing.svg" alt="Gate affinity 换 Hash query；Phase C 仍为 EP + shared 引擎" width="920"/>
 
 Hash 仅替换浅层 **Phase A→B** 的路由函数；**Phase C**（EP scatter → Routed FFN → Gather+shared）与 V3 推理栈不变。
 
-[直接打开 SVG](../../04-版本代际/figures/v4/hash-moe-routing.svg)
+[图示详情](../../04-版本代际/figures/v4/hash-moe-routing.svg)
 
 | 段 | 路由 | 后面引擎 |
 |----|------|----------|
@@ -85,7 +85,7 @@ Hash 仅替换浅层 **Phase A→B** 的路由函数；**Phase C**（EP scatter 
 
 | 误解 | 澄清 |
 |------|------|
-| 「V4 全部 MoE 都 Hash」 | **否** — 仅 **前几层**（论文：原 dense FFN → Hash-routed MoE） |
+| 「V4 全部 MoE 都 Hash」 | **否** — 仅 **前几层** |
 | 「深层不用 MoE」 | **否** — 主力层仍是 **256/8 DeepSeekMoE + centroid** |
 | 「Hash 层不做 EP」 | **否** — 仍 **gather/scatter**，只改 **id 怎么来** |
 | 「浅层 Hash = 质量一定差」 | 设计假设是浅层 **特化需求低**；深层保留 learned routing **兜底能力** |

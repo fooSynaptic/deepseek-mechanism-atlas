@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" width="720" height="200">
+<style><![CDATA[
+  .t { font: 700 15px sans-serif; fill: #1a1a2e; text-anchor: middle; }
+  .st { font: 11px sans-serif; fill: #666; text-anchor: middle; }
+  .lb { font: 600 11px sans-serif; fill: #222; text-anchor: middle; }
+  .dt { font: 10px sans-serif; fill: #555; text-anchor: middle; }
+  .an { font: 9px sans-serif; fill: #2563eb; text-anchor: middle; }
+  .arr { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#dspa); }
+  .arr-b { stroke: #4A90D9; stroke-width: 1.5; fill: none; marker-end: url(#dspab); }
+  .arr-g { stroke: #27AE60; stroke-width: 1.5; fill: none; marker-end: url(#dspag); }
+  .arr-o { stroke: #E67E22; stroke-width: 1.5; fill: none; marker-end: url(#dspao); }
+]]></style>
+<defs>
+  <marker id="dspa" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#666"/></marker>
+  <marker id="dspab" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4A90D9"/></marker>
+  <marker id="dspag" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#27AE60"/></marker>
+  <marker id="dspao" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#E67E22"/></marker>
+</defs>
+<text x="360" y="22" class="t" text-anchor="middle">DSpark：离线能力 vs 在线加速</text><rect x="220" y="38" width="280" height="40" rx="6" fill="#f8f9fc" stroke="#94a3b8" stroke-width="1.5"/><text x="360" y="58" class="lb" text-anchor="middle">新样本</text><polyline points="360,78 360,98 180,98 180,108" class="arr" fill="none"/><polyline points="360,78 360,98 540,98 540,108" class="arr-o" fill="none"/><rect x="70" y="114" width="220" height="48" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/><text x="180" y="130" class="lb" text-anchor="middle">SFT target（可选）</text><text x="180" y="148" class="dt" text-anchor="middle">改能力 p</text><rect x="430" y="114" width="220" height="48" rx="6" fill="#f0faf0" stroke="#27AE60" stroke-width="1.5"/><text x="540" y="130" class="lb" text-anchor="middle">蒸馏 draft</text><text x="540" y="148" class="dt" text-anchor="middle">target 冻结 · q-&gt;p</text><text x="360" y="118" class="an" text-anchor="middle">并行</text><rect x="150" y="158" width="420" height="40" rx="6" fill="#fff8ee" stroke="#E67E22" stroke-width="1.5"/><text x="360" y="178" class="lb" text-anchor="middle">在线：draft 猜 + target verify -&gt; 加速（仍服从 p）</text></svg>

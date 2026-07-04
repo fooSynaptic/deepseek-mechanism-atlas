@@ -1,4 +1,4 @@
-# Engram 图示参考（SVG 数学排版）
+# Engram 图示参考
 
 **标杆图**：[engram-01d-multi-head-hash.svg](../engram-01d-multi-head-hash.svg)（Step 3 多头哈希）
 

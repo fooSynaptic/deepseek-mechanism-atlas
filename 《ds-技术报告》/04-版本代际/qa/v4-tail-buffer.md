@@ -23,7 +23,7 @@
 
 ---
 
-## 2. 生命周期（decode 视角）
+## 2. 生命周期
 
 | 阶段 | Tail | Classical 池 |
 |------|------|--------------|
@@ -43,7 +43,7 @@
 | 是否可变 | 每来一 token **可能变长/清空** | **滑动更新** 窗口 |
 | 算法角色 | **块对齐工程缓冲** | **注意力精度** 保障 |
 
-二者都在 **State cache**，但 eviction、prefix 策略 **各自独立**（见 [v4-kv-layout.md](../../06-推理基础设施/05-V4-KV-Layout.md#state-cache)）。
+二者都在 **State cache**，但 eviction、prefix 策略 **[各自独立](../../06-推理基础设施/05-V4-KV-Layout.md#state-cache)**。
 
 ---
 
@@ -57,5 +57,5 @@
 
 | 文档 | 内容 |
 |------|------|
-| [v4-kv-layout.md](../../06-推理基础设施/05-V4-KV-Layout.md) | Classical vs State 分工 |
-| [csa-hca-mixed-attention.md §4](../05-CSA-HCA混合压缩注意力.md#v4-mixed-attention) | 五类对象对照表 |
+| [V4 KV Layout](../../06-推理基础设施/05-V4-KV-Layout.md) | Classical vs State 分工 |
+| [CSA / HCA 混合压缩注意力§4](../05-CSA-HCA混合压缩注意力.md#v4-mixed-attention) | 五类对象对照表 |

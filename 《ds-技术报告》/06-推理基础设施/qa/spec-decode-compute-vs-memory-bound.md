@@ -40,7 +40,7 @@
 
 ---
 
-## 3. 为何 Eagle3 是 Memory-Bound 串行？（draft 侧）
+## 3. 为何 Eagle3 是 Memory-Bound 串行？
 
 Eagle3 属于 **自回归外挂 draft**：块内第 $i$ 个 token 依赖已猜的 $\hat{x}_{t+i-1}$，**不能**与前面位完全并行，必须：
 
@@ -52,7 +52,7 @@ $$
 
 与 target 同理，draft 在 batch=1 decode 下也是 **GEMV 型** 前向。Eagle3 的第 $i$ 步 = **一整段** draft Transformer（多层 Attention + FFN/MoE）完整前向 → 从 HBM **再拉一遍** draft 全部层权重。
 
-- 块长 $K$ → **$K$ 次**完整 draft 前向  
+- 块长 $K$ → **$K$ 次**完整 draft 前向
 - draft 侧总耗时 $\tau_q^{\mathrm{Eagle}} \approx K \cdot \tau_{\mathrm{step}}$ → **$\tau_q \propto K$**（专文 §4、酱紫君解读对照表）
 
 ### 3.2 算力利用率低
@@ -65,7 +65,7 @@ $$
 
 ---
 
-## 4. 为何 DFlash 更偏 Compute-Bound 并行？（draft 侧）
+## 4. 为何 DFlash 更偏 Compute-Bound 并行？
 
 DFlash 走 **并行外挂 draft**：在固定 target hidden $h_t^p$ 上，**一次前向**同时产出 $K$ 个位置的 hidden / 基础 logits：
 
@@ -78,7 +78,7 @@ $$
 - **2–3 层**轻量 MoE：**1 次** HBM 权重流 → **$K$ 个位置**并行做 Attention / FFN。
 - 相对 Eagle 的 $K$ 次完整前向，**访存次数 ~$1/K$**；多出来的 FLOPS 用于 **并行位** 而非 **重复搬权重** → draft 延迟 **几乎与 $K$ 弱相关**（专文 §4 表「DFlash 优势」）。
 
-### 4.2 瓶颈从带宽转向算力（相对 Eagle）
+### 4.2 瓶颈从带宽转向算力
 
 同一轮 draft 里，SM 处理 **$K$ 宽**的激活 → 算术强度高于「$K$ 次单向量 GEMV」。在固定 draft 参数量下，**更吃算力、更少重复访存** → 工程上归类为 **Compute-Bound 并行**一侧。
 
@@ -117,21 +117,21 @@ $$
 S_{\uparrow} = \frac{\bigl(\mathbb{E}[N_{\mathrm{acc}}] + 1\bigr)\,\tau_p}{K\,\tau_q + \tau_p}
 $$
 
-- Eagle：**分子大**（$\mathbb{E}[N_{\mathrm{acc}}]$），**分母里 $K\tau_q$ 也大**  
-- DFlash：**分母小**，但 $\mathbb{E}[N_{\mathrm{acc}}]$ 限制分子  
+- Eagle：**分子大**（$\mathbb{E}[N_{\mathrm{acc}}]$），**分母里 $K\tau_q$ 也大**
+- DFlash：**分母小**，但 $\mathbb{E}[N_{\mathrm{acc}}]$ 限制分子
 - DSpark：在 **$K\tau_q$** 与 **$\mathbb{E}[N_{\mathrm{acc}}]$** 之间取半自回归折中
 
 ---
 
 ## 7. 一句话记忆
 
-- **Memory-Bound 串行读取** = batch=1 decode 下 **每 token 各搬一遍权重**；Eagle draft 是典型（$K$ token → $K$ 遍 draft 权重流）。  
-- **Compute-Bound 并行验证** = **搬一遍权重、多位置并行算**；target verify 与 DFlash 并行主干同属这一类。  
+- **Memory-Bound 串行读取** = batch=1 decode 下 **每 token 各搬一遍权重**；Eagle draft 是典型（$K$ token → $K$ 遍 draft 权重流）。
+- **Compute-Bound 并行验证** = **搬一遍权重、多位置并行算**；target verify 与 DFlash 并行主干同属这一类。
 - **DFlash ≈ 前者，Eagle ≈ 后者** —— 在 **draft 范式**维度上成立；开篇整句 additionally 指 **target 并行 verify 替代 $K$ 次串行 target decode**。
 
 ---
 
-## 8. 反向引用（谁链到本文）
+## 8. 反向引用
 
 | 文档 | 锚点 / 说明 |
 |------|-------------|
@@ -140,11 +140,11 @@ $$
 | [投机解码专文 §6.1](../04-DSpark投机解码.md#61-半自回归候选生成) | 堆叠依赖与接受率 |
 | [酱紫君解读 §Speculative Decoding](../../08-外部解读/03-酱紫君DSpark阅读笔记.md#speculative-decoding) | 「用并行验证替代串行读取」原文 |
 | [酱紫君解读 §半自回归](../../08-外部解读/03-酱紫君DSpark阅读笔记.md#dspark-半自回归草稿并行主干-vs-顺序头) | Eagle 式 vs DSpark 式 $\tau_q$ 对照 |
-| [spec-decode-rejection-sampling.md](spec-decode-rejection-sampling.md) | lossless 接受路径（与 mem/compute 正交） |
-| [gpu-sm-term.md](gpu-sm-term.md) | SM / HBM / 「填不满 SM」名词 |
+| [投机解码：为何接受率是 $\min$、修正分布是 $\max$](spec-decode-rejection-sampling.md) | lossless 接受路径（与 mem/compute 正交） |
+| [名词解释：SM](gpu-sm-term.md) | SM / HBM / 「填不满 SM」名词 |
 
 ## 9. 外部文献
 
-- Leviathan et al., *Fast Inference from Transformers via Speculative Decoding*, arXiv:2211.17002, 2022.  
-- Li et al., *EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty*, 2024（Eagle 系自回归 draft）。  
+- Leviathan et al., *Fast Inference from Transformers via Speculative Decoding*, arXiv:2211.17002, 2022.
+- Li et al., *EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty*, 2024（Eagle 系自回归 draft）。
 - [DSpark_paper.pdf](https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf) — Semi-Autoregressive Draft；DFlash 并行 vs Eagle 串行消融。
