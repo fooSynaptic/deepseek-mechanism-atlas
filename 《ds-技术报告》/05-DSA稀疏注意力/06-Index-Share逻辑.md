@@ -1,6 +1,6 @@
 # Index Share（IndexCache）逻辑详解
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](../00-前言/02-中文导读.md) · [← 系列目录](01-系列导读.md) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [DSA 梗概](02-DSA梗概.md) · [DSA 逻辑](03-DSA逻辑详解.md) · [Index Share 梗概](05-Index-Share梗概.md) · [演进总览 §3.6](../01-总览/01-版本演进总览.md#36-deepseek-v32--v32-exp)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](../../README.md) · [← 系列目录](01-系列导读.md) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [DSA 梗概](02-DSA梗概.md) · [DSA 逻辑](03-DSA逻辑详解.md) · [Index Share 梗概](05-Index-Share梗概.md) · [演进总览 §3.6](../01-总览/01-版本演进总览.md#36-deepseek-v32--v32-exp)
 
 ---
 
@@ -102,7 +102,7 @@ Role:   F   F   F   S   F   F   F   S  ...
 ```
 
 - **去掉 75% 的 indexer 计算**（每 4 层只算 3 次 indexer，而非 4 次）；
-- S 层复用的是 **紧前一个 F 层**（上例中 L4 复用 L3）的 indices，具体以实现/论文配置为准。
+- S 层复用的是 **紧前一个 F 层**的 indices。
 
 <img src="figures/index-share-fffs.svg" alt="Index Share FFFS 跨层复用示意" width="920"/>
 
@@ -191,4 +191,4 @@ Role:   F   F   F   S   F   F   F   S  ...
 |----------|----------|
 | [Index Share（IndexCache）梗概](05-Index-Share梗概.md) | [ESS：Latent-Cache Offload（V3.2）](../06-推理基础设施/01-ESS概念.md) |
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](../00-前言/02-中文导读.md) · [← 系列目录](01-系列导读.md) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [DSA 梗概](02-DSA梗概.md) · [DSA 逻辑](03-DSA逻辑详解.md) · [Index Share 梗概](05-Index-Share梗概.md) · [演进总览 §3.6](../01-总览/01-版本演进总览.md#36-deepseek-v32--v32-exp)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](../../README.md) · [← 系列目录](01-系列导读.md) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [DSA 梗概](02-DSA梗概.md) · [DSA 逻辑](03-DSA逻辑详解.md) · [Index Share 梗概](05-Index-Share梗概.md) · [演进总览 §3.6](../01-总览/01-版本演进总览.md#36-deepseek-v32--v32-exp)

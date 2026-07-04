@@ -2,7 +2,7 @@
 
 > [← 演进总览](./deepseek-version-lineage-20260625.md) · [← 开发索引](../WIKI-INDEX.md) · [《ds-技术报告》](../../《ds-技术报告》/README.md) · [书中总览](../../《ds-技术报告》/01-总览/01-版本演进总览.md)
 
-本报告对 `deepseek-everything` 仓库文档系列做**结构、双向引用、章节导航、概念去重、SVG 复用**审查，并记录已落地修复与后续维护命令。
+本报告对 `deepseek-tech-notes` 仓库文档系列做**结构、双向引用、章节导航、概念去重、SVG 复用**审查，并记录已落地修复与后续维护命令。
 
 ---
 
@@ -62,7 +62,7 @@
 
 | 概念 | 唯一主文档 | 摘要嵌入 | 答疑 |
 |------|-----------|----------|------|
-| FP8 训练量化 | [v3-fp8-dynamic-quantization.md](../versions/v3-fp8-dynamic-quantization.md) | [v3.md §附 FP8](../versions/v3.md) 同图同链 | [fp8-partial-sum-drift.md](../versions/qa/fp8-partial-sum-drift.md)（机制）；[fp8-mma-term.md](../versions/qa/fp8-mma-term.md)（**术语表**，非第二篇机制文） |
+| FP8 训练量化 | [v3-fp8-dynamic-quantization.md](../versions/v3-fp8-dynamic-quantization.md) | [v3.md §附 FP8](../versions/v3.md) 同图同链 | [fp8-partial-sum-drift.md](../versions/qa/fp8-partial-sum-drift.md)；[fp8-mma-term.md](../versions/qa/fp8-mma-term.md) |
 | GRPO vs PPO | [rlvr.md#grpo](../versions/rlvr.md) | 演进总览 §3.4 同图 | — |
 | MTP / 投机 | [v3.md §三](../versions/v3.md) | [spec-decode 报告](./spec-decode-draft-acceleration-20260604.md) 复用 `mtp-speculative.svg` | — |
 | DSA 管线 | [dsa-logic.md](../dsa/dsa-logic.md) | 梗概 / Raschka 链同一 `dsa-pipeline.svg` | — |
@@ -104,7 +104,7 @@
 ### 5.3 维护命令
 
 ```bash
-cd <deepseek-everything 仓库根>
+cd <deepseek-tech-notes 仓库根>
 python3 scripts/svg/gen_deepseek_svgs.py   # 或单独 gen_*.py
 python3 dsa/scripts/svg/gen_dsa_svgs.py
 python3 scripts/svg/check_svgs.py          # 须 exit 0

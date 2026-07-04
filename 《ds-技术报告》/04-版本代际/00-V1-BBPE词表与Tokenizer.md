@@ -73,7 +73,7 @@ BBPE 本身在约 **24GB 多语言语料** 上训练 merge 规则；**2.0T token
 
 **示意说明**（上图）：预分词后文本变为 UTF-8 字节流；初始符号表为 256 个字节；每轮合并语料中最高频 **相邻 byte pair**，写入 merge 表；重复至 **100,000** 次 merge。推理时对同样预切分后的字节序列 **贪心最长匹配**。因任意 UTF-8 文本可先落到字节层，**不会出现字符级 OOV**（罕见片段至多拆成更多 byte/subword token，序列变长而非 `<unk>`）。
 
-> **图上 `48 69`、`E4 B8 96` 是十六进制记法**（便于读 UTF-8 多字节），不是单独一套「16 进制词表」。实现里每个符号是 **8-bit 字节** $b \in \{0,\ldots,255\}$（即 `0x00`–`0xFF`）；`48` = 十进制 72 = `'H'`，`69` = `'i'`。`E4 B8 96` 等为 **中文等 CJK 字符**（Chinese / Japanese / Korean）在 UTF-8 下的 3 字节编码示意。HuggingFace tokenizers 在内部用 `u8` 序列做 merge/encode；调试或文档里常写 hex，与 GPT-2 ByteLevel BPE 同类。
+> **图上 `48 69`、`E4 B8 96` 是十六进制记法**，不是单独一套「16 进制词表」。实现里每个符号是 **8-bit 字节** $b \in \{0,\ldots,255\}$（即 `0x00`–`0xFF`）；`48` = 十进制 72 = `'H'`，`69` = `'i'`。`E4 B8 96` 等为 **中文等 CJK 字符**在 UTF-8 下的 3 字节编码示意。HuggingFace tokenizers 在内部用 `u8` 序列做 merge/encode。
 
 <a id="pre-tokenization"></a>
 

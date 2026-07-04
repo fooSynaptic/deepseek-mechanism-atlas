@@ -309,7 +309,7 @@ $$
 
 以 Qwen3-32B 为例：$t_{\mathrm{step}}\approx 3.6\,\mathrm{ms}$ / 64 层 → 每层约 **56 μs**；**Layer 2 的 prefetch 窗口仅 ~56 μs**，这是选 CXL 而非 RDMA 的核心原因。
 
-> **答疑**：[为何选 CXL 而非 RDMA](qa/cxl-why-cxl-not-rdma.md)（时间窗不等式 + 56 μs + 访问形态）
+> **答疑**：[为何选 CXL 而非 RDMA](qa/cxl-why-cxl-not-rdma.md)
 
 #### Step 2 — L3 → L2/L1 数据通路（二选一）
 

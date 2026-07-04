@@ -35,7 +35,7 @@ python3 scripts/svg/check_svgs.py   # 须 exit 0
 
 1. 按需下载 `NotoSansCJKsc-Regular.otf` 到 `fonts/`（已在 `.gitignore`）
 2. **自动生成** `fonts/fonts.conf`（fontconfig 需绝对路径，由脚本按本机仓库根目录写入；**勿手动编辑或提交**）
-3. fontconfig 缓存写入 `/tmp/fontconfig-deepseek-everything-png`（不入仓）
+3. fontconfig 缓存写入 `/tmp/fontconfig-deepseek-tech-notes-png`（不入仓）
 
 ```bash
 python3 scripts/export_png.py

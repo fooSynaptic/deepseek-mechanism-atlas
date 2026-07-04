@@ -2,7 +2,7 @@
 
 > [← 中文导读](../README.md) · [← 仓库首页（EN）](../../README.md) · [版本梗概](../versions/README.md) · [演进总览](./deepseek-version-lineage-20260625.md) · [Raschka V3→V3.2 解读](./raschka-technical-deepseek-v3-v32-highlights.md)
 
-本目录存放 **官方技术报告摘要** 与 **第三方深度解读**（标注来源，便于与本地梗概对照）。
+本目录存放 **官方技术报告摘要** 与 **第三方深度解读**。
 
 | 文档 | 类型 | 说明 |
 |------|------|------|

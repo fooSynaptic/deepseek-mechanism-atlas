@@ -123,7 +123,7 @@ Hub 文档仍保留专题导读；由节点文首回链，**不**替代演进总
 ## 书中副本
 
 ```bash
-cd deepseek-everything/《ds-技术报告》 && python3 build_book.py
+cd deepseek-tech-notes/《ds-技术报告》 && python3 build_book.py
 ```
 
 | 源 | 书中 |
