@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 300" width="920" height="300">
+<style><![CDATA[
+
+      .t{font-size:13px;font-weight:700;fill:#0f172a;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .s{font-size:9px;fill:#64748b;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .b{font-size:10px;fill:#334155;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .lb{font-size:10px;font-weight:600;fill:#222;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .dt{font-size:9px;fill:#555;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .an{font-size:9px;fill:#2563eb;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .st{font-size:10px;fill:#666;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .m{font-size:12px;fill:#1e293b;text-anchor:middle;font-family:Cambria Math, STIX Two Math, Latin Modern Math, serif}
+      .fm{font-size:10px;fill:#334155;text-anchor:middle;font-family:Cambria Math, STIX Two Math, Latin Modern Math, serif}
+      .box{rx:5;stroke-width:1.2}
+      .m tspan{font-family:Cambria Math, STIX Two Math, Latin Modern Math, serif}
+      .fm tspan{font-family:Cambria Math, STIX Two Math, Latin Modern Math, serif}
+      text.fm.t{font-size:13px;font-weight:700;fill:#0f172a}
+      text.fm.lb{font-size:10px;font-weight:600;fill:#222}
+      text.fm.dt{font-size:9px;fill:#555}
+      text.fm.st{font-size:10px;fill:#666}
+      text.fm.an{font-size:9px;fill:#2563eb}
+      .bl{font-size:10px;fill:#555;text-anchor:start;font-family:system-ui, -apple-system, sans-serif}
+      .bl.fm{font-family:Cambria Math, STIX Two Math, Latin Modern Math, serif;fill:#555;text-anchor:start}
+      .bl.fm tspan{font-family:Cambria Math, STIX Two Math, Latin Modern Math, serif}
+
+  .ph { font: 600 12px sans-serif; fill: #4a5a7a; }
+  .cell { font: 600 13px Cambria Math, STIX Two Math, serif; fill: #1a1a2e; text-anchor: middle; }
+  .idx { font: 10px sans-serif; fill: #666; text-anchor: middle; }
+  .sum { font: 600 12px Cambria Math, STIX Two Math, serif; fill: #1d6b3a; text-anchor: middle; }
+  .arr { stroke: #888; stroke-width: 1.2; fill: none; marker-end: url(#dsma); }
+  .br-r { stroke: #4A90D9; stroke-width: 1.4; fill: none; }
+  .br-c { stroke: #E67E22; stroke-width: 1.4; fill: none; }
+
+]]></style>
+<defs>
+  <marker id="dsma" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#888"/></marker>
+</defs>
+  <text x="460" y="24" class="t" text-anchor="middle">Doubly stochastic matrix H</text>
+
+  <text x="460" y="44" class="st" text-anchor="middle">example n=3 (mHC uses n=4); entries non-negative, each row and column sums to 1</text>
+
+<rect x="36" y="88" width="200" height="148" rx="8" fill="#f6f8fb" stroke="#c5cee0" stroke-width="1.5"/>  <text x="48" y="110" class="ph" text-anchor="start">Three constraints</text>
+  <text x="136" y="140" class="m" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">H</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">ij</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan> </tspan><tspan font-family='Cambria Math, serif'>&#x2265;</tspan><tspan> 0</tspan></text>
+  <text x="136" y="170" class="m" text-anchor="middle"><tspan font-family='Cambria Math, serif'>&#x2211;</tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">j</tspan><tspan> </tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">H</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">ij</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan> = 1</tspan></text>
+  <text x="136" y="200" class="m" text-anchor="middle"><tspan font-family='Cambria Math, serif'>&#x2211;</tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">i</tspan><tspan> </tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">H</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">ij</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan> = 1</tspan></text>
+  <text x="48" y="220" class="dt" text-anchor="start">each row / col: prob. dist.</text>
+
+<rect x="260" y="70" width="254" height="164" rx="6" fill="#fafbfd" stroke="#c5cee0" stroke-width="1.5"/>
+<text x="306" y="88" class="idx">j=1</text>
+<text x="387" y="88" class="idx">j=2</text>
+<text x="468" y="88" class="idx">j=3</text>
+<text x="246" y="125" class="idx">i=1</text>
+<rect x="268" y="98" width="76" height="46" rx="6" fill="#eef4fc" stroke="#b8c4dc" stroke-width="1.5"/>
+<text x="306" y="126" class="cell">0.40</text>
+<rect x="349" y="98" width="76" height="46" rx="6" fill="#f8f9fc" stroke="#b8c4dc" stroke-width="1.5"/>
+<text x="387" y="126" class="cell">0.30</text>
+<rect x="430" y="98" width="76" height="46" rx="6" fill="#eef4fc" stroke="#b8c4dc" stroke-width="1.5"/>
+<text x="468" y="126" class="cell">0.30</text>
+<text x="246" y="176" class="idx">i=2</text>
+<rect x="268" y="149" width="76" height="46" rx="6" fill="#f8f9fc" stroke="#b8c4dc" stroke-width="1.5"/>
+<text x="306" y="177" class="cell">0.20</text>
+<rect x="349" y="149" width="76" height="46" rx="6" fill="#eef4fc" stroke="#b8c4dc" stroke-width="1.5"/>
+<text x="387" y="177" class="cell">0.50</text>
+<rect x="430" y="149" width="76" height="46" rx="6" fill="#f8f9fc" stroke="#b8c4dc" stroke-width="1.5"/>
+<text x="468" y="177" class="cell">0.30</text>
+<text x="246" y="227" class="idx">i=3</text>
+<rect x="268" y="200" width="76" height="46" rx="6" fill="#eef4fc" stroke="#b8c4dc" stroke-width="1.5"/>
+<text x="306" y="228" class="cell">0.40</text>
+<rect x="349" y="200" width="76" height="46" rx="6" fill="#f8f9fc" stroke="#b8c4dc" stroke-width="1.5"/>
+<text x="387" y="228" class="cell">0.20</text>
+<rect x="430" y="200" width="76" height="46" rx="6" fill="#eef4fc" stroke="#b8c4dc" stroke-width="1.5"/>
+<text x="468" y="228" class="cell">0.40</text>
+<path class="br-r" d="M520,102 Q530,121 520,140"/>
+<text x="548" y="126" class="sum">= 1</text>
+<path class="br-r" d="M520,153 Q530,172 520,191"/>
+<text x="548" y="177" class="sum">= 1</text>
+<path class="br-r" d="M520,204 Q530,223 520,242"/>
+<text x="548" y="228" class="sum">= 1</text>
+  <text x="548" y="90" class="an" text-anchor="middle">row sum</text>
+
+<path class="br-c" d="M272,258 Q306,268 340,258"/>
+<text x="306" y="286" class="sum">= 1</text>
+<path class="br-c" d="M353,258 Q387,268 421,258"/>
+<text x="387" y="286" class="sum">= 1</text>
+<path class="br-c" d="M434,258 Q468,268 502,258"/>
+<text x="468" y="286" class="sum">= 1</text>
+  <text x="387" y="302" class="an" text-anchor="middle">col sum</text>
+
+<rect x="620" y="88" width="268" height="148" rx="6" fill="#fff8ee" stroke="#E67E22" stroke-width="1.5"/>  <text x="754" y="110" class="ph" text-anchor="middle">mHC mixing matrix</text>
+  <text x="754" y="140" class="m" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">H</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">pre</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text>
+  <text x="754" y="166" class="m" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">H</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">post</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text>
+  <text x="754" y="192" class="m" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">H</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">comb</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text>
+  <text x="754" y="218" class="dt" text-anchor="middle">project to Birkhoff via Sinkhorn</text>
+
+</svg>

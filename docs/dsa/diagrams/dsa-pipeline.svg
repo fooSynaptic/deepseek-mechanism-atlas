@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 320" width="920" height="320">
+<style><![CDATA[
+  .t { font: 700 15px sans-serif; fill: #1a1a2e; text-anchor: middle; }
+  .st { font: 11px sans-serif; fill: #666; text-anchor: middle; }
+  .lb { font: 600 11px sans-serif; fill: #222; text-anchor: middle; }
+  .dt { font: 10px sans-serif; fill: #555; text-anchor: middle; }
+  .an { font: 9px sans-serif; fill: #2563eb; text-anchor: middle; }
+  .bl { font: 10px sans-serif; fill: #555; text-anchor: start; }
+  .arr { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#dpa); }
+  .arr-b { stroke: #4A90D9; stroke-width: 1.5; fill: none; marker-end: url(#dpab); }
+  .arr-g { stroke: #27AE60; stroke-width: 1.5; fill: none; marker-end: url(#dpag); }
+]]></style>
+<defs>
+  <marker id="dpa" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#666"/></marker>
+  <marker id="dpab" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4A90D9"/></marker>
+  <marker id="dpag" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#27AE60"/></marker>
+</defs>
+<text x="460" y="22" class="t">DSA 两阶段稀疏注意力与异构 Cache</text><text x="460" y="40" class="st">Indexer O(L^2) 轻量全扫 -&gt; Top-k=2048 -&gt; Core MLA O(Lk)</text><rect x="55" y="64" width="130" height="72" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/><text x="120" y="90" class="lb">Query h_t</text><text x="120" y="108" class="dt">当前 token</text><rect x="225" y="64" width="150" height="72" rx="6" fill="#fff8ee" stroke="#E67E22" stroke-width="1.5"/><text x="300" y="90" class="lb">Lightning Indexer</text><text x="300" y="108" class="dt">廉价点积打分</text><text x="300" y="122" class="dt">O(L^2) 小常数</text><rect x="435" y="64" width="130" height="72" rx="6" fill="#f0faf0" stroke="#27AE60" stroke-width="1.5"/><text x="500" y="90" class="lb">Top-k</text><text x="500" y="108" class="dt">k = 2048</text><text x="500" y="122" class="dt">index 集 I</text><rect x="645" y="64" width="150" height="72" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/><text x="720" y="90" class="lb">Core MLA Attn</text><text x="720" y="108" class="dt">仅 I 内 latent</text><text x="720" y="122" class="dt">O(Lk)</text><line x1="185" y1="100" x2="225" y2="100" class="arr"/><line x1="375" y1="100" x2="435" y2="100" class="arr"/><line x1="565" y1="100" x2="645" y2="100" class="arr"/><rect x="60" y="190" width="200" height="80" rx="6" fill="#fff0f0" stroke="#e8a0a0" stroke-width="1.5"/><text x="160" y="208" class="lb">Indexer-Cache</text><text x="160" y="226" class="dt">~16.8%  GPU 常驻</text><text x="160" y="242" class="dt">每步全算 indexer</text><rect x="360" y="190" width="200" height="80" rx="6" fill="#f0f4ff" stroke="#a0b8e8" stroke-width="1.5"/><text x="460" y="208" class="lb">Latent-Cache</text><text x="460" y="226" class="dt">~83.2%  可 ESS offload</text><text x="460" y="242" class="dt">仅 top-k entry 进主 attn</text><rect x="660" y="190" width="200" height="80" rx="6" fill="#f0faf0" stroke="#8fbc8f" stroke-width="1.5"/><text x="760" y="208" class="lb">Index Share</text><text x="760" y="226" class="dt">infra 补丁 (后文)</text><text x="760" y="242" class="dt">跨层复用 top-k index</text><line x1="300" y1="136" x2="160" y2="190" class="arr-b"/><line x1="500" y1="136" x2="460" y2="190" class="arr-b"/><line x1="720" y1="136" x2="760" y2="190" class="arr-g"/><text x="400" y="290" class="an">双 Cache 是 Index Share 与 ESS 的结构基础</text></svg>
