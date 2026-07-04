@@ -20,20 +20,16 @@ BOOK_TOML = REPO / "book.toml"
 SKIP_PREFIXES = ("http://", "https://", "//", "mailto:", "javascript:", "data:")
 ATTR_RE = re.compile(r'(href|src)="([^"]+)"')
 PATH_TO_ROOT_RE = re.compile(r'var path_to_root = "[^"]*";')
-MATHJAX_RE = re.compile(r"<!-- MathJax -->\s*<script async src=\"[^\"]+\"></script>")
-MATHJAX_BLOCK = """<!-- MathJax: enable $...$ (IDE / VS Code Preview delimiters) -->
-        <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-          tex2jax: {
-            inlineMath: [['$','$'], ['\\\\(','\\\\)']],
-            displayMath: [['$$','$$'], ['\\\\[','\\\\]']],
-            processEscapes: true,
-            processEnvironments: true,
-            skipTags: ['script','noscript','style','textarea','pre','code']
-          }
-        });
-        </script>
-        <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>"""
+MATHJAX_RE = re.compile(
+    r"<!-- MathJax[^>]* -->[\s\S]*?"
+    r"<script async src=\"[^\"]*(?:MathJax|mathjax)[^\"]*\"></script>\s*",
+    re.IGNORECASE,
+)
+KATEX_HEAD = """<!-- KaTeX: $...$ / $$...$$ (IDE / VS Code Preview delimiters) -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+"""
 
 
 def read_site_url() -> str:
@@ -110,7 +106,11 @@ def patch_html(path: Path) -> None:
 
 
 def patch_mathjax(text: str) -> str:
-    return MATHJAX_RE.sub(MATHJAX_BLOCK, text)
+    if "<!-- KaTeX:" in text:
+        return text
+    if MATHJAX_RE.search(text):
+        return MATHJAX_RE.sub(KATEX_HEAD, text, count=1)
+    return text.replace("</head>", KATEX_HEAD + "    </head>", 1)
 
 
 def write_redirect_index() -> None:
