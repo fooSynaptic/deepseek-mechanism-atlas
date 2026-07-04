@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 100" width="720" height="100">
+<style><![CDATA[
+  .t { font: 700 15px sans-serif; fill: #1a1a2e; text-anchor: middle; }
+  .st { font: 11px sans-serif; fill: #666; text-anchor: middle; }
+  .lb { font: 600 11px sans-serif; fill: #222; text-anchor: middle; }
+  .dt { font: 10px sans-serif; fill: #555; text-anchor: middle; }
+  .an { font: 9px sans-serif; fill: #2563eb; text-anchor: middle; }
+  .arr { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#h2da); }
+  .arr-b { stroke: #4A90D9; stroke-width: 1.5; fill: none; marker-end: url(#h2dab); }
+  .arr-g { stroke: #27AE60; stroke-width: 1.5; fill: none; marker-end: url(#h2dag); }
+  .arr-o { stroke: #E67E22; stroke-width: 1.5; fill: none; marker-end: url(#h2dao); }
+]]></style>
+<defs>
+  <marker id="h2da" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#666"/></marker>
+  <marker id="h2dab" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4A90D9"/></marker>
+  <marker id="h2dag" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#27AE60"/></marker>
+  <marker id="h2dao" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#E67E22"/></marker>
+</defs>
+<text x="360" y="22" class="t" text-anchor="middle">无 Overlap：串行 PD 时序</text><rect x="40" y="40" width="160" height="44" rx="6" fill="#fff8ee" stroke="#E67E22" stroke-width="1.5"/><text x="120" y="62" class="lb" text-anchor="middle">Indexer 完成</text><rect x="280" y="40" width="160" height="44" rx="6" fill="#fff8ee" stroke="#E67E22" stroke-width="1.5"/><text x="360" y="62" class="lb" text-anchor="middle">H2D 完成</text><rect x="520" y="40" width="160" height="44" rx="6" fill="#fff8ee" stroke="#E67E22" stroke-width="1.5"/><text x="600" y="62" class="lb" text-anchor="middle">Attention 开始</text><line x1="200" y1="62" x2="280" y2="62" class="arr"/><line x1="440" y1="62" x2="520" y2="62" class="arr"/><text x="360" y="88" class="st" text-anchor="middle">全串行，GPU 常在等 H2D</text></svg>

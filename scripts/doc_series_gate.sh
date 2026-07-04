@@ -17,8 +17,11 @@ python3 scripts/validate_refs.py
 echo "==> build_book.py"
 python3 《ds-技术报告》/build_book.py
 
-echo "==> spot-check: FP8 chapter nav"
+echo "==> spot-check: FP8 chapter in reading order chain"
 grep -q "06-V3-FP8动态量化" "《ds-技术报告》/02-基座架构/04-序列均衡损失.md"
-grep -q "章节导航" "《ds-技术报告》/02-基座架构/06-V3-FP8动态量化.md"
+if grep -q "## 章节导航" "《ds-技术报告》/02-基座架构/06-V3-FP8动态量化.md"; then
+  echo "FAIL: chapter nav footer still present"
+  exit 1
+fi
 
 echo "OK doc_series_gate"

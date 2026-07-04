@@ -1,7 +1,7 @@
-# 投机解码与 DSpark（DeepSeek 推理加速 · 唯一入口）
+# 投机解码与 DSpark
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §2 时间线](../01-总览/01-版本演进总览.md#2-版本时间线与关系) · [§3.3 V3 MTP](../01-总览/01-版本演进总览.md#33-deepseek-v3) · [§3.7 V4 + DSpark](../01-总览/01-版本演进总览.md#37-deepseek-v4) · [§6 推理栈](../01-总览/01-版本演进总览.md#6-推理技术栈对照) · [V3 梗概](../02-基座架构/01-V3基座.md) · [V4 梗概](../04-版本代际/03-V4.md)  
-> **DSpark 开源**：[DeepSpec](https://github.com/deepseek-ai/DeepSpec) · [DSpark_paper.pdf](https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf) · [DeepSeek-V4-Pro-DSpark](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-DSpark)  
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 演进总览 §2 时间线](../01-总览/01-版本演进总览.md#2-版本时间线与关系) · [§3.3 V3 MTP](../01-总览/01-版本演进总览.md#33-deepseek-v3) · [§3.7 V4 + DSpark](../01-总览/01-版本演进总览.md#37-deepseek-v4) · [§6 推理栈](../01-总览/01-版本演进总览.md#6-推理技术栈对照) · [V3 梗概](../02-基座架构/01-V3基座.md) · [V4 梗概](../04-版本代际/03-V4.md)
+> **DSpark 开源**：[DeepSpec](https://github.com/deepseek-ai/DeepSpec) · [DSpark_paper.pdf](https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf) · [DeepSeek-V4-Pro-DSpark](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-DSpark)
 > **外部材料**：[版本演进总览](../01-总览/01-版本演进总览.md) · [V3 论文 MTP 原文摘录](https://arxiv.org/pdf/2412.19437)
 
 **本文档**聚合 DeepSeek 系列 **投机解码（speculative decoding）** 与 **DSpark** 全部材料：通用循环、V3/V4 **MTP**、外挂 draft 自测、生产 **MTP-1** 基线、**DSpark** 机制与线上数据。演进总览 / V3 / V4 / 基础设施线 **只保留链接，细节以本文为准**。
@@ -83,26 +83,26 @@
 
 ---
 
-## 2. DeepSeek 路线：MTP（V3 / V4）
+## 2. DeepSeek 路线：MTP
 
-[V3 技术报告](https://arxiv.org/abs/2412.19437) 引入 **Multi-Token Prediction（MTP）**：在 **主 next-token 目标** 之外，用 $D$ 个串联 **MTP 模块** 预测 $t{+}2, t{+}3, \ldots$ 额外 token。训练时共享 Embedding / Output Head；每层 MTP 通过 **Integration Layer** 把 **上一层 hidden** 与 **中间 token 的 Emb** 融合后再过 1 个 Transformer Block（论文 Eq.21–23、Figure 3）。
+[V3 技术报告](https://arxiv.org/abs/2412.19437) 引入 **Multi-Token Prediction（MTP）**：在 **主 next-token 目标** 之外，用 $D$ 个串联 **MTP 模块** 预测 $t{+}2, t{+}3, \ldots$ 额外 token。训练时共享 Embedding / Output Head；每层 MTP 通过 **Integration Layer** 把 **上一层 hidden** 与 **中间 token 的 Emb** 融合后再过 1 个 Transformer Block。
 
-> **中间 token 融合读图**：[mtp-fusion-scheme.md](qa/mtp-fusion-scheme.md) · [mtp-fusion-scheme.svg](figures/mtp-fusion-scheme.svg)
+> **中间 token 融合读图**：[MTP 融合 scheme](qa/mtp-fusion-scheme.md) · [MTP 融合 scheme 图](figures/mtp-fusion-scheme.svg)
 
-**训练目标**（摘要）：
+**训练目标**：
 
 $$
 \mathcal{L} = \mathcal{L}_{\mathrm{main}} + \lambda \sum_{k=1}^{D} \mathcal{L}_{\mathrm{MTP}}^{(k)}
 $$
 
-- **主目标**：提升主模型性能、数据效率（论文 Table 4 ablation：MTP **一致提升** benchmark）。
-- **推理**（论文 *MTP in Inference*）：可 **丢弃** MTP 模块、主模型独立 decode；也可 **复用 MTP 模块做 speculative decoding** 进一步降延迟。
+- **主目标**：提升主模型性能、数据效率。
+- **推理**：可 **丢弃** MTP 模块、主模型独立 decode；也可 **复用 MTP 模块做 speculative decoding** 进一步降延迟。
 
 [V4](https://arxiv.org/abs/2606.19348) **保留** MTP 模块与训练目标（与 V3 同族实现）。
 
 <img src="figures/mtp-speculative.svg" alt="V3 MTP 训练结构；MTP 原生投机 vs 外挂 draft vs DSpark 对照" width="920"/>
 
-[直接打开 SVG](figures/mtp-speculative.svg) · [V3 §三 MTP](../02-基座架构/01-V3基座.md#三mtp-multi-token-predictionv3-新增顶层结构)
+[图示详情](figures/mtp-speculative.svg) · [V3 §三 MTP](../02-基座架构/01-V3基座.md#三mtp-multi-token-predictionv3-新增顶层结构)
 
 ### 2.1 MTP 原生 vs 外挂 draft
 
@@ -113,7 +113,7 @@ $$
 | 接受率 | MTP 与主模型 **联合训练** 对齐 | 依赖 draft 与 target **分布匹配** |
 | 训练目标 | $\mathcal{L}_{\mathrm{main}} + \lambda \mathcal{L}_{\mathrm{MTP}}$ | draft 常单独 SFT / 蒸馏 |
 
-**推理侧循环相同**（§1）；差异只在 draft **从哪来**。
+**推理侧循环相同**；差异只在 draft **从哪来**。
 
 > **答疑**：[酱紫君解读：MTP 一次前向与中间 token 融合](../08-外部解读/03-酱紫君DSpark阅读笔记.md#mtp一次前向如何融合中间-token) · [融合 scheme 专文](qa/mtp-fusion-scheme.md)
 
@@ -123,7 +123,7 @@ V4 Flash / Pro **预览引擎**在 DSpark 上线前，生产环境采用 **MTP-1
 
 ---
 
-## 3. 外挂 draft 自测（Qwen 4B + 0.6B）
+## 3. 外挂 draft 自测
 
 > **性质**：本仓库 **2026-06 自测**（vLLM 0.8.5，1000 条样本，单卡 L20）。**非** DeepSeek MTP 官方数据，**非** DSpark。
 
@@ -153,7 +153,7 @@ V4 Flash / Pro **预览引擎**在 DSpark 上线前，生产环境采用 **MTP-1
 
 > **接受率参照**：[ESS 论文梗概](02-ESS论文梗概.md) 的 **MTP-Accept-Ratio**（如 1.7）描述 MTP 投机链路上 **每轮平均接受长度** 的量级，可与下文各草稿范式的块长、接受率对照阅读。
 
-## 4. 草稿范式总览（Eagle3 / DFlash / MTP / DSpark）
+## 4. 草稿范式总览
 
 每轮投机：草稿模型 $M_q$ 一次提出 $K$ 个候选，目标模型 $M_p$ 用时间 $\tau_p$ 做 **1 次**验证；草稿侧总耗时约为 $K \times \tau_q$（$\tau_q$ 为与块长相关的单步 draft 代价，自回归路线下 $\tau_q$ 随 $K$ **线性累积**）。设本轮 **平均接受长度**为 $\mathbb{E}[N_{\mathrm{acc}}]$（$0 \le \mathbb{E}[N_{\mathrm{acc}}] \le K$），相对「每 token 各跑 1 次 $\tau_p$」的粗算加速比为：
 
@@ -165,7 +165,7 @@ $$
 
 在 **DSpark**（及同期工业界的半自回归路线）成熟之前，外挂草稿 $M_q$ 长期分两派：**Eagle 系**（最新 **Eagle3**，自回归、高接受率）与 **DFlash 系**（并行整块、低 draft 延迟）。DeepSeek 另备 **MTP 原生**头（§2）；**DSpark** 则在两派之间取 **半自回归**折中。
 
-> **自回归 vs 半自回归（draft 生成）**：**自回归**（Eagle3）按 token **串行**猜 draft，$\mathbb{E}[N_{\mathrm{acc}}]$ 高但 $K\tau_q$ 随块长 **线性涨**；**半自回归**（DSpark）先 **并行**出整块（压低 $\tau_q$ 侧），再用轻量 **顺序头**逐位补依赖（抬 $\mathbb{E}[N_{\mathrm{acc}}]$ 后缀）——并行拿速度，顺序补准确率。
+> **自回归 vs 半自回归**：**自回归**（Eagle3）按 token **串行**猜 draft，$\mathbb{E}[N_{\mathrm{acc}}]$ 高但 $K\tau_q$ 随块长 **线性涨**；**半自回归**（DSpark）先 **并行**出整块（压低 $\tau_q$ 侧），再用轻量 **顺序头**逐位补依赖（抬 $\mathbb{E}[N_{\mathrm{acc}}]$ 后缀）——并行拿速度，顺序补准确率。
 
 | 路径 | 代表 | Draft 生成 | 对 $S_{\uparrow}$ 的侧重 |
 |------|------|------------|-------------------------|
@@ -185,11 +185,11 @@ $$
 
 ## 5. DSpark 概述
 
-**DSpark**（DeepSeek × 北京大学，2026-06-27）：面向 **V4-Flash / V4-Pro 预览引擎** 高并发 decode。用 **半自回归草稿** + **置信度调度验证**，相对生产基线 **MTP-1**，在 **同等吞吐量** 下单用户生成速度 **+57%–85%**（报道区间 **60%–85%**）。论文、训练代码、检查点：[DeepSpec](https://github.com/deepseek-ai/DeepSpec)。
+**DSpark**：面向 **V4-Flash / V4-Pro 预览引擎** 高并发 decode。用 **半自回归草稿** + **置信度调度验证**，相对生产基线 **MTP-1**，在 **同等吞吐量** 下单用户生成速度 **+57%–85%**（报道区间 **60%–85%**）。论文、训练代码、检查点：[DeepSpec](https://github.com/deepseek-ai/DeepSpec)。
 
 <img src="figures/dspark-speculative.svg" alt="DSpark：半自回归 draft + 置信度调度验证；与 Eagle3、DFlash、MTP-1 对照" width="920"/>
 
-[直接打开 SVG](figures/dspark-speculative.svg)
+[图示详情](figures/dspark-speculative.svg)
 
 ---
 
@@ -227,13 +227,13 @@ $$
 
 <img src="figures/dspark-semi-ar-draft.svg" alt="DSpark 半自回归候选生成：并行主干一次猜 K 位，顺序头逐位补因果，q 对齐 target 校验 p" width="920"/>
 
-[直接打开 SVG](figures/dspark-semi-ar-draft.svg)
+[图示详情](figures/dspark-semi-ar-draft.svg)
 
 因此 DSpark 的「堆叠」是 **两阶段叠在同一轮 draft**：先用并行主干 **一次前向出整块 $K$ 位**（低 $\tau_q$、第 1 位接近 DFlash），再用极轻的顺序头做 **因果方向的层叠**（等价于在后缀位上补 Eagle 式依赖，而不付满额 $K$ 次串行大前向）。V3 **MTP 因果链**（Main → MTP-1 → MTP-2）则是 target 权重内的另一种「按步数堆模块」：每多一块 MTP 模块，多预测更远 $t{+}k$，推理可作原生 draft（§2）。
 
 > **答疑**：[酱紫君解读：并行主干 vs 顺序头为何 $\tau_q$ 主次分明](../08-外部解读/03-酱紫君DSpark阅读笔记.md#dspark-半自回归草稿并行主干-vs-顺序头)
 
-> **文献与对照**：[DSpark_paper.pdf](https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf)（Semi-Autoregressive Draft；深度 vs 接受长度消融）· [§2 MTP 因果链](#2-deepseek-路线mtpv3--v4) · [mtp-speculative.svg](figures/mtp-speculative.svg) · 加速比读法 [§4](#4-草稿范式总览eagle3--dflash--mtp--dspark) · [酱紫君解读：半自回归 draft](../08-外部解读/03-酱紫君DSpark阅读笔记.md#dspark-半自回归草稿并行主干-vs-顺序头)
+> **文献与对照**：[DSpark_paper.pdf](https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf)（Semi-Autoregressive Draft；深度 vs 接受长度消融）· [§2 MTP 因果链](#2-deepseek-路线mtpv3--v4) · [MTP 投机解码总览图](figures/mtp-speculative.svg) · 加速比读法 [§4](#4-草稿范式总览eagle3--dflash--mtp--dspark) · [酱紫君解读：半自回归 draft](../08-外部解读/03-酱紫君DSpark阅读笔记.md#dspark-半自回归草稿并行主干-vs-顺序头)
 
 ### 6.2 置信度调度验证
 
@@ -247,13 +247,13 @@ $$
 
 <img src="figures/dspark-confidence-scheduler.svg" alt="DSpark 置信度调度验证：逐位置信度、温度缩放校准、硬件感知前缀调度与负载自适应" width="920"/>
 
-[直接打开 SVG](figures/dspark-confidence-scheduler.svg)
+[图示详情](figures/dspark-confidence-scheduler.svg)
 
 ---
 
-## 7. DSpark 离线基准（DeepSpec 论文）
+## 7. DSpark 离线基准
 
-**Target**：Qwen3（4B/8B/14B）、Gemma4-12B · **对比**：Eagle3、DFlash  
+**Target**：Qwen3（4B/8B/14B）、Gemma4-12B · **对比**：Eagle3、DFlash
 **任务**：数学 / 代码 / 对话（GSM8K、MATH500、AIME25、MBPP、HumanEval、LiveCodeBench、MT-Bench 等）
 
 | 指标 | 结果 |
@@ -281,7 +281,7 @@ $$
 
 > **答疑**：[酱紫君解读：draft 训练 vs 主模型 fine-tune](../08-外部解读/03-酱紫君DSpark阅读笔记.md#deepspec-draft-训练-vs-主模型-fine-tune)
 
-### 9.1 训练优化（DeepSpec draft 训练，非基座预训练）
+### 9.1 训练优化
 
 | 优化 | 说明 |
 |------|------|
@@ -297,7 +297,7 @@ $$
 
 ---
 
-## 10. 在线生产实测（DSpark-5 vs MTP-1）
+## 10. 在线生产实测
 
 真实用户流量（2026-06 报道口径）：
 
@@ -356,7 +356,7 @@ $$
 
 | 层级 | 投机解码 / DSpark |
 |------|-------------------|
-| 模型结构 | MTP 属 **架构-train**（见 [演进总览 §1.1](../01-总览/01-版本演进总览.md#优化方向分类)） |
+| 模型结构 | MTP 属 **[架构-train](../01-总览/01-版本演进总览.md#优化方向分类)** |
 | Decode infra | DSpark、MTP 投机调度 → **100% 架构-infer** |
 | KV / 长上下文 | 否 → [基础设施线](../01-总览/06-基础设施线导读.md) |
 
@@ -369,15 +369,3 @@ $$
 3. DeepSeek-AI. *DeepSeek-V4.* arXiv:2606.19348
 4. Leviathan, Y., Kalman, M., & Matias, Y. Fast inference from transformers via speculative decoding. 2022.
 5. IT之家. *DeepSeek 联合北大发布 DSpark.* 2026-06-27
-
----
-
-## 章节导航
-
-| ← 上一章 | 下一章 → |
-|----------|----------|
-| [投机解码自测加速比（已合并）](03-投机解码自测加速比.md) | [V4 KV Layout：Classical + State 双池（论文 §3.5.1）](05-V4-KV-Layout.md) |
-
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §2 时间线](../01-总览/01-版本演进总览.md#2-版本时间线与关系) · [§3.3 V3 MTP](../01-总览/01-版本演进总览.md#33-deepseek-v3) · [§3.7 V4 + DSpark](../01-总览/01-版本演进总览.md#37-deepseek-v4) · [§6 推理栈](../01-总览/01-版本演进总览.md#6-推理技术栈对照) · [V3 梗概](../02-基座架构/01-V3基座.md) · [V4 梗概](../04-版本代际/03-V4.md)  
-> **DSpark 开源**：[DeepSpec](https://github.com/deepseek-ai/DeepSpec) · [DSpark_paper.pdf](https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf) · [DeepSeek-V4-Pro-DSpark](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-DSpark)  
-> **外部材料**：[版本演进总览](../01-总览/01-版本演进总览.md) · [V3 论文 MTP 原文摘录](https://arxiv.org/pdf/2412.19437)

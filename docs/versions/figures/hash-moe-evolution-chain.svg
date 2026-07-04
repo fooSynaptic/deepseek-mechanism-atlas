@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 284" width="920" height="284">
+<style><![CDATA[
+  .t { font: 700 15px sans-serif; fill: #1a1a2e; text-anchor: middle; }
+  .st { font: 11px sans-serif; fill: #666; text-anchor: middle; }
+  .lb { font: 600 11px sans-serif; fill: #222; text-anchor: middle; }
+  .dt { font: 10px sans-serif; fill: #555; text-anchor: middle; }
+  .an { font: 9px sans-serif; fill: #2563eb; text-anchor: middle; }
+  .arr { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#hmoea); }
+  .arr-b { stroke: #4A90D9; stroke-width: 1.5; fill: none; marker-end: url(#hmoeab); }
+  .arr-g { stroke: #27AE60; stroke-width: 1.5; fill: none; marker-end: url(#hmoeag); }
+  .arr-o { stroke: #E67E22; stroke-width: 1.5; fill: none; marker-end: url(#hmoeao); }
+]]></style>
+<defs>
+  <marker id="hmoea" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#666"/></marker>
+  <marker id="hmoeab" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4A90D9"/></marker>
+  <marker id="hmoeag" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#27AE60"/></marker>
+  <marker id="hmoeao" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#E67E22"/></marker>
+</defs>
+<text x="460" y="22" class="t" text-anchor="middle">MoE / FFN 演进链</text><rect x="120" y="50" width="680" height="44" rx="6" fill="#f8f9fc" stroke="#94a3b8" stroke-width="1.5"/><text x="460" y="72" class="lb" text-anchor="middle">稠密 FFN (V1)</text><line x1="460" y1="94" x2="460" y2="104" class="arr"/><rect x="120" y="106" width="680" height="44" rx="6" fill="#f8f9fc" stroke="#94a3b8" stroke-width="1.5"/><text x="460" y="128" class="lb" text-anchor="middle">DeepSeekMoE：细粒度 routed + shared (V2)</text><line x1="460" y1="150" x2="460" y2="160" class="arr"/><rect x="120" y="162" width="680" height="44" rx="6" fill="#f8f9fc" stroke="#94a3b8" stroke-width="1.5"/><text x="460" y="184" class="lb" text-anchor="middle">aux-loss-free + L_Bal：sigmoid + bias (V3)</text><line x1="460" y1="206" x2="460" y2="216" class="arr"/><rect x="120" y="218" width="680" height="44" rx="6" fill="#f8f9fc" stroke="#94a3b8" stroke-width="1.5"/><text x="460" y="240" class="lb" text-anchor="middle">Hash MoE（前几层 hash）+ FP4 routed expert (V4)</text></svg>

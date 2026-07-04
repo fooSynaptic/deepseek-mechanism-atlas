@@ -1,4 +1,4 @@
-# 补充参考材料（material）
+# 补充参考材料
 
 > [← 中文导读](../README.md) · [← 演进总览](../reports/deepseek-version-lineage-20260625.md) · [书中副本](../../《ds-技术报告》/09-附录/material/README.md)
 

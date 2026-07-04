@@ -1,6 +1,6 @@
 # DeepSeek-V3 FP8 动态量化
 
-> [← 中文导读](../README.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §3.3](../reports/deepseek-version-lineage-20260625.md#33-deepseek-v3) · [← V3 基座](./v3.md) · [论文 Figure 7](https://arxiv.org/abs/2412.19437)  
+> [← 中文导读](../README.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §3.3](../reports/deepseek-version-lineage-20260625.md#33-deepseek-v3) · [← V3 基座](./v3.md) · [论文 Figure 7](https://arxiv.org/abs/2412.19437)
 > **边界**：属 **训练侧 GEMM 数值/内核**（与 DualPipe、DeepEP 并列），**不是** Transformer 权重结构本身；[V3 纯模型结构对比](./v3.md#v3-vs-v2-structure) 刻意不含本节。
 
 ---
@@ -29,11 +29,11 @@ V3 在 **FP8 Tensor Core GEMM** 上用 **块级动态 scale（fine-grained quant
 
 <img src="../figures/v3/v3-fp8-dynamic-quant.svg" alt="DeepSeek-V3 FP8 动态量化：细粒度块 scale 与 FP32 累加提升" width="920"/>
 
-[直接打开 SVG](../figures/v3/v3-fp8-dynamic-quant.svg)
+[图示详情](../figures/v3/v3-fp8-dynamic-quant.svg)
 
-### (a) Fine-grained quantization
+### Fine-grained quantization
 
-对 **激活** 与 **权重** 均按长度 $N_c$ **分块**（论文实现取 **$N_c = 128$**）：
+对 **激活** 与 **权重** 均按长度 $N_c$ **分块**：
 
 1. 每块各自算 **动态 scale** $s_x$（激活）、$s_w$（权重）；
 2. 块内元素量化到 **FP8** 后在 **Tensor Core** 做 GEMM / MMA，得到 **低精度积**；
@@ -43,7 +43,7 @@ V3 在 **FP8 Tensor Core GEMM** 上用 **块级动态 scale（fine-grained quant
 
 **实现**：$s_x = \mathrm{absmax}(X_{\mathrm{block}}) / F_{\max}$（$F_{\max}$ 为 FP8 可表示最大值；$s_w$ 同理）；量化 $\mathrm{FP8}(x) = \mathrm{round}(x / s_x)$；MMA 输出在 CUDA Core 做 $\mathrm{out} \mathrel{+}= \mathrm{MMA}(\mathrm{FP8}(x), \mathrm{FP8}(w)) \cdot s_x s_w$。
 
-### (b) Increasing accumulation precision
+### Increasing accumulation precision
 
 一次 GEMM 对应多轮 **WGMMA**（warp-group MMA）：
 
@@ -55,7 +55,7 @@ V3 在 **FP8 Tensor Core GEMM** 上用 **块级动态 scale（fine-grained quant
 
 **实现**：沿归约维 $K$ 维护 MMA 计数；每 128 步执行 `acc_fp32 += promote(acc_tc); acc_tc = 0`；GEMM 结束后再 `acc_fp32 += promote(acc_tc)` 写回 BF16/FP16 激活。
 
-### (a)(b) 分工速查
+### 分工速查
 
 | 机制 | 实现落点 | 关键参数 |
 |------|----------|----------|
@@ -66,7 +66,7 @@ V3 在 **FP8 Tensor Core GEMM** 上用 **块级动态 scale（fine-grained quant
 
 ---
 
-## 硬件分工（与 Figure 7 对齐）
+## 硬件分工
 
 | 单元 | 职责 |
 |------|------|
@@ -91,5 +91,5 @@ V3 在 **FP8 Tensor Core GEMM** 上用 **块级动态 scale（fine-grained quant
 ## 参考
 
 - 论文：[DeepSeek-V3 arXiv:2412.19437](https://arxiv.org/abs/2412.19437) · **Figure 7**
-- 结构边界：[v3.md §排除项](./v3.md#v3-structure-excluded)
+- 结构边界：[DeepSeek-V3 梗概§排除项](./v3.md#v3-structure-excluded)
 - 演进总览：[§3.3 DeepSeek-V3](../reports/deepseek-version-lineage-20260625.md#33-deepseek-v3)

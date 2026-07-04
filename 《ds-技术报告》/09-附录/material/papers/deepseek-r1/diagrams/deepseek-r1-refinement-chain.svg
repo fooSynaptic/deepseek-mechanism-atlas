@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 120" width="920" height="120">
+<style><![CDATA[
+  .t { font: 700 15px sans-serif; fill: #1a1a2e; text-anchor: middle; }
+  .st { font: 11px sans-serif; fill: #666; text-anchor: middle; }
+  .lb { font: 600 11px sans-serif; fill: #222; text-anchor: middle; }
+  .dt { font: 10px sans-serif; fill: #555; text-anchor: middle; }
+  .an { font: 9px sans-serif; fill: #2563eb; text-anchor: middle; }
+  .arr { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#r1ca); }
+  .arr-b { stroke: #4A90D9; stroke-width: 1.5; fill: none; marker-end: url(#r1cab); }
+  .arr-g { stroke: #27AE60; stroke-width: 1.5; fill: none; marker-end: url(#r1cag); }
+  .arr-o { stroke: #E67E22; stroke-width: 1.5; fill: none; marker-end: url(#r1cao); }
+]]></style>
+<defs>
+  <marker id="r1ca" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#666"/></marker>
+  <marker id="r1cab" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4A90D9"/></marker>
+  <marker id="r1cag" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#27AE60"/></marker>
+  <marker id="r1cao" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#E67E22"/></marker>
+</defs>
+<text x="460" y="22" class="t" text-anchor="middle">拒绝采样后处理链</text><rect x="30" y="50" width="140" height="44" rx="6" fill="#f8f9fc" stroke="#94a3b8" stroke-width="1.5"/><text x="100" y="72" class="lb" text-anchor="middle">Dev-2 / R1-Zero / V3</text><rect x="210" y="50" width="140" height="44" rx="6" fill="#f8f9fc" stroke="#94a3b8" stroke-width="1.5"/><text x="280" y="72" class="lb" text-anchor="middle">采样</text><rect x="370" y="50" width="140" height="44" rx="6" fill="#f8f9fc" stroke="#94a3b8" stroke-width="1.5"/><text x="440" y="72" class="lb" text-anchor="middle">Filter</text><rect x="550" y="50" width="140" height="44" rx="6" fill="#f8f9fc" stroke="#94a3b8" stroke-width="1.5"/><text x="620" y="72" class="lb" text-anchor="middle">Refine(V3+Human)</text><rect x="710" y="50" width="140" height="44" rx="6" fill="#f8f9fc" stroke="#94a3b8" stroke-width="1.5"/><text x="780" y="72" class="lb" text-anchor="middle">SFT 混合数据</text><line x1="170" y1="72" x2="210" y2="72" class="arr"/><line x1="350" y1="72" x2="370" y2="72" class="arr"/><line x1="510" y1="72" x2="550" y2="72" class="arr"/><line x1="690" y1="72" x2="710" y2="72" class="arr"/></svg>

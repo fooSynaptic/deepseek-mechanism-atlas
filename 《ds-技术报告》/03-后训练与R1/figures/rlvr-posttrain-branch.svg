@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 248" width="920" height="248">
+<style><![CDATA[
+  .t { font: 700 15px sans-serif; fill: #1a1a2e; text-anchor: middle; }
+  .st { font: 11px sans-serif; fill: #666; text-anchor: middle; }
+  .lb { font: 600 11px sans-serif; fill: #222; text-anchor: middle; }
+  .dt { font: 10px sans-serif; fill: #555; text-anchor: middle; }
+  .an { font: 9px sans-serif; fill: #2563eb; text-anchor: middle; }
+  .arr { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#rlva); }
+  .arr-b { stroke: #4A90D9; stroke-width: 1.5; fill: none; marker-end: url(#rlvab); }
+  .arr-g { stroke: #27AE60; stroke-width: 1.5; fill: none; marker-end: url(#rlvag); }
+  .arr-o { stroke: #E67E22; stroke-width: 1.5; fill: none; marker-end: url(#rlvao); }
+]]></style>
+<defs>
+  <marker id="rlva" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#666"/></marker>
+  <marker id="rlvab" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4A90D9"/></marker>
+  <marker id="rlvag" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#27AE60"/></marker>
+  <marker id="rlvao" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#E67E22"/></marker>
+</defs>
+<text x="460" y="22" class="t" text-anchor="middle">V3-Base 后训练分叉</text><line x1="460" y1="88" x2="460" y2="118" class="arr-b"/><polyline points="460,118 460,132 160,132 160,156" class="arr-o" fill="none"/><polyline points="460,118 460,132 460,132 460,156" class="arr-o" fill="none"/><polyline points="460,118 460,132 760,132 760,156" class="arr-g" fill="none"/><text x="610" y="126" class="an" text-anchor="middle">RLVR / GRPO</text><rect x="350" y="44" width="220" height="44" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/><text x="460" y="71" class="lb" text-anchor="middle">V3-Base</text><rect x="55" y="156" width="210" height="58" rx="6" fill="#fff8ee" stroke="#E67E22" stroke-width="1.5"/><text x="160" y="178" class="lb" text-anchor="middle">V3.1 Hybrid</text><text x="160" y="194" class="dt" text-anchor="middle">另一套 post-train</text><rect x="355" y="156" width="210" height="58" rx="6" fill="#fff8ee" stroke="#E67E22" stroke-width="1.5"/><text x="460" y="178" class="lb" text-anchor="middle">V3.2</text><text x="460" y="194" class="dt" text-anchor="middle">DSA + 混合奖励 RL</text><rect x="655" y="156" width="210" height="58" rx="6" fill="#f0faf0" stroke="#27AE60" stroke-width="1.5"/><text x="760" y="178" class="lb" text-anchor="middle">R1（专用推理）</text><text x="760" y="194" class="dt" text-anchor="middle">RLVR + GRPO · 架构同 V3</text></svg>

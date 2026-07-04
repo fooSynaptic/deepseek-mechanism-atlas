@@ -1,4 +1,4 @@
-# 为何选 CXL 而非 RDMA？（时间窗与访问形态）
+# 为何选 CXL 而非 RDMA？
 
 [← 返回 §Step 1 时间窗](../engram-series-overview.md#step-1-异步-prefetch-触发) · [02c 图](../diagrams/engram-02c-cxl-cache-access.svg) · [CXL vs RDMA pattern](./cxl-vs-rdma-communication-pattern.md) · [答疑目录](./README.md)
 
@@ -26,14 +26,14 @@ $$
 
 ---
 
-## 结论（先答）
+## 结论
 
 | 约束来源 | 含义 |
 |----------|------|
 | **时间窗** | Engram 在 Layer $k$，只允许在 GPU 算 Layer $1..k-1$ 的这段时间里，把本层要的 embedding 从 **内存池** 拉进 HBM staging |
 | **$L_{\mathrm{pool}}$** | 一次 decode 步、一层 Engram，从池子完成 **所有离散读** 的端到端延迟 |
 | **56 μs 例** | Qwen3-32B：$k=2$ 时窗口 $\approx$ 单层时间 $\approx 56\,\mu\mathrm{s}$ |
-| **CXL** | $L_{\mathrm{pool}}$ **≈ 本地 DRAM 量级**（论文 Fig 3/5/6）→ **不等式可满足** |
+| **CXL** | $L_{\mathrm{pool}}$ **≈ 本地 DRAM 量级**→ **不等式可满足** |
 | **RDMA** | 离散 **320B×多段** + NIC/消息栈 → $L_{\mathrm{pool}}$ **远高于 DRAM** → **56 μs 内完不成** |
 
 **根因两条**：① **延迟预算太紧**（早层 Engram）；② **访问形态是大量小随机读**，不是 RDMA 擅长的大块 get/put。
@@ -42,7 +42,7 @@ $$
 
 ## 1. 时间窗从哪来
 
-一次 **decode 步**（见 [prefetch 答疑 §0](./cxl-prefetch-window-cpu-gpu.md#基础概念-decode-layer-hidden)）：
+一次 **[decode 步](./cxl-prefetch-window-cpu-gpu.md#基础概念-decode-layer-hidden)**：
 
 1. CPU 在步入口就算好 `offsets[]`（只依赖 token IDs）。
 2. SGLang **异步 prefetch** Layer $k$ 的 Engram 行。
@@ -87,7 +87,7 @@ $$
 
 ### 3.2 粒度：5 KB×离散 vs MB–GB 块
 
-Engram 每层每 token（论文设定）：
+Engram 每层每 token：
 
 - 载荷 $\approx$ **5 KB**（多阶 n-gram × 多头 × 320B/行）
 - **稀疏离散** 随机行读
@@ -109,14 +109,14 @@ CXL 用 **cache-line 级 load/store**，与「随机抽很多小行」匹配。
 
 ## 4. 为何 CXL 能过
 
-1. **内存语义**：`cxl_base + offset[i]` **按地址读**，无 per-chunk 消息（见 [pattern 答疑](./cxl-vs-rdma-communication-pattern.md)）。
-2. **实测延迟**：CXL→CPU ≈ DRAM；CXL→GPU P2P 略高仍 **< 56 μs 级窗口**（论文 Case Study）。
+1. **内存语义**：`cxl_base + offset[i]` **[按地址读](./cxl-vs-rdma-communication-pattern.md)**，无 per-chunk 消息。
+2. **实测延迟**：CXL→CPU ≈ DRAM；CXL→GPU P2P 略高仍 **< 56 μs 级窗口**。
 3. **端到端**：Qwen3-4B DRAM **5683.7** vs CXL **5614.4** tok/s（**~1.2%** 损），说明换 CXL 池 **几乎不掉吞吐**。
 4. **多机**：Switch 映射共享 L3，仍保持 load/store 延迟曲线，而非 RDMA 小包曲线。
 
 ---
 
-## 5. RDMA 适合什么（为何不「全盘否定 RDMA」）
+## 5. RDMA 适合什么
 
 | Workload | 更合适的技术 |
 |----------|----------------|
@@ -128,23 +128,23 @@ CXL 用 **cache-line 级 load/store**，与「随机抽很多小行」匹配。
 
 ---
 
-## 6. 决策链（对照 Step 1）
+## 6. 决策链
 
 ```
 Engram 索引只依赖 input ids
-    -> decode 步入口即可 prefetch
-    -> 有效窗口 = sum t_exec(1..k-1)  [有时仅 ~56 μs]
-    -> 需要 L_pool ≈ DRAM
-    -> CXL load/store 满足；RDMA get/put 不满足
-    -> 选 CXL 池（Fig 2b），不选 RDMA 池（Fig 2a）
+ -> decode 步入口即可 prefetch
+ -> 有效窗口 = sum t_exec(1..k-1) [有时仅 ~56 μs]
+ -> 需要 L_pool ≈ DRAM
+ -> CXL load/store 满足；RDMA get/put 不满足
+ -> 选 CXL 池（Fig 2b），不选 RDMA 池（Fig 2a）
 ```
 
 ---
 
 ## 参考
 
-- [engram-series-overview.md §Step 1](../engram-series-overview.md#step-1-异步-prefetch-触发)
-- [engram-series-overview.md §与 RDMA 对比](../engram-series-overview.md#与-rdma-池的访问逻辑对比)
-- [cxl-vs-rdma-communication-pattern.md](./cxl-vs-rdma-communication-pattern.md)
-- [cxl-prefetch-window-cpu-gpu.md](./cxl-prefetch-window-cpu-gpu.md)
+- [DeepSeek Engram 系列导读§Step 1](../engram-series-overview.md#step-1-异步-prefetch-触发)
+- [DeepSeek Engram 系列导读§与 RDMA 对比](../engram-series-overview.md#与-rdma-池的访问逻辑对比)
+- [CXL vs RDMA：Engram 的两种「远程内存」通信 pattern](./cxl-vs-rdma-communication-pattern.md)
+- [Prefetch window：不是「CPU 比 GPU 强」，而是 CPU 先点火、GPU 腾出时间窗](./cxl-prefetch-window-cpu-gpu.md)
 - CXL 论文 §3.2 时间窗、Figure 2a/2b/3 · arXiv:2603.10087

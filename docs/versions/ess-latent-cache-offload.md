@@ -1,8 +1,8 @@
-# ESS：Latent-Cache Offload（V3.2）
+# ESS：Latent-Cache Offload
 
 > [← 中文导读](../README.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §5.2](../reports/deepseek-version-lineage-20260625.md#52-v32indexer-cache--latent-cache-分离--ess) · [← 基础设施线导读](../reports/deepseek-infra-line.md) · [← DSA](./dsa-sparse-attention.md) · [并列 Index Share](./index-share.md) · [ESS 论文梗概](./ess-paper-highlights.md)
-> **论文**：[ESS arXiv:2512.10576](https://arxiv.org/abs/2512.10576) — *An Offload-Centric Latent-Cache Management Architecture for DeepSeek-V3.2-Exp*（Chen et al., 2025）  
-> **论文梗概（图/表详解）**：[ess-paper-highlights.md](./ess-paper-highlights.md)
+> **论文**：[ESS arXiv:2512.10576](https://arxiv.org/abs/2512.10576) — *An Offload-Centric Latent-Cache Management Architecture for DeepSeek-V3.2-Exp*（Chen et al., 2025）
+> **论文梗概**：[ESS 论文梗概](./ess-paper-highlights.md)
 
 ---
 
@@ -22,7 +22,7 @@
 | **V3 通用 offload 不好用** | 同质 MLA latent 整条搬移，PCIe 小块传输带宽差 |
 | **DSA 带来的机会** | Core MLA **每步只读 $k$ 个** latent entry → offload 粒度可变成 **稀疏 entry**，而非全长序列 |
 
-DSA 先把 cache **拆成 Indexer + Latent 两类**（见 [dsa-sparse-attention.md](./dsa-sparse-attention.md)），ESS 专门管 **Latent 那一侧的 CPU/GPU 分层**。
+DSA 先把 cache **[拆成 Indexer + Latent 两类](./dsa-sparse-attention.md)**，ESS 专门管 **Latent 那一侧的 CPU/GPU 分层**。
 
 ---
 
@@ -30,7 +30,7 @@ DSA 先把 cache **拆成 Indexer + Latent 两类**（见 [dsa-sparse-attention.
 
 <img src="../dsa/diagrams/ess-dual-cache.svg" alt="MLA Decode 一步: Indexer 选 top-2048 位置 vs Latent-Cache 升维并做 Core MLA" width="920"/>
 
-[直接打开 SVG](../dsa/diagrams/ess-dual-cache.svg) · 图源 [Lightning Indexer · Decode 一步](../dsa/lightning-indexer.md#decode-一步分工)
+[图示详情](../dsa/diagrams/ess-dual-cache.svg) · 图源 [Lightning Indexer · Decode 一步](../dsa/lightning-indexer.md#decode-一步分工)
 
 **读图要点（单层、第 $t$ 个 decode token）**
 
@@ -56,7 +56,7 @@ DSA 异构 cache 同时支撑 **ESS（搬 latent）** 与 **[Index Share](./inde
 |------|------|
 | **Latent-Cache → CPU** | 冷 latent entry 放主机 DRAM，释放 GPU HBM |
 | **Sparse Memory Pool（GPU）** | LRU 维护 **热** latent 子集；miss 时从 CPU **prefetch** |
-| **FlashTrans + UVA** | 优化大量 **656B 级小块** PCIe 传输（论文：[H2D](./qa/h2d-d2h-pcie-transfer.md) 由 ~0.8 GB/s 提升至 ~37 GB/s） |
+| **FlashTrans + UVA** | 优化大量 **656B 级小块** PCIe 传输 由 ~0.8 GB/s 提升至 ~37 GB/s） |
 | **Layer-wise overlap** | 计算与传输 **流水线**，掩盖 prefetch 延迟 |
 
 **局部性依据**：DSA 每步选出的 top-$k$ index 集合在相邻 decode step 间 **高度相似** → 多数需要的 latent 已在 GPU 热池，少量 miss 再拉取。
@@ -72,15 +72,15 @@ DSA 异构 cache 同时支撑 **ESS（搬 latent）** 与 **[Index Share](./inde
 | 适用 | V3.2 DSA | V3.2 / GLM-5 DSA | V4 CSA/HCA |
 | 叠加 | 与 Index Share **正交可同开** | 与 ESS **正交** | **非** V3.2 ESS 的简单放大 |
 
-> V4 的 KV-offload 围绕 **CSA/HCA/SWA 异构 layout** 重做，不是把 ESS 直接扩到 1M（见 [CSA/HCA 专文](./csa-hca-mixed-attention.md) · [v4.md](./v4.md)）。
+> V4 的 KV-offload 围绕 **[CSA/HCA/SWA 异构 layout](./csa-hca-mixed-attention.md)** 重做，不是把 ESS 直接扩到 1M · [DeepSeek-V4](./v4.md)。
 
 ---
 
-## 论文收益（仿真）
+## 论文收益
 
 详见 **[论文梗概 §Table 2](./ess-paper-highlights.md#table-2-吞吐与-otps核心结果)**。
 
-| 上下文 | 吞吐提升（论文） |
+| 上下文 | 吞吐提升 |
 |--------|------------------|
 | 32K | +69.4%（MTP=2，batch 52→160，Ratio 1.0→0.21） |
 | 128K | 最高 +123%（MTP=2，batch 13→54，Ratio 1.0→0.1） |
@@ -92,23 +92,19 @@ DSA 异构 cache 同时支撑 **ESS（搬 latent）** 与 **[Index Share](./inde
 | 方向 | 文档 |
 |------|------|
 | **本节点（④ ESS offload）** | [基础设施线导读 §1](../reports/deepseek-infra-line.md#1-演进链kv--offload) |
-| **前置 ② 异构 cache** | [dsa-sparse-attention.md §异构 KV](./dsa-sparse-attention.md#异构-kv-cache) |
-| **并列 ③ Index Share** | [index-share.md](./index-share.md)（indexer 算力，可同开） |
-| **下游 ⑤ V4 infra** | [v4.md §推理 infra](./v4.md#推理-infra-关注点) · [KV layout](./v4-kv-layout.md) · [HiSparse](./v4-hisparse.md) · [磁盘 prefix](./v4-disk-prefix-cache.md)（**非** ESS 简单放大） |
+| **前置 ② 异构 cache** | [DSA稀疏注意力§异构 KV](./dsa-sparse-attention.md#异构-kv-cache) |
+| **并列 ③ Index Share** | [Index Share 梗概](./index-share.md)（indexer 算力，可同开） |
+| **下游 ⑤ V4 infra** | [DeepSeek-V4 梗概§推理 infra](./v4.md#推理-infra-关注点) · [KV layout](./v4-kv-layout.md) · [HiSparse](./v4-hisparse.md) · [磁盘 prefix](./v4-disk-prefix-cache.md)（**非** ESS 简单放大） |
 
 ---
 
 ## 在版本线中的位置
 
-```
-V3/V3.1 同质 MLA latent
-    └── V3.2 DSA 分裂 Indexer-Cache + Latent-Cache
-            ├── ESS（Latent offload）
-            └── Index Share（indexer 跨层复用，后于 ESS）
-                    └── V4 新 cache 形态 + HiSparse
-```
+<img src="../dsa/diagrams/ess-kv-lineage-tree.svg" alt="KV-offload 演进：V3 同质 MLA → V3.2 双 Cache → ESS / Index Share → V4" width="640"/>
 
-**前置**：[DSA](./dsa-sparse-attention.md)（必须先有双 cache 结构）  
+[图示详情](../dsa/diagrams/ess-kv-lineage-tree.svg)
+
+**前置**：[DSA](./dsa-sparse-attention.md)（必须先有双 cache 结构）
 **并列**：[Index Share](./index-share.md)
 
 ---
@@ -117,10 +113,10 @@ V3/V3.1 同质 MLA latent
 
 | 资源 | 说明 |
 |------|------|
-| **[ess-paper-highlights.md](./ess-paper-highlights.md)** | **论文梗概**：Fig.1–9、Table 1–2 逐图逐表解读 |
-| [../dsa/dsa-logic.md](../dsa/dsa-logic.md) §4 | 异构 Cache 设计含义 |
-| [../dsa/index-share-logic.md](../dsa/index-share-logic.md) | 与 ESS 正交性 |
-| [v3-2.md](./v3-2.md) | V3.2 梗概 |
+| **[ESS 论文梗概](./ess-paper-highlights.md)** | **论文梗概**：Fig.1–9、Table 1–2 逐图逐表解读 |
+| [DSA逻辑详解](../dsa/dsa-logic.md) §4 | 异构 Cache 设计含义 |
+| [Index Share逻辑详解](../dsa/index-share-logic.md) | 与 ESS 正交性 |
+| [DeepSeek-V3.2](./v3-2.md) | V3.2 梗概 |
 | [演进总览 §5.4](../reports/deepseek-version-lineage-20260625.md#54-三代-offload-对比) | V3 / V3.2 ESS / V4 三代 offload 对比 |
 
 **论文**：[arXiv:2512.10576](https://arxiv.org/abs/2512.10576)

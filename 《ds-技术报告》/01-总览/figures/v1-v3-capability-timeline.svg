@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 320" width="920" height="320">
+<style><![CDATA[
+  .t { font: 700 15px sans-serif; fill: #1a1a2e; text-anchor: middle; }
+  .st { font: 11px sans-serif; fill: #666; text-anchor: middle; }
+  .lb { font: 600 11px sans-serif; fill: #222; text-anchor: middle; }
+  .dt { font: 10px sans-serif; fill: #555; text-anchor: middle; }
+  .an { font: 9px sans-serif; fill: #2563eb; text-anchor: middle; }
+  .arr { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#v13a); }
+  .arr-b { stroke: #4A90D9; stroke-width: 1.5; fill: none; marker-end: url(#v13ab); }
+  .arr-g { stroke: #27AE60; stroke-width: 1.5; fill: none; marker-end: url(#v13ag); }
+  .arr-o { stroke: #E67E22; stroke-width: 1.5; fill: none; marker-end: url(#v13ao); }
+]]></style>
+<defs>
+  <marker id="v13a" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#666"/></marker>
+  <marker id="v13ab" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4A90D9"/></marker>
+  <marker id="v13ag" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#27AE60"/></marker>
+  <marker id="v13ao" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#E67E22"/></marker>
+</defs>
+<text x="460" y="22" class="t" text-anchor="middle">能力代际（V1 -&gt; V3 及后续）</text><rect x="250" y="34" width="420" height="48" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/><text x="460" y="50" class="lb" text-anchor="middle">2024-01 V1</text><text x="460" y="68" class="dt" text-anchor="middle">稠密 7B/67B · 4K · GQA · 2T</text><rect x="250" y="94" width="420" height="48" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/><text x="460" y="110" class="lb" text-anchor="middle">2024-05 V2</text><text x="460" y="128" class="dt" text-anchor="middle">236B/21B · MLA · MoE · 8.1T</text><rect x="250" y="154" width="420" height="48" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/><text x="460" y="170" class="lb" text-anchor="middle">2024-12 V3</text><text x="460" y="188" class="dt" text-anchor="middle">671B/37B · 256/8 MoE · 14.8T</text><line x1="460" y1="82" x2="460" y2="94" class="arr"/><text x="520" y="100" class="an" text-anchor="middle">MLA + MoE + 128K</text><line x1="460" y1="142" x2="460" y2="154" class="arr"/><text x="520" y="160" class="an" text-anchor="middle">aux-loss-free + MTP</text><polyline points="460,202 460,232 220,232 220,248" class="arr-g" fill="none"/><polyline points="460,202 460,232 460,248" class="arr-g" fill="none"/><polyline points="460,202 460,232 700,232 700,248" class="arr-g" fill="none"/><rect x="120" y="256" width="200" height="44" rx="6" fill="#f0faf0" stroke="#27AE60" stroke-width="1.5"/><text x="220" y="270" class="lb" text-anchor="middle">R1</text><text x="220" y="288" class="dt" text-anchor="middle">架构不变 · RLVR</text><rect x="370" y="256" width="180" height="44" rx="6" fill="#fff8ee" stroke="#E67E22" stroke-width="1.5"/><text x="460" y="278" class="lb" text-anchor="middle">V3.1 Hybrid</text><rect x="610" y="256" width="180" height="44" rx="6" fill="#fff8ee" stroke="#E67E22" stroke-width="1.5"/><text x="700" y="278" class="lb" text-anchor="middle">V3.2 + DSA</text></svg>

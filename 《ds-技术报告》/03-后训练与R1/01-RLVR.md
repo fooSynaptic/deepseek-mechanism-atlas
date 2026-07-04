@@ -1,6 +1,6 @@
-# RLVR（Reinforcement Learning with Verifiable Rewards）
+# RLVR
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §2](../01-总览/01-版本演进总览.md#2-版本时间线与关系) · [← R1 梗概](02-R1.md) · [Raschka §RLVR/GRPO](../08-外部解读/01-Raschka要点速读.md#rlvr--grpo-要点326)  
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 演进总览 §2](../01-总览/01-版本演进总览.md#2-版本时间线与关系) · [← R1 梗概](02-R1.md) · [Raschka §RLVR/GRPO](../08-外部解读/01-Raschka要点速读.md#rlvr--grpo-要点326)
 > **论文**：[DeepSeek-R1 arXiv:2501.12948](https://arxiv.org/abs/2501.12948)
 
 ---
@@ -15,7 +15,7 @@
 
 <img src="figures/grpo-vs-ppo.svg" alt="PPO vs GRPO：RLHF 神经 RM + Critic 与 RLVR 验证器 + 组内 baseline 对比" width="920"/>
 
-[直接打开 SVG](figures/grpo-vs-ppo.svg)
+[图示详情](figures/grpo-vs-ppo.svg)
 
 | 路线 | 奖励从哪来 | 优化算法 | 典型场景 |
 |------|-----------|----------|----------|
@@ -41,7 +41,7 @@
 - 每条算规则奖励 → **组内相对** advantage（无 value network）
 - 配合 **KL 到 reference**、clip 等稳定训练
 
-### R1 奖励（三路规则）
+### R1 奖励
 
 | 奖励 | 作用 | 阶段 |
 |------|------|------|
@@ -67,14 +67,11 @@
 | **V3** | Base；**无** RLVR |
 | **R1** | **RLVR + GRPO** 主路径；架构 **同 V3** |
 | **V3.1 / Terminus** | Hybrid 对话；训练管线不同，非 R1 专用推理模型 |
-| **V3.2** | 继承 R1 系 GRPO 经验 + **生成式 RM**（开放域）+ DeepSeekMath V2 过程奖励；见 [Raschka 对比](../08-外部解读/01-Raschka要点速读.md#rlvr--grpo-要点326) |
+| **V3.2** | 继承 R1 系 GRPO 经验 + **生成式 RM**（开放域）+ DeepSeekMath V2 过程奖励；[Raschka 对比](../08-外部解读/01-Raschka要点速读.md#rlvr--grpo-要点326) |
 
-```
-V3-Base ──RLVR/GRPO──► R1（专用推理）
-    │
-    ├──► V3.1 Hybrid（另一套 post-train）
-    └──► V3.2（DSA + 混合奖励 RL）
-```
+<img src="figures/rlvr-posttrain-branch.svg" alt="V3-Base 后训练分叉：R1 专用推理 vs V3.1 Hybrid vs V3.2" width="920"/>
+
+[图示详情](figures/rlvr-posttrain-branch.svg)
 
 ---
 
@@ -88,20 +85,9 @@ RLVR 只改 **后训练**（采样、奖励、策略梯度），不动 MLA / MoE
 
 | 资源 | 说明 |
 |------|------|
-| [r1.md](02-R1.md) | R1 一页纸梗概 |
-| [training-pipeline.md](05-R1训练管线.md) | 四阶段 + R1-Zero 详解 |
-| [raschka-technical-deepseek-v3-v32.md](../08-外部解读/02-Raschka全文解析.md) §3.2 | RLVR vs PPO vs GRPO 对照表 |
-| [../rl/optimize.md](04-GRPO长程局限.md) | 社区讨论：GRPO 与长程任务局限 |
+| [DeepSeek-R1](02-R1.md) | R1 一页纸梗概 |
+| [DeepSeek-R1 训练 Pipeline](05-R1训练管线.md) | 四阶段 + R1-Zero 详解 |
+| [Raschka 全文解析](../08-外部解读/02-Raschka全文解析.md) §3.2 | RLVR vs PPO vs GRPO 对照表 |
+| [GRPO 长程任务局限](04-GRPO长程局限.md) | 社区讨论：GRPO 与长程任务局限 |
 
 **论文**：R1 [2501.12948](https://arxiv.org/abs/2501.12948) · V3 [2412.19437](https://arxiv.org/abs/2412.19437)
-
----
-
-## 章节导航
-
-| ← 上一章 | 下一章 → |
-|----------|----------|
-| [DeepSeek-V3 FP8 动态量化](../02-基座架构/06-V3-FP8动态量化.md) | [DeepSeek-R1 梗概](02-R1.md) |
-
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §2](../01-总览/01-版本演进总览.md#2-版本时间线与关系) · [← R1 梗概](02-R1.md) · [Raschka §RLVR/GRPO](../08-外部解读/01-Raschka要点速读.md#rlvr--grpo-要点326)  
-> **论文**：[DeepSeek-R1 arXiv:2501.12948](https://arxiv.org/abs/2501.12948)

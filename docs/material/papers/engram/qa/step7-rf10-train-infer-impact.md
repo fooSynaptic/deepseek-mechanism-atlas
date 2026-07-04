@@ -18,11 +18,11 @@ $$
 
 <img src="../diagrams/engram-01h-rf-change-impact.svg" alt="感受野 1 到 10 影响总览" width="920"/>
 
-[直接打开 SVG](../diagrams/engram-01h-rf-change-impact.svg)
+[图示详情](../diagrams/engram-01h-rf-change-impact.svg)
 
 ---
 
-## 1. 能力上差什么（训练 & 推理共有）
+## 1. 能力上差什么
 
 | | RF = 1（仅 Step 6） | RF = 10（Step 7 后） |
 |--|---------------------|----------------------|
@@ -86,7 +86,7 @@ $$
 
 ---
 
-## 4. 若去掉 Step 7（消融直觉）
+## 4. 若去掉 Step 7
 
 | | 训练 | 推理 |
 |--|------|------|
@@ -102,10 +102,10 @@ $$
 
 <img src="../diagrams/engram-01f-rf10-train-infer.svg" alt="RF 1 vs 10 训练与推理" width="920"/>
 
-[直接打开 SVG](../diagrams/engram-01f-rf10-train-infer.svg)
+[图示详情](../diagrams/engram-01f-rf10-train-infer.svg)
 ---
 
 ## 参考
 
-- [step7-short-conv-receptive-field.md](./step7-short-conv-receptive-field.md) — 公式与 tap 下标
-- [../../../../engram/engram_demo_v1.py](../../../../engram/engram_demo_v1.py) — `ShortConv`, `value + short_conv(value)`
+- [Step 7 短卷积：感受野扩充常数](./step7-short-conv-receptive-field.md) — 公式与 tap 下标
+- [Engram demo 脚本](../../../../engram/engram_demo_v1.py) — `ShortConv`, `value + short_conv(value)`
