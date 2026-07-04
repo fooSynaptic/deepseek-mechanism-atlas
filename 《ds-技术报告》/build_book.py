@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""将 deepseek-everything 文档复制整理为《ds-技术报告》书籍目录（不修改原仓库结构）。"""
+"""将 deepseek-tech-notes 文档复制整理为《ds-技术报告》书籍目录（不修改原仓库结构）。"""
 from __future__ import annotations
 
 import os
@@ -505,7 +505,8 @@ def rewrite_content(text: str, from_repo_rel: str, from_book_rel: str) -> str:
                 if repo_rel in CHAPTER_MAP:
                     return prefix + book_rel_link(from_book, CHAPTER_MAP[repo_rel], anchor) + suffix
             except ValueError:
-                return prefix + book_rel_to_target(from_book, local, anchor) + suffix
+                pass
+            return prefix + book_rel_to_target(from_book, local, anchor) + suffix
         return m.group(0)
 
     def repl_img(m: re.Match[str]) -> str:
@@ -769,7 +770,7 @@ def write_book_preface() -> None:
 
 **[01 版本演进总览](../01-总览/01-版本演进总览.md)** — 全书主线。三线导读、各版本梗概、DSA/ESS/Engram 等跳转均在该章内展开。
 
-修改内容请编辑 `deepseek-everything/docs/` 源稿，再执行 `python3 build_book.py`。
+修改内容请编辑 `deepseek-tech-notes/docs/` 源稿，再执行 `python3 build_book.py`。
 
 ---
 
@@ -806,7 +807,7 @@ def write_book_preface() -> None:
 def write_master_toc() -> None:
     toc = """# DeepSeek 技术报告
 
-> **《ds-技术报告》** — `deepseek-everything` 文档的书籍式读本（**独立目录**，与仓库 `docs/` 并行）。  
+> **《ds-技术报告》** — `deepseek-tech-notes` 文档的书籍式读本（**独立目录**，与仓库 `docs/` 并行）。  
 > **从这里开始**：[01 版本演进总览](./01-总览/01-版本演进总览.md)（全书主线；其余章节经该文内链展开）
 
 ---
@@ -935,7 +936,7 @@ def write_master_toc() -> None:
 ## 维护说明
 
 ```bash
-# 在 deepseek-everything 根目录执行（仅复制整理，不改原文件）
+# 在 deepseek-tech-notes 根目录执行（仅复制整理，不改原文件）
 python3 《ds-技术报告》/build_book.py
 ```
 

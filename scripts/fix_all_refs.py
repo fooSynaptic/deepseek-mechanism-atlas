@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""修复 deepseek-everything 仓内全部本地链接，确保无断链、无项目外引用。"""
+"""修复 deepseek-tech-notes 仓内全部本地链接，确保无断链、无项目外引用。"""
 from __future__ import annotations
 
 import os
@@ -16,9 +16,9 @@ IMG_RE = re.compile(r'(<img[^>]+src=["\'])([^"\']+)(["\'])')
 
 # 文内批量替换（长模式优先）
 BULK_REPLACEMENTS: list[tuple[str, str]] = [
-    ("../deepseek-everything/docs/", "../../../docs/"),
-    ("../deepseek-everything/《ds-技术报告》/", "../../../《ds-技术报告》/"),
-    ("../deepseek-everything/dsa/", "docs/dsa/"),
+    ("../deepseek-tech-notes/docs/", "../../../docs/"),
+    ("../deepseek-tech-notes/《ds-技术报告》/", "../../../《ds-技术报告》/"),
+    ("../deepseek-tech-notes/dsa/", "docs/dsa/"),
     ("../reports/deepseek-", "../../../docs/reports/deepseek-"),
     ("../reports/README.md", "../../../docs/reports/README.md"),
     ("../reports/phase", "../../../docs/reports/phase"),
@@ -50,8 +50,9 @@ def resolve_href(from_md: Path, href: str) -> str | None:
 
     norm = href.replace("\\", "/")
 
-    # 仓名前缀剥离（兼容旧链 deepseek-ai）
+    # 仓名前缀剥离（兼容旧链 deepseek-ai / deepseek-everything）
     for prefix in (
+        "deepseek-tech-notes/",
         "deepseek-everything/",
         "deepseek-ai/",
     ):

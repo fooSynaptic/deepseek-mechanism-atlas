@@ -1,6 +1,6 @@
 # Index Share（IndexCache）逻辑详解
 
-> [← 中文导读](../README.md) · [← 仓库首页（EN）](../README.md) · [← 系列目录](./README.md) · [← 基础设施线导读](../reports/deepseek-infra-line.md) · [DSA 梗概](../versions/dsa-sparse-attention.md) · [DSA 逻辑](./dsa-logic.md) · [Index Share 梗概](../versions/index-share.md) · [演进总览 §3.6](../reports/deepseek-version-lineage-20260625.md#36-deepseek-v32--v32-exp)
+> [← 中文导读](../README.md) · [← 仓库首页（EN）](../../README.md) · [← 系列目录](./README.md) · [← 基础设施线导读](../reports/deepseek-infra-line.md) · [DSA 梗概](../versions/dsa-sparse-attention.md) · [DSA 逻辑](./dsa-logic.md) · [Index Share 梗概](../versions/index-share.md) · [演进总览 §3.6](../reports/deepseek-version-lineage-20260625.md#36-deepseek-v32--v32-exp)
 
 ---
 
@@ -102,7 +102,7 @@ Role:   F   F   F   S   F   F   F   S  ...
 ```
 
 - **去掉 75% 的 indexer 计算**（每 4 层只算 3 次 indexer，而非 4 次）；
-- S 层复用的是 **紧前一个 F 层**（上例中 L4 复用 L3）的 indices，具体以实现/论文配置为准。
+- S 层复用的是 **紧前一个 F 层**的 indices。
 
 <img src="./diagrams/index-share-fffs.svg" alt="Index Share FFFS 跨层复用示意" width="920"/>
 

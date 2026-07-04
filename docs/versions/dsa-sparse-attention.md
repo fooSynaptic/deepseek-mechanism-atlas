@@ -51,7 +51,7 @@ Query h_t ──► Lightning Indexer ◄── 全长 latent 历史
 
 **与滑动窗口的区别**：DSA 的 $k$ 个位置是 **学到的、内容相关** 的，不是固定局部窗口（见 [Raschka §4](../reports/raschka-technical-deepseek-v3-v32-highlights.md)）。
 
-> **Lightning Indexer 专题**：[lightning-indexer.md](../dsa/lightning-indexer.md)（打分公式、Indexer-Cache、训练与 infra；含论文与 Raschka 引用）
+> **Lightning Indexer 专题**：[lightning-indexer.md](../dsa/lightning-indexer.md)
 
 ---
 

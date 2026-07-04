@@ -20,4 +20,4 @@
 | **SM**（Streaming Multiprocessor） | [专文 §1.1](../../06-推理基础设施/04-DSpark投机解码.md#11-瓶颈每-token-搬一遍大模型权重) · [Compute vs Memory §2](../../06-推理基础设施/qa/spec-decode-compute-vs-memory-bound.md#2-为何-decode-默认是-memory-bound) | [gpu-sm-term.md](../../06-推理基础设施/qa/gpu-sm-term.md) |
 | **MTP 中间 token 融合** | [专文 §2](../../06-推理基础设施/04-DSpark投机解码.md#2-deepseek-路线mtpv3--v4) · [§1.1 链深度](../../06-推理基础设施/qa/mtp-fusion-scheme.md#11-你的理解对在哪里错在哪里) | [mtp-fusion-scheme.md](../../06-推理基础设施/qa/mtp-fusion-scheme.md) · [mtp-draft-chain-depth.svg](../../06-推理基础设施/figures/mtp-draft-chain-depth.svg) |
 | **Birkhoff 多面体** | [mHC §3.2](../../04-版本代际/04-mHC流形约束超连接.md#32-birkhoff-多面体) · [§3 双随机流形](../../04-版本代际/04-mHC流形约束超连接.md#3-mhc-核心双随机流形约束) | [mhc-birkhoff-polytope.md](../../04-版本代际/qa/mhc-birkhoff-polytope.md) |
-| MMA / WGMMA 名词（术语表，非第二篇机制文） | [FP8 专文 一句话](../06-V3-FP8动态量化.md) · [partial sum 答疑](fp8-partial-sum-drift.md) | [fp8-mma-term.md](fp8-mma-term.md) |
+| MMA / WGMMA 名词 | [FP8 专文 一句话](../06-V3-FP8动态量化.md) · [partial sum 答疑](fp8-partial-sum-drift.md) | [fp8-mma-term.md](fp8-mma-term.md) |

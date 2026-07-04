@@ -54,7 +54,7 @@ V3 发布后的 **Attention / KV infra** 与全系列的 **MoE** 可概括为三
 | [V4 HiSparse](../versions/v4-hisparse.md) / 异构 KV offload | — | — | **100** | DeepSeek（layout）+ [Together 等](../versions/v4-hisparse.md) | 2026-05 | [C4 inactive entry](../versions/v4-hisparse.md)、[磁盘 prefix](../versions/v4-disk-prefix-cache.md)；纯 infer 内存层级 |
 | [FlashMLA](https://github.com/deepseek-ai/FlashMLA) / [DeepGEMM](https://github.com/deepseek-ai/DeepGEMM) indexer | — | — | **100** | DeepSeek | 2025 | Kernel 实现；承载 [MLA](../versions/mla-latent-attention.md) / [DSA](../versions/dsa-sparse-attention.md) 算子（[§6](#6-推理技术栈对照)） |
 
-**版本级粗汇总**（把该版**首发**工作的比例加权，便于扫一眼；细节仍看上表）：
+**版本级粗汇总**：
 
 | 版本 | 模型 % | 架构-train % | 架构-infer % | 发表时间 | 相对上一版主叙事 |
 |------|:------:|:------------:|:------------:|:--------:|------------------|
@@ -127,7 +127,7 @@ V3 发布后的 **Attention / KV infra** 与全系列的 **MoE** 可概括为三
 
 > **答疑**：[为何用 $C=M\cdot D$ 而非 Chinchilla 的 $C=6ND$？](../versions/qa/v1-scaling-law-c-vs-md.md) — $M$=non-embedding FLOPs/token、Table 3 误差、与 IsoFLOP 的关系
 
-<img src="../figures/v1/scaling-law/deepseek-fig4a-isoflop.png" alt="Figure 4a — IsoFLOP 曲线（各算力档 loss 随 M 呈 U 形，谷底 = 最优分配）" width="460"/>
+<img src="../figures/v1/scaling-law/deepseek-fig4a-isoflop.png" alt="Figure 4a — IsoFLOP 曲线（各算力档 loss 随 M 呈 U 形，谷底 = 最优分配）" width="534"/>
 
 [Figure 4a — IsoFLOP 曲线（各算力档 loss 随 $M$ 呈 U 形，谷底 = 最优分配）](../figures/v1/scaling-law/deepseek-fig4a-isoflop.png)
 

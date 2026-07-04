@@ -1,4 +1,4 @@
-# deepseek-everything
+# deepseek-tech-notes
 
 Unofficial DeepSeek technical notes — from the earliest public tech reports through **V4**, plus V4-era inference work such as **DSpark**. Not affiliated with DeepSeek.
 
@@ -43,6 +43,33 @@ This repo is built for **bidirectional navigation**: every article, deep-dive, a
 <img src="./diagrams/mtp-fusion-scheme.svg" alt="MTP fusion: one main-network forward per step; MTP chain supplies draft tokens without K full forwards" width="920"/>
 
 [Open SVG](./diagrams/mtp-fusion-scheme.svg) · [DSpark speculative decoding](docs/versions/dspark-speculative-decoding.md) · [MTP fusion scheme (qa)](docs/versions/qa/mtp-fusion-scheme.md)
+
+---
+
+## Contributing & book layout
+
+**Source of truth is `docs/`.** The folder [《ds-技术报告》/](《ds-技术报告》/) is a **generated book mirror** — do not edit those Markdown files by hand; they are overwritten by `build_book.py`.
+
+When you add or move content:
+
+1. **Write the article** under `docs/` (e.g. `docs/versions/`, `docs/dsa/`, `docs/reports/`, `docs/versions/qa/`).
+2. **Register it for the book** in [`《ds-技术报告》/build_book.py`](《ds-技术报告》/build_book.py):
+   - `CHAPTER_MAP` — map `docs/...` → book chapter path;
+   - `READING_ORDER` — prev/next chapter navigation;
+   - `QA_DESTINATIONS` — if it is a Q&A page (may mirror to multiple book folders);
+   - `ASSET_MAP` — only if new figures need copying into the book tree.
+3. **Add navigation** — blockquote top bar with `←` links back to the parent section / index (see existing articles); link the new page from the relevant overview or index.
+4. **Rebuild & check** (from repo root):
+
+```bash
+python3 《ds-技术报告》/build_book.py
+python3 scripts/validate_refs.py
+python3 scripts/validate_backlinks.py
+```
+
+Or run the full gate: `bash scripts/doc_series_gate.sh`.
+
+Wiki-style reading in `docs/` works without the book step; run `build_book.py` when the chapter should appear in [《ds-技术报告》](《ds-技术报告》/01-总览/01-版本演进总览.md) with rewritten links and chapter nav.
 
 ---
 

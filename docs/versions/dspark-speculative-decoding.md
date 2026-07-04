@@ -10,7 +10,7 @@
 
 ## 1. 投机解码：为何能加速推理
 
-> **场景**：单流（batch=1）、自回归 decode。下文以 **gpt2-small draft + gpt2-xl target** 为例说明通用机制（draft 换成 MTP 头、Qwen 0.6B 等同理）；DeepSeek 路线见 §2，自测数据见 §3。
+> **场景**：单流（batch=1）、自回归 decode。下文以 **gpt2-small draft + gpt2-xl target** 为例说明通用机制；DeepSeek 路线见 §2，自测数据见 §3。
 
 ### 1.1 瓶颈：每 token 搬一遍大模型权重
 
@@ -87,7 +87,7 @@
 
 [V3 技术报告](https://arxiv.org/abs/2412.19437) 引入 **Multi-Token Prediction（MTP）**：在 **主 next-token 目标** 之外，用 $D$ 个串联 **MTP 模块** 预测 $t{+}2, t{+}3, \ldots$ 额外 token。训练时共享 Embedding / Output Head；每层 MTP 通过 **Integration Layer** 把 **上一层 hidden** 与 **中间 token 的 Emb** 融合后再过 1 个 Transformer Block（论文 Eq.21–23、Figure 3）。
 
-> **中间 token 融合读图**：[mtp-fusion-scheme.md](./qa/mtp-fusion-scheme.md) · [mtp-fusion-scheme.svg](./figures/mtp-fusion-scheme.svg)（专讲融合 scheme；**不是**下方投机对照总览图）
+> **中间 token 融合读图**：[mtp-fusion-scheme.md](./qa/mtp-fusion-scheme.md) · [mtp-fusion-scheme.svg](./figures/mtp-fusion-scheme.svg)
 
 **训练目标**（摘要）：
 
@@ -125,7 +125,7 @@ V4 Flash / Pro **预览引擎**在 DSpark 上线前，生产环境采用 **MTP-1
 
 ## 3. 外挂 draft 自测（Qwen 4B + 0.6B）
 
-> **性质**：本仓库 **2026-06 自测**（vLLM 0.8.5，1000 条样本，单卡 L20）。**非** DeepSeek MTP 官方数据，**非** DSpark；供理解「成熟引擎 + 合理接受率」时 **延迟加速量级**。
+> **性质**：本仓库 **2026-06 自测**（vLLM 0.8.5，1000 条样本，单卡 L20）。**非** DeepSeek MTP 官方数据，**非** DSpark。
 
 | 项 | 值 |
 |----|-----|
@@ -133,7 +133,7 @@ V4 Flash / Pro **预览引擎**在 DSpark 上线前，生产环境采用 **MTP-1
 | 投机 | 4B target + **0.6B draft** |
 | 基线 RT | **459 ms** / 条 |
 
-| 方法 | mean RT | **加速比**（相对 nospec） |
+| 方法 | mean RT | **加速比** |
 |------|---------|--------------------------|
 | 4B nospec（基线） | 459 ms | **1.00×** |
 | vLLM ngram / PLD（无 draft） | 369 ms | **1.99×** |
@@ -142,7 +142,7 @@ V4 Flash / Pro **预览引擎**在 DSpark 上线前，生产环境采用 **MTP-1
 | Prefix cache + draft | 298 ms | **2.46×** |
 | Draft + target **FP8** | **256 ms** | **2.86×** |
 | Draft + target INT8 离线 | 272 ms | **2.69×** |
-| 手写 vanilla draft PoC | 1432 ms | **0.51×**（未优化，**慢于基线**） |
+| 手写 vanilla draft PoC | 1432 ms | **0.51×** |
 
 **读法**：
 
@@ -161,7 +161,7 @@ $$
 S_{\uparrow} = \frac{\bigl(\mathbb{E}[N_{\mathrm{acc}}] + 1\bigr)\,\tau_p}{K\,\tau_q + \tau_p}
 $$
 
-> **设计目标（读公式）**：要把 $S_{\uparrow}$ 做大，需 **同时**抬高 $\mathbb{E}[N_{\mathrm{acc}}]$（draft 猜得准、接受得长）并 **压低** $K\tau_q$（draft 生成别太慢）。两项目标往往拉扯——下文各范式正是在这对矛盾上的不同取舍。
+> **设计目标**：要把 $S_{\uparrow}$ 做大，需 **同时**抬高 $\mathbb{E}[N_{\mathrm{acc}}]$（draft 猜得准、接受得长）并 **压低** $K\tau_q$（draft 生成别太慢）。两项目标往往拉扯——下文各范式正是在这对矛盾上的不同取舍。
 
 在 **DSpark**（及同期工业界的半自回归路线）成熟之前，外挂草稿 $M_q$ 长期分两派：**Eagle 系**（最新 **Eagle3**，自回归、高接受率）与 **DFlash 系**（并行整块、低 draft 延迟）。DeepSeek 另备 **MTP 原生**头（§2）；**DSpark** 则在两派之间取 **半自回归**折中。
 
