@@ -13,7 +13,7 @@ python3 scripts/gen_mdbook_summary.py
 echo "==> mdbook build"
 mdbook build
 
-echo "==> fix_mdbook_index_paths.py"
-python3 scripts/fix_mdbook_index_paths.py
+echo "==> fix_mdbook_paths.py"
+python3 scripts/fix_mdbook_paths.py
 
 echo "OK mdbook-out/ ready"
