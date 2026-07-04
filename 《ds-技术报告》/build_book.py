@@ -9,6 +9,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 BOOK = Path(__file__).resolve().parent
+REPO_HOME_URL = "https://github.com/fooSynaptic/deepseek-tech-notes"
 
 # 原路径 -> 书中路径（相对 BOOK）
 CHAPTER_MAP: dict[str, str] = {
@@ -39,6 +40,7 @@ CHAPTER_MAP: dict[str, str] = {
     "docs/versions/v4.md": "04-版本代际/03-V4.md",
     "docs/versions/csa-hca-mixed-attention.md": "04-版本代际/05-CSA-HCA混合压缩注意力.md",
     "docs/versions/hash-moe-fp4.md": "04-版本代际/06-Hash-MoE-FP4.md",
+    "docs/versions/muon-optimizer.md": "04-版本代际/07-Muon优化器.md",
     "docs/versions/mhc-manifold-hyper-connections.md": "04-版本代际/04-mHC流形约束超连接.md",
     "docs/versions/hyper-connections.md": "04-版本代际/04b-Hyper-Connections.md",
     "docs/dsa/README.md": "05-DSA稀疏注意力/01-系列导读.md",
@@ -62,17 +64,29 @@ CHAPTER_MAP: dict[str, str] = {
     "docs/WIKI-INDEX.md": "09-附录/01-开发索引.md",
     "docs/material/papers/deepseek-r1/training-pipeline.md": "03-后训练与R1/05-R1训练管线.md",
     "docs/material/papers/engram/engram-series-overview.md": "07-Engram/02-Engram系列导读.md",
+    "docs/papers/thinking-with-visual-primitives-highlights.md": "09-附录/03-Visual-Primitives论文要点.md",
 }
 
 ASSET_MAP: dict[str, str] = {
     "diagrams/deepseek-version-lineage.svg": "01-总览/figures/deepseek-version-lineage.svg",
     "diagrams/deepseek-version-quick.svg": "01-总览/figures/deepseek-version-quick.svg",
+    "diagrams/opt-direction-ternary.svg": "01-总览/figures/opt-direction-ternary.svg",
+    "diagrams/v1-v3-mla-evolution.svg": "01-总览/figures/v1-v3-mla-evolution.svg",
+    "diagrams/v1-v3-capability-timeline.svg": "01-总览/figures/v1-v3-capability-timeline.svg",
     "docs/figures/mla/mla-forward-flow.svg": "02-基座架构/figures/mla-forward-flow.svg",
     "diagrams/mla-forward-flow.svg": "02-基座架构/figures/mla-forward-flow.svg",
     "docs/figures/v3/v3-moe-vs-v2.svg": "02-基座架构/figures/v3-moe-vs-v2.svg",
     "diagrams/v3-moe-vs-v2.svg": "02-基座架构/figures/v3-moe-vs-v2.svg",
     "docs/figures/rl/grpo-vs-ppo.svg": "03-后训练与R1/figures/grpo-vs-ppo.svg",
     "diagrams/grpo-vs-ppo.svg": "03-后训练与R1/figures/grpo-vs-ppo.svg",
+    "docs/figures/rl/rlvr-posttrain-branch.svg": "03-后训练与R1/figures/rlvr-posttrain-branch.svg",
+    "docs/figures/rl/dspark-draft-target-parallel.svg": "08-外部解读/figures/dspark-draft-target-parallel.svg",
+    "docs/versions/figures/aux-loss-free-bias-update.svg": "02-基座架构/figures/aux-loss-free-bias-update.svg",
+    "docs/versions/figures/moe-bal-loss-pipeline.svg": "02-基座架构/figures/moe-bal-loss-pipeline.svg",
+    "docs/versions/figures/csa-hca-evolution-chain.svg": "04-版本代际/figures/csa-hca-evolution-chain.svg",
+    "docs/versions/figures/hash-moe-evolution-chain.svg": "04-版本代际/figures/hash-moe-evolution-chain.svg",
+    "docs/versions/figures/gpu-sm-hierarchy.svg": "06-推理基础设施/figures/gpu-sm-hierarchy.svg",
+    "docs/versions/figures/h2d-pipeline-serial.svg": "06-推理基础设施/figures/h2d-pipeline-serial.svg",
     "docs/figures/rl/dspark-speculative.svg": "06-推理基础设施/figures/dspark-speculative.svg",
     "diagrams/dspark-speculative.svg": "06-推理基础设施/figures/dspark-speculative.svg",
     "docs/versions/figures/dspark-speculative.svg": "06-推理基础设施/figures/dspark-speculative.svg",
@@ -95,15 +109,27 @@ ASSET_MAP: dict[str, str] = {
     "diagrams/v4-hetero-kv.svg": "04-版本代际/figures/v4/v4-hetero-kv.svg",
     "docs/figures/v4/hash-moe-routing.svg": "04-版本代际/figures/v4/hash-moe-routing.svg",
     "diagrams/hash-moe-routing.svg": "04-版本代际/figures/v4/hash-moe-routing.svg",
+    "docs/figures/v4/muon-optimizer.svg": "04-版本代际/figures/v4/muon-optimizer.svg",
+    "diagrams/muon-optimizer.svg": "04-版本代际/figures/v4/muon-optimizer.svg",
     "docs/figures/mhc/mhc-doubly-stochastic-matrix.svg": "04-版本代际/figures/mhc/mhc-doubly-stochastic-matrix.svg",
     "diagrams/mhc-doubly-stochastic-matrix.svg": "04-版本代际/figures/mhc/mhc-doubly-stochastic-matrix.svg",
     "docs/figures/mhc/hyper-connections.svg": "04-版本代际/figures/mhc/hyper-connections.svg",
     "diagrams/hyper-connections.svg": "04-版本代际/figures/mhc/hyper-connections.svg",
     "docs/figures/mla/mla-forward-flow.png": "02-基座架构/figures/mla-forward-flow.png",
     "docs/dsa/diagrams/dsa-pipeline.svg": "05-DSA稀疏注意力/figures/dsa-pipeline.svg",
+    "docs/dsa/diagrams/dsa-three-stage.svg": "05-DSA稀疏注意力/figures/dsa-three-stage.svg",
+    "docs/dsa/diagrams/ess-kv-lineage-tree.svg": "05-DSA稀疏注意力/figures/ess-kv-lineage-tree.svg",
     "docs/dsa/diagrams/lightning-indexer-forward.svg": "05-DSA稀疏注意力/figures/lightning-indexer-forward.svg",
+    "docs/dsa/diagrams/lightning-indexer-t-s-direction.svg": "05-DSA稀疏注意力/figures/lightning-indexer-t-s-direction.svg",
     "docs/dsa/diagrams/index-share-fffs.svg": "05-DSA稀疏注意力/figures/index-share-fffs.svg",
     "docs/dsa/diagrams/ess-dual-cache.svg": "05-DSA稀疏注意力/figures/ess-dual-cache.svg",
+    "docs/figures/ess/v3-mla-latent-kv-offload.svg": "01-总览/figures/v3-mla-latent-kv-offload.svg",
+    "docs/dsa/diagrams/v3-mla-latent-kv-offload.svg": "01-总览/figures/v3-mla-latent-kv-offload.svg",
+    "docs/figures/papers/thinking-with-visual-primitives/fig-1-token-efficiency.png": "09-附录/figures/visual-primitives/fig-1-token-efficiency.png",
+    "docs/figures/papers/thinking-with-visual-primitives/fig-2-architecture-pipeline.png": "09-附录/figures/visual-primitives/fig-2-architecture-pipeline.png",
+    "docs/figures/papers/thinking-with-visual-primitives/fig-3-cold-start-counting.png": "09-附录/figures/visual-primitives/fig-3-cold-start-counting.png",
+    "docs/figures/papers/thinking-with-visual-primitives/table-1-benchmark.png": "09-附录/figures/visual-primitives/table-1-benchmark.png",
+    "docs/papers/Thinking_with_Visual_Primitives.pdf": "09-附录/papers/Thinking_with_Visual_Primitives.pdf",
 }
 
 # 同一源 SVG 复制到多个书中卷（canonical 源：docs/dsa/diagrams/）
@@ -116,9 +142,21 @@ ASSET_MULTI_DEST: dict[str, list[str]] = {
         "01-总览/figures/v4/v4-hetero-kv.svg",
         "04-版本代际/figures/v4/v4-hetero-kv.svg",
     ],
+    "docs/figures/ess/v3-mla-latent-kv-offload.svg": [
+        "01-总览/figures/v3-mla-latent-kv-offload.svg",
+        "06-推理基础设施/figures/v3-mla-latent-kv-offload.svg",
+    ],
     "docs/figures/v4/hash-moe-routing.svg": [
         "04-版本代际/figures/v4/hash-moe-routing.svg",
         "02-基座架构/figures/v4/hash-moe-routing.svg",
+    ],
+    "docs/versions/figures/gpu-sm-hierarchy.svg": [
+        "06-推理基础设施/figures/gpu-sm-hierarchy.svg",
+        "01-总览/figures/gpu-sm-hierarchy.svg",
+    ],
+    "docs/versions/figures/h2d-pipeline-serial.svg": [
+        "06-推理基础设施/figures/h2d-pipeline-serial.svg",
+        "01-总览/figures/h2d-pipeline-serial.svg",
     ],
 }
 for _fig in Path(REPO / "docs/figures/v1/scaling-law").glob("*.png"):
@@ -248,7 +286,6 @@ LINK_REDIRECTS: dict[str, tuple[str, str]] = {
 
 # 全书线性阅读顺序（用于文末「上一章 / 下一章」导航）
 READING_ORDER: list[str] = [
-    "00-前言/01-知识库导读.md",
     "01-总览/01-版本演进总览.md",
     "01-总览/05-算法线导读.md",
     "01-总览/06-基础设施线导读.md",
@@ -277,6 +314,7 @@ READING_ORDER: list[str] = [
     "04-版本代际/04b-Hyper-Connections.md",
     "04-版本代际/04-mHC流形约束超连接.md",
     "04-版本代际/06-Hash-MoE-FP4.md",
+    "04-版本代际/07-Muon优化器.md",
     "05-DSA稀疏注意力/01-系列导读.md",
     "05-DSA稀疏注意力/02-DSA梗概.md",
     "05-DSA稀疏注意力/03-DSA逻辑详解.md",
@@ -295,6 +333,7 @@ READING_ORDER: list[str] = [
     "08-外部解读/01-Raschka要点速读.md",
     "08-外部解读/02-Raschka全文解析.md",
     "08-外部解读/03-酱紫君DSpark阅读笔记.md",
+    "09-附录/03-Visual-Primitives论文要点.md",
     "09-附录/01-开发索引.md",
     "09-附录/02-文档系列结构审查.md",
 ]
@@ -312,6 +351,8 @@ for _ef in Path(REPO / "docs/engram/figures").glob("*"):
         ENGRAM_EXTRA[f"docs/engram/figures/{_ef.name}"] = f"07-Engram/figures/{_ef.name}"
 
 NAV_FOOTER_RE = re.compile(r"\n---\n\n## 章节导航\n.*\Z", re.DOTALL)
+# 源稿中 <!-- book:omit --> … <!-- /book:omit --> 区块不写入成书（如 docs/README 维护说明）
+BOOK_OMIT_RE = re.compile(r"<!-- book:omit -->[\s\S]*?<!-- /book:omit -->\n?", re.MULTILINE)
 HEADER_BREADCRUMB_RE = re.compile(r"^# [^\n]+\n\n((?:> [^\n]*\n)+)", re.MULTILINE)
 
 LINK_RE = re.compile(r"(\[[^\]]*\]\()([^)]+)(\))")
@@ -471,13 +512,15 @@ def rewrite_content(text: str, from_repo_rel: str, from_book_rel: str) -> str:
             anchor = "#" + anchor
         else:
             anchor = ""
+        repo_path = resolve_repo_path(from_repo_rel, href)
+        if repo_path == "README.md":
+            return prefix + REPO_HOME_URL + anchor + suffix
         self_href = book_self_link(from_book, href, anchor)
         if self_href:
             return prefix + self_href + suffix
         rel_ext = material_relative_book_link(from_book, from_repo_rel, href, anchor)
         if rel_ext:
             return prefix + rel_ext + suffix
-        repo_path = resolve_repo_path(from_repo_rel, href)
         if repo_path in LINK_REDIRECTS:
             target_repo, default_anchor = LINK_REDIRECTS[repo_path]
             if not anchor:
@@ -541,6 +584,11 @@ def rewrite_content(text: str, from_repo_rel: str, from_book_rel: str) -> str:
     return text
 
 
+def strip_book_omit_blocks(body: str) -> str:
+    """Remove <!-- book:omit --> sections (repo-only; not for mdBook readers)."""
+    return BOOK_OMIT_RE.sub("", body)
+
+
 def _chapter_title(path: Path) -> str:
     if not path.is_file():
         return path.stem
@@ -559,47 +607,12 @@ def extract_header_breadcrumb(body: str) -> str:
 
 
 def append_chapter_nav(body: str, book_rel: str) -> str:
-    """在文末追加「上一章 / 下一章」导航（首章上一章、末章下一章指向全书目录）。"""
-    body = NAV_FOOTER_RE.sub("", body.rstrip())
-    if book_rel not in READING_ORDER:
-        return body
-
-    from_book = BOOK / book_rel
-    idx = READING_ORDER.index(book_rel)
-
-    if idx > 0:
-        prev_rel = READING_ORDER[idx - 1]
-        prev_title = _chapter_title(BOOK / prev_rel)
-        prev_href = book_rel_link(from_book, prev_rel)
-    else:
-        prev_title = "全书目录"
-        prev_href = book_rel_link(from_book, "README.md")
-
-    if idx < len(READING_ORDER) - 1:
-        next_rel = READING_ORDER[idx + 1]
-        next_title = _chapter_title(BOOK / next_rel)
-        next_href = book_rel_link(from_book, next_rel)
-    else:
-        next_title = "全书目录"
-        next_href = book_rel_link(from_book, "README.md")
-
-    breadcrumb = extract_header_breadcrumb(body)
-    footer = f"""
-
----
-
-## 章节导航
-
-| ← 上一章 | 下一章 → |
-|----------|----------|
-| [{prev_title}]({prev_href}) | [{next_title}]({next_href}) |
-"""
-    if breadcrumb:
-        footer += f"\n{breadcrumb}\n"
-    return body + footer
+    """Strip stale「章节导航」footer. Prev/next table disabled — use mdBook sidebar + 文首回链."""
+    return NAV_FOOTER_RE.sub("", body.rstrip())
 
 
 def apply_chapter_nav() -> None:
+    """Remove legacy「章节导航」footers from book chapters."""
     for book_rel in READING_ORDER:
         path = BOOK / book_rel
         if not path.is_file():
@@ -607,7 +620,7 @@ def apply_chapter_nav() -> None:
             continue
         body = path.read_text(encoding="utf-8")
         path.write_text(append_chapter_nav(body, book_rel), encoding="utf-8")
-    print(f"NAV {len(READING_ORDER)} chapters")
+    print(f"STRIP_NAV {len(READING_ORDER)} chapters")
 
 
 def copy_material_mirror() -> None:
@@ -751,74 +764,21 @@ def copy_chapters() -> None:
         dst = BOOK / dst_rel
         dst.parent.mkdir(parents=True, exist_ok=True)
         body = src.read_text(encoding="utf-8")
+        body = strip_book_omit_blocks(body)
         body = rewrite_content(body, src_rel, dst_rel)
         dst.write_text(body, encoding="utf-8")
         print(f"COPY {dst_rel}")
-
-
-def write_book_preface() -> None:
-    """书籍专用前言（非仓库 README 副本）。"""
-    path = BOOK / "00-前言/01-知识库导读.md"
-    path.parent.mkdir(parents=True, exist_ok=True)
-    body = """# 知识库导读
-
-> **《ds-技术报告》读本** · [← 返回全书目录](../README.md) · [中文导读（文章索引）](./02-中文导读.md)
-
----
-
-## 从这里读起
-
-**[01 版本演进总览](../01-总览/01-版本演进总览.md)** — 全书主线。三线导读、各版本梗概、DSA/ESS/Engram 等跳转均在该章内展开。
-
-修改内容请编辑 `deepseek-tech-notes/docs/` 源稿，再执行 `python3 build_book.py`。
-
----
-
-## 快速对照图
-
-<img src="../01-总览/figures/deepseek-version-quick.svg" alt="DeepSeek 版本快速对照" width="920"/>
-
-[直接打开 SVG](../01-总览/figures/deepseek-version-quick.svg)
-
----
-
-<details>
-<summary>卷册地图（需要时展开）</summary>
-
-| 卷 | 主题 |
-|----|------|
-| [01 总览](../01-总览/01-版本演进总览.md) | 演进总览、三线导读、V1→V3 |
-| [02 基座架构](../02-基座架构/01-V3基座.md) | V3 MLA / MoE / FP8 |
-| [03 后训练与 R1](../03-后训练与R1/01-RLVR.md) | RLVR、R1 |
-| [04 版本代际](../04-版本代际/00-V1-LLM.md) | V1 … V4 各代 |
-| [05 DSA](../05-DSA稀疏注意力/01-系列导读.md) | 稀疏注意力、Index Share |
-| [06 推理基础设施](../06-推理基础设施/01-ESS概念.md) | ESS、投机解码、V4 KV |
-| [07 Engram](../07-Engram/01-Engram官方README.md) | 条件记忆 |
-| [08 外部解读](../08-外部解读/01-Raschka要点速读.md) | 社区对照阅读 |
-
-完整章节目录见 [全书 README](../README.md)。
-
-</details>
-"""
-    path.write_text(body, encoding="utf-8")
-    print("WRITE 00-前言/01-知识库导读.md")
 
 
 def write_master_toc() -> None:
     toc = """# DeepSeek 技术报告
 
 > **《ds-技术报告》** — `deepseek-tech-notes` 文档的书籍式读本（**独立目录**，与仓库 `docs/` 并行）。  
-> **从这里开始**：[01 版本演进总览](./01-总览/01-版本演进总览.md)（全书主线；其余章节经该文内链展开）
+> [中文导读](./00-前言/02-中文导读.md) · **从这里开始**：[01 版本演进总览](./01-总览/01-版本演进总览.md)（全书主线；其余章节经该文内链展开）
 
 ---
 
 ## 全书目录
-
-### 00 前言
-
-| 章 | 内容 |
-|----|------|
-| [01 知识库导读](./00-前言/01-知识库导读.md) | **本书入口**：卷册说明、阅读顺序、快速对照图 |
 
 ### 01 总览
 
@@ -832,7 +792,7 @@ def write_master_toc() -> None:
 | [02 版本梗概索引](./01-总览/02-版本梗概索引.md) | 各版本一页纸索引 |
 | [03 技术报告索引](./01-总览/03-技术报告索引.md) | 报告与外部解读目录 |
 
-### 02 基座架构（V3 组件）
+### 02 基座架构
 
 | 章 | 内容 |
 |----|------|
@@ -972,10 +932,18 @@ def main() -> None:
     copy_chapters()
     copy_qa()
     copy_root_license_files()
-    write_book_preface()
     write_master_toc()
     apply_chapter_nav()
+    _gen_mdbook_summary()
     print("DONE")
+
+
+def _gen_mdbook_summary() -> None:
+    import subprocess
+    import sys
+
+    script = REPO / "scripts/gen_mdbook_summary.py"
+    subprocess.run([sys.executable, str(script)], check=True)
 
 
 if __name__ == "__main__":

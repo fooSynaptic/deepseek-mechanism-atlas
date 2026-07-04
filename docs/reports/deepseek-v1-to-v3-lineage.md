@@ -1,6 +1,6 @@
 # DeepSeek V1 → V2 → V3：前代到旗舰基座
 
-> 更新：2026-06-25  
+> 更新：2026-06-25
 > [← 全系列演进总览](./deepseek-version-lineage-20260625.md) · [V1 正文](../versions/v1.md) · [V2](../versions/v2.md) · [V3](../versions/v3.md)
 
 ---
@@ -10,7 +10,7 @@
 DeepSeek 开源主线可粗分为两段：
 
 1. **V1 → V2 → V3（2024）**：从稠密双语基座，到 **MLA + MoE** 效率架构，再到 **规模化旗舰 MoE**（671B）
-2. **V3.1 → V3.2 → V4（2025–2026）**：在同一 V3 权重架构上 post-train、加 **DSA**、再 **架构大步进**（见 [演进总览 §2](./deepseek-version-lineage-20260625.md#2-版本时间线与关系)）
+2. **V3.1 → V3.2 → V4（2025–2026）**：在同一 V3 权重架构上 post-train、加 **DSA**、再 **[架构大步进](./deepseek-version-lineage-20260625.md#2-版本时间线与关系)**
 
 本文梳理第一段：**V1 → V2 → V3**。
 
@@ -26,16 +26,13 @@ DeepSeek 开源主线可粗分为两段：
 
 ---
 
-## 3. 演进逻辑（三条轴）
+## 3. 演进逻辑
 
 ### 3.1 注意力：标准 GQA → MLA
 
-```
-V1 67B:  GQA（8 KV 头）— 减 KV，但仍按头存完整 K/V
-    ↓
-V2/V3:   MLA — K/V 压入 latent c^KV [512] + 共享 RoPE 维 [64]
-         单 token cache: O(n_h d_h) → O(d_c^KV + d_h^R)
-```
+<img src="../../diagrams/v1-v3-mla-evolution.svg" alt="V1 GQA → V2/V3 MLA latent KV 压缩" width="920"/>
+
+[图示详情](../../diagrams/v1-v3-mla-evolution.svg)
 
 - **V2 首创 MLA**（[2405.04434](https://arxiv.org/abs/2405.04434)）；**V3 沿用**同一 latent 格式（[MLA 详解](../versions/mla-latent-attention.md)）
 - V3.1 再在 Prefill/Decode 间切换 MHA/MQA 模式；V3.2 叠加 DSA — 均属 **V3 代之后**，不在 V1–V3 段
@@ -58,21 +55,11 @@ V2/V3:   MLA — K/V 压入 latent c^KV [512] + 共享 RoPE 维 [64]
 
 ---
 
-## 4. 能力代际（简图）
+## 4. 能力代际
 
-```
-2024-01  DeepSeek-LLM V1     稠密 7B/67B · 4K · GQA · 2T · SFT+DPO
-              │
-              ▼  MLA + MoE + 128K
-2024-05  DeepSeek-V2         236B/21B · MLA · DeepSeekMoE · 8.1T
-              │
-              ▼  规模化 + aux-loss-free + MTP
-2024-12  DeepSeek-V3         671B/37B · 同族 MLA · 256/8 MoE · 14.8T
-              │
-              ├─► 2025-01 R1（架构不变，RLVR）
-              ├─► V3.1 Hybrid
-              └─► V3.2 + DSA …
-```
+<img src="../../diagrams/v1-v3-capability-timeline.svg" alt="V1 → V2 → V3 能力代际及 R1 / V3.1 / V3.2 分叉" width="920"/>
+
+[图示详情](../../diagrams/v1-v3-capability-timeline.svg)
 
 ---
 

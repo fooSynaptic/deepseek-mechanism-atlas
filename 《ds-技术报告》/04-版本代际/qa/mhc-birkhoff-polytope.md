@@ -1,4 +1,4 @@
-# 名词解释：Birkhoff 多面体（双随机流形）
+# 名词解释：Birkhoff 多面体
 
 [← 返回 mHC §3.2](../04-mHC流形约束超连接.md#32-birkhoff-多面体) · [§3 双随机流形](../04-mHC流形约束超连接.md#3-mhc-核心双随机流形约束) · [HC 基础](../04b-Hyper-Connections.md) · [答疑目录](../../01-总览/qa/README.md)
 
@@ -61,7 +61,7 @@ $$
 (X')_i = \sum_{j=1}^{n} H_{ij} X_j, \quad H_{ij}\ge 0,\; \sum_j H_{ij}=1
 $$
 
-即 $(X')_i$ 是各条流的 **凸组合** → **单层不放大** 最大流范数（见 [§3.3](../04-mHC流形约束超连接.md#33-为何-mhc-需要这个约束)）。
+[即 $(X')_i$ 是各条流的 **凸组合** → **单层不放大** 最大流范数](../04-mHC流形约束超连接.md#33-为何-mhc-需要这个约束)。
 
 ---
 
@@ -70,7 +70,7 @@ $$
 | 名词 | 领域 | 与 Birkhoff 多面体 |
 |------|------|-------------------|
 | **SWA** | 优化 / 训练 | **S**tochastic **W**eight **A**veraging；与 Birkhoff **无关** |
-| **SWA（V4）** | Attention | **S**liding **W**indow **A**ttention；见 [v4-swa-sliding-window.md](v4-swa-sliding-window.md) |
+| **SWA（V4）** | Attention | **[SWA](v4-swa-sliding-window.md)**（Sliding Window Attention） |
 | **单纯形** | 概率 | 行随机矩阵集合；双随机 = **行 + 列** 都随机，更严 |
 | **置换矩阵** | 线性代数 | $\mathcal{B}_n$ 的 **顶点**，不是全体 |
 
@@ -80,5 +80,5 @@ $$
 
 | 文档 | 内容 |
 |------|------|
-| [mhc-manifold-hyper-connections.md §3](../04-mHC流形约束超连接.md#3-mhc-核心双随机流形约束) | 双随机定义 · Sinkhorn · 与 HC 对照 |
-| [hyper-connections.md](../04b-Hyper-Connections.md) | 无约束 HC 为何不 stable |
+| [mHC§3](../04-mHC流形约束超连接.md#3-mhc-核心双随机流形约束) | 双随机定义 · Sinkhorn · 与 HC 对照 |
+| [Hyper-Connections](../04b-Hyper-Connections.md) | 无约束 HC 为何不 stable |

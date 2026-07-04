@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 160" width="920" height="160">
+<style><![CDATA[
+  .t { font: 700 15px sans-serif; fill: #1a1a2e; text-anchor: middle; }
+  .st { font: 11px sans-serif; fill: #666; text-anchor: middle; }
+  .lb { font: 600 11px sans-serif; fill: #222; text-anchor: middle; }
+  .dt { font: 10px sans-serif; fill: #555; text-anchor: middle; }
+  .an { font: 9px sans-serif; fill: #2563eb; text-anchor: middle; }
+  .arr { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#mlaa); }
+  .arr-b { stroke: #4A90D9; stroke-width: 1.5; fill: none; marker-end: url(#mlaab); }
+  .arr-g { stroke: #27AE60; stroke-width: 1.5; fill: none; marker-end: url(#mlaag); }
+  .arr-o { stroke: #E67E22; stroke-width: 1.5; fill: none; marker-end: url(#mlaao); }
+]]></style>
+<defs>
+  <marker id="mlaa" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#666"/></marker>
+  <marker id="mlaab" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4A90D9"/></marker>
+  <marker id="mlaag" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#27AE60"/></marker>
+  <marker id="mlaao" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#E67E22"/></marker>
+</defs>
+<text x="460" y="22" class="t" text-anchor="middle">注意力：GQA -&gt; MLA</text><rect x="40" y="52" width="380" height="72" rx="6" fill="#fff8ee" stroke="#E67E22" stroke-width="1.5"/><text x="230" y="80" class="lb" text-anchor="middle">V1 67B: GQA（8 KV 头）</text><text x="230" y="98" class="dt" text-anchor="middle">减 KV，仍按头存完整 K/V</text><line x1="460" y1="88" x2="460" y2="118" class="arr"/><text x="460" y="108" class="an" text-anchor="middle">压缩 KV 维</text><rect x="500" y="52" width="380" height="72" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/><text x="690" y="80" class="lb" text-anchor="middle">V2/V3: MLA</text><text x="690" y="98" class="dt" text-anchor="middle">c^KV [512] + RoPE [64]</text><text x="690" y="112" class="dt" text-anchor="middle">O(n_h d_h) -&gt; O(d_c + d_h^R)</text></svg>

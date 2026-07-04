@@ -1,4 +1,4 @@
-# MoE 推理：Expert Parallel（EP）与 gather/scatter
+# MoE 推理：Expert Parallel与 gather/scatter
 
 [← 返回 Hash MoE §1.3](../../04-版本代际/06-Hash-MoE-FP4.md#still-inherited) · [DeepSeekMoE §推理 infra](../05-DeepSeekMoE.md#推理-infra-关注点) · [答疑目录](README.md)
 
@@ -18,7 +18,7 @@
 | **Expert Parallel（EP）** | **不同 expert 的 FFN 权重** 分到不同 GPU | routed MoE 层 |
 | **Data Parallel（DP）** | 复制整模型、切 batch | 通用训练 |
 
-> **TP 补注（列/行不是二选一）**  
+> **TP 补注**
 > 表里「按列/行切」指 **Megatron 式 TP 在同一层里通常各用一次**，不是「整张矩阵只切一种方向就结束」：
 >
 > - **列切（column parallel）**：权重按 **输出维 / 列** 分片；每卡算 $Y_i = X W_i$，得到 **输出通道分片**（常接 AllGather 或留分片给下一步）。
@@ -34,7 +34,7 @@ DeepSeekMoE 每层有 **256 routed + shared**（V3 口径）：**shared** 通常
 
 对单个 MoE 层、单个 micro-batch，顺序为：**路由得 expert id** → **dispatch（scatter）** 把 token 发到持有该 expert 的 GPU → **各 rank 算本 rank expert 子集** → **combine（gather）** 加权收回原 batch 顺序。
 
-**Shared experts** 不走稀疏 scatter：每层 **恒激活**，与 routed 输出 **相加**（见 [DeepSeekMoE](../05-DeepSeekMoE.md)）。
+**Shared experts** 不走稀疏 scatter：每层 **恒激活**，与 routed 输出 **[相加](../05-DeepSeekMoE.md)**。
 
 ---
 
@@ -78,7 +78,7 @@ EP 下 **每张卡只服务一部分 expert**。若路由 collapse（多数 toke
 
 ## 6. 与训练侧 DeepEP 的关系
 
-V3 训练文档常并列 **DualPipe、DeepEP、FP8**（见 [v3.md §排除项](../01-V3基座.md#v3-structure-excluded)）：**DeepEP** 是 **MoE token dispatch 的通信库**，属于 **训推系统层**，不是 Transformer 权重结构。
+V3 训练文档常并列 **[DualPipe、DeepEP、FP8](../01-V3基座.md#v3-structure-excluded)**：**DeepEP** 是 **MoE token dispatch 的通信库**，属于 **训推系统层**，不是 Transformer 权重结构。
 
 | 层 | 内容 |
 |----|------|
@@ -96,7 +96,7 @@ V3 训练文档常并列 **DualPipe、DeepEP、FP8**（见 [v3.md §排除项](.
 | **scatter / dispatch** | token → 各 expert rank |
 | **gather / combine** | expert 输出 → 回原 batch |
 | **DeepEP** | DeepSeek 系 MoE 通信实现（训练/推理栈） |
-| **device-limited routing** | V2 限制 token 只打本地 expert，减 EP 通信（见 [fine-grained 答疑](moe-fine-grained-segmentation.md)） |
+| **[device-limited routing](moe-fine-grained-segmentation.md)** | V2 限制 token 只打本地 expert，减 EP 通信 |
 
 ---
 

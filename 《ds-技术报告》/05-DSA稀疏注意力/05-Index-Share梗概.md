@@ -1,6 +1,6 @@
-# Index Share（IndexCache）梗概
+# Index Share梗概
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §4](../01-总览/01-版本演进总览.md#4-index-shareindexcache) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [← 版本目录](../01-总览/02-版本梗概索引.md) · [上游 DSA §异构 KV](02-DSA梗概.md#异构-kv-cache) · [并列 ESS](../06-推理基础设施/01-ESS概念.md) · [逻辑详解](06-Index-Share逻辑.md)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 演进总览 §4](../01-总览/01-版本演进总览.md#4-index-shareindexcache) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [← 版本目录](../01-总览/02-版本梗概索引.md) · [上游 DSA §异构 KV](02-DSA梗概.md#异构-kv-cache) · [并列 ESS](../06-推理基础设施/01-ESS概念.md) · [逻辑详解](06-Index-Share逻辑.md)
 
 ---
 
@@ -10,6 +10,8 @@
 
 典型体现「**infra 归 infra，算法归算法**」——算法仍是 V3.2 的 **[DSA](02-DSA梗概.md)**，系统侧利用跨层冗余砍掉冗余 indexer 计算。
 
+> **逻辑详解**：[Index Share逻辑详解](06-Index-Share逻辑.md) · [上游 DSA §异构 KV](02-DSA梗概.md#异构-kv-cache)
+
 ---
 
 ## 基础设施线位置
@@ -17,13 +19,13 @@
 | 方向 | 文档 |
 |------|------|
 | **本节点（③ Index Share）** | [基础设施线导读 §1](../01-总览/06-基础设施线导读.md#1-演进链kv--offload) |
-| **前置 ② 异构 cache** | [dsa-sparse-attention.md §异构 KV](02-DSA梗概.md#异构-kv-cache) |
-| **并列 ④ ESS** | [ess-latent-cache-offload.md](../06-推理基础设施/01-ESS概念.md)（Latent offload，可同开） |
-| **下游 ⑤ V4** | [csa-hca-mixed-attention.md](../04-版本代际/05-CSA-HCA混合压缩注意力.md) · [v4.md](../04-版本代际/03-V4.md)（V4 自带 CSA indexer，路线互补） |
+| **前置 ② 异构 cache** | [DSA稀疏注意力§异构 KV](02-DSA梗概.md#异构-kv-cache) |
+| **并列 ④ ESS** | [ESS Latent offload](../06-推理基础设施/01-ESS概念.md)（Latent offload，可同开） |
+| **下游 ⑤ V4** | [CSA / HCA](../04-版本代际/05-CSA-HCA混合压缩注意力.md) · [DeepSeek-V4](../04-版本代际/03-V4.md)（V4 自带 CSA indexer，路线互补） |
 
 ---
 
-## 技术归属（先读）
+## 技术归属
 
 ### 结论摘要
 
@@ -55,7 +57,7 @@
 
 ### DeepSeek 侧：DSA 为何需要这类补丁
 
-- DSA 每层独立 lightning indexer，长上下文 Prefill 时 indexer 可占主导耗时（论文报告 200K 量级下可达 Prefill **~81%**）；
+- DSA 每层独立 lightning indexer，长上下文 Prefill 时 indexer 可占主导耗时；
 - IndexCache **不改 DSA 结构**，只在调度上减少「重复跑 indexer」的次数。
 
 ### 百舸侧：两套不同技术
@@ -74,7 +76,7 @@
 | **index-cache**（IndexCache 论文） | 清华 + 智谱 | F 层产出的 **top-$k$ 下标缓存**（计算复用，非 KV 存储块） |
 | **DeepSeek API 硬盘上下文缓存** | DeepSeek 业务 | 请求级 **前缀 KV** 复用，与 IndexCache **无关** |
 
-> **逻辑详解**：[../dsa/index-share-logic.md](06-Index-Share逻辑.md) §1
+> **逻辑详解**：[Index Share逻辑详解](06-Index-Share逻辑.md) §1
 
 ---
 
@@ -82,7 +84,7 @@
 
 ## 机制
 
-> **逻辑详解**：[../dsa/index-share-logic.md](06-Index-Share逻辑.md) · [DSA 前置](02-DSA梗概.md)
+> **逻辑详解**：[Index Share逻辑详解](06-Index-Share逻辑.md) · [DSA 前置](02-DSA梗概.md)
 
 层划分为两类：
 
@@ -98,7 +100,7 @@
 - **Training-free**：校准集上贪心选保留哪些层的 indexer
 - **Training-aware**：多层蒸馏，让 F 层 indexer 拟合覆盖层的平均 attention 分布
 
-## 效果（200K context）
+## 效果
 
 | 指标 | 加速 |
 |------|------|
@@ -126,14 +128,4 @@
 
 - 论文：[arXiv:2603.12201](https://arxiv.org/abs/2603.12201)
 - 代码：[THUDM/IndexCache](https://github.com/THUDM/IndexCache)
-- 前置版本：[v3-2.md](../04-版本代际/02-V3.2-DSA.md)
-
----
-
-## 章节导航
-
-| ← 上一章 | 下一章 → |
-|----------|----------|
-| [Lightning Indexer 详解](04-Lightning-Indexer详解.md) | [Index Share（IndexCache）逻辑详解](06-Index-Share逻辑.md) |
-
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §4](../01-总览/01-版本演进总览.md#4-index-shareindexcache) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [← 版本目录](../01-总览/02-版本梗概索引.md) · [上游 DSA §异构 KV](02-DSA梗概.md#异构-kv-cache) · [并列 ESS](../06-推理基础设施/01-ESS概念.md) · [逻辑详解](06-Index-Share逻辑.md)
+- 前置版本：[DeepSeek-V3.2](../04-版本代际/02-V3.2-DSA.md)

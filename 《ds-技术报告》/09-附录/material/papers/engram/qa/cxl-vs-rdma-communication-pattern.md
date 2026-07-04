@@ -10,7 +10,7 @@
 
 ---
 
-## 结论（先答）
+## 结论
 
 | | **CXL pattern**（Engram 用） | **RDMA pattern**（KV 池 / Mooncake 类） |
 |--|------------------------------|----------------------------------------|
@@ -22,11 +22,11 @@
 
 **02c 主流程画的是 CXL**；灰色 **RDMA pool** 面板是 **对比参照**（同一需求若走 RDMA 为何不行）。
 
-→ 时间窗 + 56 μs 如何推出这一结论：[cxl-why-cxl-not-rdma.md](cxl-why-cxl-not-rdma.md)
+→ 时间窗 + 56 μs 如何推出这一结论：[为何选 CXL 而非 RDMA？](cxl-why-cxl-not-rdma.md)
 
 ---
 
-## 1. CXL pattern（图里橙色 / 黄框）
+## 1. CXL pattern
 
 ### 是什么
 
@@ -34,7 +34,7 @@
 
 ```
 cxl_ptr = mmap(DAX device)
-row = load(cxl_ptr + offset[i])   // 离散 320B 行
+row = load(cxl_ptr + offset[i]) // 离散 320B 行
 ```
 
 ### 在 02c 上标在哪
@@ -51,20 +51,20 @@ row = load(cxl_ptr + offset[i])   // 离散 320B 行
 
 ---
 
-## 2. RDMA pattern（图里灰色面板）
+## 2. RDMA pattern
 
 ### 是什么
 
-**RDMA 内存池**（如 Mooncake 式 KV offload）：GPU/CPU 通过 **NIC** 对远端内存发 **get/put**：
+**RDMA 内存池**：GPU/CPU 通过 **NIC** 对远端内存发 **get/put**：
 
 ```
-put(remote_buf, local_chunk)   // 消息式
-get(local_buf, remote_handle)  // 需 NIC 参与、常经 bounce buffer
+put(remote_buf, local_chunk) // 消息式
+get(local_buf, remote_handle) // 需 NIC 参与、常经 bounce buffer
 ```
 
 面向 **大块、连续** 传输（整段 KV cache）；对 Engram 这种 **每 token 每层 ~5 KB、16 段离散 320B** 访问：
 
-- 大量 **小包** → 带宽利用率低（论文：64B 级可跌至峰值 **~25%**）
+- 大量 **小包** → 带宽利用率低
 - 软件栈 + NIC 延迟 → **远高于本地 DRAM**，**填不进 56 μs prefetch 窗**
 
 ### 在 02c 上标在哪
@@ -79,7 +79,7 @@ get(local_buf, remote_handle)  // 需 NIC 参与、常经 bounce buffer
 
 ---
 
-## 3. 为何 Engram 要标清两者（论文动机）
+## 3. 为何 Engram 要标清两者
 
 1. **延迟预算**：Layer 2 的 prefetch 窗 ≈ **56 μs** → 需要 **近 DRAM** 的 CXL，RDMA 不够。
 2. **访问形态**：离散小行读 → **load/store** 自然；RDMA **消息** 开销过大。
@@ -91,7 +91,7 @@ get(local_buf, remote_handle)  // 需 NIC 参与、常经 bounce buffer
 
 ## 4. 与三级存储的对应
 
-见 [cxl-l1-l2-l3-memory-tiers.md](cxl-l1-l2-l3-memory-tiers.md)：
+见 [L1 HBM / L2 DRAM / L3 CXL.mem：三级存储区别](cxl-l1-l2-l3-memory-tiers.md)：
 
 - **CXL pattern** 发生在 **L3 → L1**（Step 2）
 - **RDMA pattern** 是另一种「远端内存」产品形态，**不落在** Engram 02c 主路径上
@@ -100,6 +100,6 @@ get(local_buf, remote_handle)  // 需 NIC 参与、常经 bounce buffer
 
 ## 参考
 
-- [engram-series-overview.md §与 RDMA 池对比](../../../../../07-Engram/02-Engram系列导读.md#与-rdma-池的访问逻辑对比)
+- [DeepSeek Engram 系列导读§与 RDMA 池对比](../../../../../07-Engram/02-Engram系列导读.md#与-rdma-池的访问逻辑对比)
 - [engram-02c-cxl-cache-access.svg](../diagrams/engram-02c-cxl-cache-access.svg)
 - CXL 论文 Figure 2a vs 2b · arXiv:2603.10087

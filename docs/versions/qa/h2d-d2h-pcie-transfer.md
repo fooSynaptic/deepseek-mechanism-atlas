@@ -32,7 +32,7 @@ ESS 把 **Latent-Cache** 大头放在 **CPU DRAM**，GPU 只留 **Sparse Memory 
 
 | 问题 | 说明 |
 |------|------|
-| **小块、分散** | 每步多达 $K{=}2048$ 次、每次仅 **656B** → 原生 `cudaMemcpyAsync` H2D 有效带宽极低（论文约 **0.79 GB/s**） |
+| **小块、分散** | 每步多达 $K{=}2048$ 次、每次仅 **656B** → 原生 `cudaMemcpyAsync` H2D 有效带宽极低 |
 | **与算力串行** | SGLang 默认：**Indexer → H2D → Attention** 全串行 → GPU 在等传输时空转 |
 | **优化手段** | **FlashTrans + UVA** 拉高 H2D/D2H 带宽；**DA/DBA Overlap** 让 **Attention 与 H2D 并行**（如 Attn0 $\parallel$ H2D） |
 
@@ -40,14 +40,13 @@ ESS 把 **Latent-Cache** 大头放在 **CPU DRAM**，GPU 只留 **Sparse Memory 
 
 ---
 
-## 4. 和「Overlap」的关系（你截图里的那句）
+## 4. 和「Overlap」的关系
 
 **无 Overlap（默认）**
 
-```text
-Indexer 完成 ──► H2D 完成 ──► Attention 开始
-         （全串行，GPU 常在等 H2D）
-```
+<img src="../figures/h2d-pipeline-serial.svg" alt="Indexer 完成 → H2D 完成 → Attention 开始（全串行）" width="720"/>
+
+[图示详情](../figures/h2d-pipeline-serial.svg)
 
 **DA Overlap**
 
@@ -58,7 +57,7 @@ Indexer 完成 ──► H2D 完成 ──► Attention 开始
 
 ---
 
-## 5. 相关概念（对照）
+## 5. 相关概念
 
 | 概念 | 与 H2D/D2H 关系 |
 |------|----------------|
@@ -70,7 +69,7 @@ Indexer 完成 ──► H2D 完成 ──► Attention 开始
 
 ## 6. 延伸阅读
 
-- [ess-paper-highlights.md](../ess-paper-highlights.md) — Fig.3 时序、Fig.6–7 Overlap、FlashTrans 数据
-- [ess-latent-cache-offload.md](../ess-latent-cache-offload.md) — ESS 概念与双 Cache 分工
+- [ESS 论文梗概](../ess-paper-highlights.md) — Fig.3 时序、Fig.6–7 Overlap、FlashTrans 数据
+- [ESS Latent offload](../ess-latent-cache-offload.md) — ESS 概念与双 Cache 分工
 
 **论文**：[arXiv:2512.10576](https://arxiv.org/abs/2512.10576)

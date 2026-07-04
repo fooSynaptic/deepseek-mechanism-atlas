@@ -1,12 +1,12 @@
 # DeepSeek-V2 梗概
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §3.2](../01-总览/01-版本演进总览.md#32-deepseek-v2) · [← MoE 线导读](../01-总览/07-MoE线导读.md) · [← 版本目录](../01-总览/02-版本梗概索引.md) · [V1→V3 演进](../01-总览/04-V1到V3演进.md) · [MLA 详解](../02-基座架构/02-MLA低秩注意力.md) · [V1 BBPE 词表](00-V1-BBPE词表与Tokenizer.md) · [Raschka 解读](../08-外部解读/01-Raschka要点速读.md#mla-要点31)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 演进总览 §3.2](../01-总览/01-版本演进总览.md#32-deepseek-v2) · [← MoE 线导读](../01-总览/07-MoE线导读.md) · [← 版本目录](../01-总览/02-版本梗概索引.md) · [V1→V3 演进](../01-总览/04-V1到V3演进.md) · [MLA 详解](../02-基座架构/02-MLA低秩注意力.md) · [V1 BBPE 词表](00-V1-BBPE词表与Tokenizer.md) · [Raschka 解读](../08-外部解读/01-Raschka要点速读.md#mla-要点31)
 
 ---
 
 ## 定位
 
-2024 年 5 月发布（arXiv:2405.04434）。相对 **DeepSeek-LLM 67B 稠密**，V2 是架构**代际跃迁**：首次引入 **[MLA](../02-基座架构/02-MLA低秩注意力.md)** 与 **[DeepSeekMoE](../02-基座架构/05-DeepSeekMoE.md)**，236B 总参、每 token 激活 **21B**，**128K** 上下文。论文称相对 67B 稠密：训练成本 **-42.5%**、KV cache **-93.3%**、生成吞吐 **5.76×**。
+2024 年 5 月发布。相对 **DeepSeek-LLM 67B 稠密**，V2 是架构**代际跃迁**：首次引入 **[MLA](../02-基座架构/02-MLA低秩注意力.md)** 与 **[DeepSeekMoE](../02-基座架构/05-DeepSeekMoE.md)**，236B 总参、每 token 激活 **21B**，**128K** 上下文。论文称相对 67B 稠密：训练成本 **-42.5%**、KV cache **-93.3%**、生成吞吐 **5.76×**。
 
 ## 核心架构
 
@@ -28,7 +28,7 @@
 | 注意力 | GQA（8 KV 头） | **MLA latent KV** |
 | 上下文 | 4K | **128K** |
 | 预训练 | 2T | **8.1T** |
-| KV cache | 标准 GQA | **~6.7%** 体积（论文对比 67B） |
+| KV cache | 标准 GQA | **~6.7%** 体积 |
 
 ## 推理 infra 关注点
 
@@ -40,7 +40,7 @@
 |------|------|
 | **MoE 架构** | [DeepSeekMoE 详解](../02-基座架构/05-DeepSeekMoE.md) |
 | **本版本** | V2 为 DeepSeekMoE **首发落地**（见上表配置） |
-| **下游 ③ aux-loss-free** | [aux-loss-free-moe-routing.md](../02-基座架构/03-aux-loss-free-MoE路由.md) · [v3.md](../02-基座架构/01-V3基座.md) |
+| **下游 ③ aux-loss-free** | [aux-loss-free MoE 路由](../02-基座架构/03-aux-loss-free-MoE路由.md) · [DeepSeek-V3](../02-基座架构/01-V3基座.md) |
 
 ---
 
@@ -55,14 +55,4 @@
 
 - 论文：[arXiv:2405.04434](https://arxiv.org/abs/2405.04434)
 - 仓库：[deepseek-ai/DeepSeek-V2](https://github.com/deepseek-ai/DeepSeek-V2)
-- MLA 前向：[mla-latent-attention.md §流程图](../02-基座架构/02-MLA低秩注意力.md#forward-flow) · [公式详解](../02-基座架构/02-MLA低秩注意力.md#forward-flow)
-
----
-
-## 章节导航
-
-| ← 上一章 | 下一章 → |
-|----------|----------|
-| [DeepSeek-LLM V1：BBPE 词表与 Tokenizer](00-V1-BBPE词表与Tokenizer.md) | [DeepSeek-V3.1 梗概](01-V3.1-Terminus.md) |
-
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §3.2](../01-总览/01-版本演进总览.md#32-deepseek-v2) · [← MoE 线导读](../01-总览/07-MoE线导读.md) · [← 版本目录](../01-总览/02-版本梗概索引.md) · [V1→V3 演进](../01-总览/04-V1到V3演进.md) · [MLA 详解](../02-基座架构/02-MLA低秩注意力.md) · [V1 BBPE 词表](00-V1-BBPE词表与Tokenizer.md) · [Raschka 解读](../08-外部解读/01-Raschka要点速读.md#mla-要点31)
+- MLA 前向：[MLA前向计算流程§流程图](../02-基座架构/02-MLA低秩注意力.md#forward-flow) · [公式详解](../02-基座架构/02-MLA低秩注意力.md#forward-flow)

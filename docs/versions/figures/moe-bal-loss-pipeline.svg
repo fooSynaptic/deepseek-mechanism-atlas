@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" width="720" height="220">
+<style><![CDATA[
+  .t { font: 700 15px sans-serif; fill: #1a1a2e; text-anchor: middle; }
+  .st { font: 11px sans-serif; fill: #666; text-anchor: middle; }
+  .lb { font: 600 11px sans-serif; fill: #222; text-anchor: middle; }
+  .dt { font: 10px sans-serif; fill: #555; text-anchor: middle; }
+  .an { font: 9px sans-serif; fill: #2563eb; text-anchor: middle; }
+  .arr { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#mbala); }
+  .arr-b { stroke: #4A90D9; stroke-width: 1.5; fill: none; marker-end: url(#mbalab); }
+  .arr-g { stroke: #27AE60; stroke-width: 1.5; fill: none; marker-end: url(#mbalag); }
+  .arr-o { stroke: #E67E22; stroke-width: 1.5; fill: none; marker-end: url(#mbalao); }
+]]></style>
+<defs>
+  <marker id="mbala" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#666"/></marker>
+  <marker id="mbalab" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4A90D9"/></marker>
+  <marker id="mbalag" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#27AE60"/></marker>
+  <marker id="mbalao" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#E67E22"/></marker>
+</defs>
+<text x="360" y="22" class="t" text-anchor="middle">L_Bal 计算流水线（每层 MoE）</text><rect x="50" y="54" width="620" height="36" rx="6" fill="#f8f9fc" stroke="#cbd5e1" stroke-width="1.5"/><text x="360" y="72" class="lb" text-anchor="middle">前向：s+b 选 top-K -&gt; expert 计算</text><rect x="50" y="94" width="620" height="36" rx="6" fill="#f8f9fc" stroke="#cbd5e1" stroke-width="1.5"/><text x="360" y="112" class="lb" text-anchor="middle">并行积累 count_i（f_i）与 s'_{i,t}（P_i）</text><rect x="50" y="134" width="620" height="36" rx="6" fill="#f8f9fc" stroke="#cbd5e1" stroke-width="1.5"/><text x="360" y="152" class="lb" text-anchor="middle">聚合：f_i = (N_r/K_r T)*count_i</text><rect x="50" y="174" width="620" height="36" rx="6" fill="#f8f9fc" stroke="#cbd5e1" stroke-width="1.5"/><text x="360" y="192" class="lb" text-anchor="middle">L_Bal = alpha * sum_i f_i P_i -&gt; 反传 router</text><line x1="360" y1="108" x2="360" y2="118" class="arr"/><line x1="360" y1="148" x2="360" y2="158" class="arr"/><line x1="360" y1="188" x2="360" y2="198" class="arr"/></svg>

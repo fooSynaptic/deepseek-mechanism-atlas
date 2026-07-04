@@ -1,4 +1,4 @@
-# Index Share（IndexCache）逻辑详解
+# Index Share逻辑详解
 
 > [← 中文导读](../README.md) · [← 仓库首页（EN）](../../README.md) · [← 系列目录](./README.md) · [← 基础设施线导读](../reports/deepseek-infra-line.md) · [DSA 梗概](../versions/dsa-sparse-attention.md) · [DSA 逻辑](./dsa-logic.md) · [Index Share 梗概](../versions/index-share.md) · [演进总览 §3.6](../reports/deepseek-version-lineage-20260625.md#36-deepseek-v32--v32-exp)
 
@@ -17,7 +17,7 @@
 
 典型体现：**infra 归 infra，算法归算法**——算法仍是 [V3.2 的 DSA](./dsa-logic.md)，系统侧利用 **跨层冗余** 减少 indexer 计算。
 
-### 1.1 技术归属（机构分工）
+### 1.1 技术归属
 
 | 机构 | 做什么 | 不做什么 |
 |------|--------|----------|
@@ -29,11 +29,11 @@
 
 **勿混淆**：
 
-- DSA 的 **Indexer-Cache / Latent-Cache** = 异构 **KV 存储**（见 [dsa-logic §4](./dsa-logic.md#4-异构-kv-cacheindexer-cache-与-latent-cache)）；
+- DSA 的 **Indexer-Cache / Latent-Cache** = 异构 **[KV 存储](./dsa-logic.md#4-异构-kv-cacheindexer-cache-与-latent-cache)**；
 - IndexCache 的 **index-cache** = **top-$k$ 下标**的跨层复用缓存；
 - [ESS](../versions/ess-latent-cache-offload.md) 管 **Latent** 搬移，Index Share 管 **indexer 算子**次数，二者正交。
 
-> **梗概（归属表）**：[docs/versions/index-share.md](../versions/index-share.md#技术归属先读)
+> **梗概**：[Index Share 梗概](../versions/index-share.md#技术归属)
 
 ---
 
@@ -45,7 +45,7 @@
 2. Top-$k$ 选择；
 3. 仅对 $k$ 个 latent 做 Core MLA Attention。
 
-长上下文 **Prefill** 时，层数 $\times$ 全长 indexer 累加，indexer 可占显著时间；Decode 阶段每层每步也要跑 indexer。  
+长上下文 **Prefill** 时，层数 $\times$ 全长 indexer 累加，indexer 可占显著时间；Decode 阶段每层每步也要跑 indexer。
 **Index Share 不碰第 3 步主 attention**，只优化第 1–2 步的 **重复劳动**。
 
 ---
@@ -64,7 +64,7 @@ IndexCache 论文与工程实现的出发点：
 
 ---
 
-## 4. 机制：Full (F) 层与 Shared (S) 层
+## 4. 机制：Full 层与 Shared 层
 
 每层标记为两种角色之一：
 
@@ -75,21 +75,21 @@ IndexCache 论文与工程实现的出发点：
 
 ```mermaid
 flowchart TB
-  subgraph L1["Layer 1 - F"]
-    I1[indexer] --> K1[top-k indices]
-  end
-  subgraph L2["Layer 2 - F"]
-    I2[indexer] --> K2[top-k indices]
-  end
-  subgraph L3["Layer 3 - F"]
-    I3[indexer] --> K3[top-k indices]
-  end
-  subgraph L4["Layer 4 - S"]
-    K3 --> Reuse[复用 L3 indices]
-    Reuse --> A4[Core Attention]
-  end
-  K1 --> Share2[可被下层复用]
-  K2 --> Share3[可被下层复用]
+ subgraph L1["Layer 1 - F"]
+ I1[indexer] --> K1[top-k indices]
+ end
+ subgraph L2["Layer 2 - F"]
+ I2[indexer] --> K2[top-k indices]
+ end
+ subgraph L3["Layer 3 - F"]
+ I3[indexer] --> K3[top-k indices]
+ end
+ subgraph L4["Layer 4 - S"]
+ K3 --> Reuse[复用 L3 indices]
+ Reuse --> A4[Core Attention]
+ end
+ K1 --> Share2[可被下层复用]
+ K2 --> Share3[可被下层复用]
 ```
 
 ### 4.1 典型模式 `FFFS`
@@ -97,8 +97,8 @@ flowchart TB
 每 4 层中 **3 个 F + 1 个 S**，周期重复：
 
 ```text
-Layer:  1   2   3   4   5   6   7   8  ...
-Role:   F   F   F   S   F   F   F   S  ...
+Layer: 1 2 3 4 5 6 7 8 ...
+Role: F F F S F F F S ...
 ```
 
 - **去掉 75% 的 indexer 计算**（每 4 层只算 3 次 indexer，而非 4 次）；
@@ -106,7 +106,7 @@ Role:   F   F   F   S   F   F   F   S  ...
 
 <img src="./diagrams/index-share-fffs.svg" alt="Index Share FFFS 跨层复用示意" width="920"/>
 
-[直接打开 SVG](./diagrams/index-share-fffs.svg)
+[图示详情](./diagrams/index-share-fffs.svg)
 
 ### 4.2 实现形态
 
@@ -126,9 +126,9 @@ Role:   F   F   F   S   F   F   F   S  ...
 
 ---
 
-## 6. 效果与适用边界（论文量级）
+## 6. 效果与适用边界
 
-200K context 量级（论文报告）：
+200K context 量级：
 
 | 指标 | 加速 |
 |------|------|
@@ -146,12 +146,12 @@ Role:   F   F   F   S   F   F   F   S  ...
 | 补丁 | 优化对象 | 与 Index Share |
 |------|----------|----------------|
 | **[ESS](../versions/ess-latent-cache-offload.md)** | Latent-Cache CPU offload | **正交**，可同时开 |
-| **V4 HiSparse** | V4 异构 KV + 磁盘 prefix | 不同代际，非 V3.2 补丁；见 [HiSparse](../versions/v4-hisparse.md) · [磁盘 prefix](../versions/v4-disk-prefix-cache.md) |
+| **V4 HiSparse** | V4 异构 KV + 磁盘 prefix | 不同代际，非 V3.2 补丁；[HiSparse](../versions/v4-hisparse.md) · [磁盘 prefix](../versions/v4-disk-prefix-cache.md) |
 | **Engram** | n-gram 条件记忆查表 | **正交**，见 [Engram 导读](../material/papers/engram/engram-series-overview.md) |
 
 ---
 
-## 7. 与 V4 的对比（为何社区称「V3.3」）
+## 7. 与 V4 的对比
 
 | 维度 | Index Share | V4 |
 |------|-------------|-----|
@@ -171,7 +171,7 @@ Role:   F   F   F   S   F   F   F   S  ...
 3. **Index Share** 利用 **层间 index 相似**，让 S 层跳过 indexer，只复用 F 层的 top-$k$ **选择结果**。
 4. 主 attention 仍走 DSA 稀疏 Core MLA；精度由 F 层密度与 F/S 划分保证。
 
-> **返回 DSA**：[dsa-logic.md §4 异构 KV Cache](./dsa-logic.md#4-异构-kv-cacheindexer-cache-与-latent-cache)
+> **返回 DSA**：[DSA逻辑详解§4 异构 KV Cache](./dsa-logic.md#4-异构-kv-cacheindexer-cache-与-latent-cache)
 
 ---
 
@@ -179,6 +179,6 @@ Role:   F   F   F   S   F   F   F   S  ...
 
 - 论文：[arXiv:2603.12201](https://arxiv.org/abs/2603.12201)
 - 代码：[THUDM/IndexCache](https://github.com/THUDM/IndexCache)
-- 前置：[dsa-logic.md](./dsa-logic.md)
-- 梗概：[index-share.md](../versions/index-share.md)
-- 演进全景：[deepseek-version-lineage-20260625.md](../reports/deepseek-version-lineage-20260625.md)
+- 前置：[DSA 逻辑详解](./dsa-logic.md)
+- 梗概：[Index Share 梗概](../versions/index-share.md)
+- 演进全景：[版本演进总览](../reports/deepseek-version-lineage-20260625.md)

@@ -10,7 +10,7 @@ Step 7 标题写「扩感受野」——是从 **1 扩到 4** 吗？$w=4$ 的 ke
 
 ---
 
-## 结论（先答）
+## 结论
 
 | 维度 | Step 6 之后 | Step 7 之后（默认 demo） |
 |------|-------------|--------------------------|
@@ -21,19 +21,19 @@ Step 7 标题写「扩感受野」——是从 **1 扩到 4** 吗？$w=4$ 的 ke
 
 <img src="../diagrams/engram-01h-rf-change-impact.svg" alt="感受野 1 到 10 影响总览" width="920"/>
 
-[直接打开 SVG](../diagrams/engram-01h-rf-change-impact.svg)
+[图示详情](../diagrams/engram-01h-rf-change-impact.svg)
 
 ---
 
 ## 1. 两种「看过多远」不要混
 
-### A. 输入侧 n-gram 跨度（Step 1–4，过滤前）
+### A. 输入侧 n-gram 跨度
 
 每个位置 $t$ 查表时，$e_t$ 已编码 **后缀 2/3-gram**，即最多 **3 个 input token** 的静态搭配。
 
 这是 **查表键的长度**，不是门控记忆在序列维上的混合。
 
-### B. 门控记忆流沿序列的混合（Step 6 → 7）
+### B. 门控记忆流沿序列的混合
 
 Step 5–6 对每个 $t$ **独立**算 $\tilde{v}_t$；在 $\tilde{V}$ 这条流上，位置 $t$ 在 Step 6 结束时 **只依赖** $\tilde{v}_t$，与 $\tilde{v}_{t-1}$ 等无关 → **序列感受野 = 1**。
 
@@ -45,11 +45,11 @@ Step 7 的因果 Conv1D 才在 **$\tilde{v}$ 序列** 上做局部融合。
 
 论文 / overview：**Depthwise 因果 Conv1D**，kernel $w$，dilation = 最大 n-gram 阶数 $N$。
 
-官方 demo（[../../../../engram/engram_demo_v1.py](../../../../../07-Engram/engram_demo_v1.py)）：
+官方 demo（[Engram demo 脚本](../../../../../07-Engram/engram_demo_v1.py)）：
 
 ```python
-kernel_size = engram_cfg.kernel_size      # 默认 4
-dilation    = engram_cfg.max_ngram_size   # 默认 3
+kernel_size = engram_cfg.kernel_size # 默认 4
+dilation = engram_cfg.max_ngram_size # 默认 3
 ```
 
 因果 dilated 一维卷积，位置 $t$ 的输出依赖的 tap 下标（向后看）：
@@ -94,12 +94,12 @@ $$
 
 <img src="../diagrams/engram-01g-rf-one-position.svg" alt="位置 t 感受野 1 到 10" width="860"/>
 
-[直接打开 SVG](../diagrams/engram-01g-rf-one-position.svg)
+[图示详情](../diagrams/engram-01g-rf-one-position.svg)
 ---
 
 ## 3. 为何 dilation = max n-gram 阶数
 
-直觉对齐：n-gram 查表已在 **长度 $N$** 的 input 窗口上编码局部模式；短卷积用 **相同间隔 $N$** 在门控后的记忆流上再混合，使序列方向的采样节奏与 n-gram 阶数一致（论文设计选择，非数学必然）。
+直觉对齐：n-gram 查表已在 **长度 $N$** 的 input 窗口上编码局部模式；短卷积用 **相同间隔 $N$** 在门控后的记忆流上再混合，使序列方向的采样节奏与 n-gram 阶数一致。
 
 ---
 
@@ -113,7 +113,7 @@ $$
 
 <img src="../diagrams/engram-01e-residual-step78.svg" alt="Step 7-8 残差与 backbone 写回" width="860"/>
 
-[直接打开 SVG](../diagrams/engram-01e-residual-step78.svg)
+[图示详情](../diagrams/engram-01e-residual-step78.svg)
 ---
 
 ## 5. 速查表
@@ -126,14 +126,14 @@ $$
 | Step 6 序列 RF | 1 | 每 $t$ 仅 $\tilde{v}_t$ |
 | n-gram input 跨度 | 2–3 | 查表键长，≠ 上式 RF |
 
-→ **训练/推理差异**：[step7-rf10-train-infer-impact.md](step7-rf10-train-infer-impact.md)
+→ **训练/推理差异**：[Step 7 感受野 1→10：训练与推理差异](step7-rf10-train-infer-impact.md)
 
 <img src="../diagrams/engram-01f-rf10-train-infer.svg" alt="RF 1 vs 10 训练与推理" width="920"/>
 
-[直接打开 SVG](../diagrams/engram-01f-rf10-train-infer.svg)
+[图示详情](../diagrams/engram-01f-rf10-train-infer.svg)
 ---
 
 ## 参考
 
-- [engram-series-overview.md §Step 7](../../../../../07-Engram/02-Engram系列导读.md#step-7-短卷积扩感受野)
-- [docs/engram/engram_demo_v1.py](../../../../../07-Engram/engram_demo_v1.py) — `ShortConv`, `EngramConfig.kernel_size`, `max_ngram_size`
+- [DeepSeek Engram 系列导读§Step 7](../../../../../07-Engram/02-Engram系列导读.md#step-7-短卷积扩感受野)
+- [Engram demo 脚本](../../../../../07-Engram/engram_demo_v1.py) — `ShortConv`, `EngramConfig.kernel_size`, `max_ngram_size`

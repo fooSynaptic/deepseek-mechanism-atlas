@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" width="640" height="260">
+<style><![CDATA[
+  .t { font: 700 15px sans-serif; fill: #1a1a2e; text-anchor: middle; }
+  .st { font: 11px sans-serif; fill: #666; text-anchor: middle; }
+  .lb { font: 600 11px sans-serif; fill: #222; text-anchor: middle; }
+  .dt { font: 10px sans-serif; fill: #555; text-anchor: middle; }
+  .an { font: 9px sans-serif; fill: #2563eb; text-anchor: middle; }
+  .arr { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#ekt2a); }
+  .arr-b { stroke: #4A90D9; stroke-width: 1.5; fill: none; marker-end: url(#ekt2ab); }
+  .arr-g { stroke: #27AE60; stroke-width: 1.5; fill: none; marker-end: url(#ekt2ag); }
+  .arr-o { stroke: #E67E22; stroke-width: 1.5; fill: none; marker-end: url(#ekt2ao); }
+]]></style>
+<defs>
+  <marker id="ekt2a" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#666"/></marker>
+  <marker id="ekt2ab" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4A90D9"/></marker>
+  <marker id="ekt2ag" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#27AE60"/></marker>
+  <marker id="ekt2ao" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#E67E22"/></marker>
+</defs>
+<text x="320" y="22" class="t" text-anchor="middle">KV-offload 演进（ESS 视角）</text><rect x="190" y="38" width="260" height="40" rx="6" fill="#f8f9fc" stroke="#94a3b8" stroke-width="1.5"/><text x="320" y="58" class="lb" text-anchor="middle">V3 / V3.1 同质 MLA latent</text><rect x="160" y="98" width="320" height="40" rx="6" fill="#f8f9fc" stroke="#94a3b8" stroke-width="1.5"/><text x="320" y="118" class="lb" text-anchor="middle">V3.2 DSA：Indexer + Latent 双 Cache</text><rect x="60" y="158" width="200" height="40" rx="6" fill="#f8f9fc" stroke="#94a3b8" stroke-width="1.5"/><text x="160" y="178" class="lb" text-anchor="middle">ESS（Latent offload）</text><rect x="370" y="158" width="220" height="40" rx="6" fill="#f8f9fc" stroke="#94a3b8" stroke-width="1.5"/><text x="480" y="178" class="lb" text-anchor="middle">Index Share（indexer 复用）</text><rect x="180" y="208" width="280" height="40" rx="6" fill="#f8f9fc" stroke="#94a3b8" stroke-width="1.5"/><text x="320" y="228" class="lb" text-anchor="middle">V4 异构 KV + HiSparse</text><line x1="320" y1="78" x2="320" y2="98" class="arr"/><polyline points="320,138 320,158 160,158 160,158" class="arr" fill="none"/><polyline points="320,138 320,158 480,158 480,158" class="arr" fill="none"/><polyline points="160,198 160,208 320,208 320,208" class="arr" fill="none"/><polyline points="480,198 480,208 320,208 320,208" class="arr" fill="none"/></svg>

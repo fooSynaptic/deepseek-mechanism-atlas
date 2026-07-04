@@ -1,6 +1,6 @@
 # Hash MoE + FP4
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §3.7](../01-总览/01-版本演进总览.md#37-deepseek-v4) · [← MoE 线导读](../01-总览/07-MoE线导读.md) · [V4 梗概](03-V4.md) · [上游 DeepSeekMoE](../02-基座架构/05-DeepSeekMoE.md) · [上游 aux-loss-free](../02-基座架构/03-aux-loss-free-MoE路由.md) · [$L_{\mathrm{Bal}}$](../02-基座架构/04-序列均衡损失.md) · [centroid vs gate-weight 答疑](../02-基座架构/qa/moe-centroid-vs-gate-weight.md)  
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 演进总览 §3.7](../01-总览/01-版本演进总览.md#37-deepseek-v4) · [← MoE 线导读](../01-总览/07-MoE线导读.md) · [V4 梗概](03-V4.md) · [上游 DeepSeekMoE](../02-基座架构/05-DeepSeekMoE.md) · [上游 aux-loss-free](../02-基座架构/03-aux-loss-free-MoE路由.md) · [$L_{\mathrm{Bal}}$](../02-基座架构/04-序列均衡损失.md) · [centroid vs gate-weight 答疑](../02-基座架构/qa/moe-centroid-vs-gate-weight.md)
 > **论文**：[DeepSeek-V4 arXiv:2606.19348](https://arxiv.org/abs/2606.19348)
 
 ---
@@ -17,8 +17,8 @@
 |------|------|
 | **本节点（⑤ Hash MoE + FP4）** | [§1 Hash 路由](#hash-moe-routing) · [§2 FP4 量化](#fp4-moe-quant) |
 | **MoE 线 hub** | [MoE 线导读 §1](../01-总览/07-MoE线导读.md#1-演进链ffn--路由) |
-| **上游 ②–④** | [deepseek-moe.md](../02-基座架构/05-DeepSeekMoE.md) · [aux-loss-free-moe-routing.md](../02-基座架构/03-aux-loss-free-MoE路由.md) · [moe-sequence-wise-balance-loss.md](../02-基座架构/04-序列均衡损失.md) |
-| **版本总览** | [v4.md](03-V4.md)（两个规格、Attention、训练） |
+| **上游 ②–④** | [DeepSeekMoE](../02-基座架构/05-DeepSeekMoE.md) · [aux-loss-free MoE 路由](../02-基座架构/03-aux-loss-free-MoE路由.md) · [序列均衡损失](../02-基座架构/04-序列均衡损失.md) |
+| **版本总览** | [DeepSeek-V4](03-V4.md)（两个规格、Attention、训练） |
 | **正交** | [CSA/HCA](05-CSA-HCA混合压缩注意力.md) · [mHC](04-mHC流形约束超连接.md) — 不改 expert 选择逻辑本身 |
 
 ---
@@ -29,7 +29,7 @@
 
 ### 1.1 V3 及以前：centroid / affinity 路由
 
-DeepSeekMoE（V2→V3）用 **可学习 expert 向量** $e_i$ 与 token hidden $u$ 做亲和度 $u^\top e_i$，再 sigmoid + top-$K_r$ + 动态 bias $b_i$（[aux-loss-free](../02-基座架构/03-aux-loss-free-MoE路由.md)）。语义上是 **「token 匹配 expert 原型」**（见 [centroid vs gate-weight 答疑](../02-基座架构/qa/moe-centroid-vs-gate-weight.md)）。
+DeepSeekMoE（V2→V3）用 **可学习 expert 向量** $e_i$ 与 token hidden $u$ 做亲和度 $u^\top e_i$，再 sigmoid + top-$K_r$ + 动态 bias $b_i$（[aux-loss-free](../02-基座架构/03-aux-loss-free-MoE路由.md)）。语义上是 **[「token 匹配 expert 原型」](../02-基座架构/qa/moe-centroid-vs-gate-weight.md)**。
 
 ### 1.2 V4 Hash 路由
 
@@ -41,7 +41,7 @@ V4 **前几层** 改为 **Hash-routed MoE**：
 
 浅层 MoE 只把路由从 **gate 亲和**（$u^\top e_i$ + sigmoid + top-$K_r$）换成 **hash 查表**（$\varphi(x_t,t)\bmod N_r$）；expert id 确定后仍走同一套 EP scatter → Routed FFN → Gather+shared。
 
-[直接打开 SVG](figures/v4/hash-moe-routing.svg)
+[图示详情](figures/v4/hash-moe-routing.svg)
 
 | 维度 | **V3 aux-loss-free** | **V4 Hash MoE（前几层）** |
 |------|----------------------|---------------------------|
@@ -50,7 +50,7 @@ V4 **前几层** 改为 **Hash-routed MoE**：
 | 负载均衡 | $b_i$ + $L_{\mathrm{Bal}}$ | hash 设计 + 仍可有 shared / 池化均衡 |
 | 动机 | 语义特化 + 均衡 | **省路由算力与参数**；浅层更偏通用变换 |
 
-> **读法**：Hash MoE **不是**换掉整个 V4 的 MoE 栈，而是 **部分层** 离开 centroid 路由；更深层仍可在 DeepSeekMoE **256 routed / 8 active + shared** 框架内沿用 V3 族路由（论文与权重细节以 [2606.19348](https://arxiv.org/abs/2606.19348) 为准）。
+> **读法**：Hash MoE **不是**换掉整个 V4 的 MoE 栈，而是 **部分层** 离开 centroid 路由；更深层仍可在 DeepSeekMoE **256 routed / 8 active + shared** 框架内沿用 V3 族路由 为准）。
 
 > **答疑**：[为何只改浅层、深层仍用 centroid？](qa/hash-moe-shallow-vs-deep.md) — 浅层通用变换 vs 深层语义特化；静态 hash vs 动态 $b_i$ / EP 均衡
 
@@ -58,7 +58,7 @@ V4 **前几层** 改为 **Hash-routed MoE**：
 
 <a id="still-inherited"></a>
 
-- **DeepSeekMoE 形态**：细粒度 routed pool + **shared experts** 恒激活（[deepseek-moe.md](../02-基座架构/05-DeepSeekMoE.md)）
+- **DeepSeekMoE 形态**：细粒度 routed pool + **shared experts** 恒激活（[DeepSeekMoE](../02-基座架构/05-DeepSeekMoE.md)）
 - **MoE 并行 / EP**：routed gather-scatter 推理路径与 V3 同族（[答疑：EP 与 gather/scatter](qa/moe-expert-parallel-ep.md)）
 - **与 Attention 正交**：Hash 只改 **FFN 专家选择**；[CSA/HCA](05-CSA-HCA混合压缩注意力.md) 改 Attention/KV
 
@@ -87,18 +87,15 @@ FP4 MoE 与 V3 的 [FP8 动态量化](../02-基座架构/06-V3-FP8动态量化.m
 | **V4-Pro**（1.6T / 49B act） | Hash 前几层 + FP4 routed；能力上限 |
 | **V4-Flash**（284B / 13B act） | 同族机制，激活参数更小 |
 
-MoE 改动与 CSA/HCA、mHC、Muon **同期打包**进 V4，**难以单独 ablation** Hash vs FP4 vs Attention（见 [v4.md §定位](03-V4.md#定位)）。
+MoE 改动与 CSA/HCA、mHC、Muon **同期打包**进 V4，**[难以单独 ablation](03-V4.md#定位)** Hash vs FP4 vs Attention。
 
 ---
 
 ## 4. 演进链小结
 
-```
-稠密 FFN (V1)
-  → DeepSeekMoE：细粒度 routed + shared (V2)
-    → aux-loss-free + L_Bal：sigmoid + bias 主均衡 (V3)
-      → Hash MoE（前几层确定性 hash）+ FP4 routed expert (V4)
-```
+<img src="figures/hash-moe-evolution-chain.svg" alt="稠密 FFN → DeepSeekMoE → aux-loss-free → Hash MoE + FP4" width="920"/>
+
+[图示详情](figures/hash-moe-evolution-chain.svg)
 
 | 边 | 关系 |
 |----|------|
@@ -120,10 +117,10 @@ MoE 改动与 CSA/HCA、mHC、Muon **同期打包**进 V4，**难以单独 ablat
 
 | 方向 | 文档 |
 |------|------|
-| MoE 线 hub | [deepseek-moe-line.md](../01-总览/07-MoE线导读.md) |
-| 版本总览 | [v4.md](03-V4.md) |
-| 路由对照 | [qa/moe-centroid-vs-gate-weight.md](../02-基座架构/qa/moe-centroid-vs-gate-weight.md) §4.4 |
-| FP8 前代 | [v3-fp8-dynamic-quantization.md](../02-基座架构/06-V3-FP8动态量化.md) |
+| MoE 线 hub | [MoE 线导读](../01-总览/07-MoE线导读.md) |
+| 版本总览 | [DeepSeek-V4](03-V4.md) |
+| 路由对照 | [MoE 路由：gate-weight 还是 expert centroid？](../02-基座架构/qa/moe-centroid-vs-gate-weight.md) §4.4 |
+| FP8 前代 | [V3 FP8 动态量化](../02-基座架构/06-V3-FP8动态量化.md) |
 
 ---
 
@@ -131,14 +128,3 @@ MoE 改动与 CSA/HCA、mHC、Muon **同期打包**进 V4，**难以单独 ablat
 
 - DeepSeek-V4：[arXiv:2606.19348](https://arxiv.org/abs/2606.19348)
 - HuggingFace：[deepseek-v4 collection](https://huggingface.co/collections/deepseek-ai/deepseek-v4)
-
----
-
-## 章节导航
-
-| ← 上一章 | 下一章 → |
-|----------|----------|
-| [mHC（Manifold-Constrained Hyper-Connections）](04-mHC流形约束超连接.md) | [DeepSeek DSA 与 Index Share 系列](../05-DSA稀疏注意力/01-系列导读.md) |
-
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §3.7](../01-总览/01-版本演进总览.md#37-deepseek-v4) · [← MoE 线导读](../01-总览/07-MoE线导读.md) · [V4 梗概](03-V4.md) · [上游 DeepSeekMoE](../02-基座架构/05-DeepSeekMoE.md) · [上游 aux-loss-free](../02-基座架构/03-aux-loss-free-MoE路由.md) · [$L_{\mathrm{Bal}}$](../02-基座架构/04-序列均衡损失.md) · [centroid vs gate-weight 答疑](../02-基座架构/qa/moe-centroid-vs-gate-weight.md)  
-> **论文**：[DeepSeek-V4 arXiv:2606.19348](https://arxiv.org/abs/2606.19348)

@@ -26,7 +26,7 @@ $$
 | $D$ | 训练 token 数 |
 | **6** | 一次 forward + backward 相对 forward 的 FLOPs 倍数（$\approx 1+2=3$ 再乘 matmul 计数约定） |
 
-**$N$ 的两种常见定义**（V1 论文 Table 3 脚注）：
+**$N$ 的两种常见定义**：
 
 | 符号 | 定义 | 文献 |
 |------|------|------|
@@ -52,7 +52,7 @@ $$
 \begin{aligned}
 6N_1 &= 72 \cdot n_{\mathrm{layer}} \cdot d_{\mathrm{model}}^2 \\
 6N_2 &= 72 \cdot n_{\mathrm{layer}} \cdot d_{\mathrm{model}}^2 + 6 \cdot n_{\mathrm{vocab}} \cdot d_{\mathrm{model}} \\
-M    &= 72 \cdot n_{\mathrm{layer}} \cdot d_{\mathrm{model}}^2 + 12 \cdot n_{\mathrm{layer}} \cdot d_{\mathrm{model}} \cdot l_{\mathrm{seq}}
+M &= 72 \cdot n_{\mathrm{layer}} \cdot d_{\mathrm{model}}^2 + 12 \cdot n_{\mathrm{layer}} \cdot d_{\mathrm{model}} \cdot l_{\mathrm{seq}}
 \end{aligned}
 $$
 
@@ -111,7 +111,7 @@ Figure 4a 的 U 形曲线因此建立在 **$C=M\cdot D$** 之上；演进总览 
 
 ---
 
-## 7. 和数据质量结论的关系（别混为一谈）
+## 7. 和数据质量结论的关系
 
 论文在 **Formula 4 成立（即用 $M$）** 之后还发现：不同语料拟合的 $M_{\mathrm{opt}}\propto C^a$、$D_{\mathrm{opt}}\propto C^b$ 指数 **$a,b$ 不同**——**数据质量越高，$a$ 越大 → 更该扩模型而非堆数据**。
 

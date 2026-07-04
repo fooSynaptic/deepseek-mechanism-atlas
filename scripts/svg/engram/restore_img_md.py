@@ -18,7 +18,7 @@ INLINE_BLOCK = re.compile(
     r'<!-- inline: (?P<name>[^ ]+\.svg) -->\s*\n'
     r'<svg[\s\S]*?</svg>\s*\n+'
     r'</div>\s*\n+'
-    r'\[直接打开 SVG\]\((?P<link>[^)]+)\)',
+    r'\[图示详情\]\((?P<link>[^)]+)\)',
     re.MULTILINE,
 )
 
@@ -28,7 +28,7 @@ INLINE_BLOCK_LEGACY = re.compile(
     r'<!-- inline: (?P<name>[^ ]+\.svg) -->\s*\n'
     r'<svg[\s\S]*?</svg>\s*\n+'
     r'</div>\s*\n+'
-    r'\[直接打开 SVG\]\((?P<link>[^)]+)\)',
+    r'\[图示详情\]\((?P<link>[^)]+)\)',
     re.MULTILINE,
 )
 
@@ -46,7 +46,7 @@ def restore_img(md_path: Path) -> bool:
         w = "920" if "01f" in name or "02" in name else "860"
         return (
             f'<img src="{link}" alt="{alt}" width="{w}"/>\n\n'
-            f"[直接打开 SVG]({link})\n"
+            f"[图示详情]({link})\n"
         )
 
     for pat in (INLINE_BLOCK, INLINE_BLOCK_LEGACY):

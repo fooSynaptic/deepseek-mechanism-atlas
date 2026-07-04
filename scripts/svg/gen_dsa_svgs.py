@@ -1006,8 +1006,11 @@ def gen_lightning_indexer_forward() -> None:
     # --- 箭头 ---
     s += line(lx + pw, py + 70, mx, py + 70, "arr-b")
     s += line(lx + pw, py + 160, mx, py + 160, "arr-b")
-    s += line(mx + pw, py + 120, ox, py + 120, "arr-g")
-    s += math_label_bg(448, py + 108, 72, 22, [t_idx("t,s")])
+    arrow_y = py + 120
+    s += line(mx + pw, arrow_y, ox, arrow_y, "arr-g")
+    gap_cx = (mx + pw + ox) // 2
+    label_w = 48
+    s += math_label_bg(gap_cx - label_w // 2, arrow_y - 11, label_w, 22, [t_idx("t,s")])
 
     # --- 底栏 ---
     by = 508
@@ -1088,11 +1091,151 @@ def gen_lightning_indexer_forward() -> None:
     write("lightning-indexer-forward.svg", s, w, h, "lif", math=True)
 
 
+def gen_lightning_indexer_t_s_direction() -> None:
+    """§3 位置 t/s、Top-k 方向示意（原 ASCII 图）。"""
+    w, h = 920, 340
+    s = ""
+    s += math_txt(
+        460,
+        22,
+        [
+            t_cn("位置 "),
+            t_var("t"),
+            t_cn(" / "),
+            t_var("s"),
+            t_cn(" 与 Top-"),
+            t_var("k", "", italic=False),
+            t_cn(" 方向"),
+        ],
+        cls="fm t",
+    )
+    s += math_txt(
+        460,
+        40,
+        [
+            t_cn("固定当前 "),
+            t_var("q", "t"),
+            t_cn("，对每条历史 "),
+            t_var("k", "s"),
+            t_cn(" 打分 -> Top-"),
+            t_var("k", "", italic=False),
+        ],
+        cls="fm st",
+        size="10px",
+    )
+
+    # 历史 cache 行
+    y_row = 88
+    slots = [(120, "1"), (220, "2"), (320, "3"), (420, "..."), (520, "L")]
+    for cx, lab in slots:
+        s += box(cx - 36, y_row, 72, 52, "#f0f4ff", "#a0b8e8")
+        if lab != "...":
+            s += math_txt(cx, y_row + 38, [t_var("k", lab)], cls="fm dt", size="9px")
+        else:
+            s += txt(cx, y_row + 38, "...", "dt")
+        if lab != "...":
+            s += math_txt(cx, y_row + 20, [t_cn("s="), t_var(lab, "", italic=False)], cls="fm lb")
+        else:
+            s += txt(cx, y_row + 24, "...", "lb")
+
+    s += txt(620, y_row + 18, "Indexer-Cache", "an")
+    s += txt(620, y_row + 34, "历史行", "dt")
+
+    # 当前 t
+    s += box(760, y_row, 100, 52, "#eef4fc", "#4A90D9")
+    s += math_txt(810, y_row + 20, [t_cn("当前 "), t_var("t")], cls="fm lb")
+    s += math_txt(810, y_row + 38, [t_var("q", "t")], cls="fm dt", size="9px")
+
+    # 打分方向箭头 q_t -> 各 k_s
+    s += line(712, y_row + 26, 556, y_row + 26, "arr-b")
+    s += math_txt(680, y_row + 14, [t_var("q", "t"), t_cn(" 打分")], cls="fm an", size="9px")
+
+    # Top-k
+    y_topk = 178
+    s += line(320, y_row + 52, 320, y_topk - 28, "arr")
+    s += line(520, y_row + 52, 520, y_topk - 28, "arr")
+    s += node(460, y_topk, 200, 48, "Top-k Selector", ["取分数最高的 k 个历史下标 s"], "#f0faf0", "#27AE60")
+
+    y_out = 248
+    s += line(460, y_topk + 24, 460, y_out - 28, "arr-g")
+    s += math_txt(
+        460,
+        y_out,
+        [t_cn("index 集 "), t_var("I", "", italic=False), t_cn("（"), t_var("k", "", italic=False), t_cn(" 个 "), t_var("s", "", italic=False), t_cn("）")],
+        cls="fm lb",
+    )
+    s += math_txt(
+        460,
+        y_out + 18,
+        [t_cn("Core MLA 只 attend 这 "), t_var("k", "", italic=False), t_cn(" 个历史位置")],
+        cls="fm dt",
+        size="9px",
+    )
+
+    # 多头 j（与 s 无关）
+    y_head = 300
+    s += box(40, y_head - 20, 840, 36, "#fffbeb", "#f59e0b", rx=4)
+    s += math_txt(
+        460,
+        y_head + 2,
+        [
+            t_cn("多头 indexer："),
+            t_supsub("q", "t,1"),
+            t_cn(", …, "),
+            t_supsub("q", "t,j"),
+            t_cn(", … — "),
+            t_var("j", "", italic=False),
+            t_cn(" 是头编号，"),
+            t_cn("≠ 历史下标 "),
+            t_var("s"),
+        ],
+        cls="fm dt",
+        size="10px",
+    )
+
+    write("lightning-indexer-t-s-direction.svg", s, w, h, "litsd", math=True)
+
+
+def gen_dsa_three_stage() -> None:
+    """每层三阶段竖向数据流（对应 dsa-sparse-attention.md 表下 ASCII 图）。"""
+    w, h = 920, 320
+    cx = 460
+    s = ""
+    s += txt(cx, 22, "DSA 每层三阶段数据流", "t")
+    s += txt(cx, 40, "Query + 全长历史 -> Indexer -> Top-k -> Core MLA", "st")
+
+    y_idx = 78
+    s += node(200, y_idx, 128, 56, "Query h_t", ["当前 token"], "#eef4fc", "#4A90D9")
+    s += node(cx, y_idx, 168, 56, "Lightning Indexer", ["对全长历史打分"], "#fff8ee", "#E67E22")
+    s += node(720, y_idx, 148, 56, "全长 latent 历史", ["Indexer-Cache"], "#f0f4ff", "#a0b8e8")
+    s += line(264, y_idx, 376, y_idx)
+    s += line(544, y_idx, 646, y_idx)
+
+    y_topk = 168
+    s += line(cx, y_idx + 28, cx, y_topk - 26, "arr")
+    s += txt(cx + 72, 148, "top-k (2048)", "an")
+    s += node(cx, y_topk, 168, 52, "Top-k Selector", ["index 集 I"], "#f0faf0", "#27AE60")
+
+    y_core = 228
+    s += line(cx, y_topk + 26, cx, y_core - 28, "arr")
+    s += node(cx, y_core, 180, 56, "Core MLA Attention", ["仅 I 内 latent"], "#eef4fc", "#4A90D9")
+    s += line(cx + 90, y_core, 800, y_core, "arr-g")
+    s += txt(850, y_core + 4, "输出", "lb")
+
+    y_lat = 298
+    s += node(cx, y_lat, 200, 48, "Latent-Cache", ["被选中的 entries"], "#f0f4ff", "#a0b8e8")
+    s += line(cx, y_lat - 24, cx, y_core + 28, "arr-b")
+
+    write("dsa-three-stage.svg", s, w, h, "dts")
+
+
 def main() -> None:
     gen_dsa_pipeline()
+    gen_dsa_three_stage()
     gen_index_share_fffs()
     gen_ess_dual_cache()
     gen_lightning_indexer_forward()
+    gen_lightning_indexer_t_s_direction()
 
 
 if __name__ == "__main__":

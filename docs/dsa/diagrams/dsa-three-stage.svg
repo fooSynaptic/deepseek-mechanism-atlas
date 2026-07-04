@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 320" width="920" height="320">
+<style><![CDATA[
+  .t { font: 700 15px sans-serif; fill: #1a1a2e; text-anchor: middle; }
+  .st { font: 11px sans-serif; fill: #666; text-anchor: middle; }
+  .lb { font: 600 11px sans-serif; fill: #222; text-anchor: middle; }
+  .dt { font: 10px sans-serif; fill: #555; text-anchor: middle; }
+  .an { font: 9px sans-serif; fill: #2563eb; text-anchor: middle; }
+  .bl { font: 10px sans-serif; fill: #555; text-anchor: start; }
+  .arr { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#dtsa); }
+  .arr-b { stroke: #4A90D9; stroke-width: 1.5; fill: none; marker-end: url(#dtsab); }
+  .arr-g { stroke: #27AE60; stroke-width: 1.5; fill: none; marker-end: url(#dtsag); }
+]]></style>
+<defs>
+  <marker id="dtsa" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#666"/></marker>
+  <marker id="dtsab" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4A90D9"/></marker>
+  <marker id="dtsag" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#27AE60"/></marker>
+</defs>
+<text x="460" y="22" class="t">DSA 每层三阶段数据流</text><text x="460" y="40" class="st">Query + 全长历史 -&gt; Indexer -&gt; Top-k -&gt; Core MLA</text><rect x="136" y="50" width="128" height="56" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/><text x="200" y="68" class="lb">Query h_t</text><text x="200" y="86" class="dt">当前 token</text><rect x="376" y="50" width="168" height="56" rx="6" fill="#fff8ee" stroke="#E67E22" stroke-width="1.5"/><text x="460" y="68" class="lb">Lightning Indexer</text><text x="460" y="86" class="dt">对全长历史打分</text><rect x="646" y="50" width="148" height="56" rx="6" fill="#f0f4ff" stroke="#a0b8e8" stroke-width="1.5"/><text x="720" y="68" class="lb">全长 latent 历史</text><text x="720" y="86" class="dt">Indexer-Cache</text><line x1="264" y1="78" x2="376" y2="78" class="arr"/><line x1="544" y1="78" x2="646" y2="78" class="arr"/><line x1="460" y1="106" x2="460" y2="142" class="arr"/><text x="532" y="148" class="an">top-k (2048)</text><rect x="376" y="142" width="168" height="52" rx="6" fill="#f0faf0" stroke="#27AE60" stroke-width="1.5"/><text x="460" y="158" class="lb">Top-k Selector</text><text x="460" y="176" class="dt">index 集 I</text><line x1="460" y1="194" x2="460" y2="200" class="arr"/><rect x="370" y="200" width="180" height="56" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/><text x="460" y="218" class="lb">Core MLA Attention</text><text x="460" y="236" class="dt">仅 I 内 latent</text><line x1="550" y1="228" x2="800" y2="228" class="arr-g"/><text x="850" y="232" class="lb">输出</text><rect x="360" y="274" width="200" height="48" rx="6" fill="#f0f4ff" stroke="#a0b8e8" stroke-width="1.5"/><text x="460" y="288" class="lb">Latent-Cache</text><text x="460" y="306" class="dt">被选中的 entries</text><line x1="460" y1="274" x2="460" y2="256" class="arr-b"/></svg>

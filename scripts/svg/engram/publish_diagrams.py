@@ -40,13 +40,13 @@ INLINE_BLOCK = re.compile(
     r'(?:<!-- inline: [^ ]+\.svg -->\s*\n)?'
     r'<svg[\s\S]*?</svg>\s*\n+'
     r'</div>\s*\n+'
-    r'(?:\[直接打开 SVG\]\((?P<link>[^)]+)\)\s*\n*)?',
+    r'(?:\[图示详情\]\((?P<link>[^)]+)\)\s*\n*)?',
     re.MULTILINE,
 )
 
 IMG_STUB = re.compile(
     r'<img src="(?P<src>[^"]+)" alt="(?P<alt>[^"]*)"\s+width="(?P<width>\d+)"/>\s*\n+'
-    r'\[直接打开 SVG\]\((?P<link>[^)]+)\)',
+    r'\[图示详情\]\((?P<link>[^)]+)\)',
     re.MULTILINE,
 )
 
@@ -93,7 +93,7 @@ def diagram_img_block(svg_rel: str, alt: str, width: int = 920, *, use_png: bool
   src = svg_rel.replace(".svg", ".png") if use_png else svg_rel
   return (
     f'<img src="{src}" alt="{alt}" width="{width}"/>\n\n'
-    f"[直接打开 SVG]({svg_rel})\n"
+    f"[图示详情]({svg_rel})\n"
   )
 
 

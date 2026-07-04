@@ -1,4 +1,4 @@
-# DeepSeek 文档系列结构审查（2026-06-27）
+# DeepSeek 文档系列结构审查
 
 > [← 演进总览](./deepseek-version-lineage-20260625.md) · [← 开发索引](../WIKI-INDEX.md) · [《ds-技术报告》](../../《ds-技术报告》/README.md) · [书中总览](../../《ds-技术报告》/01-总览/01-版本演进总览.md)
 
@@ -10,11 +10,11 @@
 
 | 层级 | 路径 |
 |------|------|
-| **总览 hub** | [deepseek-version-lineage-20260625.md](./deepseek-version-lineage-20260625.md) |
+| **总览 hub** | [版本演进总览](./deepseek-version-lineage-20260625.md) |
 | 三线导读 | [算法线](./deepseek-algorithm-line.md) · [基础设施线](./deepseek-infra-line.md) · [MoE 线](./deepseek-moe-line.md) |
-| 版本梗概 | [docs/versions/](../versions/README.md) |
-| 专题卷 | [docs/dsa/](../dsa/README.md) · [docs/rl/](../rl/README.md) · [docs/engram/](../engram/README.md) |
-| 答疑 | [docs/versions/qa/](../versions/qa/README.md) |
+| 版本梗概 | [版本梗概索引](../versions/README.md) |
+| 专题卷 | [DeepSeek DSA 与 Index Share 系列](../dsa/README.md) · [RL / 后训练笔记](../rl/README.md) · [Engram 系列](../engram/README.md) |
+| 答疑 | [答疑索引](../versions/qa/README.md) |
 | 成书 | [《ds-技术报告》/build_book.py](../../《ds-技术报告》/build_book.py) |
 
 ---
@@ -33,7 +33,7 @@
 
 ---
 
-## 3. 双向引用（blockquote 顶栏）
+## 3. 双向引用
 
 约定：每篇正文**首段 blockquote** 含 `← 演进总览 §x.x` 或 `← 系列目录`，并链到书中对应章。
 
@@ -44,17 +44,17 @@
 | [../rl/README.md](../rl/README.md) | blockquote → 演进总览 §3.4 |
 | [../rl/optimize.md](../rl/optimize.md) | 补标题 + blockquote → RLVR / §3.4 / 书中 GRPO 章 |
 | [../dsa/README.md](../dsa/README.md) | blockquote 增 §3.6 V3.2 |
-| [../dsa/dsa-logic.md](../dsa/dsa-logic.md) · [index-share-logic.md](../dsa/index-share-logic.md) | 顶栏改为 blockquote + §3.6 锚点 |
-| [spec-decode-draft-acceleration-20260604.md](./spec-decode-draft-acceleration-20260604.md) | 顶栏合并为 blockquote |
-| [docs/engram/README.md](../engram/README.md) | hr 下 blockquote → §7 专题关系 |
-| [docs/versions/qa/README.md](../versions/qa/README.md) | blockquote → 梗概索引 / 演进总览 |
+| [../dsa/dsa-logic.md](../dsa/dsa-logic.md) · [Index Share 逻辑详解](../dsa/index-share-logic.md) | 顶栏改为 blockquote + §3.6 锚点 |
+| [投机解码自测加速比](./spec-decode-draft-acceleration-20260604.md) | 顶栏合并为 blockquote |
+| [Engram 系列导读](../engram/README.md) | hr 下 blockquote → §7 专题关系 |
+| [答疑索引](../versions/qa/README.md) | blockquote → 梗概索引 / 演进总览 |
 | [v1-technical-report.zh.md](../versions/v1-technical-report.zh.md) · [deepseek-llm-v1-highlights.md](./deepseek-llm-v1-highlights.md) | stub 页补 §3.1 回链 |
 
-### 3.2 反向引用（总览 → 子文）
+### 3.2 反向引用
 
 演进总览 §3 各版本节已链到对应梗概 / 专文（含 [FP8 动态量化 §3.3](../versions/v3-fp8-dynamic-quantization.md)）。§7 专题表链 Engram / R1 管线等。
 
-**建议**（非阻塞）：§7 可增补 DSA 系列、[ESS 概念](../versions/ess-latent-cache-offload.md)、[Index Share](../versions/index-share.md) 一行，与三线导读 §5 反向表完全对称。
+**建议**：§7 可增补 DSA 系列、[ESS 概念](../versions/ess-latent-cache-offload.md)、[Index Share](../versions/index-share.md) 一行，与三线导读 §5 反向表完全对称。
 
 ---
 
@@ -62,12 +62,12 @@
 
 | 概念 | 唯一主文档 | 摘要嵌入 | 答疑 |
 |------|-----------|----------|------|
-| FP8 训练量化 | [v3-fp8-dynamic-quantization.md](../versions/v3-fp8-dynamic-quantization.md) | [v3.md §附 FP8](../versions/v3.md) 同图同链 | [fp8-partial-sum-drift.md](../versions/qa/fp8-partial-sum-drift.md)；[fp8-mma-term.md](../versions/qa/fp8-mma-term.md) |
+| FP8 训练量化 | [V3 FP8 动态量化](../versions/v3-fp8-dynamic-quantization.md) | [v3.md §附 FP8](../versions/v3.md) 同图同链 | [fp8-partial-sum-drift.md](../versions/qa/fp8-partial-sum-drift.md)；[fp8-mma-term.md](../versions/qa/fp8-mma-term.md) |
 | GRPO vs PPO | [rlvr.md#grpo](../versions/rlvr.md) | 演进总览 §3.4 同图 | — |
 | MTP / 投机 | [v3.md §三](../versions/v3.md) | [spec-decode 报告](./spec-decode-draft-acceleration-20260604.md) 复用 `mtp-speculative.svg` | — |
-| DSA 管线 | [dsa-logic.md](../dsa/dsa-logic.md) | 梗概 / Raschka 链同一 `dsa-pipeline.svg` | — |
-| ESS 双 Cache | [ess-latent-cache-offload.md](../versions/ess-latent-cache-offload.md) | DSA 系列 / Lightning Indexer **同一路径** | [h2d-d2h-pcie-transfer.md](../versions/qa/h2d-d2h-pcie-transfer.md) |
-| V1 译文 | **已并入** [v1.md](../versions/v1.md) | stub 页仅重定向 | — |
+| DSA 管线 | [DSA 逻辑详解](../dsa/dsa-logic.md) | 梗概 / Raschka 链同一 `dsa-pipeline.svg` | — |
+| ESS 双 Cache | [ESS Latent offload](../versions/ess-latent-cache-offload.md) | DSA 系列 / Lightning Indexer **同一路径** | [h2d-d2h-pcie-transfer.md](../versions/qa/h2d-d2h-pcie-transfer.md) |
+| V1 译文 | **已并入** [DeepSeek-LLM V1](../versions/v1.md) | stub 页仅重定向 | — |
 
 **未发现**：同一概念两篇并列「概览」；`deepseek-v1-to-v3-lineage.md` 与演进总览分工明确（前者 V1→V3 纵切，后者全系列）。
 
@@ -77,7 +77,7 @@
 
 生成器：`scripts/svg/gen_*.py`、`dsa/scripts/svg/gen_dsa_svgs.py`；校验：`scripts/svg/check_svgs.py`（含 Markdown `<img>` 嵌入与布局启发式）。
 
-### 5.1 复用表（源仓库路径）
+### 5.1 复用表
 
 | SVG | canonical 源 | 复用位置 |
 |-----|-------------|----------|
@@ -94,7 +94,7 @@
 
 `build_book.py` 中 `ASSET_MULTI_DEST` 将 `ess-dual-cache.svg` 从 **单一源**复制到书中 DSA 卷与 ESS 卷。
 
-### 5.2 校验状态（2026-06-27 更新）
+### 5.2 校验状态
 
 | 项 | 说明 |
 |----|------|
@@ -105,15 +105,15 @@
 
 ```bash
 cd <deepseek-tech-notes 仓库根>
-python3 scripts/svg/gen_deepseek_svgs.py   # 或单独 gen_*.py
+python3 scripts/svg/gen_deepseek_svgs.py # 或单独 gen_*.py
 python3 dsa/scripts/svg/gen_dsa_svgs.py
-python3 scripts/svg/check_svgs.py          # 须 exit 0
+python3 scripts/svg/check_svgs.py # 须 exit 0
 python3 《ds-技术报告》/build_book.py
 ```
 
 ---
 
-## 6. 答疑（qa/）结构
+## 6. 答疑结构
 
 - 6 篇正文均有 **文首回父节** blockquote。
 - [qa/README.md](../versions/qa/README.md) 索引表链到演进总览对应 § 与父文档锚点。

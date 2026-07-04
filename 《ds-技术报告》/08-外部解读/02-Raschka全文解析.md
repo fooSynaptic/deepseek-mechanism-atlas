@@ -1,11 +1,8 @@
 # Raschka 全文解析：From DeepSeek V3 to V3.2
 
-> [← 梗概](01-Raschka要点速读.md) · [← 报告目录](../01-总览/03-技术报告索引.md) · [原文](https://magazine.sebastianraschka.com/p/technical-deepseek)  
-> 本地对照：[V3.1](../04-版本代际/01-V3.1-Terminus.md) · [V3.2](../04-版本代际/02-V3.2-DSA.md) · [DSA 梗概](../05-DSA稀疏注意力/02-DSA梗概.md) · [DSA 逻辑](../05-DSA稀疏注意力/03-DSA逻辑详解.md) · [RLVR](../03-后训练与R1/01-RLVR.md)  
-> **Title**: *From DeepSeek V3 to V3.2: Architecture, Sparse Attention, and RL Updates*  
-> Sebastian Raschka · Ahead of AI · 2025-12-03（Last updated 2026-01-01）
-
-本文为第三方解读的结构化整理；图示见原文（Figure 1–21）。公式与表格按章节嵌入。
+> [← 梗概](01-Raschka要点速读.md) · [← 报告目录](../01-总览/03-技术报告索引.md)
+> **第三方原文**：[From DeepSeek V3 to V3.2: Architecture, Sparse Attention, and RL Updates](https://magazine.sebastianraschka.com/p/technical-deepseek)（Sebastian Raschka · Ahead of AI · 2025-12-03）
+> 本地对照：[V3.1](../04-版本代际/01-V3.1-Terminus.md) · [V3.2](../04-版本代际/02-V3.2-DSA.md) · [DSA 梗概](../05-DSA稀疏注意力/02-DSA梗概.md) · [DSA 逻辑](../05-DSA稀疏注意力/03-DSA逻辑详解.md) · [RLVR](../03-后训练与R1/01-RLVR.md)
 
 ---
 
@@ -66,7 +63,7 @@
 |------|------|------|
 | **DeepSeekMoE** | 条件计算扩容 | 文章略去 MoE 入门 |
 | **MLA** | KV **latent 压缩** | V2 引入；V3/R1 沿用；利于 KV cache |
-| **MTP** | 推测解码相关 | 本地 [v3.md](../02-基座架构/01-V3基座.md) |
+| **MTP** | 推测解码相关 | 本地 [DeepSeek-V3](../02-基座架构/01-V3基座.md) |
 
 > 原文 Figure 6：MLA 降维 → cache → up-project 示意图。
 
@@ -74,7 +71,7 @@
 
 **要点**：R1 **架构同 V3**；差异在 **RLVR**（Reinforcement Learning with Verifiable Rewards）：从可符号/程序验证的任务（数学、代码等）学习。**GRPO** = 无 critic 的 PPO 简化版；RLVR+GRPO **再省掉 reward model**，直接用计算器/编译器等 **可验证奖励**。
 
-### 表 3-2：LLM 强化学习管线对比（对应原文 Figure 8）
+### 表 3-2：LLM 强化学习管线对比
 
 | | RLHF + **PPO** | **GRPO** | **RLVR + GRPO** |
 |--|----------------|----------|-----------------|
@@ -98,7 +95,7 @@
 | 能力 | **Instruct + reasoning** 合一 |
 | 切换 | Chat **prompt 模板**（类初版 Qwen3） |
 | 权重链 | V3.1 ← V3.1-Base ← **V3**（**架构相同**） |
-| Terminus | V3.1 收尾版；128K；**V3.2 续训基座** → 见 [v3-1.md §MLA 模式切换](../04-版本代际/01-V3.1-Terminus.md#mla-模式切换terminus-起) |
+| Terminus | V3.1 收尾版；128K；**V3.2 续训基座** → 见 [DeepSeek-V3.1 梗概§MLA 模式切换](../04-版本代际/01-V3.1-Terminus.md#mla-模式切换terminus-起) |
 
 ---
 
@@ -115,7 +112,7 @@
 | 稀疏模式 | 带状局部 | 可 **非局部**、数据驱动 |
 | 典型 $k$ | 窗口宽 $w$ | **$k=2048$**（官方代码） |
 
-### 表 4-2：Lightning indexer 打分公式符号（原文 Eq.）
+### 表 4-2：Lightning indexer 打分公式符号
 
 公式：
 
@@ -139,8 +136,8 @@ $$
 - ReLU 本身难让分数为 0；**真正稀疏来自 top-$k$ selector**。
 - 复杂度：$O(L^2) \to O(Lk)$。
 
-> 原文 Figure 9–11：滑动窗 vs DSA 注意力图、DSA 流程图。  
-> **本地延伸**：[lightning-indexer.md](../05-DSA稀疏注意力/04-Lightning-Indexer详解.md) · [dsa-logic.md](../05-DSA稀疏注意力/03-DSA逻辑详解.md)
+> 原文 Figure 9–11：滑动窗 vs DSA 注意力图、DSA 流程图。
+> **本地延伸**：[Lightning Indexer 详解](../05-DSA稀疏注意力/04-Lightning-Indexer详解.md) · [DSA 逻辑详解](../05-DSA稀疏注意力/03-DSA逻辑详解.md)
 
 <img src="../05-DSA稀疏注意力/figures/dsa-pipeline.svg" alt="DSA 两阶段：Lightning Indexer → Top-k → Core MLA；Indexer-Cache 与 Latent-Cache" width="920"/>
 
@@ -150,7 +147,7 @@ $$
 
 **时间**：2025-11-27（美国感恩节），V3.2 发布前 4 天。基座：**V3.2-Exp-Base**。角色：V3.2 的 **数学能力 PoC**。
 
-### 表 5-1：常规 RLVR 的局限（DeepSeek 原文引述）
+### 表 5-1：常规 RLVR 的局限
 
 | 局限 | 含义 |
 |------|------|
@@ -161,7 +158,7 @@ $$
 
 **结构**：训练 **证明生成器 LLM1** + **证明验证器 LLM2**；可选 **meta-verifier LLM3** 监督 LLM2。
 
-### 表 5-2：证明验证 rubric（LLM2 输出分数）
+### 表 5-2：证明验证 rubric
 
 | 分数 | 标准 |
 |------|------|
@@ -191,7 +188,7 @@ $$
 
 ---
 
-## 6. DeepSeek V3.2（2025-12-01）
+## 6. DeepSeek V3.2
 
 **要点**：对标 GPT-5 / Gemini 3 Pro 级开源旗舰；**架构与 V3.2-Exp 完全相同**（MoE + MLA + **DSA**）；差异在 **训练与后训练**。数学采用 Math V2 管线；强调 **工具 / agent**；训练芯片叙述为 **回归 NVIDIA**。
 
@@ -222,7 +219,7 @@ $$
 
 文章先列 **Olmo 3** 采用的激进 GRPO 改动（DAPO / Dr. GRPO 系），再对比 **V3.2 更保守** 的补丁。
 
-### 表 6-2：Olmo 3 的 GRPO 改动（参照系，非 DeepSeek 官方）
+### 表 6-2：Olmo 3 的 GRPO 改动
 
 | 改动 | 来源 |
 |------|------|
@@ -234,7 +231,7 @@ $$
 | Truncated importance sampling | Yao et al. |
 | No std normalization in advantage | Dr. GRPO |
 
-### 表 6-3：DeepSeek V3.2 的 GRPO 改动（Raschka 归纳）
+### 表 6-3：DeepSeek V3.2 的 GRPO 改动
 
 | 改动 | 说明 |
 |------|------|
@@ -259,7 +256,7 @@ $$
 
 ---
 
-## 7. Conclusion（原文要点表）
+## 7. Conclusion
 
 | # | Takeaway |
 |---|----------|
@@ -271,24 +268,24 @@ $$
 
 ---
 
-## 8. Appendix: mHC（Manifold-Constrained Hyper-Connections）
+## 8. Appendix: mHC
 
 **时间**：2025-12-31 论文。焦点从 attention/FFN 转向 **残差路径**。
 
 <a id="表-8-1-transformer-模块演进"></a>
 
-### 表 8-1：Transformer 模块演进（文章列举）
+### 表 8-1：Transformer 模块演进
 
-| 模块 | 演进链（节选） |
-|------|----------------|
+| 模块 | 演进链 |
+|------|--------|
 | Normalization | LayerNorm → RMSNorm → Dynamic TanH |
-| Attention | GQA → sliding window → **MLA** → **sparse (DSA)** |
+| Attention | GQA → [sliding window（SWA）](../04-版本代际/qa/v4-swa-sliding-window.md#行业链) → **MLA** → **sparse (DSA)** |
 | FFN | GeLU → SiLU → SwiGLU → **MoE** |
-| **残差** | 恒等残差 → **Hyper-Connections (HC)** → **mHC**（流形约束、保范数） |
+| **残差** | 恒等残差（ResNet）→ **Hyper-Connections (HC)** → **mHC**（流形约束、保范数） |
 
 **mHC**：在 HC（多路并行残差流 + 可学习混合）上，将混合矩阵约束在 **结构化保范数流形**，提升 **训练稳定性**；有少量开销。
 
-> 与 **V3.2 部署权重无直接对应**；在 **V4** 与独立论文 [mHC arXiv:2512.24880](https://arxiv.org/abs/2512.24880) 中落地（本地 [mHC 详解](../04-版本代际/04-mHC流形约束超连接.md) · [v4.md](../04-版本代际/03-V4.md)）。
+> 与 **V3.2 部署权重无直接对应**；在 **V4** 与独立论文 [mHC arXiv:2512.24880](https://arxiv.org/abs/2512.24880) 中落地（本地 [mHC 详解](../04-版本代际/04-mHC流形约束超连接.md) · [DeepSeek-V4](../04-版本代际/03-V4.md)）。
 
 ---
 
@@ -297,23 +294,10 @@ $$
 | 资源 | 链接 |
 |------|------|
 | 原文 | https://magazine.sebastianraschka.com/p/technical-deepseek |
-| 梗概 | [raschka-technical-deepseek-v3-v32-highlights.md](01-Raschka要点速读.md) |
-| V3.1 | [../versions/v3-1.md](../04-版本代际/01-V3.1-Terminus.md) |
-| V3.2 | [../versions/v3-2.md](../04-版本代际/02-V3.2-DSA.md) |
-| DSA 梗概 | [../versions/dsa-sparse-attention.md](../05-DSA稀疏注意力/02-DSA梗概.md) |
-| DSA 逻辑 | [../dsa/dsa-logic.md](../05-DSA稀疏注意力/03-DSA逻辑详解.md) |
-| RLVR | [../versions/rlvr.md](../03-后训练与R1/01-RLVR.md) |
-| 演进总览 | [deepseek-version-lineage-20260625.md](../01-总览/01-版本演进总览.md) |
-
----
-
-## 章节导航
-
-| ← 上一章 | 下一章 → |
-|----------|----------|
-| [Raschka 解读梗概：DeepSeek V3 → V3.2](01-Raschka要点速读.md) | [如何评价 DeepSeek 发布 DSpark？哪些亮点值得关注？](03-酱紫君DSpark阅读笔记.md) |
-
-> [← 梗概](01-Raschka要点速读.md) · [← 报告目录](../01-总览/03-技术报告索引.md) · [原文](https://magazine.sebastianraschka.com/p/technical-deepseek)  
-> 本地对照：[V3.1](../04-版本代际/01-V3.1-Terminus.md) · [V3.2](../04-版本代际/02-V3.2-DSA.md) · [DSA 梗概](../05-DSA稀疏注意力/02-DSA梗概.md) · [DSA 逻辑](../05-DSA稀疏注意力/03-DSA逻辑详解.md) · [RLVR](../03-后训练与R1/01-RLVR.md)  
-> **Title**: *From DeepSeek V3 to V3.2: Architecture, Sparse Attention, and RL Updates*  
-> Sebastian Raschka · Ahead of AI · 2025-12-03（Last updated 2026-01-01）
+| 梗概 | [Raschka 要点速读](01-Raschka要点速读.md) |
+| V3.1 | [DeepSeek-V3.1 梗概](../04-版本代际/01-V3.1-Terminus.md) |
+| V3.2 | [DeepSeek-V3.2 梗概](../04-版本代际/02-V3.2-DSA.md) |
+| DSA 梗概 | [DSA稀疏注意力](../05-DSA稀疏注意力/02-DSA梗概.md) |
+| DSA 逻辑 | [DSA逻辑详解](../05-DSA稀疏注意力/03-DSA逻辑详解.md) |
+| RLVR | [RLVR](../03-后训练与R1/01-RLVR.md) |
+| 演进总览 | [版本演进总览](../01-总览/01-版本演进总览.md) |

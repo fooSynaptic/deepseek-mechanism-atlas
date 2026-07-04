@@ -16,4 +16,9 @@ mdbook build
 echo "==> fix_mdbook_paths.py"
 python3 scripts/fix_mdbook_paths.py
 
+echo ""
+echo "Pages 构建完成。本地 smoke test（带 /deepseek-tech-notes/ 前缀）:"
+echo "  python3 scripts/mdbook_pages_preview.py"
+echo "日常本地阅读请用: bash scripts/serve_local.sh"
+echo ""
 echo "OK mdbook-out/ ready"

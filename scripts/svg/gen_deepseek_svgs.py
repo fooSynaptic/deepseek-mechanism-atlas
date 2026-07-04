@@ -289,6 +289,9 @@ def main() -> None:
   gen_version_quick()
   gen_version_lineage()
   gen_bbpe_process_example()
+  from gen_opt_direction_ternary_svg import gen_opt_direction_ternary  # noqa: E402
+
+  gen_opt_direction_ternary()
   from gen_v3_moe_vs_v2_svg import gen_v3_moe_vs_v2  # noqa: E402
   from gen_grpo_vs_ppo_svg import gen_grpo_vs_ppo  # noqa: E402
   from gen_mtp_speculative_svg import gen_mtp_speculative  # noqa: E402

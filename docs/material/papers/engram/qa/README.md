@@ -6,12 +6,12 @@
 
 | 主题 | 来源章节 | 答疑 |
 |------|----------|------|
-| Step 6 门控依据 / 记忆依赖过滤 | [§Step 6](../engram-series-overview.md#step-6-上下文门控) | [step6-context-gating-rationale.md](./step6-context-gating-rationale.md) |
-| HBM / DRAM / CXL.mem（L1–L3） | [§CXL 三级存储](../engram-series-overview.md#体系结构三级存储分层) | [cxl-l1-l2-l3-memory-tiers.md](./cxl-l1-l2-l3-memory-tiers.md) |
-| prefetch window / CPU vs GPU | [§缓存访问逻辑](../engram-series-overview.md#缓存访问逻辑一次-decode-的完整路径) | [cxl-prefetch-window-cpu-gpu.md](./cxl-prefetch-window-cpu-gpu.md) |
-| CXL vs RDMA 通信 pattern | [§RDMA 对比](../engram-series-overview.md#与-rdma-池的访问逻辑对比) · [02c 图](../diagrams/engram-02c-cxl-cache-access.svg) | [cxl-vs-rdma-communication-pattern.md](./cxl-vs-rdma-communication-pattern.md) |
-| ③ Engram-Nine 热/冷 flip | [§③ 核心发现](../engram-series-overview.md#核心发现反直觉) · [论文截图](../assets/figures/nine-2601.16531/) | [engram-series-overview.md §③](../engram-series-overview.md#-无冲突热层实验-engram-ninearxiv260116531) |
-| 为何选 CXL 而非 RDMA | [§Step 1 时间窗](../engram-series-overview.md#step-1-异步-prefetch-触发) | [cxl-why-cxl-not-rdma.md](./cxl-why-cxl-not-rdma.md) |
-| Step 7 感受野扩充常数 | [§Step 7](../engram-series-overview.md#step-7-短卷积扩感受野) | [step7-short-conv-receptive-field.md](./step7-short-conv-receptive-field.md) |
-| RF 1→10 对训练/推理的影响 | [§Step 7](../engram-series-overview.md#step-7-短卷积扩感受野) | [step7-rf10-train-infer-impact.md](./step7-rf10-train-infer-impact.md) |
+| Step 6 门控依据 / 记忆依赖过滤 | [§Step 6](../engram-series-overview.md#step-6-上下文门控) | [Step 6 上下文门控：依据与「记忆依赖过滤」](./step6-context-gating-rationale.md) |
+| HBM / DRAM / CXL.mem（L1–L3） | [§CXL 三级存储](../engram-series-overview.md#体系结构三级存储分层) | [L1 HBM / L2 DRAM / L3 CXL.mem：三级存储区别](./cxl-l1-l2-l3-memory-tiers.md) |
+| prefetch window / CPU vs GPU | [§缓存访问逻辑](../engram-series-overview.md#缓存访问逻辑一次-decode-的完整路径) | [Prefetch window：不是「CPU 比 GPU 强」，而是 CPU 先点火、GPU 腾出时间窗](./cxl-prefetch-window-cpu-gpu.md) |
+| CXL vs RDMA 通信 pattern | [§RDMA 对比](../engram-series-overview.md#与-rdma-池的访问逻辑对比) · [02c 图](../diagrams/engram-02c-cxl-cache-access.svg) | [CXL vs RDMA：Engram 的两种「远程内存」通信 pattern](./cxl-vs-rdma-communication-pattern.md) |
+| ③ Engram-Nine 热/冷 flip | [§③ 核心发现](../engram-series-overview.md#核心发现反直觉) · [论文截图](../assets/figures/nine-2601.16531/) | [DeepSeek Engram 系列导读§③](../engram-series-overview.md#-无冲突热层实验-engram-ninearxiv260116531) |
+| 为何选 CXL 而非 RDMA | [§Step 1 时间窗](../engram-series-overview.md#step-1-异步-prefetch-触发) | [为何选 CXL 而非 RDMA？](./cxl-why-cxl-not-rdma.md) |
+| Step 7 感受野扩充常数 | [§Step 7](../engram-series-overview.md#step-7-短卷积扩感受野) | [Step 7 短卷积：感受野扩充常数](./step7-short-conv-receptive-field.md) |
+| RF 1→10 对训练/推理的影响 | [§Step 7](../engram-series-overview.md#step-7-短卷积扩感受野) | [Step 7 感受野 1→10：训练与推理差异](./step7-rf10-train-infer-impact.md) |
 | 记忆过滤在哪一步？ | [§Step 1–8 总表](../engram-series-overview.md#阶段-a确定性检索o1-查表) | [01c 前向图](../diagrams/engram-01c-forward-dataflow.svg) + [Step 6 门控说明](./step6-context-gating-rationale.md) |
