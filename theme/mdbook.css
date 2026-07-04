@@ -1,0 +1,16 @@
+/* Align blockquote + math with IDE-style reading (GitHub blob preview differs by design). */
+.content main blockquote {
+  border-left: 4px solid var(--quote-border);
+  background: var(--quote-bg);
+  padding: 0.6em 1em;
+  margin: 1em 0;
+}
+
+.content main blockquote p {
+  margin: 0.35em 0;
+}
+
+/* Inline math spacing */
+.mjx-chtml {
+  font-size: 109% !important;
+}
