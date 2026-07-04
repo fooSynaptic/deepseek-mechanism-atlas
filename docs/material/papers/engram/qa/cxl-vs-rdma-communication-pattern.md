@@ -1,6 +1,6 @@
 # CXL vs RDMA：Engram 的两种「远程内存」通信 pattern
 
-[← 返回 §RDMA 对比](../engram-series-overview.md#与-rdma-池的访问逻辑对比) · [02c 时序图（已标注）](../diagrams/engram-02c-cxl-cache-access.svg) · [为何选 CXL 非 RDMA](./cxl-why-cxl-not-rdma.md) · [prefetch window](./cxl-prefetch-window-cpu-gpu.md) · [答疑目录](./README.md)
+[← 返回 §RDMA 对比](../engram-series-overview.md#与-rdma-池的访问逻辑对比) · [02c 时序图（已标注）](../diagrams/engram-02c-cxl-cache-access.svg) · [L1–L3 存储](./cxl-l1-l2-l3-memory-tiers.md) · [为何选 CXL 非 RDMA](./cxl-why-cxl-not-rdma.md) · [prefetch window](./cxl-prefetch-window-cpu-gpu.md) · [答疑目录](./README.md)
 
 ---
 

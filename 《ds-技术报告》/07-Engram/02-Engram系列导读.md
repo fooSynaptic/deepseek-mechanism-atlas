@@ -1,6 +1,6 @@
 # DeepSeek Engram 系列导读
 
-> **系列上下文**：[版本演进总览 §7 Engram](../../../../../docs/reports/deepseek-version-lineage-20260625.md#7-与本仓库其他专题的关系) · [《ds-技术报告》](../01-总览/01-版本演进总览.md#7-与本仓库其他专题的关系)  
+> [← 中文导读](../00-前言/02-中文导读.md) · [← Engram 官方 README](01-Engram官方README.md) · [← 演进总览 §7 Engram](../01-总览/01-版本演进总览.md#7-与本仓库其他专题的关系) · [《ds-技术报告》](../01-总览/01-版本演进总览.md#7-与本仓库其他专题的关系)  
 > 更新：2026-06-24  
 > PDF 目录：[src/](../09-附录/material/papers/engram/src)
 
@@ -555,6 +555,6 @@ Nine（无碰撞）在 iter **2000–2750** flip；Hash（有碰撞）多在 ite
 |----------|----------|
 | [01-Engram官方README](01-Engram官方README.md) | [Raschka 解读梗概：DeepSeek V3 → V3.2](../08-外部解读/01-Raschka要点速读.md) |
 
-> **系列上下文**：[版本演进总览 §7 Engram](../../../../../docs/reports/deepseek-version-lineage-20260625.md#7-与本仓库其他专题的关系) · [《ds-技术报告》](../01-总览/01-版本演进总览.md#7-与本仓库其他专题的关系)  
+> [← 中文导读](../00-前言/02-中文导读.md) · [← Engram 官方 README](01-Engram官方README.md) · [← 演进总览 §7 Engram](../01-总览/01-版本演进总览.md#7-与本仓库其他专题的关系) · [《ds-技术报告》](../01-总览/01-版本演进总览.md#7-与本仓库其他专题的关系)  
 > 更新：2026-06-24  
 > PDF 目录：[src/](../09-附录/material/papers/engram/src)
