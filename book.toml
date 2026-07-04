@@ -1,0 +1,29 @@
+[book]
+title = "DeepSeek 技术报告"
+authors = ["fooSynaptic"]
+description = "丝滑阅读 × 深度拆解 × 前沿跟进 — DeepSeek V1→V4 非官方技术笔记"
+language = "zh-Hans"
+src = "《ds-技术报告》"
+
+[build]
+build-dir = "mdbook-out"
+create-missing = false
+
+[output.html]
+mathjax-support = true
+default-theme = "light"
+preferred-dark-theme = "navy"
+git-repository-url = "https://github.com/fooSynaptic/deepseek-tech-notes"
+site-url = "/deepseek-tech-notes/"
+additional-css = ["theme/mdbook.css"]
+
+[output.html.search]
+enable = true
+limit-results = 30
+
+[output.html.fold]
+enable = true
+level = 1
+
+[output.html.playground]
+editable = false

@@ -8,6 +8,8 @@
 
 仓库 GitHub 首页为英文；**正文、成书读本与深度答疑以简体中文为主**，面向**中文技术社区**。
 
+**在线成书（公式 / 引用块推荐）：** [GitHub Pages mdBook](https://fooSynaptic.github.io/deepseek-tech-notes/) — 与本地 IDE Preview 同一套 Markdown + MathJax；GitHub 仓库内 `.md` 预览并非标准渲染器。
+
 > **项目仍在完善中**：梗概补全、书中镜像、链接与图示校验仍在推进。阅读时请以各篇文首的 arXiv / 官方 PDF 为准；发现断链、口径不一致或表述错误，**欢迎提 issue**。
 
 ---
@@ -84,6 +86,19 @@
 
 ---
 
+## 项目结构（方案 A：mdBook + GitHub Pages）
+
+| 路径 | 作用 |
+|------|------|
+| [`docs/`](.) | **源稿** — 在此编辑 |
+| [`../《ds-技术报告》/`](../《ds-技术报告》/) | **成书镜像** — `build_book.py` 生成，勿手改 |
+| [`../book.toml`](../book.toml) + [`../theme/`](../theme/) | mdBook 配置与样式 |
+| [`../scripts/build_pages.sh`](../scripts/build_pages.sh) | 本地 / CI 构建 Pages 站点 |
+
+在线阅读请用 **[Pages mdBook](https://fooSynaptic.github.io/deepseek-tech-notes/)**，不要用 GitHub blob 预览对照公式。
+
+---
+
 ## 如何新增内容 & 维护成书
 
 **正文源稿在 `docs/`。** [《ds-技术报告》/](../《ds-技术报告》/) 是 **build 生成的书籍镜像**，不要手改其中的 Markdown（会被 `build_book.py` 覆盖）。
@@ -107,7 +122,14 @@ python3 scripts/validate_backlinks.py
 
 或一键：`bash scripts/doc_series_gate.sh`。
 
-只在 `docs/` 阅读/wiki 模式可不跑 build；要让章节进入 [《ds-技术报告》](../《ds-技术报告》/01-总览/01-版本演进总览.md) 并重写链路与章节导航时，必须执行 `build_book.py`。
+本地预览 mdBook 站点（需安装 [mdBook](https://rust-lang.github.io/mdBook/)）：
+
+```bash
+bash scripts/build_pages.sh
+# 打开 mdbook-out/index.html
+```
+
+只在 `docs/` 阅读/wiki 模式可不跑 build；要让章节进入 [《ds-技术报告》](../《ds-技术报告》/01-总览/01-版本演进总览.md) 并重写链路与章节导航时，必须执行 `build_book.py`。推送到 `main` 会自动重建 GitHub Pages。
 
 ---
 
