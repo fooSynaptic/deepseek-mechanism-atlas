@@ -10,7 +10,7 @@
   margin: 0.35em 0;
 }
 
-/* Inline math spacing */
-.mjx-chtml {
-  font-size: 109% !important;
+/* Inline math spacing (KaTeX) */
+.katex {
+  font-size: 1.09em;
 }
