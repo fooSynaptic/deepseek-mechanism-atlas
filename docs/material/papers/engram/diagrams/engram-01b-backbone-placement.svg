@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 360" width="520" height="360" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="bp_a" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .t{font-size:14px;font-weight:700;fill:#0f172a}
+      .l{font-size:11px;fill:#334155;text-anchor:middle}
+      .l0{font-size:9px;fill:#64748b;text-anchor:middle}
+      .std{fill:#f1f5f9;stroke:#94a3b8;stroke-width:1.5;rx:8}
+      .eng{fill:#ede9fe;stroke:#7c3aed;stroke-width:1.5;rx:8}
+      .arr{stroke:#475569;stroke-width:1.5;fill:none;marker-end:url(#bp_a)}
+    </style>
+  </defs>
+  <text x="260" y="28" class="t">Engram Placement in Backbone (Fig.1 left)</text>
+  <rect x="160" y="48" width="200" height="32" class="std"/>
+  <text x="260" y="68" class="l">Input IDs</text>
+  <line x1="260" y1="80" x2="260" y2="96" class="arr"/>
+  <rect x="160" y="96" width="200" height="32" class="std"/>
+  <text x="260" y="116" class="l">Vocab Embedding</text>
+  <line x1="260" y1="128" x2="260" y2="144" class="arr"/>
+  <rect x="140" y="144" width="240" height="32" class="std"/>
+  <text x="260" y="164" class="l">Transformer Block (standard)</text>
+  <line x1="260" y1="176" x2="260" y2="192" class="arr"/>
+  <rect x="80" y="192" width="360" height="88" class="eng"/>
+  <text x="260" y="212" class="l" font-weight="600">Engram-enabled block (selected layers only)</text>
+  <rect x="100" y="222" width="70" height="28" fill="#ede9fe" stroke="#7c3aed" rx="4"/>
+  <text x="135" y="240" class="l0">Engram</text>
+  <text x="185" y="240" class="l0">+</text>
+  <rect x="195" y="222" width="70" height="28" fill="#dbeafe" stroke="#2563eb" rx="4"/>
+  <text x="230" y="240" class="l0">Attention</text>
+  <text x="280" y="240" class="l0">+</text>
+  <rect x="290" y="222" width="50" height="28" fill="#dbeafe" stroke="#2563eb" rx="4"/>
+  <text x="315" y="240" class="l0">MoE</text>
+  <text x="260" y="268" class="l0">each sub-layer has residual skip</text>
+  <line x1="260" y1="280" x2="260" y2="296" class="arr"/>
+  <rect x="160" y="296" width="200" height="32" class="std"/>
+  <text x="260" y="316" class="l">more layers ...</text>
+  <text x="260" y="348" class="l0">does not replace vocab embed or LM head</text>
+</svg>

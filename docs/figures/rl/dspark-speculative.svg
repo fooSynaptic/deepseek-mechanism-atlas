@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 420" width="920" height="420">
+<style><![CDATA[
+  .t { font: 700 15px sans-serif; fill: #1a1a2e; text-anchor: middle; }
+  .st { font: 11px sans-serif; fill: #666; text-anchor: middle; }
+  .ph { font: 600 12px sans-serif; fill: #4a5a7a; }
+  .lb { font: 600 11px sans-serif; fill: #222; text-anchor: middle; }
+  .dt { font: 10px sans-serif; fill: #555; text-anchor: middle; }
+  .an { font: 9px sans-serif; fill: #2563eb; text-anchor: middle; }
+  .arr { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#dspa); }
+  .arr-d { stroke: #888; stroke-width: 1.2; fill: none; stroke-dasharray: 5 4; marker-end: url(#dspad); }
+  .arr-b { stroke: #4A90D9; stroke-width: 1.5; fill: none; marker-end: url(#dspab); }
+  .arr-g { stroke: #27AE60; stroke-width: 1.5; fill: none; marker-end: url(#dspag); }
+]]></style>
+<defs>
+  <marker id="dspa" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#666"/></marker>
+  <marker id="dspad" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#888"/></marker>
+  <marker id="dspab" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4A90D9"/></marker>
+  <marker id="dspag" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#27AE60"/></marker>
+</defs>
+<text x="460" y="22" class="t">DSpark speculative decoding (DeepSeek-V4 production)</text><text x="460" y="40" class="st">semi-autoregressive draft + confidence-scheduled verify  |  not a new base model</text><rect x="24" y="56" width="872" height="200" rx="8" fill="#eef1f8" stroke="#b0bdd4" stroke-width="1.5" stroke-dasharray="6 3"/><text x="36" y="74" class="ph">目标权重上的 DSpark 循环（V4 Flash / Pro + DSpark 模块）</text><rect x="70" y="132" width="200" height="64" rx="6" fill="#f0faf0" stroke="#27AE60" stroke-width="1.5"/><text x="170" y="150" class="lb">Semi-AR draft</text><text x="170" y="166" class="dt">parallel candidate tokens</text><text x="170" y="180" class="dt">higher accept length vs 1-step</text><line x1="270" y1="164" x2="350" y2="164" class="arr-g"/><rect x="350" y="132" width="220" height="64" rx="6" fill="#f0faf0" stroke="#27AE60" stroke-width="1.5"/><text x="460" y="150" class="lb">Confidence scheduler</text><text x="460" y="166" class="dt">load-aware verify batch</text><text x="460" y="180" class="dt">skip low-confidence stalls</text><line x1="570" y1="164" x2="650" y2="164" class="arr-b"/><rect x="650" y="132" width="200" height="64" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/><text x="750" y="150" class="lb">Target verify</text><text x="750" y="166" class="dt">same V4 weights</text><text x="750" y="180" class="dt">accept longest prefix</text><text x="460" y="242" class="an">claimed up to ~80% decode speedup vs single-token baseline in production</text><rect x="24" y="274" width="872" height="132" rx="8" fill="#eef1f8" stroke="#b0bdd4" stroke-width="1.5" stroke-dasharray="6 3"/><text x="36" y="292" class="ph">DSpark 与其他草稿路径的关系</text><rect x="80" y="314" width="200" height="64" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/><text x="180" y="332" class="lb">V3 MTP native</text><text x="180" y="348" class="dt">MTP heads on same ckpt</text><text x="180" y="362" class="dt">see mtp-speculative.svg</text><rect x="360" y="314" width="200" height="64" rx="6" fill="#f0faf0" stroke="#27AE60" stroke-width="1.5"/><text x="460" y="332" class="lb">DSpark (V4)</text><text x="460" y="348" class="dt">DeepSpec train/eval</text><text x="460" y="362" class="dt">online on V4 traffic</text><rect x="640" y="314" width="200" height="64" rx="6" fill="#fff8ee" stroke="#E67E22" stroke-width="1.5"/><text x="740" y="332" class="lb">External draft</text><text x="740" y="348" class="dt">Eagle3 / DFlash / small LM</text><text x="740" y="362" class="dt">see spec-decode report</text><text x="460" y="394" class="an">DeepSpec repo: DSpark + DFlash + Eagle3 draft trainers</text></svg>

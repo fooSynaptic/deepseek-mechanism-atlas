@@ -1,0 +1,35 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 deepseek-everything contributors
+
+本许可适用于本仓库中的文档、图示与成书读本，**不包括**下列第三方子树（见其各自 LICENSE）：
+
+- `Engram/` — Apache License 2.0
+- `docs/material/` 内复制的上游材料 — 遵循原项目 / 原论文许可
+
+您可自由地：
+
+- **共享**：以任何媒介或格式复制、发行本材料
+- **演绎**：重混、改编并基于本材料进行创作
+
+惟须遵守下列条件：
+
+- **署名**：您必须给出适当的署名，提供指向本许可的链接，并标明是否对原作做了修改。署名方式以合理为限，但不得以任何方式暗示许可人对您或您的使用给予认可。
+
+不得附加法律条款或技术措施，从而限制他人行使本许可所授予的权利。
+
+完整法律条文（英文）：
+https://creativecommons.org/licenses/by/4.0/legalcode
+
+中文说明：
+https://creativecommons.org/licenses/by/4.0/deed.zh
+
+---
+
+## 维护脚本
+
+`scripts/` 目录下的 Python / Shell 维护脚本另以 [MIT License](LICENSE-MIT) 授权。
+
+## 论文与官方材料
+
+DeepSeek 论文、模型权重与官方代码库的许可以 **arXiv 原文与 DeepSeek 官方发布** 为准；本仓库导读不构成官方授权。

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 520" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="a3" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .t{font-size:16px;font-weight:700;fill:#0f172a}
+      .s{font-size:11px;fill:#64748b}
+      .h{font-size:12px;font-weight:600;fill:#334155}
+      .l{font-size:10px;fill:#334155;text-anchor:middle}
+      .hot{fill:#dcfce7;stroke:#16a34a;stroke-width:1.5;rx:8}
+      .cold{fill:#dbeafe;stroke:#2563eb;stroke-width:1.5;rx:8}
+      .col{fill:#fee2e2;stroke:#ef4444;stroke-width:1.5;rx:6}
+      .arr{stroke:#475569;stroke-width:1.4;fill:none;marker-end:url(#a3)}
+    </style>
+  </defs>
+
+  <text x="24" y="32" class="t">(3) Engram-Nine - Hot/Cold Tiers and Collision Regularization</text>
+  <text x="24" y="52" class="s">arXiv:2601.16531 | Falsifies collision-free is always better; collisions act as implicit regularization</text>
+
+  <text x="40" y="88" class="h">Two-tier routing (equal-parameter controlled study)</text>
+  <rect x="40" y="100" width="120" height="36" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="100" y="122" class="l">input n-gram</text>
+  <line x1="160" y1="118" x2="200" y2="118" class="arr"/>
+  <text x="180" y="110" class="l" font-size="9">Top-N?</text>
+
+  <rect x="200" y="92" width="200" height="52" class="hot"/>
+  <text x="300" y="112" class="l" font-weight="600">Hot Tier</text>
+  <text x="300" y="128" class="l" font-size="9">MPHF, high-freq n-grams, collision-free</text>
+
+  <rect x="200" y="158" width="200" height="52" class="cold"/>
+  <text x="300" y="178" class="l" font-weight="600">Cold Tier</text>
+  <text x="300" y="194" class="l" font-size="9">multi-head hash, long tail, collisions allowed</text>
+
+  <line x1="160" y1="118" x2="200" y2="118" class="arr"/>
+  <line x1="160" y1="118" x2="185" y2="184" class="arr"/>
+
+  <text x="440" y="88" class="h">Cold tier: collision = multiple keys share one row</text>
+  <rect x="440" y="100" width="200" height="110" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <rect x="460" y="120" width="160" height="24" class="col"/>
+  <text x="540" y="136" class="l" font-size="9">row #42: n-gram A and B collide</text>
+  <text x="540" y="168" class="l" font-size="9">representations averaged (like dropout)</text>
+  <text x="540" y="186" class="l" font-size="9" fill="#16a34a">implicit regularization, not pure noise</text>
+
+  <text x="40" y="240" class="h">Hot-to-Cold Advantage Flip (training dynamics)</text>
+  <rect x="40" y="252" width="420" height="200" rx="10" fill="#fff" stroke="#e2e8f0"/>
+  <line x1="80" y1="420" x2="440" y2="420" stroke="#94a3b8"/>
+  <line x1="80" y1="280" x2="80" y2="420" stroke="#94a3b8"/>
+  <text x="260" y="442" class="l">training steps</text>
+  <text x="58" y="350" class="l" transform="rotate(-90 58 350)">per-token loss advantage</text>
+  <path d="M 90,320 L 200,300 L 280,340 L 400,380" fill="none" stroke="#16a34a" stroke-width="2"/>
+  <text x="120" y="295" class="l" fill="#16a34a" font-size="9">Hot lower (early)</text>
+  <path d="M 90,380 L 200,360 L 280,320 L 400,290" fill="none" stroke="#2563eb" stroke-width="2"/>
+  <text x="350" y="285" class="l" fill="#2563eb" font-size="9">Cold lower (late flip)</text>
+  <circle cx="280" cy="330" r="5" fill="#f59e0b"/>
+  <text x="280" y="318" class="l" fill="#d97706" font-size="9">crossover</text>
+
+  <text x="500" y="240" class="h">Gating mismatch</text>
+  <rect x="500" y="252" width="380" height="200" rx="10" fill="#fef2f2" stroke="#fecaca"/>
+  <text x="690" y="280" class="l">Gate learns to favor Hot early</text>
+  <text x="690" y="300" class="l">After flip, Hot loss is no longer lower</text>
+  <text x="690" y="320" class="l" fill="#b91c1c">but Gate still prefers Hot: wrong credit assignment</text>
+  <rect x="530" y="340" width="320" height="50" rx="6" fill="#fff" stroke="#e2e8f0"/>
+  <text x="690" y="362" class="l" font-size="9">Bottleneck is Gating, not Index precision</text>
+  <text x="690" y="378" class="l" font-size="9">collision-free flips earlier; weaker reg; val loss not always better</text>
+
+  <rect x="40" y="468" width="840" height="44" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+  <text x="460" y="495" class="l" font-weight="600" fill="#166534">Equal params: removing collisions does not reliably improve training</text>
+</svg>

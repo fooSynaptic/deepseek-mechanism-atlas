@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 260" width="920" height="260">
+<style><![CDATA[
+  .t { font: 700 15px sans-serif; fill: #1a1a2e; text-anchor: middle; }
+  .st { font: 11px sans-serif; fill: #666; text-anchor: middle; }
+  .ph { font: 600 12px sans-serif; fill: #4a5a7a; }
+  .lb { font: 600 11px sans-serif; fill: #222; text-anchor: middle; }
+  .dt { font: 10px sans-serif; fill: #555; text-anchor: middle; }
+  .an { font: 9px sans-serif; fill: #2563eb; text-anchor: middle; }
+  .arr { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#dsqa); }
+  .arr-d { stroke: #888; stroke-width: 1.2; fill: none; stroke-dasharray: 5 4; marker-end: url(#dsqad); }
+  .arr-b { stroke: #4A90D9; stroke-width: 1.5; fill: none; marker-end: url(#dsqab); }
+  .arr-g { stroke: #27AE60; stroke-width: 1.5; fill: none; marker-end: url(#dsqag); }
+]]></style>
+<defs>
+  <marker id="dsqa" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#666"/></marker>
+  <marker id="dsqad" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#888"/></marker>
+  <marker id="dsqab" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4A90D9"/></marker>
+  <marker id="dsqag" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#27AE60"/></marker>
+</defs>
+<text x="460" y="22" class="t">DeepSeek 版本快速对照</text><text x="460" y="40" class="st">主链: V3 -&gt; V3.1 -&gt; V3.2 -&gt; V4  |  Index Share 为 V3.2 纯 infra 补丁</text><rect x="36" y="68" width="128" height="64" rx="6" fill="#f8f9fc" stroke="#c5cee0" stroke-width="1.5"/><text x="100" y="86" class="lb">DeepSeek-V3</text><text x="100" y="102" class="dt">MoE + MLA</text><text x="100" y="116" class="dt">128K</text><rect x="216" y="68" width="128" height="64" rx="6" fill="#f8f9fc" stroke="#c5cee0" stroke-width="1.5"/><text x="280" y="86" class="lb">V3.1 / Terminus</text><text x="280" y="102" class="dt">Hybrid 推理</text><text x="280" y="116" class="dt">128K</text><rect x="396" y="72" width="128" height="56" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/><text x="460" y="90" class="lb">V3.2</text><text x="460" y="106" class="dt">+ DSA 稀疏注意力</text><rect x="716" y="68" width="128" height="64" rx="6" fill="#fff8ee" stroke="#E67E22" stroke-width="1.5"/><text x="780" y="86" class="lb">V4</text><text x="780" y="102" class="dt">CSA + HCA + mHC</text><text x="780" y="116" class="dt">1M context</text><line x1="164" y1="100" x2="216" y2="100" class="arr"/><line x1="344" y1="100" x2="396" y2="100" class="arr"/><line x1="524" y1="100" x2="716" y2="100" class="arr"/><rect x="396" y="168" width="128" height="64" rx="6" fill="#f0faf0" stroke="#27AE60" stroke-width="1.5"/><text x="460" y="186" class="lb">Index Share</text><text x="460" y="202" class="dt">IndexCache</text><text x="460" y="216" class="dt">跨层复用</text><line x1="460" y1="132" x2="460" y2="168" class="arr-g"/><text x="460" y="252" class="an">纯 infra 补丁</text></svg>

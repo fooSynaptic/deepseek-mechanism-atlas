@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 268" width="920" height="268" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="ln_a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .t{font-size:14px;font-weight:700;fill:#0f172a;text-anchor:middle}
+      .b{font-size:10px;fill:#1e293b;text-anchor:middle}
+      .s{font-size:9px;fill:#475569;text-anchor:middle}
+      .id{font-size:8px;fill:#64748b;text-anchor:middle;font-family:ui-monospace,monospace}
+      .tag{font-size:8px;font-weight:600;fill:#7c3aed;text-anchor:middle}
+      .box{rx:6}
+      .arr{stroke:#64748b;stroke-width:1.2;fill:none;marker-end:url(#ln_a)}
+      .dash{stroke:#94a3b8;stroke-width:1.1;fill:none;stroke-dasharray:4 3;marker-end:url(#ln_a)}
+    </style>
+  </defs>
+
+  <text x="460" y="22" class="t">Engram 系列演进关系</text>
+
+  <!-- root -->
+  <rect x="24" y="104" width="148" height="60" rx="6" class="box" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.4"/>
+  <text x="98" y="118" class="b" font-weight="700" text-anchor="middle">① Engram</text>
+  <text x="98" y="132" class="s" text-anchor="middle">架构奠基</text>
+  <text x="98" y="144" class="id" text-anchor="middle">2601.07372</text>
+  <line x1="172" y1="134" x2="220" y2="62" class="arr"/>
+  <rect x="220" y="36" width="168" height="52" rx="6" class="box" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2"/>
+  <text x="304" y="50" class="b" text-anchor="middle">② CXL Pooling</text>
+  <text x="304" y="64" class="s" text-anchor="middle">多机内存池</text>
+  <text x="304" y="76" class="id" text-anchor="middle">2603.10087</text>
+  <line x1="172" y1="134" x2="220" y2="134" class="arr"/>
+  <rect x="220" y="108" width="168" height="52" rx="6" class="box" fill="#ecfdf5" stroke="#16a34a" stroke-width="1.2"/>
+  <text x="304" y="122" class="b" text-anchor="middle">③ Engram-Nine</text>
+  <text x="304" y="136" class="s" text-anchor="middle">热层无碰撞实验</text>
+  <text x="304" y="148" class="id" text-anchor="middle">2601.16531</text>
+  <line x1="172" y1="134" x2="220" y2="206" class="arr"/>
+  <rect x="220" y="180" width="168" height="52" rx="6" class="box" fill="#fff7ed" stroke="#ea580c" stroke-width="1.2"/>
+  <text x="304" y="194" class="b" text-anchor="middle">④ Tiny-Engram</text>
+  <text x="304" y="208" class="s" text-anchor="middle">视觉模态</text>
+  <text x="304" y="220" class="id" text-anchor="middle">2605.20309</text>
+  <line x1="388" y1="62" x2="500" y2="62" class="dash"/>
+  <text x="444" y="56" class="tag">部署层</text>
+  <rect x="500" y="36" width="168" height="52" rx="6" class="box" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.2"/>
+  <text x="584" y="54" class="b" text-anchor="middle">SGLang + CXL Switch</text>
+  <text x="584" y="68" class="s" text-anchor="middle"></text>
+  <text x="584" y="80" class="id" text-anchor="middle"></text>
+  <line x1="388" y1="134" x2="500" y2="134" class="dash"/>
+  <text x="444" y="128" class="tag">训练层</text>
+  <rect x="500" y="108" width="168" height="52" rx="6" class="box" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2"/>
+  <text x="584" y="126" class="b" text-anchor="middle">碰撞 = 隐式正则</text>
+  <text x="584" y="140" class="s" text-anchor="middle"></text>
+  <text x="584" y="152" class="id" text-anchor="middle"></text>
+  <line x1="388" y1="206" x2="500" y2="206" class="dash"/>
+  <text x="444" y="200" class="tag">应用层</text>
+  <rect x="500" y="180" width="168" height="52" rx="6" class="box" fill="#faf5ff" stroke="#a78bfa" stroke-width="1.2"/>
+  <text x="584" y="198" class="b" text-anchor="middle">SD / DiT 概念注入</text>
+  <text x="584" y="212" class="s" text-anchor="middle"></text>
+  <text x="584" y="224" class="id" text-anchor="middle"></text>
+  <text x="460" y="258" class="s">奠基论文分出系统 / 训练 / 视觉三条线；虚线 = 各篇侧重层级</text>
+</svg>

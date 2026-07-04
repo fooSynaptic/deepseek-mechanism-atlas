@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 432" width="920" height="432" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <style>
+      .t{font-size:14px;font-weight:700;fill:#0f172a;text-anchor:middle}
+      .h{font-size:11px;font-weight:600;fill:#334155;text-anchor:middle}
+      .s{font-size:8px;fill:#64748b;text-anchor:middle}
+      .tc{font-size:8px;fill:#334155;text-anchor:middle}
+      .bl{font-size:9px;fill:#334155;text-anchor:start}
+      .box{rx:5}
+    </style>
+  </defs>
+
+  <text x="460" y="24" class="t">Step 7: RF 1 to 10 - Train vs Infer</text>
+  <text x="460" y="42" class="s">Gated memory stream V~ : sequence span 1 -&gt; 1+(w-1)d = 10 (default w=4, d=3)</text>
+
+  <text x="238" y="66" class="h">A. After Step 6 (RF = 1)</text>
+  <rect x="28" y="74" width="420" height="96" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="238" y="90" class="s">Each position uses only its own v~_t</text>
+  <rect x="145" y="100" width="36" height="28" class="box" fill="#dcfce7" stroke="#16a34a" stroke-width="1.2"/>
+  <text x="163" y="118" class="tc">v~_t-9</text>
+  <rect x="195" y="100" width="36" height="28" class="box" fill="#dcfce7" stroke="#16a34a" stroke-width="1.2"/>
+  <text x="213" y="118" class="tc">v~_t-6</text>
+  <rect x="245" y="100" width="36" height="28" class="box" fill="#dcfce7" stroke="#16a34a" stroke-width="1.2"/>
+  <text x="263" y="118" class="tc">v~_t-3</text>
+  <rect x="295" y="100" width="36" height="28" class="box" fill="#fff7ed" stroke="#ea580c" stroke-width="1.3"/>
+  <text x="313" y="118" class="tc">v~_t</text>
+  <text x="46" y="148" class="bl" font-size="8" fill="#64748b">Y_t = v~_t only</text>
+  <text x="238" y="162" class="s">No cross-position mix on memory stream</text>
+
+  <text x="682" y="66" class="h">B. After Step 7 (RF = 10)</text>
+  <rect x="472" y="74" width="420" height="96" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="682" y="90" class="s">Dilated causal conv mixes 4 taps, span 10 indices</text>
+  <rect x="589" y="100" width="36" height="28" class="box" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+  <text x="607" y="118" class="tc">v~_t-9</text>
+  <rect x="639" y="100" width="36" height="28" class="box" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+  <text x="657" y="118" class="tc">v~_t-6</text>
+  <rect x="689" y="100" width="36" height="28" class="box" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+  <text x="707" y="118" class="tc">v~_t-3</text>
+  <rect x="739" y="100" width="36" height="28" class="box" fill="#fff7ed" stroke="#ea580c" stroke-width="1.3"/>
+  <text x="757" y="118" class="tc">v~_t</text>
+  <line x1="607" y1="114" x2="757" y2="126" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+  <line x1="657" y1="114" x2="757" y2="126" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+  <line x1="707" y1="114" x2="757" y2="126" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+  <line x1="757" y1="114" x2="757" y2="126" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+  <rect x="785" y="104" width="40" height="24" class="box" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.2"/>
+  <text x="805" y="120" class="tc">Y_t</text>
+  <text x="682" y="162" class="s">SiLU(Conv)+residual; phrase-level local memory</text>
+
+  <text x="238" y="188" class="h">Training impact</text>
+  <rect x="28" y="196" width="420" height="112" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="46" y="218" class="bl" fill="#334155">+ Gradients flow to t, t-3, t-6, t-9 via conv weights</text>
+  <text x="46" y="235" class="bl" fill="#334155">+ Learns how to combine filtered memories (not fixed concat)</text>
+  <text x="46" y="252" class="bl" fill="#334155">+ SiLU nonlinearity on memory stream</text>
+  <text x="46" y="269" class="bl" fill="#334155">= Cost: O(w) depthwise conv per token; cheap vs Attention</text>
+  <text x="46" y="286" class="bl" fill="#334155">= Causal: no future token in loss</text>
+  <text x="46" y="303" class="bl" fill="#b45309">Without Step 7: per-token memory decoupled, weaker phrases</text>
+
+  <text x="682" y="188" class="h">Inference impact</text>
+  <rect x="472" y="196" width="420" height="112" rx="8" fill="#ecfdf5" stroke="#86efac"/>
+  <text x="490" y="218" class="bl" fill="#334155">+ Lookup still O(1) per token (Step 3 unchanged)</text>
+  <text x="490" y="235" class="bl" fill="#334155">+ Extra: w=4 conv taps per step (not 10x table reads)</text>
+  <text x="490" y="252" class="bl" fill="#334155">+ Cache last ~9 v~ for dilated conv (small vs KV)</text>
+  <text x="490" y="269" class="bl" fill="#334155">+ Prefetch/offload path unaffected</text>
+  <text x="490" y="286" class="bl" fill="#334155">= Global context still from Attention after Engram</text>
+  <text x="490" y="303" class="bl" fill="#15803d">Latency: conv usually minor vs memory lookup</text>
+
+  <rect x="28" y="324" width="864" height="56" rx="8" fill="#fafafa" stroke="#e2e8f0"/>
+  <text x="460" y="344" class="h">Summary</text>
+  <text x="460" y="360" class="s">RF 10 = wider dependency along V~, not 10x compute. Train: coupled grads + richer local memory.</text>
+  <text x="460" y="372" class="s">Infer: +4-tap conv + tiny v~ buffer. See qa/step7-rf10-train-infer-impact.md</text>
+</svg>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 148" width="900" height="148" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="fd_a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#475569"/>
+    </marker>
+    <style>
+      .b{font-size:8px;fill:#334155;text-anchor:middle}
+      .st{font-size:7px;fill:#64748b;text-anchor:middle}
+      .sn{font-size:7px;font-weight:700;fill:#475569;text-anchor:middle}
+      .tag{font-size:6.5px;font-weight:600;text-anchor:middle}
+      .box{rx:4;stroke-width:1.1}
+      .arr{stroke:#475569;stroke-width:1.1;fill:none;marker-end:url(#fd_a)}
+      .ht{fill:#fff7ed;stroke:#ea580c;stroke-width:1.4}
+    </style>
+  </defs>
+  <text x="450" y="14" font-size="11" font-weight="600" fill="#334155" text-anchor="middle">Engram 逐步前向：记忆过滤发生在 Step 6</text>
+
+  <!-- Step 1-2 -->
+  <text x="52" y="28" class="sn">S1-2</text>
+  <rect x="8" y="32" width="36" height="12" rx="3" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="26" y="41" class="tag" fill="#64748b">不过滤</text>
+  <rect x="8" y="48" width="88" height="34" class="box" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="52" y="62" class="b">P compress</text>
+  <text x="52" y="74" class="b">n-gram g</text>
+
+  <line x1="96" y1="65" x2="108" y2="65" class="arr"/>
+
+  <!-- Step 3 -->
+  <text x="134" y="28" class="sn">S3</text>
+  <rect x="108" y="32" width="52" height="12" rx="3" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="134" y="41" class="tag" fill="#64748b">不过滤</text>
+  <rect x="108" y="48" width="52" height="34" class="box" fill="#fef3c7" stroke="#d97706"/>
+  <text x="134" y="62" class="b">hash</text>
+  <text x="134" y="74" class="b">phi</text>
+
+  <line x1="160" y1="65" x2="172" y2="65" class="arr"/>
+
+  <!-- Step 4 -->
+  <text x="198" y="28" class="sn">S4</text>
+  <rect x="172" y="32" width="52" height="12" rx="3" fill="#ede9fe" stroke="#c4b5fd"/>
+  <text x="198" y="41" class="tag" fill="#6d28d9">静态记忆</text>
+  <rect x="172" y="48" width="52" height="34" class="box" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="198" y="62" class="b">lookup</text>
+  <text x="198" y="74" class="b">e_t</text>
+
+  <line x1="224" y1="65" x2="236" y2="65" class="arr"/>
+
+  <!-- Step 5 -->
+  <text x="268" y="28" class="sn">S5</text>
+  <rect x="236" y="32" width="64" height="12" rx="3" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="268" y="41" class="tag" fill="#2563eb">备过滤</text>
+  <rect x="236" y="48" width="64" height="34" class="box" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="268" y="62" class="b">W_K W_V</text>
+  <text x="268" y="74" class="b">k_t v_t</text>
+
+  <!-- h_t feed into gate -->
+  <rect x="236" y="90" width="64" height="18" class="box" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="268" y="102" class="st">h_t query</text>
+  <line x1="268" y1="90" x2="268" y2="82" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2 2"/>
+
+  <line x1="300" y1="65" x2="312" y2="65" class="arr"/>
+
+  <!-- Step 6 FILTER -->
+  <text x="348" y="28" class="sn">S6</text>
+  <rect x="312" y="32" width="72" height="12" rx="3" class="ht"/>
+  <text x="348" y="41" class="tag" fill="#c2410c">过滤记忆</text>
+  <rect x="312" y="48" width="72" height="34" class="box ht"/>
+  <text x="348" y="60" class="b">gate alpha</text>
+  <text x="348" y="72" class="b">v~ = a*v</text>
+
+  <line x1="384" y1="65" x2="396" y2="65" class="arr"/>
+
+  <!-- Step 7 -->
+  <text x="428" y="28" class="sn">S7</text>
+  <rect x="396" y="32" width="64" height="12" rx="3" fill="#ecfdf5" stroke="#86efac"/>
+  <text x="428" y="41" class="tag" fill="#15803d">已过滤</text>
+  <rect x="396" y="48" width="64" height="34" class="box" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="428" y="62" class="b">Conv+SiLU</text>
+  <text x="428" y="74" class="b">on v~</text>
+
+  <line x1="460" y1="65" x2="472" y2="65" class="arr"/>
+
+  <!-- Step 8 -->
+  <text x="500" y="28" class="sn">S8</text>
+  <rect x="472" y="32" width="56" height="12" rx="3" fill="#ecfdf5" stroke="#86efac"/>
+  <text x="500" y="41" class="tag" fill="#15803d">已过滤</text>
+  <rect x="472" y="48" width="56" height="34" class="box" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="500" y="62" class="b">H + Y</text>
+  <text x="500" y="74" class="b">residual</text>
+
+  <line x1="528" y1="65" x2="540" y2="65" class="arr"/>
+
+  <!-- backbone -->
+  <text x="590" y="28" class="sn">--</text>
+  <rect x="540" y="32" width="100" height="12" rx="3" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="590" y="41" class="tag" fill="#94a3b8">backbone</text>
+  <rect x="540" y="48" width="100" height="34" class="box" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="590" y="62" class="b">Attention</text>
+  <text x="590" y="74" class="b">-&gt; MoE</text>
+
+  <!-- legend -->
+  <rect x="660" y="44" width="228" height="52" rx="5" fill="#fafafa" stroke="#e2e8f0"/>
+  <text x="774" y="58" class="st" font-size="8">记忆过滤图例</text>
+  <rect x="672" y="66" width="28" height="10" rx="2" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="706" y="74" class="st" font-size="7" text-anchor="start">S1-5 不过滤 / 备过滤</text>
+  <rect x="672" y="80" width="28" height="10" rx="2" class="ht"/>
+  <text x="706" y="88" class="st" font-size="7" text-anchor="start">S6 过滤记忆 (alpha gate)</text>
+  <rect x="672" y="94" width="28" height="10" rx="2" fill="#ecfdf5" stroke="#86efac"/>
+  <text x="706" y="102" class="st" font-size="7" text-anchor="start">S7-8 仅已过滤记忆流入</text>
+
+  <text x="450" y="138" font-size="8" fill="#64748b" text-anchor="middle">S1-4 产出上下文无关 e_t；S5 投影 K/V；S6 用 h_t 与 k_t 算 alpha 抑制噪声；S7-8 不再接触未过滤 v_t</text>
+</svg>

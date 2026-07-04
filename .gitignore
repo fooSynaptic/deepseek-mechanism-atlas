@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual env / secrets
+.env
+.venv/
+venv/
+ENV/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# Local task artifacts (do not commit)
+.tmp/
+logs/
+*.log
+
+# Bundled fonts for PNG export (downloaded on first run)
+scripts/svg/fonts/*.otf
+scripts/svg/fonts/*.ttc
+scripts/svg/fonts/fonts.conf
+
+# fontconfig cache (generated at PNG export time)
+.cache/

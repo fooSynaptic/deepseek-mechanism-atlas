@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 1180" width="1180" height="1180">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#475569"/>
+    </marker>
+    <marker id="arr-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+    <marker id="arr-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#16a34a"/>
+    </marker>
+    <marker id="arr-orange" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#ea580c"/>
+    </marker>
+    <style>
+      text { font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif; }
+      .dim { font-size: 10px; fill: #64748b; }
+      .label { font-size: 11px; fill: #334155; }
+      .title { font-size: 13px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <text x="590" y="32" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">MLA 前向计算流程 (Multi-head Latent Attention)</text>
+  <text x="590" y="54" text-anchor="middle" font-size="12" fill="#64748b">DeepSeek-V2 | 单 token 位置 t | Batch 维 [B, ...]</text>
+
+  <rect x="470" y="72" width="240" height="44" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="590" y="92" text-anchor="middle" font-size="13" font-weight="700" fill="white">输入隐状态 h_t</text>
+  <text x="590" y="108" text-anchor="middle" class="dim" fill="#cbd5e1">[B, d_model]</text>
+
+  <line x1="520" y1="116" x2="200" y2="155" stroke="#2563eb" stroke-width="2" marker-end="url(#arr-blue)"/>
+  <line x1="590" y1="116" x2="590" y2="155" stroke="#16a34a" stroke-width="2" marker-end="url(#arr-green)"/>
+  <line x1="660" y1="116" x2="980" y2="155" stroke="#ea580c" stroke-width="2" marker-end="url(#arr-orange)"/>
+  <text x="340" y="142" text-anchor="middle" font-size="10" fill="#2563eb" font-weight="600">Query 支路</text>
+  <text x="590" y="142" text-anchor="middle" font-size="10" fill="#16a34a" font-weight="600">Key 支路</text>
+  <text x="840" y="142" text-anchor="middle" font-size="10" fill="#ea580c" font-weight="600">Value 支路</text>
+
+  <!-- Q Branch -->
+  <rect x="20" y="160" width="360" height="340" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="40" y="182" class="title" fill="#1e40af">① Query 分支 (公式 37-40)</text>
+  <rect x="50" y="198" width="140" height="36" rx="6" fill="white" stroke="#3b82f6"/>
+  <text x="120" y="218" text-anchor="middle" class="label">W^DQ * h_t</text>
+  <text x="120" y="228" text-anchor="middle" class="dim">降维压缩</text>
+  <line x1="190" y1="216" x2="218" y2="216" stroke="#2563eb" marker-end="url(#arr-blue)"/>
+  <rect x="220" y="198" width="140" height="36" rx="6" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="290" y="218" text-anchor="middle" class="label" font-weight="600">c_t^Q</text>
+  <text x="290" y="228" text-anchor="middle" class="dim">[B, d_latent^Q]</text>
+  <line x1="290" y1="234" x2="120" y2="268" stroke="#2563eb" marker-end="url(#arr-blue)"/>
+  <line x1="290" y1="234" x2="290" y2="268" stroke="#2563eb" marker-end="url(#arr-blue)"/>
+  <rect x="50" y="270" width="140" height="40" rx="6" fill="white" stroke="#3b82f6"/>
+  <text x="120" y="288" text-anchor="middle" class="label">W^UQ * c_t^Q</text>
+  <text x="120" y="302" text-anchor="middle" class="dim">升维 - 多头 C</text>
+  <line x1="190" y1="290" x2="218" y2="290" stroke="#2563eb" marker-end="url(#arr-blue)"/>
+  <rect x="220" y="270" width="140" height="40" rx="6" fill="#bfdbfe" stroke="#2563eb"/>
+  <text x="290" y="288" text-anchor="middle" class="label">q_t^C</text>
+  <text x="290" y="302" text-anchor="middle" class="dim">[B, n_h*d_h^C]</text>
+  <text x="290" y="328" text-anchor="middle" font-size="10" fill="#1d4ed8">split: q_{t,i}^C [B, d_h^C] x n_h 头</text>
+  <rect x="220" y="338" width="140" height="40" rx="6" fill="white" stroke="#7c3aed"/>
+  <text x="290" y="356" text-anchor="middle" class="label">RoPE(W^QR*c_t^Q)</text>
+  <text x="290" y="370" text-anchor="middle" class="dim">[B, d_h^R]</text>
+  <text x="290" y="392" text-anchor="middle" font-size="10" fill="#7c3aed" font-weight="600">★ 所有头共用 q_t^R</text>
+  <rect x="80" y="410" width="240" height="44" rx="8" fill="#2563eb" stroke="#1d4ed8"/>
+  <text x="200" y="430" text-anchor="middle" font-size="12" font-weight="700" fill="white">q_{t,i} = [q_{t,i}^C ; q_t^R]</text>
+  <text x="200" y="446" text-anchor="middle" font-size="10" fill="#dbeafe">单头 Query [B, d_h]</text>
+  <text x="40" y="488" font-size="10" fill="#475569">Q: 先降维再升维; C 按头拆, R 全头共享</text>
+
+  <!-- K Branch -->
+  <rect x="410" y="160" width="360" height="340" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="430" y="182" class="title" fill="#166534">② Key 分支 (公式 41-44)</text>
+  <rect x="440" y="198" width="140" height="36" rx="6" fill="white" stroke="#22c55e"/>
+  <text x="510" y="218" text-anchor="middle" class="label">W^DKV * h_t</text>
+  <text x="510" y="228" text-anchor="middle" class="dim">KV 共享降维</text>
+  <line x1="580" y1="216" x2="608" y2="216" stroke="#16a34a" marker-end="url(#arr-green)"/>
+  <rect x="610" y="198" width="140" height="36" rx="6" fill="#bbf7d0" stroke="#16a34a"/>
+  <text x="680" y="218" text-anchor="middle" class="label" font-weight="600">c_t^KV</text>
+  <text x="680" y="228" text-anchor="middle" class="dim">[B, d_latent^KV]</text>
+  <text x="680" y="252" text-anchor="middle" font-size="10" fill="#15803d" font-weight="600">★ K 与 V 共用此向量</text>
+  <line x1="680" y1="234" x2="510" y2="278" stroke="#16a34a" marker-end="url(#arr-green)"/>
+  <rect x="440" y="280" width="140" height="40" rx="6" fill="white" stroke="#22c55e"/>
+  <text x="510" y="298" text-anchor="middle" class="label">W^UK * c_t^KV</text>
+  <text x="510" y="312" text-anchor="middle" class="dim">升维 - 多头 C</text>
+  <line x1="580" y1="300" x2="608" y2="300" stroke="#16a34a" marker-end="url(#arr-green)"/>
+  <rect x="610" y="280" width="140" height="40" rx="6" fill="#86efac" stroke="#16a34a"/>
+  <text x="680" y="298" text-anchor="middle" class="label">k_t^C</text>
+  <text x="680" y="312" text-anchor="middle" class="dim">[B, n_h*d_h^C]</text>
+  <text x="680" y="338" text-anchor="middle" font-size="10" fill="#15803d">split: k_{t,i}^C [B, d_h^C]</text>
+  <rect x="610" y="348" width="140" height="40" rx="6" fill="white" stroke="#7c3aed"/>
+  <text x="680" y="364" text-anchor="middle" class="label">RoPE(W^KR*h_t)</text>
+  <text x="680" y="378" text-anchor="middle" class="dim">[B, d_h^R] 来自 h_t</text>
+  <text x="680" y="400" text-anchor="middle" font-size="10" fill="#7c3aed" font-weight="600">★ 所有头共用 k_t^R</text>
+  <rect x="470" y="410" width="240" height="44" rx="8" fill="#16a34a" stroke="#15803d"/>
+  <text x="590" y="430" text-anchor="middle" font-size="12" font-weight="700" fill="white">k_{t,i} = [k_{t,i}^C ; k_t^R]</text>
+  <text x="590" y="446" text-anchor="middle" font-size="10" fill="#dcfce7">单头 Key [B, d_h]</text>
+  <text x="430" y="488" font-size="10" fill="#475569">K 的 C 来自 c^KV; R 来自 h_t (非 c^KV)</text>
+
+  <!-- V Branch -->
+  <rect x="800" y="160" width="360" height="340" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+  <text x="820" y="182" class="title" fill="#9a3412">③ Value 分支 (公式 45)</text>
+  <rect x="830" y="198" width="140" height="36" rx="6" fill="#bbf7d0" stroke="#16a34a" stroke-dasharray="4,3"/>
+  <text x="900" y="218" text-anchor="middle" class="label">c_t^KV</text>
+  <text x="900" y="228" text-anchor="middle" class="dim">与 Key 共享</text>
+  <text x="990" y="218" font-size="10" fill="#15803d">同左</text>
+  <line x1="900" y1="234" x2="900" y2="268" stroke="#ea580c" marker-end="url(#arr-orange)"/>
+  <rect x="830" y="270" width="140" height="40" rx="6" fill="white" stroke="#f97316"/>
+  <text x="900" y="288" text-anchor="middle" class="label">W^UV * c_t^KV</text>
+  <text x="900" y="302" text-anchor="middle" class="dim">仅 C 分量</text>
+  <line x1="970" y1="290" x2="998" y2="290" stroke="#ea580c" marker-end="url(#arr-orange)"/>
+  <rect x="1000" y="270" width="140" height="40" rx="6" fill="#fed7aa" stroke="#ea580c"/>
+  <text x="1070" y="288" text-anchor="middle" class="label">v_t^C</text>
+  <text x="1070" y="302" text-anchor="middle" class="dim">[B, n_h*d_h^C]</text>
+  <text x="1070" y="328" text-anchor="middle" font-size="10" fill="#c2410c">split: v_{t,i}^C [B, d_h^C]</text>
+  <rect x="860" y="360" width="240" height="56" rx="8" fill="#ffedd5" stroke="#f97316" stroke-dasharray="5,3"/>
+  <text x="980" y="382" text-anchor="middle" font-size="11" fill="#9a3412" font-weight="600">无 RoPE / 无 R 支路</text>
+  <text x="980" y="400" text-anchor="middle" font-size="10" fill="#78350f">Value 最简 - 省 KV Cache</text>
+  <rect x="860" y="430" width="240" height="44" rx="8" fill="#ea580c" stroke="#c2410c"/>
+  <text x="980" y="450" text-anchor="middle" font-size="12" font-weight="700" fill="white">v_{t,i}^C</text>
+  <text x="980" y="466" text-anchor="middle" font-size="10" fill="#ffedd5">单头 Value [B, d_h^C]</text>
+
+  <line x1="200" y1="454" x2="200" y2="530" stroke="#2563eb" stroke-width="2" marker-end="url(#arr-blue)"/>
+  <line x1="590" y1="454" x2="590" y2="530" stroke="#16a34a" stroke-width="2" marker-end="url(#arr-green)"/>
+  <line x1="980" y1="474" x2="980" y2="530" stroke="#ea580c" stroke-width="2" marker-end="url(#arr-orange)"/>
+
+  <!-- Attention -->
+  <rect x="120" y="535" width="940" height="130" rx="10" fill="#faf5ff" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="140" y="558" class="title" fill="#6d28d9">④ 单头注意力 (公式 46) - 对每个头 i 重复</text>
+  <rect x="150" y="575" width="120" height="36" rx="6" fill="#2563eb"/>
+  <text x="210" y="592" text-anchor="middle" font-size="11" fill="white" font-weight="600">q_{t,i}</text>
+  <text x="210" y="604" text-anchor="middle" font-size="9" fill="#dbeafe">[B,d_h]</text>
+  <text x="290" y="596" text-anchor="middle" font-size="18" fill="#64748b">*</text>
+  <rect x="310" y="575" width="120" height="36" rx="6" fill="#16a34a"/>
+  <text x="370" y="592" text-anchor="middle" font-size="11" fill="white" font-weight="600">k_{j,i}</text>
+  <text x="370" y="604" text-anchor="middle" font-size="9" fill="#dcfce7">历史 j=1..t</text>
+  <text x="480" y="596" text-anchor="middle" font-size="13" fill="#475569">Softmax(q*k/sqrt(d_h))</text>
+  <text x="680" y="596" text-anchor="middle" font-size="18" fill="#64748b">x</text>
+  <rect x="710" y="575" width="120" height="36" rx="6" fill="#ea580c"/>
+  <text x="770" y="592" text-anchor="middle" font-size="11" fill="white" font-weight="600">v_{j,i}^C</text>
+  <text x="770" y="604" text-anchor="middle" font-size="9" fill="#ffedd5">[B,d_h^C]</text>
+  <line x1="830" y1="593" x2="868" y2="593" stroke="#475569" marker-end="url(#arr)"/>
+  <rect x="870" y="575" width="120" height="36" rx="6" fill="#7c3aed"/>
+  <text x="930" y="592" text-anchor="middle" font-size="11" fill="white" font-weight="600">o_{t,i}</text>
+  <text x="930" y="604" text-anchor="middle" font-size="9" fill="#ede9fe">[B,d_h^C]</text>
+  <text x="590" y="648" text-anchor="middle" font-size="10" fill="#64748b">加权的是 v^C (无 R), 输出维度 d_h^C</text>
+
+  <line x1="590" y1="665" x2="590" y2="700" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <rect x="320" y="705" width="540" height="70" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="340" y="728" class="title" fill="#5b21b6">⑤ 多头融合 (公式 47)</text>
+  <text x="590" y="752" text-anchor="middle" class="label">concat(o_{t,1}, ..., o_{t,n_h})  --  [B, n_h*d_h^C]</text>
+  <text x="590" y="768" text-anchor="middle" class="label">W^O * concat  --  u_t [B, d_model]</text>
+
+  <!-- KV Cache -->
+  <rect x="20" y="800" width="1140" height="200" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="40" y="828" class="title" fill="#b91c1c">⑥ KV Cache 显存逻辑 (推理关键)</text>
+  <rect x="50" y="845" width="500" height="130" rx="8" fill="white" stroke="#fca5a5"/>
+  <text x="300" y="868" text-anchor="middle" font-size="12" font-weight="700" fill="#991b1b">标准 MHA 缓存</text>
+  <text x="300" y="890" text-anchor="middle" class="label">每步存完整 K、V</text>
+  <text x="300" y="908" text-anchor="middle" class="dim">K: [n_h * d_h]  +  V: [n_h * d_h]</text>
+  <text x="300" y="928" text-anchor="middle" class="dim">x 序列长度 T -- 显存 ~ T * n_h * d_h</text>
+  <text x="300" y="958" text-anchor="middle" font-size="10" fill="#64748b">128K 上下文时 KV Cache 爆炸</text>
+  <text x="590" y="910" text-anchor="middle" font-size="28" fill="#dc2626" font-weight="700">VS</text>
+  <rect x="630" y="845" width="500" height="130" rx="8" fill="#dcfce7" stroke="#22c55e"/>
+  <text x="880" y="868" text-anchor="middle" font-size="12" font-weight="700" fill="#166534">MLA 缓存 (只存低秩)</text>
+  <text x="880" y="890" text-anchor="middle" class="label">每步只存 c^KV</text>
+  <text x="880" y="908" text-anchor="middle" class="dim">[d_latent^KV] 极小 (如 512 维)</text>
+  <text x="880" y="928" text-anchor="middle" class="dim">推理时再 W^UK/W^UV 升维成多头 K/V</text>
+  <text x="880" y="948" text-anchor="middle" font-size="10" fill="#15803d" font-weight="600">k^R 小且全头共享, 不按头重复存</text>
+  <text x="880" y="966" text-anchor="middle" font-size="10" fill="#15803d">显存下降 90%+ -- 支撑 128K 上下文</text>
+
+  <!-- Legend -->
+  <rect x="20" y="1020" width="1140" height="140" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="40" y="1044" font-size="13" font-weight="700" fill="#0f172a">符号速查</text>
+  <text x="40" y="1068" font-size="11" fill="#334155">d_h^C = 单头压缩分量 | d_h^R = RoPE 小维度 | d_h = d_h^C + d_h^R</text>
+  <text x="40" y="1090" font-size="11" fill="#334155">c_t^Q = Q 侧低秩 | c_t^KV = K/V 共享低秩 (KV Cache 核心)</text>
+  <text x="40" y="1112" font-size="11" fill="#334155">★ 共享 = 所有 n_h 个头用同一份 R 向量</text>
+  <text x="600" y="1068" font-size="11" fill="#334155">Q: h -降维 c^Q -升维 q^C + RoPE q^R -拼接</text>
+  <text x="600" y="1090" font-size="11" fill="#334155">K: h -降维 c^KV -升维 k^C + RoPE(W^KR*h) -拼接</text>
+  <text x="600" y="1112" font-size="11" fill="#334155">V: 复用 c^KV -升维 v^C (无 RoPE)</text>
+  <text x="40" y="1144" font-size="11" fill="#64748b">口诀: h - Q降维/KV共享降维 - Q/K拆头C+共享R - V仅C - 注意力 - concat+W^O</text>
+</svg>

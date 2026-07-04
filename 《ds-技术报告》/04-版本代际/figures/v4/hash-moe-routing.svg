@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 460" width="920" height="460">
+<style><![CDATA[
+
+      .t{font-size:13px;font-weight:700;fill:#0f172a;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .s{font-size:9px;fill:#64748b;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .b{font-size:10px;fill:#334155;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .lb{font-size:10px;font-weight:600;fill:#222;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .dt{font-size:9px;fill:#555;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .an{font-size:9px;fill:#2563eb;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .st{font-size:10px;fill:#666;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .m{font-size:12px;fill:#1e293b;text-anchor:middle;font-family:Cambria Math, STIX Two Math, Latin Modern Math, serif}
+      .fm{font-size:10px;fill:#334155;text-anchor:middle;font-family:Cambria Math, STIX Two Math, Latin Modern Math, serif}
+      .box{rx:5;stroke-width:1.2}
+      .m tspan{font-family:Cambria Math, STIX Two Math, Latin Modern Math, serif}
+      .fm tspan{font-family:Cambria Math, STIX Two Math, Latin Modern Math, serif}
+      text.fm.t{font-size:13px;font-weight:700;fill:#0f172a}
+      text.fm.lb{font-size:10px;font-weight:600;fill:#222}
+      text.fm.dt{font-size:9px;fill:#555}
+      text.fm.st{font-size:10px;fill:#666}
+      text.fm.an{font-size:9px;fill:#2563eb}
+      .bl{font-size:10px;fill:#555;text-anchor:start;font-family:system-ui, -apple-system, sans-serif}
+      .bl.fm{font-family:Cambria Math, STIX Two Math, Latin Modern Math, serif;fill:#555;text-anchor:start}
+      .bl.fm tspan{font-family:Cambria Math, STIX Two Math, Latin Modern Math, serif}
+
+  .ph { font: 600 12px sans-serif; fill: #4a5a7a; }
+  .arr { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#hmra); }
+  .arr-d { stroke: #888; stroke-width: 1.2; fill: none; stroke-dasharray: 5 4; marker-end: url(#hmrad); }
+  .arr-b { stroke: #4A90D9; stroke-width: 1.5; fill: none; marker-end: url(#hmrab); }
+  .arr-o { stroke: #E67E22; stroke-width: 1.5; fill: none; marker-end: url(#hmrao); }
+  .arr-g { stroke: #27AE60; stroke-width: 1.5; fill: none; marker-end: url(#hmrag); }
+
+]]></style>
+<defs>
+
+  <marker id="hmra" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#666"/></marker>
+  <marker id="hmrad" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#888"/></marker>
+  <marker id="hmrab" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4A90D9"/></marker>
+  <marker id="hmrao" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#E67E22"/></marker>
+  <marker id="hmrag" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#27AE60"/></marker>
+
+</defs>
+  <text x="460" y="22" class="t" text-anchor="middle">Gate affinity to Hash query: V3 centroid routing vs V4 shallow Hash MoE</text>
+  <text x="460" y="40" class="st" text-anchor="middle">Swap how expert id is chosen; EP scatter / gather + shared merge stay the same</text>
+<rect x="24" y="58" width="420" height="210" rx="8" fill="#eef1f8" stroke="#b0bdd4" stroke-width="1.5" stroke-dasharray="6 3"/><text x="36" y="76" class="ph">A  V3 gate affinity (centroid router GEMM)</text>  <text x="234" y="96" class="m" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">s</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">i,t</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan> = sigmoid(</tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">u</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">t</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan> </tspan><tspan font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif"> &#x22C5; </tspan><tspan> </tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">e</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">i</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan>)</tspan></text>
+<rect x="60" y="125" width="76" height="58" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/>  <text x="98" y="143" class="lb" text-anchor="middle">Token</text>
+  <text x="98" y="159" class="fm" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">u</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">t</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text>
+<rect x="152" y="119" width="98" height="70" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/>  <text x="201" y="137" class="lb" text-anchor="middle">Affinity</text>
+  <text x="201" y="153" class="fm" text-anchor="middle"><tspan>256 scores</tspan></text>
+  <text x="201" y="166" class="dt" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">u</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">t</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif"> &#x22C5; </tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">e</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">i</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text>
+<rect x="266" y="119" width="86" height="70" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/>  <text x="309" y="137" class="lb" text-anchor="middle">Select</text>
+  <text x="309" y="153" class="fm" text-anchor="middle"><tspan>+ </tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">b</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">i</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text>
+  <text x="309" y="166" class="dt" text-anchor="middle"><tspan>top-</tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">K</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">r</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text>
+<rect x="368" y="125" width="68" height="58" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/>  <text x="402" y="143" class="lb" text-anchor="middle">Expert id</text>
+  <text x="402" y="159" class="fm" text-anchor="middle"><tspan>top-</tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">K</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">r</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan> ids</tspan></text>
+<line x1="136" y1="154" x2="152" y2="154" class="arr-b"/><line x1="250" y1="154" x2="266" y2="154" class="arr-b"/><line x1="352" y1="154" x2="368" y2="154" class="arr-b"/><rect x="64" y="198" width="340" height="57" rx="6" fill="#fef2f2" stroke="#f87171" stroke-width="1.5"/>  <text x="234" y="216" class="lb" text-anchor="middle">Learned router params</text>
+  <text x="234" y="232" class="fm" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">e</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">i</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan> centroid vectors, dynamic </tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">b</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">i</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text>
+  <text x="234" y="264" class="an" text-anchor="middle">semantic match: token picks expert prototype</text>
+<rect x="476" y="58" width="420" height="210" rx="8" fill="#eef1f8" stroke="#b0bdd4" stroke-width="1.5" stroke-dasharray="6 3"/><text x="488" y="76" class="ph">B  V4 Hash query (deterministic, no GEMM)</text>  <text x="686" y="96" class="m" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">i</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">t</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan> = </tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">&#x3C6;</tspan><tspan>(</tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">x</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">t</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan>, </tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">t</tspan><tspan>) mod </tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">N</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">r</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text>
+<rect x="512" y="119" width="78" height="70" rx="6" fill="#fff8ee" stroke="#E67E22" stroke-width="1.5"/>  <text x="551" y="137" class="lb" text-anchor="middle">Token</text>
+  <text x="551" y="153" class="fm" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">x</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">t</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text>
+  <text x="551" y="166" class="dt" text-anchor="middle"><tspan>pos </tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">t</tspan></text>
+<rect x="606" y="119" width="96" height="70" rx="6" fill="#fff8ee" stroke="#E67E22" stroke-width="1.5"/>  <text x="654" y="137" class="lb" text-anchor="middle">Hash fn</text>
+  <text x="654" y="153" class="fm" text-anchor="middle"><tspan>no </tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">e</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">i</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text>
+  <text x="654" y="166" class="dt" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">&#x3C6;</tspan><tspan> lookup</tspan></text>
+<rect x="718" y="119" width="84" height="70" rx="6" fill="#fff8ee" stroke="#E67E22" stroke-width="1.5"/>  <text x="760" y="137" class="lb" text-anchor="middle">Mod pool</text>
+  <text x="760" y="153" class="fm" text-anchor="middle"><tspan>mod </tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">N</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">r</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text>
+  <text x="760" y="166" class="dt" text-anchor="middle"><tspan>static spread</tspan></text>
+<rect x="818" y="125" width="74" height="58" rx="6" fill="#fff8ee" stroke="#E67E22" stroke-width="1.5"/>  <text x="855" y="143" class="lb" text-anchor="middle">Expert id</text>
+  <text x="855" y="159" class="fm" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">i</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">t</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text>
+<line x1="590" y1="154" x2="606" y2="154" class="arr-o"/><line x1="702" y1="154" x2="718" y2="154" class="arr-o"/><line x1="802" y1="154" x2="818" y2="154" class="arr-o"/><rect x="506" y="198" width="360" height="57" rx="6" fill="#f0faf0" stroke="#27AE60" stroke-width="1.5"/>  <text x="686" y="216" class="lb" text-anchor="middle">NOT used in hash layer</text>
+  <text x="686" y="232" class="fm" text-anchor="middle"><tspan>no </tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">u</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">t</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif"> &#x22C5; </tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">e</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">i</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan> GEMM, no </tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">b</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">i</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text>
+  <text x="686" y="264" class="an" text-anchor="middle">id from hash table / mix function, weak semantics OK</text>
+  <text x="460" y="86" class="st" text-anchor="middle">浅层 MoE: 换路由函数</text>
+<path d="M452,146 L468,146 L462,141 M468,146 L462,151" stroke="#E67E22" stroke-width="1.5" fill="none"/><rect x="24" y="284" width="872" height="132" rx="8" fill="#eef1f8" stroke="#b0bdd4" stroke-width="1.5" stroke-dasharray="6 3"/><text x="36" y="302" class="ph">C  After expert id: same EP + shared engine (V3 family)</text><rect x="62" y="325" width="112" height="62" rx="6" fill="#f8f9fc" stroke="#c5cee0" stroke-width="1.5"/>  <text x="118" y="343" class="lb" text-anchor="middle">Expert ids</text>
+  <text x="118" y="359" class="fm" text-anchor="middle"><tspan>top-</tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">K</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">r</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan> or </tspan><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">i</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">t</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text>
+<rect x="238" y="321" width="124" height="70" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/>  <text x="300" y="339" class="lb" text-anchor="middle">EP scatter</text>
+  <text x="300" y="355" class="fm" text-anchor="middle"><tspan>dispatch tokens</tspan></text>
+  <text x="300" y="368" class="dt" text-anchor="middle"><tspan>to expert ranks</tspan></text>
+<rect x="428" y="321" width="124" height="70" rx="6" fill="#fff8ee" stroke="#E67E22" stroke-width="1.5"/>  <text x="490" y="339" class="lb" text-anchor="middle">Routed FFN</text>
+  <text x="490" y="355" class="fm" text-anchor="middle"><tspan>sparse experts</tspan></text>
+  <text x="490" y="368" class="dt" text-anchor="middle"><tspan>FP4 weights (V4)</tspan></text>
+<rect x="616" y="321" width="128" height="70" rx="6" fill="#f0faf0" stroke="#27AE60" stroke-width="1.5"/>  <text x="680" y="339" class="lb" text-anchor="middle">Gather+shared</text>
+  <text x="680" y="355" class="fm" text-anchor="middle"><tspan>combine + always-on</tspan></text>
+  <text x="680" y="368" class="dt" text-anchor="middle"><tspan>shared path</tspan></text>
+<rect x="806" y="325" width="84" height="62" rx="6" fill="#f8f9fc" stroke="#c5cee0" stroke-width="1.5"/>  <text x="848" y="343" class="lb" text-anchor="middle">MoE out</text>
+  <text x="848" y="359" class="fm" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">y</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">t</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text>
+<line x1="174" y1="356" x2="238" y2="356" class="arr-b"/><line x1="362" y1="356" x2="428" y2="356" class="arr-b"/><line x1="552" y1="356" x2="616" y2="356" class="arr-g"/><line x1="744" y1="356" x2="806" y2="356" class="arr-g"/>  <text x="460" y="402" class="st" text-anchor="middle">Hash only replaces A/B routing; C unchanged vs V3 inference stack</text>
+</svg>
