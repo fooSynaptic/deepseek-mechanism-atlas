@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 448" width="920" height="448" font-family="Noto Sans CJK SC, sans-serif">
+  <defs>
+    <style>
+      .t{font-size:15px;font-weight:700;fill:#0f172a;text-anchor:middle;font-family:"Noto Sans CJK SC",sans-serif}
+      .s{font-size:9px;fill:#64748b;text-anchor:middle}
+      .rh{font-size:10px;font-weight:700;fill:#334155;text-anchor:middle}
+      .tag{font-size:8px;font-weight:600;text-anchor:middle}
+      .bl{font-size:8.5px;fill:#334155;text-anchor:start}
+    </style>
+  </defs>
+
+  <text x="460" y="26" class="t">感受野 1 -&gt; 10：变了什么 / 没变什么</text>
+  <text x="460" y="44" class="s">门控记忆流 V~（Step 6 之后；默认 w=4, d=3, RF_seq=10）</text>
+
+  <rect x="28" y="54" width="420" height="22" rx="5" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <rect x="472" y="54" width="420" height="22" rx="5" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="238" y="69" class="tag" fill="#475569">Step 7 之前</text>
+  <text x="682" y="69" class="tag" fill="#475569">Step 7 之后（短卷积）</text>
+  <text x="460" y="69" class="tag" fill="#7c3aed">RF_seq: 1 -&gt; 10</text>
+
+  <text x="238" y="96" class="rh">1. 能力（训练+推理共有）</text>
+  <rect x="28" y="104" width="420" height="76" rx="8" fill="#faf5ff" stroke="#d8b4fe"/>
+  <rect x="472" y="104" width="420" height="76" rx="8" fill="#faf5ff" stroke="#d8b4fe"/>
+  <text x="46" y="124" class="bl">输入：每位置只有 v~_t</text>
+  <text x="46" y="140" class="bl">表达：逐 token 独立记忆卡</text>
+  <text x="46" y="156" class="bl">不能跨位置组合</text>
+  <text x="46" y="172" class="bl" fill="#b45309">短语级静态先验：弱</text>
+  <text x="490" y="124" class="bl">输入：v~_t, v~_t-3, v~_t-6, v~_t-9</text>
+  <text x="490" y="140" class="bl">表达：记忆流上的局部短语</text>
+  <text x="490" y="156" class="bl">SiLU(Conv) 非线性混合</text>
+  <text x="490" y="172" class="bl" fill="#15803d">仍局部；全局靠 Attention</text>
+
+  <text x="238" y="196" class="rh">2. 训练</text>
+  <rect x="28" y="204" width="420" height="56" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+  <rect x="472" y="204" width="420" height="56" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="46" y="224" class="bl">梯度只回传到位置 t</text>
+  <text x="46" y="240" class="bl">各 token 记忆路径解耦</text>
+  <text x="46" y="256" class="bl">无可学习的跨位置混合</text>
+  <text x="490" y="224" class="bl">梯度耦合 t, t-3, t-6, t-9</text>
+  <text x="490" y="240" class="bl">W_conv 学习如何组合记忆</text>
+  <text x="490" y="256" class="bl">代价：O(w) depthwise conv</text>
+
+  <text x="238" y="276" class="rh">3. 推理</text>
+  <rect x="28" y="284" width="420" height="56" rx="8" fill="#ecfdf5" stroke="#86efac"/>
+  <rect x="472" y="284" width="420" height="56" rx="8" fill="#ecfdf5" stroke="#86efac"/>
+  <text x="46" y="304" class="bl">无额外 Conv</text>
+  <text x="46" y="320" class="bl">不需 v~ 历史缓存</text>
+  <text x="46" y="336" class="bl" fill="#64748b">略快（跳过 Step 7）</text>
+  <text x="490" y="304" class="bl">查表仍 O(1)/token</text>
+  <text x="490" y="320" class="bl">多 w=4 次 conv（非 10 次查表）</text>
+  <text x="490" y="336" class="bl">缓存约 9 个 v~；prefetch 不变</text>
+
+  <text x="460" y="360" class="rh">4. 不变（RF 扩大不碰这些）</text>
+  <rect x="28" y="368" width="864" height="48" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="46" y="388" class="bl">n-gram 查表 O(1)，索引只依赖 input ids</text>
+  <text x="46" y="404" class="bl">Step 6 Gate 仍先过滤 v~_t</text>
+  <text x="480" y="388" class="bl">全局依赖仍由 Step 8 后 Attention/MoE 负责</text>
+  <text x="480" y="404" class="bl" fill="#15803d">RF=10 是 V~ 混合变宽，不是 10 倍带宽</text>
+</svg>

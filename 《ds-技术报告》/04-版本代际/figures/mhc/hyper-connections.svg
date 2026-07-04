@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 420" width="920" height="420">
+<style><![CDATA[
+
+      .t{font-size:13px;font-weight:700;fill:#0f172a;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .s{font-size:9px;fill:#64748b;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .b{font-size:10px;fill:#334155;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .lb{font-size:10px;font-weight:600;fill:#222;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .dt{font-size:9px;fill:#555;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .an{font-size:9px;fill:#2563eb;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .st{font-size:10px;fill:#666;text-anchor:middle;font-family:system-ui, -apple-system, sans-serif}
+      .m{font-size:12px;fill:#1e293b;text-anchor:middle;font-family:Cambria Math, STIX Two Math, Latin Modern Math, serif}
+      .fm{font-size:10px;fill:#334155;text-anchor:middle;font-family:Cambria Math, STIX Two Math, Latin Modern Math, serif}
+      .box{rx:5;stroke-width:1.2}
+      .m tspan{font-family:Cambria Math, STIX Two Math, Latin Modern Math, serif}
+      .fm tspan{font-family:Cambria Math, STIX Two Math, Latin Modern Math, serif}
+      text.fm.t{font-size:13px;font-weight:700;fill:#0f172a}
+      text.fm.lb{font-size:10px;font-weight:600;fill:#222}
+      text.fm.dt{font-size:9px;fill:#555}
+      text.fm.st{font-size:10px;fill:#666}
+      text.fm.an{font-size:9px;fill:#2563eb}
+      .bl{font-size:10px;fill:#555;text-anchor:start;font-family:system-ui, -apple-system, sans-serif}
+      .bl.fm{font-family:Cambria Math, STIX Two Math, Latin Modern Math, serif;fill:#555;text-anchor:start}
+      .bl.fm tspan{font-family:Cambria Math, STIX Two Math, Latin Modern Math, serif}
+
+  .ph { font: 600 12px sans-serif; fill: #4a5a7a; }
+  .arr { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#hca); }
+  .arr-d { stroke: #888; stroke-width: 1.2; fill: none; stroke-dasharray: 5 4; marker-end: url(#hcad); }
+  .arr-b { stroke: #4A90D9; stroke-width: 1.5; fill: none; marker-end: url(#hcab); }
+  .arr-o { stroke: #E67E22; stroke-width: 1.5; fill: none; marker-end: url(#hcao); }
+  .arr-g { stroke: #27AE60; stroke-width: 1.5; fill: none; marker-end: url(#hcag); }
+
+]]></style>
+<defs>
+  <marker id="hca" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#666"/></marker>
+  <marker id="hcad" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#888"/></marker>
+  <marker id="hcab" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4A90D9"/></marker>
+  <marker id="hcao" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#E67E22"/></marker>
+  <marker id="hcag" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#27AE60"/></marker>
+</defs>
+  <text x="460" y="24" class="t" text-anchor="middle">Hyper-Connections (HC): residual topology</text>
+
+  <text x="460" y="42" class="st" text-anchor="middle">single stream x_l  vs  n parallel residual streams + H^pre / H^post / H^comb</text>
+
+<rect x="28" y="52" width="864" height="92" rx="8" fill="#eef1f8" stroke="#b0bdd4" stroke-width="1.5" stroke-dasharray="6 3"/><text x="40" y="70" class="ph">A  Standard residual (single stream)</text><rect x="66" y="78" width="108" height="40" rx="6" fill="#f8f9fc" stroke="#c5cee0" stroke-width="1.5"/>  <text x="120" y="100" class="m" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">x</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">l</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text>
+<rect x="256" y="78" width="108" height="52" rx="6" fill="#f0faf0" stroke="#c5cee0" stroke-width="1.5"/>  <text x="310" y="100" class="lb" text-anchor="middle">F_l</text>
+  <text x="310" y="116" class="dt" text-anchor="middle">Attn / FFN</text>
+<rect x="446" y="78" width="108" height="40" rx="6" fill="#f8f9fc" stroke="#c5cee0" stroke-width="1.5"/>  <text x="500" y="100" class="m" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">x</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">l+1</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text>
+<line x1="174" y1="104" x2="256" y2="104" class="arr-b"/><line x1="364" y1="104" x2="446" y2="104" class="arr-b"/><path d="M120,104 Q120,70 446,70" class="arr-d" fill="none" marker-end="url(#hcad)"/>  <text x="310" y="60" class="an" text-anchor="middle">identity skip (+ x_l)</text>
+
+<rect x="28" y="156" width="864" height="232" rx="8" fill="#eef1f8" stroke="#b0bdd4" stroke-width="1.5" stroke-dasharray="6 3"/><text x="40" y="174" class="ph">B  Hyper-Connections (one sublayer; n=4)</text><rect x="72" y="217" width="88" height="32" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/>
+<text x="116" y="238" class="fm" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">r</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">l</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan dy="-0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">,1</tspan><tspan dy="0.35em" font-size="1em"></tspan></text>
+<rect x="72" y="255" width="88" height="32" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/>
+<text x="116" y="276" class="fm" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">r</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">l</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan dy="-0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">,2</tspan><tspan dy="0.35em" font-size="1em"></tspan></text>
+<rect x="72" y="293" width="88" height="32" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/>
+<text x="116" y="314" class="fm" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">r</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">l</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan dy="-0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">,3</tspan><tspan dy="0.35em" font-size="1em"></tspan></text>
+<rect x="72" y="331" width="88" height="32" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/>
+<text x="116" y="352" class="fm" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">r</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">l</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan dy="-0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">,4</tspan><tspan dy="0.35em" font-size="1em"></tspan></text>
+  <text x="116" y="207" class="an" text-anchor="middle">n=4 streams @ layer l</text>
+<rect x="720" y="217" width="88" height="32" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/>
+<text x="764" y="238" class="fm" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">r</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">l</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan dy="-0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">,1</tspan><tspan dy="0.35em" font-size="1em"></tspan></text>
+<rect x="720" y="255" width="88" height="32" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/>
+<text x="764" y="276" class="fm" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">r</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">l</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan dy="-0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">,2</tspan><tspan dy="0.35em" font-size="1em"></tspan></text>
+<rect x="720" y="293" width="88" height="32" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/>
+<text x="764" y="314" class="fm" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">r</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">l</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan dy="-0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">,3</tspan><tspan dy="0.35em" font-size="1em"></tspan></text>
+<rect x="720" y="331" width="88" height="32" rx="6" fill="#eef4fc" stroke="#4A90D9" stroke-width="1.5"/>
+<text x="764" y="352" class="fm" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">r</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">l</tspan><tspan dy="-0.35em" font-size="1em"></tspan><tspan dy="-0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">,4</tspan><tspan dy="0.35em" font-size="1em"></tspan></text>
+  <text x="764" y="207" class="an" text-anchor="middle">n=4 streams @ layer l+1</text>
+<rect x="232" y="264" width="96" height="52" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>  <text x="280" y="280" class="lb" text-anchor="middle">Pre-mix</text>
+<text x="280" y="302" class="fm" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">H</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">pre</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text><rect x="368" y="260" width="124" height="60" rx="6" fill="#f0faf0" stroke="#27AE60" stroke-width="1.5"/>  <text x="430" y="284" class="lb" text-anchor="middle">F_l</text>
+  <text x="430" y="300" class="dt" text-anchor="middle">Attn / FFN</text>
+  <text x="430" y="316" class="m" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">y</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">l</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text>
+<rect x="510" y="256" width="140" height="68" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>  <text x="580" y="276" class="lb" text-anchor="middle">Post-mix</text>
+<text x="580" y="298" class="fm" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">H</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">post</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text><text x="580" y="314" class="fm" text-anchor="middle"><tspan font-style="italic" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">H</tspan><tspan dy="0.35em" font-size="0.72em" font-family="Cambria Math, STIX Two Math, Latin Modern Math, serif">comb</tspan><tspan dy="-0.35em" font-size="1em"></tspan></text><line x1="160" y1="233" x2="232" y2="290" class="arr-o"/><line x1="160" y1="271" x2="232" y2="290" class="arr-o"/><line x1="160" y1="309" x2="232" y2="290" class="arr-o"/><line x1="160" y1="347" x2="232" y2="290" class="arr-o"/><line x1="328" y1="290" x2="368" y2="290" class="arr-b"/><line x1="492" y1="290" x2="510" y2="290" class="arr-b"/><line x1="650" y1="290" x2="720" y2="233" class="arr-o"/><line x1="650" y1="290" x2="720" y2="271" class="arr-o"/><line x1="650" y1="290" x2="720" y2="309" class="arr-o"/><line x1="650" y1="290" x2="720" y2="347" class="arr-o"/>  <text x="430" y="402" class="st" text-anchor="middle">NOT replacing Attn/FFN internals; only residual topology widens to n parallel highways</text>
+
+</svg>
