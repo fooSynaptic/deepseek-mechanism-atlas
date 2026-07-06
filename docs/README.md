@@ -1,12 +1,10 @@
 # deepseek-tech-notes · 中文导读
 
-> **丝滑阅读 × 深度拆解 × 前沿跟进** — 非官方 DeepSeek 技术笔记（V1→V4）。**与 DeepSeek 官方无隶属关系**。
->
-> **Smooth, deep notes on frontier DeepSeek tech**. Unofficial; not affiliated with DeepSeek.
+> **[英文首页](../README.md)**
 
-> [← English homepage](https://github.com/fooSynaptic/deepseek-tech-notes)
->
-> **[在线成书](https://fooSynaptic.github.io/deepseek-tech-notes/)**
+> **丝滑阅读 × 深度拆解 × 前沿跟进** — 非官方 DeepSeek 技术笔记（V1→V4）。**与 DeepSeek 官方无隶属关系**。
+
+📖 **[在线成书（mdBook）](https://fooSynaptic.github.io/deepseek-tech-notes/)** — 与本地 IDE Preview 渲染一致；在线请用 Pages，**勿用 GitHub blob 预览**。
 
 ### 推荐阅读
 
@@ -18,6 +16,10 @@
 | **[GitHub Pages（mdBook）](https://fooSynaptic.github.io/deepseek-tech-notes/)** | 在线阅读、无需 clone | 公式、图示与 IDE 一致；用浏览器 **后退 / 前进** 沿阅读路径返回上一篇或再进下一篇，效果与 IDE 里点链接类似 |
 
 **小结**：本地 **IDE Preview** 与 **Pages** 二选一即可；编辑与 PR 仍在本仓库 `docs/` 进行。
+
+### 为何单独建在线 Pages？
+
+本地 **IDE Preview** 与 **GitHub 仓库内 Markdown 预览** 的渲染引擎不同——引用块、行内/块级公式、链接里的 `$...$` 等在 GitHub 上常会错位，在 IDE 里却正常。源稿 `.md` **不为迁就 GitHub Preview 而改写法**；改为用 mdBook + KaTeX 部署 **[在线成书](https://fooSynaptic.github.io/deepseek-tech-notes/)**，与 IDE 阅读体验对齐。在线请点 Pages；改稿、提 PR 仍走本仓库。
 
 > **善意提醒**：正文里的 SVG 插图下方，通常都有 **「图示详情」** 链接——点进去可在新页查看可缩放的原图。不少机制就写在图里的箭头、分区与小字标注里，值得放慢节奏、仔细品读。
 
