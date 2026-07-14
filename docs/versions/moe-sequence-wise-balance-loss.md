@@ -3,6 +3,13 @@
 > [← 中文导读](../README.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览](../reports/deepseek-version-lineage-20260625.md) · [← MoE 线导读](../reports/deepseek-moe-line.md) · [← aux-loss-free 主文档](./aux-loss-free-moe-routing.md) · [V3 梗概](./v3.md)
 > **论文**：[DeepSeek-V3 arXiv:2412.19437](https://arxiv.org/abs/2412.19437) §2.1（Eq. 17–20）；§4.5.3 batch vs sequence
 
+## 核心结论摘要
+
+- 序列内专家均衡损失 $L_{\mathrm{Bal}}$：单序列内 $f_i P_i$ 互补。
+- Eq. 17–20；与 aux-loss-free 动态 bias 是不同层级的均衡手段。
+- 防止单条长序列内专家塌缩到少数几个。
+- V3 论文 MoE 训练细节，结构优化配套项。
+
 ---
 
 ## 一句话
