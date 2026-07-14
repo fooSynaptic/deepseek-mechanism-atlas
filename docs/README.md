@@ -2,64 +2,43 @@
 
 > **[英文首页](../README.md)**
 
-> **丝滑阅读 × 深度拆解 × 前沿跟进** — 非官方 DeepSeek 技术笔记（V1→V4）。**与 DeepSeek 官方无隶属关系**。
+> **全网最全 DeepSeek 全系列论文通俗拆解** — 从 V1 到 V4、R1 推理、稀疏注意力 (DSA)、DSpark 投机解码；统一排版、双向 wiki、配套公式与 SVG 图解。非官方笔记，与 DeepSeek 官方无隶属关系。
+>
+> **Comprehensive DeepSeek full-series paper explanation** for LLM researchers and engineers — easy-to-understand technical notes with formulas and diagrams.
 
 📖 **[在线成书（mdBook）](https://fooSynaptic.github.io/deepseek-tech-notes/)** — 与本地 IDE Preview 渲染一致；在线请用 Pages，**勿用 GitHub blob 预览**。
 
-### 推荐阅读
+> 如果这份笔记对你有帮助，欢迎 **Star ⭐** 方便后续查阅。
 
-本笔记是**双向引用 wiki**：文首有反向回链，文内有正向深入链接。要发挥这套导航的价值，请用下面两种方式之一——**不要用 GitHub 仓库内的 blob 预览**。
-
-| 方式 | 何时用 | 导航怎么玩 |
-|------|--------|------------|
-| **IDE Preview**（VS Code / Cursor） | 已 clone 仓库、本地精读或改稿 | 点文首 `←` 回链与文内链接即可跳转；可开**预览分栏**或沿预览历史回溯——**正向 / 反向引用价值最大** |
-| **[GitHub Pages（mdBook）](https://fooSynaptic.github.io/deepseek-tech-notes/)** | 在线阅读、无需 clone | 公式、图示与 IDE 一致；用浏览器 **后退 / 前进** 沿阅读路径返回上一篇或再进下一篇，效果与 IDE 里点链接类似 |
-
-**小结**：本地 **IDE Preview** 与 **Pages** 二选一即可；编辑与 PR 仍在本仓库 `docs/` 进行。
-
-### 为何单独建在线 Pages？
-
-本地 **IDE Preview** 与 **GitHub 仓库内 Markdown 预览** 的渲染引擎不同——引用块、行内/块级公式、链接里的 `$...$` 等在 GitHub 上常会错位，在 IDE 里却正常。源稿 `.md` **不为迁就 GitHub Preview 而改写法**；改为用 mdBook + KaTeX 部署 **[在线成书](https://fooSynaptic.github.io/deepseek-tech-notes/)**，与 IDE 阅读体验对齐。在线请点 Pages；改稿、提 PR 仍走本仓库。
-
-> **善意提醒**：正文里的 SVG 插图下方，通常都有 **「图示详情」** 链接——点进去可在新页查看可缩放的原图。不少机制就写在图里的箭头、分区与小字标注里，值得放慢节奏、仔细品读。
-
-> **项目仍在完善中**：梗概补全、书中镜像、链接与图示校验仍在推进。阅读时请以各篇文首的 arXiv / 官方 PDF 为准；发现断链、口径不一致或表述错误，**欢迎提 issue**。
+> **维护承诺**：同步跟进 DeepSeek 所有新发布论文，持续维护与修正。
 
 ---
 
-## 这个项目在做什么
-
-我从 [DeepSeek V1 技术报告](versions/v1.md) 一路跟到 [**V4**](versions/v4.md)，并把**大部分**主要技术文章里的**机制与细节**拆开写清楚：架构怎么变、训练/推理在优化什么、[版本之间如何衔接](reports/deepseek-version-lineage-20260625.md#2-版本时间线与关系)。
-
-范围包括：
-
-- **DeepSeek 主线**（见 [算法线](reports/deepseek-algorithm-line.md) · [MoE 线](reports/deepseek-moe-line.md)）：[**MLA**](versions/mla-latent-attention.md)、[**DeepSeekMoE**](versions/deepseek-moe.md)、[**aux-loss-free 路由**](versions/aux-loss-free-moe-routing.md)、[**MTP**](versions/v3.md#三mtpmulti-token-prediction)、[**RLVR**](versions/rlvr.md) / [**R1**](versions/r1.md)、[**DSA**](versions/dsa-sparse-attention.md)、[**CSA / HCA**](versions/csa-hca-mixed-attention.md)、[**mHC**](versions/mhc-manifold-hyper-connections.md)、[**Hash MoE**](versions/hash-moe-fp4.md)、[**V4 异构 KV**](versions/v4-kv-layout.md) 等。
-- **V4 及衍生的推理技术**（见 [基础设施线](reports/deepseek-infra-line.md)）：如 [**DSpark**](versions/dspark-speculative-decoding.md) 投机解码（半自回归 draft + 置信度调度验证）、[**HiSparse**](versions/v4-hisparse.md)、[**磁盘 Prefix Cache**](versions/v4-disk-prefix-cache.md) 等。
-- **叠在 DeepSeek checkpoint 上的衍生工作**——尤其 **AI Infrastructure** 向：
- - [**Index Share / IndexCache**](versions/index-share.md)（清华 + 智谱）：跨层复用 [DSA](versions/dsa-sparse-attention.md) indexer 的 top-$k$ index，纯推理补丁；[逻辑详解](dsa/index-share-logic.md)
- - [**ESS**](versions/ess-latent-cache-offload.md)（百度百舸）：Latent-Cache CPU offload，与 DSA 算法正交；[论文梗概](versions/ess-paper-highlights.md)
-
----
-
-## 演进
-
-**[版本演进总览](reports/deepseek-version-lineage-20260625.md)** — 全系列唯一主线入口：时间线 + 算法 / 基础设施 / MoE 三线；各版本与 infra 补丁的内链均从此文展开。
+## 公式图解预览
 
 <img src="../diagrams/deepseek-version-lineage.svg" alt="DeepSeek 版本时间线：V3 至 V4 算法演进与 Index Share / ESS / DSpark / HiSparse 基础设施补丁" width="920"/>
 
-[图示详情](../diagrams/deepseek-version-lineage.svg) · 与 [演进总览 §1](reports/deepseek-version-lineage-20260625.md#1-总览) 对照阅读
+[版本演进全图](../diagrams/deepseek-version-lineage.svg) · [演进总览](reports/deepseek-version-lineage-20260625.md)
+
+<img src="../diagrams/mla-forward-flow.svg" alt="MLA 前向计算流程：KV latent 压缩与解耦 RoPE" width="920"/>
+
+[MLA 前向流程](../diagrams/mla-forward-flow.svg) · [MLA 详解](versions/mla-latent-attention.md)
 
 <img src="../diagrams/grpo-vs-ppo.svg" alt="PPO vs GRPO：RLHF 神经 RM + Critic 与 RLVR 验证器 + 组内 baseline 对比" width="920"/>
 
-[图示详情](../diagrams/grpo-vs-ppo.svg) · [RLVR / GRPO](versions/rlvr.md) · [R1](versions/r1.md)
+[GRPO vs PPO](../diagrams/grpo-vs-ppo.svg) · [R1](versions/r1.md) · [RLVR](versions/rlvr.md)
 
 <img src="../diagrams/mtp-fusion-scheme.svg" alt="MTP 融合：主网单步 1 次前向，MTP 链补 draft，无需 K 遍完整前向" width="920"/>
 
-[图示详情](../diagrams/mtp-fusion-scheme.svg) · [DSpark 投机解码](versions/dspark-speculative-decoding.md) · [MTP 融合 scheme](versions/qa/mtp-fusion-scheme.md)
+[MTP 融合](../diagrams/mtp-fusion-scheme.svg) · [DSpark 投机解码](versions/dspark-speculative-decoding.md)
+
+<img src="../diagrams/dspark-speculative.svg" alt="DSpark 投机解码：半自回归 draft + 置信度调度验证" width="920"/>
+
+[DSpark 投机解码](../diagrams/dspark-speculative.svg) · [投机解码专文](versions/dspark-speculative-decoding.md)
 
 ---
 
-## 文章
+## 论文目录
 
 | 主题 | 一句话 |
 |------|--------|
@@ -89,6 +68,49 @@
 | [**$L_{\mathrm{Bal}}$**](versions/moe-sequence-wise-balance-loss.md) | 序列内专家均衡损失 |
 | [**Hyper-Connections**](versions/hyper-connections.md) | $n$ 路并行残差流；mHC 前置 |
 
+**完整版本索引**：[版本目录](versions/README.md) · [演进总览](reports/deepseek-version-lineage-20260625.md)
+
+**搜索关键词**：`DeepSeek 论文解读` · `DeepSeek-V2` · `DeepSeek-V3` · `DeepSeek-V4` · `DeepSeek R1` · `推理模型` · `稀疏注意力` · `DSpark` · `投机解码` · `MLA` · `MoE`
+
+---
+
+### 推荐阅读
+
+本笔记是**双向引用 wiki**：文首有反向回链，文内有正向深入链接。要发挥这套导航的价值，请用下面两种方式之一——**不要用 GitHub 仓库内的 blob 预览**。
+
+| 方式 | 何时用 | 导航怎么玩 |
+|------|--------|------------|
+| **IDE Preview**（VS Code / Cursor） | 已 clone 仓库、本地精读或改稿 | 点文首 `←` 回链与文内链接即可跳转；可开**预览分栏**或沿预览历史回溯——**正向 / 反向引用价值最大** |
+| **[GitHub Pages（mdBook）](https://fooSynaptic.github.io/deepseek-tech-notes/)** | 在线阅读、无需 clone | 公式、图示与 IDE 一致；用浏览器 **后退 / 前进** 沿阅读路径返回上一篇或再进下一篇，效果与 IDE 里点链接类似 |
+
+**小结**：本地 **IDE Preview** 与 **Pages** 二选一即可；编辑与 PR 仍在本仓库 `docs/` 进行。
+
+### 为何单独建在线 Pages？
+
+本地 **IDE Preview** 与 **GitHub 仓库内 Markdown 预览** 的渲染引擎不同——引用块、行内/块级公式、链接里的 `$...$` 等在 GitHub 上常会错位，在 IDE 里却正常。源稿 `.md` **不为迁就 GitHub Preview 而改写法**；改为用 mdBook + KaTeX 部署 **[在线成书](https://fooSynaptic.github.io/deepseek-tech-notes/)**，与 IDE 阅读体验对齐。在线请点 Pages；改稿、提 PR 仍走本仓库。
+
+> **善意提醒**：正文里的 SVG 插图下方，通常都有 **「图示详情」** 链接——点进去可在新页查看可缩放的原图。不少机制就写在图里的箭头、分区与小字标注里，值得放慢节奏、仔细品读。
+
+> **项目仍在完善中**：梗概补全、书中镜像、链接与图示校验仍在推进。阅读时请以各篇文首的 arXiv / 官方 PDF 为准；发现断链、口径不一致或表述错误，**欢迎提 issue**。
+
+---
+
+## 这个项目在做什么
+
+我从 [DeepSeek V1 技术报告](versions/v1.md) 一路跟到 [**V4**](versions/v4.md)，并把**大部分**主要技术文章里的**机制与细节**拆开写清楚：架构怎么变、训练/推理在优化什么、[版本之间如何衔接](reports/deepseek-version-lineage-20260625.md#2-版本时间线与关系)。
+
+**核心差异化**：区别于零散博客专栏，本仓库统一排版、双向 wiki 导航、每篇论文独立 md 并附 **核心结论摘要**，配套 SVG 公式图解与 mdBook 在线成书。
+
+范围包括：
+
+- **DeepSeek 主线**（见 [算法线](reports/deepseek-algorithm-line.md) · [MoE 线](reports/deepseek-moe-line.md)）：[**MLA**](versions/mla-latent-attention.md)、[**DeepSeekMoE**](versions/deepseek-moe.md)、[**aux-loss-free 路由**](versions/aux-loss-free-moe-routing.md)、[**MTP**](versions/v3.md#三mtpmulti-token-prediction)、[**RLVR**](versions/rlvr.md) / [**R1**](versions/r1.md)、[**DSA**](versions/dsa-sparse-attention.md)、[**CSA / HCA**](versions/csa-hca-mixed-attention.md)、[**mHC**](versions/mhc-manifold-hyper-connections.md)、[**Hash MoE**](versions/hash-moe-fp4.md)、[**V4 异构 KV**](versions/v4-kv-layout.md) 等。
+- **V4 及衍生的推理技术**（见 [基础设施线](reports/deepseek-infra-line.md)）：如 [**DSpark**](versions/dspark-speculative-decoding.md) 投机解码（半自回归 draft + 置信度调度验证）、[**HiSparse**](versions/v4-hisparse.md)、[**磁盘 Prefix Cache**](versions/v4-disk-prefix-cache.md) 等。
+- **叠在 DeepSeek checkpoint 上的衍生工作**——尤其 **AI Infrastructure** 向：
+ - [**Index Share / IndexCache**](versions/index-share.md)（清华 + 智谱）：跨层复用 [DSA](versions/dsa-sparse-attention.md) indexer 的 top-$k$ index，纯推理补丁；[逻辑详解](dsa/index-share-logic.md)
+ - [**ESS**](versions/ess-latent-cache-offload.md)（百度百舸）：Latent-Cache CPU offload，与 DSA 算法正交；[论文梗概](versions/ess-paper-highlights.md)
+
+**[版本演进总览](reports/deepseek-version-lineage-20260625.md)** — 全系列唯一主线入口：时间线 + 算法 / 基础设施 / MoE 三线；各版本与 infra 补丁的内链均从此文展开。
+
 ---
 
 <!-- book:omit -->
@@ -105,7 +127,8 @@
  - `QA_DESTINATIONS` — 若是答疑页（可镜像到多个书内目录）；
  - `ASSET_MAP` — 仅当新图需要复制进书内目录时。
 3. **补导航** — 文首 blockquote 顶栏加 `←` 回链（参考现有篇章）；在相关总览 / 索引里链到新文。
-4. **重建并校验**（仓库根目录）：
+4. **补 `## 核心结论摘要`** — 每篇论文文首 3–5 条要点，降低阅读门槛。
+5. **重建并校验**（仓库根目录）：
 
 ```bash
 python3 《ds-技术报告》/build_book.py

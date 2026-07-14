@@ -3,6 +3,13 @@
 > [← 中文导读](../README.md) · [← 仓库首页（EN）](../../README.md) · [← V1 正文](./v1.md) · [← 演进总览 §3.1 V1](../reports/deepseek-version-lineage-20260625.md#31-deepseek-llm-v1) · [V1→V3 演进](../reports/deepseek-v1-to-v3-lineage.md)
 > **论文**：[DeepSeek-LLM arXiv:2401.02954](https://arxiv.org/abs/2401.02954) §2.1 · [V2 沿用同词表](./v2.md)
 
+## 核心结论摘要
+
+- V1 采用 **Byte-level BPE (BBPE)** 词表：100K + special tokens。
+- Embedding 维度 102,400；V2/V3 系 **沿用同一词表**。
+- 预分词规则与 byte fallback 影响多语言与代码 token 效率。
+- 是理解后续 checkpoint 词表一致性的前置阅读。
+
 ---
 
 ## 一句话
