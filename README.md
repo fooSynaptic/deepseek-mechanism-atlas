@@ -1,6 +1,8 @@
 # deepseek-tech-notes
 
-> **全网最全 DeepSeek 全系列论文通俗拆解** — 从 V1 到 V4、R1 reasoning、sparse attention (DSA)、DSpark speculative decoding，统一排版、双向 wiki、配套公式与 SVG 图解。区别于零散博客，本仓库持续更新、可在线成书阅读。
+<img src="./diagrams/deepseek-version-lineage.svg" alt="DeepSeek version timeline: V3–V4 algorithm evolution and Index Share / ESS / DSpark / HiSparse infra patches" width="920"/>
+
+> **DeepSeek 全系列论文通俗拆解** — 从 V1 到 V4、R1 reasoning、sparse attention (DSA)、DSpark speculative decoding，统一排版、双向 wiki、配套公式与 SVG 图解。区别于零散博客，可在线成书阅读。
 >
 > **Comprehensive DeepSeek full-series paper explanation**, including DeepSeek-V2/V3/V4, R1 reasoning, sparse attention, DSpark speculative decoding — easy-to-understand technical notes for LLM researchers and engineers. Unofficial; not affiliated with DeepSeek.
 
@@ -9,13 +11,10 @@
 > 如果这份笔记对你有帮助，欢迎 **Star ⭐** 方便后续查阅。  
 > If these notes help you, please **Star** to bookmark for later.
 
-> **维护承诺**：同步跟进 DeepSeek 所有新发布论文，持续维护与修正。
 
 ---
 
 ## 公式图解预览
-
-<img src="./diagrams/deepseek-version-lineage.svg" alt="DeepSeek version timeline: V3–V4 algorithm evolution and Index Share / ESS / DSpark / HiSparse infra patches" width="920"/>
 
 [版本演进全图](./diagrams/deepseek-version-lineage.svg) · [演进总览](docs/reports/deepseek-version-lineage-20260625.md)
 
