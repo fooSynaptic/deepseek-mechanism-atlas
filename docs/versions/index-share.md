@@ -2,6 +2,13 @@
 
 > [← 中文导读](../README.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §4](../reports/deepseek-version-lineage-20260625.md#4-index-shareindexcache) · [← 基础设施线导读](../reports/deepseek-infra-line.md) · [← 版本目录](./README.md) · [上游 DSA §异构 KV](./dsa-sparse-attention.md#异构-kv-cache) · [并列 ESS](./ess-latent-cache-offload.md) · [逻辑详解](../dsa/index-share-logic.md)
 
+## 核心结论摘要
+
+- **IndexCache** 跨层复用 DSA indexer 的 top-k index，纯 **推理 infra 补丁**。
+- 不改模型权重；社区有时称「V3.3」但非 DeepSeek 官方版本号。
+- 清华 + 智谱工作；与 ESS 正交，可叠加。
+- 逻辑详解见 [Index Share 系列](../dsa/index-share-logic.md)。
+
 ---
 
 ## 定位

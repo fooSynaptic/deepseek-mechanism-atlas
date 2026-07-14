@@ -3,6 +3,13 @@
 > [← 中文导读](../README.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §2](../reports/deepseek-version-lineage-20260625.md#2-版本时间线与关系) · [← 算法线导读](../reports/deepseek-algorithm-line.md) · [← 基础设施线导读](../reports/deepseek-infra-line.md) · [← V3 梗概](./v3.md) · [V2 MLA 首发](./v2.md) · [V3.1 Hybrid MLA 切换](./v3-1.md#mla-模式切换terminus-起) · [下游 DSA](./dsa-sparse-attention.md) · [Raschka §3.1 MLA](../reports/raschka-technical-deepseek-v3-v32-highlights.md#mla-要点31)
 > **论文**：DeepSeek-V2 首次提出 MLA [arXiv:2405.04434](https://arxiv.org/abs/2405.04434)；V3/R1/V3.1/V3.2 **沿用同一 MLA 结构**
 
+## 核心结论摘要
+
+- MLA 将 K/V **压入低维 latent** 再写 cache，推理时升维得到多头 K/V。
+- RoPE 的 R 分量维度小且 **全头共享**，进一步省 cache。
+- 单 token cache 从 O(n_h d_h) 降至 **O(d_c^KV + d_h^R)**，约 MHA 的 1/57。
+- V2 首发，V3/R1/V3.1/V3.2 **沿用同一 MLA 结构**。
+
 ---
 
 ## 一句话

@@ -3,6 +3,13 @@
 > [← 中文导读](../README.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §3.7](../reports/deepseek-version-lineage-20260625.md#37-deepseek-v4) · [← MoE 线导读](../reports/deepseek-moe-line.md) · [V4 梗概](./v4.md) · [上游 DeepSeekMoE](./deepseek-moe.md) · [上游 aux-loss-free](./aux-loss-free-moe-routing.md) · [$L_{\mathrm{Bal}}$](./moe-sequence-wise-balance-loss.md) · [centroid vs gate-weight 答疑](./qa/moe-centroid-vs-gate-weight.md)
 > **论文**：[DeepSeek-V4 arXiv:2606.19348](https://arxiv.org/abs/2606.19348)
 
+## 核心结论摘要
+
+- V4 前几层用 **Hash 路由**替代 learned gate，降低路由开销。
+- Routed expert 权重 **FP4 + QAT**，进一步压推理带宽。
+- MoE 线 ⑤；与 V3 aux-loss-free 形成演进对照。
+- Shared expert 仍保留，Hash 仅作用于部分浅层 routed。
+
 ---
 
 ## 一句话

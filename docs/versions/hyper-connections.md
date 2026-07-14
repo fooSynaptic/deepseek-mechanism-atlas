@@ -3,6 +3,13 @@
 > [← 中文导读](../README.md) · [← 仓库首页（EN）](../../README.md) · [← mHC 主文档](./mhc-manifold-hyper-connections.md) · [← 算法线导读](../reports/deepseek-algorithm-line.md) · [mHC §3 双随机流形](./mhc-manifold-hyper-connections.md#3-mhc-核心双随机流形约束) · [V4 梗概](./v4.md) · [Raschka §8](../reports/raschka-technical-deepseek-v3-v32-highlights.md#结论表-7--8)
 > **论文**：[mHC arXiv:2512.24880](https://arxiv.org/abs/2512.24880) §2（HC 为 mHC 前置）· **落地**：[V4 arXiv:2606.19348](https://arxiv.org/abs/2606.19348)
 
+## 核心结论摘要
+
+- **HC**：$n$ 路并行残差流 + pre/post/comb 变换。
+- 比单路残差更强表达，但训练稳定性挑战更大。
+- V4 **mHC** 在其上加双随机流形约束后落地。
+- 含公式与与标准残差的对照说明。
+
 ---
 
 ## 一句话

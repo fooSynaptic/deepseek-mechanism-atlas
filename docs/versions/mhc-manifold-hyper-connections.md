@@ -3,6 +3,13 @@
 > [← 中文导读](../README.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §3.7](../reports/deepseek-version-lineage-20260625.md#37-deepseek-v4) · [← 算法线导读](../reports/deepseek-algorithm-line.md) · [← V4 梗概](./v4.md) · [HC 基础](./hyper-connections.md) · [Raschka §8 mHC](../reports/raschka-technical-deepseek-v3-v32-highlights.md#结论表-7--8)
 > **论文**：[mHC arXiv:2512.24880](https://arxiv.org/abs/2512.24880)（2025-12-31）· **落地**：[V4 arXiv:2606.19348](https://arxiv.org/abs/2606.19348)
 
+## 核心结论摘要
+
+- **mHC** 在 Hyper-Connections 上加 **双随机流形约束**（Sinkhorn–Knopp）。
+- 恢复 HC 恒等映射稳定性，避免多路残差流训练发散。
+- V4 落地；含 §3 流形推导与 Birkhoff 多面体背景。
+- 前置阅读：[Hyper-Connections](hyper-connections.md)。
+
 ---
 
 ## 一句话

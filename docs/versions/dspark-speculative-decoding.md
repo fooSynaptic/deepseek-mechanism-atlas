@@ -6,6 +6,13 @@
 
 **本文档**聚合 DeepSeek 系列 **投机解码（speculative decoding）** 与 **DSpark** 全部材料：通用循环、V3/V4 **MTP**、外挂 draft 自测、生产 **MTP-1** 基线、**DSpark** 机制与线上数据。演进总览 / V3 / V4 / 基础设施线 **只保留链接，细节以本文为准**。
 
+## 核心结论摘要
+
+- 投机解码把 **k 次搬大模型权重**压成 **1 次** target 前向 + 便宜 draft。
+- V3 **MTP** 链可做 draft；V4 生产侧 **DSpark** 为半自回归 draft + 置信度调度验证。
+- 与 HiSparse **正交**，可叠加提升 decode 吞吐。
+- 开源参考：[DeepSpec](https://github.com/deepseek-ai/DeepSpec)。
+
 ---
 
 ## 1. 投机解码：为何能加速推理

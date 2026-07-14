@@ -3,6 +3,13 @@
 > [← 中文导读](../README.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §2](../reports/deepseek-version-lineage-20260625.md#2-版本时间线与关系) · [← R1 梗概](./r1.md) · [Raschka §RLVR/GRPO](../reports/raschka-technical-deepseek-v3-v32-highlights.md#rlvr--grpo-要点326)
 > **论文**：[DeepSeek-R1 arXiv:2501.12948](https://arxiv.org/abs/2501.12948)
 
+## 核心结论摘要
+
+- **RLVR**（Reinforcement Learning with Verifiable Rewards）用规则/验证器给奖励，无需神经 RM。
+- **GRPO** 在组内做相对 advantage 优化，去掉 critic 网络。
+- R1 后训练核心；适合数学、代码等可自动判对错任务。
+- 与 PPO+神经 RM 的 RLHF 路线形成对照（见 GRPO vs PPO 图）。
+
 ---
 
 ## 一句话

@@ -3,6 +3,13 @@
 > [← 中文导读](../README.md) · [← 仓库首页（EN）](../../README.md) · [← 演进总览 §3.6](../reports/deepseek-version-lineage-20260625.md#36-deepseek-v32--v32-exp) · [← 算法线导读](../reports/deepseek-algorithm-line.md) · [← 基础设施线导读](../reports/deepseek-infra-line.md) · [← V3.2 梗概](./v3-2.md) · [上游 MLA](./mla-latent-attention.md) · [下游 CSA/HCA](./csa-hca-mixed-attention.md) · [下游 V4 梗概](./v4.md) · [下游 Index Share](./index-share.md) · [下游 ESS](./ess-latent-cache-offload.md) · [Lightning Indexer 详解](../dsa/lightning-indexer.md) · [完整逻辑](../dsa/dsa-logic.md) · [Raschka §4 DSA](../reports/raschka-technical-deepseek-v3-v32-highlights.md#与本地文档映射)
 > **论文**：[DeepSeek-V3.2 arXiv:2512.02556](https://arxiv.org/pdf/2512.02556) · Exp：[DeepSeek-V3.2](https://github.com/deepseek-ai/DeepSeek-V3.2)
 
+## 核心结论摘要
+
+- DSA 在 **MLA 不变**前提下，用 indexer 选 top-k=2048 再做 Core MLA。
+- 复杂度 **O(L²) → O(Lk)**；k 个位置是学到的、内容相关的，非固定滑动窗口。
+- 三阶段：Lightning Indexer → Top-k Selector → Core MLA。
+- V3.2 唯一架构改动；ESS / IndexCache 为叠在其上的 infra 补丁。
+
 ---
 
 ## 一句话

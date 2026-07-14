@@ -1,14 +1,68 @@
 # deepseek-tech-notes
 
-> **[Chinese docs home](docs/README.md)**
+> **全网最全 DeepSeek 全系列论文通俗拆解** — 从 V1 到 V4、R1 reasoning、sparse attention (DSA)、DSpark speculative decoding，统一排版、双向 wiki、配套公式与 SVG 图解。区别于零散博客，本仓库持续更新、可在线成书阅读。
+>
+> **Comprehensive DeepSeek full-series paper explanation**, including DeepSeek-V2/V3/V4, R1 reasoning, sparse attention, DSpark speculative decoding — easy-to-understand technical notes for LLM researchers and engineers. Unofficial; not affiliated with DeepSeek.
 
-📖 **[Read online (mdBook)](https://fooSynaptic.github.io/deepseek-tech-notes/)** — same rendering as local IDE Preview. For online reading use **Pages**, not GitHub blob preview.
+📖 **[Read online (mdBook)](https://fooSynaptic.github.io/deepseek-tech-notes/)** · **[中文导读](docs/README.md)**
 
-> **Smooth, deep notes on frontier DeepSeek tech** — bidirectional navigation from V1 through **V4** (DSA, MoE, DSpark, Engram, and beyond): formulas, walkthroughs, and infra patches in wiki + book form. Unofficial; not affiliated with DeepSeek.
+> 如果这份笔记对你有帮助，欢迎 **Star ⭐** 方便后续查阅。  
+> If these notes help you, please **Star** to bookmark for later.
 
-> **Primary language: Chinese.** Most articles, the book layout, and deep-dive notes are in **Simplified Chinese**. For the full article index and navigation hub, see the **[Chinese docs home](docs/README.md)** or the **[online mdBook](https://fooSynaptic.github.io/deepseek-tech-notes/)**.
+> **维护承诺**：同步跟进 DeepSeek 所有新发布论文，持续维护与修正。
 
-### Recommended reading
+---
+
+## 公式图解预览
+
+<img src="./diagrams/deepseek-version-lineage.svg" alt="DeepSeek version timeline: V3–V4 algorithm evolution and Index Share / ESS / DSpark / HiSparse infra patches" width="920"/>
+
+[版本演进全图](./diagrams/deepseek-version-lineage.svg) · [演进总览](docs/reports/deepseek-version-lineage-20260625.md)
+
+<img src="./diagrams/mla-forward-flow.svg" alt="MLA forward flow: latent KV compression and decoupled RoPE" width="920"/>
+
+[MLA 前向流程](./diagrams/mla-forward-flow.svg) · [MLA 详解](docs/versions/mla-latent-attention.md)
+
+<img src="./diagrams/grpo-vs-ppo.svg" alt="PPO vs GRPO: RLHF neural RM + Critic vs RLVR verifier + group baseline" width="920"/>
+
+[GRPO vs PPO](./diagrams/grpo-vs-ppo.svg) · [R1](docs/versions/r1.md) · [RLVR](docs/versions/rlvr.md)
+
+<img src="./diagrams/mtp-fusion-scheme.svg" alt="MTP fusion: one main-network forward per step; MTP chain supplies draft tokens" width="920"/>
+
+[MTP 融合](./diagrams/mtp-fusion-scheme.svg) · [DSpark](docs/versions/dspark-speculative-decoding.md)
+
+<img src="./diagrams/dspark-speculative.svg" alt="DSpark speculative decoding: semi-AR draft + confidence scheduler verification" width="920"/>
+
+[DSpark 投机解码](./diagrams/dspark-speculative.svg) · [投机解码专文](docs/versions/dspark-speculative-decoding.md)
+
+---
+
+## 论文目录 · Paper Catalog
+
+| 主题 | 文档 | 关键词 |
+|------|------|--------|
+| **V1** | [DeepSeek-LLM](docs/versions/v1.md) | scaling laws, 稠密基座 |
+| **V2** | [DeepSeek-V2](docs/versions/v2.md) | MLA, DeepSeekMoE, 128K |
+| **V3** | [DeepSeek-V3](docs/versions/v3.md) | 671B MoE, MTP, aux-loss-free |
+| **R1** | [DeepSeek-R1](docs/versions/r1.md) | reasoning model, RLVR, GRPO |
+| **V3.2** | [DeepSeek-V3.2](docs/versions/v3-2.md) | sparse attention, DSA |
+| **V4** | [DeepSeek-V4](docs/versions/v4.md) | CSA/HCA, mHC, 1M context |
+| **DSA** | [稀疏注意力](docs/versions/dsa-sparse-attention.md) | indexer, top-k, lightning indexer |
+| **DSpark** | [投机解码](docs/versions/dspark-speculative-decoding.md) | speculative decoding, MTP fusion |
+| **MLA** | [低秩注意力](docs/versions/mla-latent-attention.md) | latent KV, KV cache 压缩 |
+| **MoE** | [DeepSeekMoE](docs/versions/deepseek-moe.md) | routed experts, shared experts |
+| **Index Share** | [IndexCache](docs/versions/index-share.md) | 跨层 index 复用, infra 补丁 |
+| **ESS** | [Latent offload](docs/versions/ess-latent-cache-offload.md) | CPU KV offload |
+| **CSA / HCA** | [混合压缩注意力](docs/versions/csa-hca-mixed-attention.md) | 4:1 sparse + 128:1 dense |
+| **Hash MoE** | [Hash MoE + FP4](docs/versions/hash-moe-fp4.md) | hash routing, FP4 quantization |
+
+**完整索引**：[中文导读 · 文章表](docs/README.md#文章) · [版本目录](docs/versions/README.md) · [在线成书](https://fooSynaptic.github.io/deepseek-tech-notes/)
+
+**搜索关键词**：`DeepSeek paper` · `DeepSeek-V2` · `DeepSeek-V3` · `DeepSeek-V4` · `DeepSeek R1` · `reasoning model` · `sparse attention` · `DSpark` · `MLA` · `MoE` · `llm-papers` · `paper explanation`
+
+---
+
+## Recommended reading
 
 These notes form a **bidirectional wiki** — every article links back at the top and forward in the body. To get the most out of that navigation, use one of these (not GitHub’s in-repo blob preview):
 
@@ -28,6 +82,8 @@ These notes form a **bidirectional wiki** — every article links back at the to
 ## What this repo is
 
 I follow DeepSeek's open-model line **V1 → V2 → V3 → R1 / V3.2 → V4**, and unpack **most** (not every) major technical reports into readable walkthroughs: architecture changes, training/inference tricks, formulas, and how versions relate.
+
+**Differentiation** — vs scattered blog posts: unified layout, bidirectional wiki navigation, SVG formula diagrams, per-paper **核心结论摘要** modules, and a living mdBook mirror.
 
 Coverage includes:
 
@@ -55,15 +111,6 @@ In **[IDE Preview](#recommended-reading)**, click links to jump; on **[Pages](ht
 | **Chinese home (source hub)** | [docs/README.md](docs/README.md) |
 | **Evolution hub** | [Version lineage overview](docs/reports/deepseek-version-lineage-20260625.md) — algorithm / infrastructure / MoE threads |
 | **Book mirror (repo)** | [《ds-技术报告》/01-总览/01-版本演进总览.md](《ds-技术报告》/01-总览/01-版本演进总览.md) |
-| **PNG figures** | [`png/`](png/) — raster exports of all SVG diagrams (images only) |
-
-<img src="./diagrams/deepseek-version-lineage.svg" alt="DeepSeek version timeline: V3–V4 algorithm evolution and Index Share / ESS / DSpark / HiSparse infra patches" width="920"/>
-
-[Diagram details](./diagrams/deepseek-version-lineage.svg)
-
-<img src="./diagrams/mtp-fusion-scheme.svg" alt="MTP fusion: one main-network forward per step; MTP chain supplies draft tokens without K full forwards" width="920"/>
-
-[Diagram details](./diagrams/mtp-fusion-scheme.svg) · [DSpark speculative decoding](docs/versions/dspark-speculative-decoding.md) · [MTP fusion scheme (qa)](docs/versions/qa/mtp-fusion-scheme.md)
 
 ---
 
@@ -94,7 +141,8 @@ When you add or move content:
    - `QA_DESTINATIONS` — if it is a Q&A page (may mirror to multiple book folders);
    - `ASSET_MAP` — only if new figures need copying into the book tree.
 3. **Add navigation** — blockquote top bar with `←` links back to the parent section / index (see existing articles); link the new page from the relevant overview or index.
-4. **Rebuild & check** (from repo root):
+4. **Add `## 核心结论摘要`** at the top of each new paper article (3–5 bullet takeaways).
+5. **Rebuild & check** (from repo root):
 
 ```bash
 python3 《ds-技术报告》/build_book.py
