@@ -1,8 +1,10 @@
 # deepseek-tech-notes · 中文导读
 
+<img src="../diagrams/deepseek-version-lineage.svg" alt="DeepSeek 版本时间线：V3 至 V4 算法演进与 Index Share / ESS / DSpark / HiSparse 基础设施补丁" width="920"/>
+
 > **[英文首页](../README.md)**
 
-> **全网最全 DeepSeek 全系列论文通俗拆解** — 从 V1 到 V4、R1 推理、稀疏注意力 (DSA)、DSpark 投机解码；统一排版、双向 wiki、配套公式与 SVG 图解。非官方笔记，与 DeepSeek 官方无隶属关系。
+> **DeepSeek 全系列论文通俗拆解** — 从 V1 到 V4、R1 推理、稀疏注意力 (DSA)、DSpark 投机解码；统一排版、双向 wiki、配套公式与 SVG 图解。非官方笔记，与 DeepSeek 官方无隶属关系。
 >
 > **Comprehensive DeepSeek full-series paper explanation** for LLM researchers and engineers — easy-to-understand technical notes with formulas and diagrams.
 
@@ -10,13 +12,10 @@
 
 > 如果这份笔记对你有帮助，欢迎 **Star ⭐** 方便后续查阅。
 
-> **维护承诺**：同步跟进 DeepSeek 所有新发布论文，持续维护与修正。
 
 ---
 
 ## 公式图解预览
-
-<img src="../diagrams/deepseek-version-lineage.svg" alt="DeepSeek 版本时间线：V3 至 V4 算法演进与 Index Share / ESS / DSpark / HiSparse 基础设施补丁" width="920"/>
 
 [版本演进全图](../diagrams/deepseek-version-lineage.svg) · [演进总览](reports/deepseek-version-lineage-20260625.md)
 
