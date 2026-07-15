@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""校验 deepseek-tech-notes 仓内 Markdown 本地链接：零断链、零项目外引用。"""
+"""校验 deepseek-mechanism-atlas 仓内 Markdown 本地链接：零断链、零项目外引用。"""
 from __future__ import annotations
 
 import re

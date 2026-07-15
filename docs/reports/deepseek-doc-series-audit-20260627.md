@@ -2,7 +2,7 @@
 
 > [← 演进总览](./deepseek-version-lineage-20260625.md) · [← 开发索引](../WIKI-INDEX.md) · [《ds-技术报告》](../../《ds-技术报告》/README.md) · [书中总览](../../《ds-技术报告》/01-总览/01-版本演进总览.md)
 
-本报告对 `deepseek-tech-notes` 仓库文档系列做**结构、双向引用、章节导航、概念去重、SVG 复用**审查，并记录已落地修复与后续维护命令。
+本报告对 `deepseek-mechanism-atlas` 仓库文档系列做**结构、双向引用、章节导航、概念去重、SVG 复用**审查，并记录已落地修复与后续维护命令。
 
 ---
 
@@ -104,7 +104,7 @@
 ### 5.3 维护命令
 
 ```bash
-cd <deepseek-tech-notes 仓库根>
+cd <deepseek-mechanism-atlas 仓库根>
 python3 scripts/svg/gen_deepseek_svgs.py # 或单独 gen_*.py
 python3 dsa/scripts/svg/gen_dsa_svgs.py
 python3 scripts/svg/check_svgs.py # 须 exit 0

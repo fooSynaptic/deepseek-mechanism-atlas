@@ -1,6 +1,6 @@
 # Lightning Indexer 详解
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← DSA 系列导读](01-系列导读.md) · [← 演进总览 §3.6](../01-总览/01-版本演进总览.md#36-deepseek-v32--v32-exp)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · [← DSA 系列导读](01-系列导读.md) · [← 演进总览 §3.6](../01-总览/01-版本演进总览.md#36-deepseek-v32--v32-exp)
 
 > [← DSA 梗概](02-DSA梗概.md) · [DSA 逻辑](03-DSA逻辑详解.md) · [§1 在 DSA 中的角色](#1-在-dsa-中的角色) · [§1 答疑：O(L²) 与常数极小](#答疑为何-oleftl2right-却说常数极小) · [为何不用 softmax](#为何-indexer-不用-softmax) · [Decode 一步 walkthrough](#decode-forward-walkthrough)
 > **论文**：[DeepSeek-V3.2 arXiv:2512.02556](https://arxiv.org/pdf/2512.02556) · **第三方**：[Raschka §4](../08-外部解读/02-Raschka全文解析.md#4-deepseek-v32-exp-and-sparse-attention)

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Post-process mdBook HTML for GitHub Pages project sites.
 
-GitHub Pages serves this book at ``/deepseek-tech-notes/``.  mdBook emits
+GitHub Pages serves this book at ``/deepseek-mechanism-atlas/``.  mdBook emits
 relative ``../`` links that escape the project prefix on root/index pages, and
 unencoded CJK path segments return 400.  Rewrite internal links to absolute,
 percent-encoded URLs under site-url and fix search index paths to match.

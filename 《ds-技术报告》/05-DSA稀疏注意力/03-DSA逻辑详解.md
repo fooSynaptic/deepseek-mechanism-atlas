@@ -1,6 +1,6 @@
 # DSA逻辑详解
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 系列目录](01-系列导读.md) · **[DSA 梗概](02-DSA梗概.md)** · [Index Share 逻辑](06-Index-Share逻辑.md) · [V3.2 梗概](../04-版本代际/02-V3.2-DSA.md) · [演进总览 §3.6](../01-总览/01-版本演进总览.md#36-deepseek-v32--v32-exp) · [Raschka §4](../08-外部解读/01-Raschka要点速读.md#与本地文档映射)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · [← 系列目录](01-系列导读.md) · **[DSA 梗概](02-DSA梗概.md)** · [Index Share 逻辑](06-Index-Share逻辑.md) · [V3.2 梗概](../04-版本代际/02-V3.2-DSA.md) · [演进总览 §3.6](../01-总览/01-版本演进总览.md#36-deepseek-v32--v32-exp) · [Raschka §4](../08-外部解读/01-Raschka要点速读.md#与本地文档映射)
 
 ---
 

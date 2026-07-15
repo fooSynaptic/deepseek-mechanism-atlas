@@ -1,4 +1,4 @@
-> [← 返回 Engram 系列导读](../../../../../07-Engram/02-Engram系列导读.md) · [答疑目录](README.md) · [← 中文导读](../../../../../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes)
+> [← 返回 Engram 系列导读](../../../../../07-Engram/02-Engram系列导读.md) · [答疑目录](README.md) · [← 中文导读](../../../../../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas)
 
 # Engram 系列 · 答疑
 

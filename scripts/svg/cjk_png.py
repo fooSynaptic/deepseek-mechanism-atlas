@@ -12,7 +12,7 @@ REPO = Path(__file__).resolve().parents[2]
 FONTS_DIR = Path(__file__).resolve().parent / "fonts"
 FONT_FILE = FONTS_DIR / "NotoSansCJKsc-Regular.otf"
 FONTCONF = FONTS_DIR / "fonts.conf"
-FONT_CACHE_DIR = Path("/tmp/fontconfig-deepseek-tech-notes-png")
+FONT_CACHE_DIR = Path("/tmp/fontconfig-deepseek-mechanism-atlas-png")
 FONT_URL = (
     "https://github.com/notofonts/noto-cjk/raw/main/"
     "Sans/OTF/SimplifiedChinese/NotoSansCJKsc-Regular.otf"

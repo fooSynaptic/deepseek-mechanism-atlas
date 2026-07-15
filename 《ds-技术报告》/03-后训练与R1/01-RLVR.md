@@ -1,6 +1,6 @@
 # RLVR
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 演进总览 §2](../01-总览/01-版本演进总览.md#2-版本时间线与关系) · [← R1 梗概](02-R1.md) · [Raschka §RLVR/GRPO](../08-外部解读/01-Raschka要点速读.md#rlvr--grpo-要点326)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · [← 演进总览 §2](../01-总览/01-版本演进总览.md#2-版本时间线与关系) · [← R1 梗概](02-R1.md) · [Raschka §RLVR/GRPO](../08-外部解读/01-Raschka要点速读.md#rlvr--grpo-要点326)
 > **论文**：[DeepSeek-R1 arXiv:2501.12948](https://arxiv.org/abs/2501.12948)
 
 ---

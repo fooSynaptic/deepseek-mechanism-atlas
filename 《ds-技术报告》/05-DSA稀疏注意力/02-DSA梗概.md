@@ -1,6 +1,6 @@
 # DSA稀疏注意力
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 演进总览 §3.6](../01-总览/01-版本演进总览.md#36-deepseek-v32--v32-exp) · [← 算法线导读](../01-总览/05-算法线导读.md) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [← V3.2 梗概](../04-版本代际/02-V3.2-DSA.md) · [上游 MLA](../02-基座架构/02-MLA低秩注意力.md) · [下游 CSA/HCA](../04-版本代际/05-CSA-HCA混合压缩注意力.md) · [下游 V4 梗概](../04-版本代际/03-V4.md) · [下游 Index Share](05-Index-Share梗概.md) · [下游 ESS](../06-推理基础设施/01-ESS概念.md) · [Lightning Indexer 详解](04-Lightning-Indexer详解.md) · [完整逻辑](03-DSA逻辑详解.md) · [Raschka §4 DSA](../08-外部解读/01-Raschka要点速读.md#与本地文档映射)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · [← 演进总览 §3.6](../01-总览/01-版本演进总览.md#36-deepseek-v32--v32-exp) · [← 算法线导读](../01-总览/05-算法线导读.md) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [← V3.2 梗概](../04-版本代际/02-V3.2-DSA.md) · [上游 MLA](../02-基座架构/02-MLA低秩注意力.md) · [下游 CSA/HCA](../04-版本代际/05-CSA-HCA混合压缩注意力.md) · [下游 V4 梗概](../04-版本代际/03-V4.md) · [下游 Index Share](05-Index-Share梗概.md) · [下游 ESS](../06-推理基础设施/01-ESS概念.md) · [Lightning Indexer 详解](04-Lightning-Indexer详解.md) · [完整逻辑](03-DSA逻辑详解.md) · [Raschka §4 DSA](../08-外部解读/01-Raschka要点速读.md#与本地文档映射)
 > **论文**：[DeepSeek-V3.2 arXiv:2512.02556](https://arxiv.org/pdf/2512.02556) · Exp：[DeepSeek-V3.2](https://github.com/deepseek-ai/DeepSeek-V3.2)
 
 ---

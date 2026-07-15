@@ -1,6 +1,6 @@
 # V4 磁盘 Prefix Cache
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 演进总览 §5.3 磁盘 Prefix Cache](../01-总览/01-版本演进总览.md#v4-disk-prefix-cache) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [CSA/HCA 算法专文](../04-版本代际/05-CSA-HCA混合压缩注意力.md) · [V4 梗概 §推理 infra](../04-版本代际/03-V4.md#推理-infra-关注点) · [前置 KV layout](05-V4-KV-Layout.md) · [并列 HiSparse](06-V4-HiSparse.md) · [上游 ESS](01-ESS概念.md)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · [← 演进总览 §5.3 磁盘 Prefix Cache](../01-总览/01-版本演进总览.md#v4-disk-prefix-cache) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [CSA/HCA 算法专文](../04-版本代际/05-CSA-HCA混合压缩注意力.md) · [V4 梗概 §推理 infra](../04-版本代际/03-V4.md#推理-infra-关注点) · [前置 KV layout](05-V4-KV-Layout.md) · [并列 HiSparse](06-V4-HiSparse.md) · [上游 ESS](01-ESS概念.md)
 > **论文**：[arXiv:2606.19348](https://arxiv.org/abs/2606.19348) §3.5.2
 > **部署参考**：[Together.ai — Prefix caching becomes a storage policy](https://www.together.ai/blog/serving-deepseek-v4-why-million-token-context-is-an-inference-systems-problem#prefix-caching-becomes-a-storage-policy)
 > **演进总览 §5.3** 只保留梗概；**prefix 三档策略以本文为准**。

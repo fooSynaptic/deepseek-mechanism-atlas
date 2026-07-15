@@ -1,6 +1,6 @@
 # DeepSeekMoE 架构
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 演进总览 §2](../01-总览/01-版本演进总览.md#2-版本时间线与关系) · [← MoE 线导读](../01-总览/07-MoE线导读.md) · [V2 首发版本](../04-版本代际/00-V2-MoE与MLA.md) · [V3 旗舰化](01-V3基座.md) · [aux-loss-free 下游](03-aux-loss-free-MoE路由.md)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · [← 演进总览 §2](../01-总览/01-版本演进总览.md#2-版本时间线与关系) · [← MoE 线导读](../01-总览/07-MoE线导读.md) · [V2 首发版本](../04-版本代际/00-V2-MoE与MLA.md) · [V3 旗舰化](01-V3基座.md) · [aux-loss-free 下游](03-aux-loss-free-MoE路由.md)
 > **论文**：[V2 arXiv:2405.04434](https://arxiv.org/abs/2405.04434) · [V3 arXiv:2412.19437](https://arxiv.org/abs/2412.19437) §2.1
 
 <a id="deepseek-moe"></a>

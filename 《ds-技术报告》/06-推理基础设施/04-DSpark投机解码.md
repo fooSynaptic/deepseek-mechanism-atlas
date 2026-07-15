@@ -1,6 +1,6 @@
 # 投机解码与 DSpark
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 演进总览 §2 时间线](../01-总览/01-版本演进总览.md#2-版本时间线与关系) · [§3.3 V3 MTP](../01-总览/01-版本演进总览.md#33-deepseek-v3) · [§3.7 V4 + DSpark](../01-总览/01-版本演进总览.md#37-deepseek-v4) · [§6 推理栈](../01-总览/01-版本演进总览.md#6-推理技术栈对照) · [V3 梗概](../02-基座架构/01-V3基座.md) · [V4 梗概](../04-版本代际/03-V4.md)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · [← 演进总览 §2 时间线](../01-总览/01-版本演进总览.md#2-版本时间线与关系) · [§3.3 V3 MTP](../01-总览/01-版本演进总览.md#33-deepseek-v3) · [§3.7 V4 + DSpark](../01-总览/01-版本演进总览.md#37-deepseek-v4) · [§6 推理栈](../01-总览/01-版本演进总览.md#6-推理技术栈对照) · [V3 梗概](../02-基座架构/01-V3基座.md) · [V4 梗概](../04-版本代际/03-V4.md)
 > **DSpark 开源**：[DeepSpec](https://github.com/deepseek-ai/DeepSpec) · [DSpark_paper.pdf](https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf) · [DeepSeek-V4-Pro-DSpark](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-DSpark)
 > **外部材料**：[版本演进总览](../01-总览/01-版本演进总览.md) · [V3 论文 MTP 原文摘录](https://arxiv.org/pdf/2412.19437)
 

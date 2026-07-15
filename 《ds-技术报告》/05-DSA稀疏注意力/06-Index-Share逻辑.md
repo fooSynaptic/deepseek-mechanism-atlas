@@ -1,6 +1,6 @@
 # Index Share逻辑详解
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 系列目录](01-系列导读.md) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [DSA 梗概](02-DSA梗概.md) · [DSA 逻辑](03-DSA逻辑详解.md) · [Index Share 梗概](05-Index-Share梗概.md) · [演进总览 §3.6](../01-总览/01-版本演进总览.md#36-deepseek-v32--v32-exp)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · [← 系列目录](01-系列导读.md) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [DSA 梗概](02-DSA梗概.md) · [DSA 逻辑](03-DSA逻辑详解.md) · [Index Share 梗概](05-Index-Share梗概.md) · [演进总览 §3.6](../01-总览/01-版本演进总览.md#36-deepseek-v32--v32-exp)
 
 ---
 

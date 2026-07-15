@@ -1,7 +1,7 @@
 [book]
-title = "DeepSeek 技术报告"
+title = "DeepSeek Mechanism Atlas"
 authors = ["fooSynaptic"]
-description = "丝滑阅读 × 深度拆解 × 前沿跟进 — DeepSeek V1→V4 非官方技术笔记"
+description = "DeepSeek 机制图谱 — MLA / MoE / DSA / DSpark / V4 infra，非官方 mdBook"
 language = "zh-Hans"
 src = "《ds-技术报告》"
 
@@ -13,8 +13,8 @@ create-missing = false
 mathjax-support = false
 default-theme = "light"
 preferred-dark-theme = "navy"
-git-repository-url = "https://github.com/fooSynaptic/deepseek-tech-notes"
-site-url = "/deepseek-tech-notes/"
+git-repository-url = "https://github.com/fooSynaptic/deepseek-mechanism-atlas"
+site-url = "/deepseek-mechanism-atlas/"
 additional-css = ["theme/mdbook.css"]
 additional-js = ["theme/katex-render.js"]
 
