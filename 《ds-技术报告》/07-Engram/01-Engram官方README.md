@@ -7,7 +7,7 @@
 </div>
 <hr>
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← Engram 系列导读](02-Engram系列导读.md)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · [← Engram 系列导读](02-Engram系列导读.md)
 
 > [← 演进总览 §7 · 与本仓库其他专题的关系](../01-总览/01-版本演进总览.md#7-与本仓库其他专题的关系) · [Engram 系列导读](02-Engram系列导读.md) · [书中 Engram 卷](01-Engram官方README.md)
 

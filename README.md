@@ -1,15 +1,15 @@
-# deepseek-tech-notes
+# deepseek-mechanism-atlas
 
-<img src="./diagrams/deepseek-version-lineage.svg" alt="DeepSeek version timeline: V3–V4 algorithm evolution and Index Share / ESS / DSpark / HiSparse infra patches" width="920"/>
+<img src="./diagrams/deepseek-version-lineage.svg" alt="DeepSeek Mechanism Atlas: V3–V4 algorithm evolution and Index Share / ESS / DSpark / HiSparse infra patches" width="920"/>
 
-> **DeepSeek 全系列论文通俗拆解** — 从 V1 到 V4、R1 reasoning、sparse attention (DSA)、DSpark speculative decoding，统一排版、双向 wiki、配套公式与 SVG 图解。区别于零散博客，可在线成书阅读。
+> **DeepSeek Mechanism Atlas** — DeepSeek 机制图谱：从 V1 到 V4、R1 / DSA / DSpark / MLA / MoE，按**机制**组织（不只堆论文笔记），统一排版、双向 wiki、公式与 SVG。非官方；与 DeepSeek 无关联合营。
 >
-> **Comprehensive DeepSeek full-series paper explanation**, including DeepSeek-V2/V3/V4, R1 reasoning, sparse attention, DSpark speculative decoding — easy-to-understand technical notes for LLM researchers and engineers. Unofficial; not affiliated with DeepSeek.
+> An **atlas of DeepSeek mechanisms** (architecture, sparse attention, speculative decoding, MoE routing) — bidirectional wiki + SVG + mdBook. Unofficial; not affiliated with DeepSeek.
 
-📖 **[Read online (mdBook)](https://fooSynaptic.github.io/deepseek-tech-notes/)** · **[中文导读](docs/README.md)**
+📖 **[Read online (mdBook)](https://fooSynaptic.github.io/deepseek-mechanism-atlas/)** · **[中文导读](docs/README.md)**
 
-> 如果这份笔记对你有帮助，欢迎 **Star ⭐** 方便后续查阅。  
-> If these notes help you, please **Star** to bookmark for later.
+> 如果这份图谱对你有帮助，欢迎 **Star ⭐** 方便后续查阅。  
+> If this atlas helps you, please **Star** to bookmark for later.
 
 
 ---
@@ -55,7 +55,7 @@
 | **CSA / HCA** | [混合压缩注意力](docs/versions/csa-hca-mixed-attention.md) | 4:1 sparse + 128:1 dense |
 | **Hash MoE** | [Hash MoE + FP4](docs/versions/hash-moe-fp4.md) | hash routing, FP4 quantization |
 
-**完整索引**：[中文导读 · 文章表](docs/README.md#文章) · [版本目录](docs/versions/README.md) · [在线成书](https://fooSynaptic.github.io/deepseek-tech-notes/)
+**完整索引**：[中文导读 · 文章表](docs/README.md#文章) · [版本目录](docs/versions/README.md) · [在线成书](https://fooSynaptic.github.io/deepseek-mechanism-atlas/)
 
 **搜索关键词**：`DeepSeek paper` · `DeepSeek-V2` · `DeepSeek-V3` · `DeepSeek-V4` · `DeepSeek R1` · `reasoning model` · `sparse attention` · `DSpark` · `MLA` · `MoE` · `llm-papers` · `paper explanation`
 
@@ -68,13 +68,13 @@ These notes form a **bidirectional wiki** — every article links back at the to
 | Mode | When | Navigation |
 |------|------|------------|
 | **IDE Preview** (VS Code / Cursor) | Cloned repo, deep reading or editing | Click `←` back-links and in-text links; split preview or preview history — **best for forward / back references** |
-| **[GitHub Pages (mdBook)](https://fooSynaptic.github.io/deepseek-tech-notes/)** | Online, no clone | Same math/diagram rendering as the IDE; use the browser **Back / Forward** buttons to retrace your reading path |
+| **[GitHub Pages (mdBook)](https://fooSynaptic.github.io/deepseek-mechanism-atlas/)** | Online, no clone | Same math/diagram rendering as the IDE; use the browser **Back / Forward** buttons to retrace your reading path |
 
 **Either IDE Preview or Pages works.** Edit and PR in `docs/` as usual.
 
 ### Why an online book (not GitHub Preview)?
 
-**Local IDE Preview** (VS Code / Cursor) and **GitHub’s in-repo `.md` Preview** use different Markdown + math renderers — blockquotes, `$...$` / `$$...$$`, and inline math inside links often look wrong on GitHub even when they look fine in the IDE. Source Markdown is **not rewritten** to chase GitHub Preview; instead, `docs/` is built into an **[mdBook site on GitHub Pages](https://fooSynaptic.github.io/deepseek-tech-notes/)** (KaTeX, same `$...$` source as the IDE). Use that for online reading; use the repo for editing and PRs.
+**Local IDE Preview** (VS Code / Cursor) and **GitHub’s in-repo `.md` Preview** use different Markdown + math renderers — blockquotes, `$...$` / `$$...$$`, and inline math inside links often look wrong on GitHub even when they look fine in the IDE. Source Markdown is **not rewritten** to chase GitHub Preview; instead, `docs/` is built into an **[mdBook site on GitHub Pages](https://fooSynaptic.github.io/deepseek-mechanism-atlas/)** (KaTeX, same `$...$` source as the IDE). Use that for online reading; use the repo for editing and PRs.
 
 ---
 
@@ -90,13 +90,13 @@ Coverage includes:
 - **V4 inference stack** — **[DSpark](docs/versions/dspark-speculative-decoding.md)** speculative decoding, HiSparse, disk prefix cache.
 - **Adjacent infra work** layered on DeepSeek checkpoints — **[Index Share / IndexCache](docs/versions/index-share.md)** (Tsinghua + Zhipu) and **[ESS](docs/versions/ess-latent-cache-offload.md)** latent-cache offload (Baidu BaiGe), with a dedicated **infrastructure** thread alongside algorithm and MoE.
 
-Organized as wiki-style articles, SVG diagrams, and a book-style layout under [《ds-技术报告》/](《ds-技术报告》/01-总览/01-版本演进总览.md). For full navigation and article list, use the **[Chinese docs home](docs/README.md)** or the **[online mdBook](https://fooSynaptic.github.io/deepseek-tech-notes/)**.
+Organized as wiki-style articles, SVG diagrams, and a book-style layout under [《ds-技术报告》/](《ds-技术报告》/01-总览/01-版本演进总览.md). For full navigation and article list, use the **[Chinese docs home](docs/README.md)** or the **[online mdBook](https://fooSynaptic.github.io/deepseek-mechanism-atlas/)**.
 
 ### Why reading here feels smooth
 
 This repo is built for **bidirectional navigation**: every article, deep-dive, and Q&A page links **back** to where you came from — the Chinese home, this English homepage, the evolution hub, or the parent section. Follow a link into DSA logic, MTP fusion, or Engram notes; when you are done, one click returns you to the article or index you started from. No dead ends, no guessing how to resume the thread.
 
-In **[IDE Preview](#recommended-reading)**, click links to jump; on **[Pages](https://fooSynaptic.github.io/deepseek-tech-notes/)**, use browser Back / Forward for the same effect.
+In **[IDE Preview](#recommended-reading)**, click links to jump; on **[Pages](https://fooSynaptic.github.io/deepseek-mechanism-atlas/)**, use browser Back / Forward for the same effect.
 
 > **Work in progress.** Summaries, mirroring, links, and diagrams are still being updated. Prefer arXiv / official PDFs cited at the top of each article. Broken links or errors — **issues welcome**.
 
@@ -106,7 +106,7 @@ In **[IDE Preview](#recommended-reading)**, click links to jump; on **[Pages](ht
 
 | | |
 |--|--|
-| **Online book (Pages)** | **[fooSynaptic.github.io/deepseek-tech-notes](https://fooSynaptic.github.io/deepseek-tech-notes/)** — or clone and use **IDE Preview** |
+| **Online book (Pages)** | **[fooSynaptic.github.io/deepseek-mechanism-atlas](https://fooSynaptic.github.io/deepseek-mechanism-atlas/)** — or clone and use **IDE Preview** |
 | **Chinese home (source hub)** | [docs/README.md](docs/README.md) |
 | **Evolution hub** | [Version lineage overview](docs/reports/deepseek-version-lineage-20260625.md) — algorithm / infrastructure / MoE threads |
 | **Book mirror (repo)** | [《ds-技术报告》/01-总览/01-版本演进总览.md](《ds-技术报告》/01-总览/01-版本演进总览.md) |
@@ -123,7 +123,7 @@ In **[IDE Preview](#recommended-reading)**, click links to jump; on **[Pages](ht
 | [`scripts/build_pages.sh`](scripts/build_pages.sh) | `build_book` → `SUMMARY.md` → `mdbook build` |
 | [`.github/workflows/pages.yml`](.github/workflows/pages.yml) | Deploy mdBook to GitHub Pages on push to `main` |
 
-**Reading:** [Recommended reading](#recommended-reading) — **IDE Preview** or **[GitHub Pages mdBook](https://fooSynaptic.github.io/deepseek-tech-notes/)**; not GitHub blob preview. See [Why an online book](#why-an-online-book-not-github-preview) for rendering details.
+**Reading:** [Recommended reading](#recommended-reading) — **IDE Preview** or **[GitHub Pages mdBook](https://fooSynaptic.github.io/deepseek-mechanism-atlas/)**; not GitHub blob preview. See [Why an online book](#why-an-online-book-not-github-preview) for rendering details.
 
 ---
 

@@ -1,6 +1,6 @@
 # DeepSeek-LLM V1
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 演进总览 §3.1](../01-总览/01-版本演进总览.md#31-deepseek-llm-v1) · [← 版本目录](../01-总览/02-版本梗概索引.md) · **[BBPE 词表专文](00-V1-BBPE词表与Tokenizer.md)** · [V1→V3 演进](../01-总览/04-V1到V3演进.md)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · [← 演进总览 §3.1](../01-总览/01-版本演进总览.md#31-deepseek-llm-v1) · [← 版本目录](../01-总览/02-版本梗概索引.md) · **[BBPE 词表专文](00-V1-BBPE词表与Tokenizer.md)** · [V1→V3 演进](../01-总览/04-V1到V3演进.md)
 > **原文**：*DeepSeek LLM: Scaling Open-Source Language Models with Longtermism* · arXiv:[2401.02954](https://arxiv.org/abs/2401.02954)
 > **PDF**：[2401.02954.pdf](https://arxiv.org/pdf/2401.02954) · 图件见 [Scaling Laws 图件](00-V1-LLM.md#3-scaling-laws) · [BBPE 词表专文](00-V1-BBPE词表与Tokenizer.md)
 

@@ -2,7 +2,7 @@
 
 [← V3 §三 MTP](../../02-基座架构/01-V3基座.md#三mtp-multi-token-predictionv3-新增顶层结构) · [← 投机解码专文 §2](../04-DSpark投机解码.md#2-deepseek-路线mtpv3--v4) · [融合 scheme SVG](../figures/mtp-fusion-scheme.svg) · [答疑目录](../../01-总览/qa/README.md)
 
-> [← 中文导读](../../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · 旧图 [MTP 投机解码总览图](../figures/mtp-speculative.svg) 是「训练结构 + 投机对照」总览；**本文 + [MTP 融合 scheme 图](../figures/mtp-fusion-scheme.svg)** 只讲 **中间 token 怎么融进 MTP 链**。
+> [← 中文导读](../../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · 旧图 [MTP 投机解码总览图](../figures/mtp-speculative.svg) 是「训练结构 + 投机对照」总览；**本文 + [MTP 融合 scheme 图](../figures/mtp-fusion-scheme.svg)** 只讲 **中间 token 怎么融进 MTP 链**。
 
 ---
 

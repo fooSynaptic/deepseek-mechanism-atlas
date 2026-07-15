@@ -1,6 +1,6 @@
 # aux-loss-free MoE 路由逻辑
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 演进总览 §3.3](../01-总览/01-版本演进总览.md#33-deepseek-v3) · [← MoE 线导读](../01-总览/07-MoE线导读.md) · [← DeepSeekMoE 上游](05-DeepSeekMoE.md) · [← V3 梗概](01-V3基座.md) · [版本目录](../01-总览/02-版本梗概索引.md)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · [← 演进总览 §3.3](../01-总览/01-版本演进总览.md#33-deepseek-v3) · [← MoE 线导读](../01-总览/07-MoE线导读.md) · [← DeepSeekMoE 上游](05-DeepSeekMoE.md) · [← V3 梗概](01-V3基座.md) · [版本目录](../01-总览/02-版本梗概索引.md)
 > **论文**：[DeepSeek-V3 arXiv:2412.19437](https://arxiv.org/abs/2412.19437) §2.1 · [Megatron MoE aux loss free](https://github.com/NVIDIA/Megatron-LM/blob/main/megatron/core/transformer/moe/README.md)
 
 ---

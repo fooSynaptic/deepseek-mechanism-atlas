@@ -1,6 +1,6 @@
 # GRPO 长程任务局限
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← RL 笔记索引](03-RL笔记索引.md) · [← RLVR · GRPO](01-RLVR.md#grpo) · [← 演进总览 §3.4 R1](../01-总览/01-版本演进总览.md#34-deepseek-r1) · [书中对应](04-GRPO长程局限.md)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · [← RL 笔记索引](03-RL笔记索引.md) · [← RLVR · GRPO](01-RLVR.md#grpo) · [← 演进总览 §3.4 R1](../01-总览/01-版本演进总览.md#34-deepseek-r1) · [书中对应](04-GRPO长程局限.md)
 
 **作者**：划水的青蛙 · [知乎原文](https://www.zhihu.com/question/2052108642686706557/answer/2052367150749427260)  
 **性质**：社区讨论整理；非 DeepSeek 官方文档。商业转载请联系原作者。
