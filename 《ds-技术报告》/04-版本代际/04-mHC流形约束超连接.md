@@ -1,6 +1,6 @@
 # mHC
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 演进总览 §3.7](../01-总览/01-版本演进总览.md#37-deepseek-v4) · [← 算法线导读](../01-总览/05-算法线导读.md) · [← V4 梗概](03-V4.md) · [HC 基础](04b-Hyper-Connections.md) · [Raschka §8 mHC](../08-外部解读/01-Raschka要点速读.md#结论表-7--8)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · [← 演进总览 §3.7](../01-总览/01-版本演进总览.md#37-deepseek-v4) · [← 算法线导读](../01-总览/05-算法线导读.md) · [← V4 梗概](03-V4.md) · [HC 基础](04b-Hyper-Connections.md) · [Raschka §8 mHC](../08-外部解读/01-Raschka要点速读.md#结论表-7--8)
 > **论文**：[mHC arXiv:2512.24880](https://arxiv.org/abs/2512.24880)（2025-12-31）· **落地**：[V4 arXiv:2606.19348](https://arxiv.org/abs/2606.19348)
 
 ---

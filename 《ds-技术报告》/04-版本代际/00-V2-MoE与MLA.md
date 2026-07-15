@@ -1,6 +1,6 @@
 # DeepSeek-V2 梗概
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 演进总览 §3.2](../01-总览/01-版本演进总览.md#32-deepseek-v2) · [← MoE 线导读](../01-总览/07-MoE线导读.md) · [← 版本目录](../01-总览/02-版本梗概索引.md) · [V1→V3 演进](../01-总览/04-V1到V3演进.md) · [MLA 详解](../02-基座架构/02-MLA低秩注意力.md) · [V1 BBPE 词表](00-V1-BBPE词表与Tokenizer.md) · [Raschka 解读](../08-外部解读/01-Raschka要点速读.md#mla-要点31)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · [← 演进总览 §3.2](../01-总览/01-版本演进总览.md#32-deepseek-v2) · [← MoE 线导读](../01-总览/07-MoE线导读.md) · [← 版本目录](../01-总览/02-版本梗概索引.md) · [V1→V3 演进](../01-总览/04-V1到V3演进.md) · [MLA 详解](../02-基座架构/02-MLA低秩注意力.md) · [V1 BBPE 词表](00-V1-BBPE词表与Tokenizer.md) · [Raschka 解读](../08-外部解读/01-Raschka要点速读.md#mla-要点31)
 
 ---
 

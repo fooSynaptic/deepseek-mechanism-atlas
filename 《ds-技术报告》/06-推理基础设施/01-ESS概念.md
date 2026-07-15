@@ -1,6 +1,6 @@
 # ESS：Latent-Cache Offload
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 演进总览 §5.2](../01-总览/01-版本演进总览.md#52-v32indexer-cache--latent-cache-分离--ess) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [← DSA](../05-DSA稀疏注意力/02-DSA梗概.md) · [并列 Index Share](../05-DSA稀疏注意力/05-Index-Share梗概.md) · [ESS 论文梗概](02-ESS论文梗概.md)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · [← 演进总览 §5.2](../01-总览/01-版本演进总览.md#52-v32indexer-cache--latent-cache-分离--ess) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [← DSA](../05-DSA稀疏注意力/02-DSA梗概.md) · [并列 Index Share](../05-DSA稀疏注意力/05-Index-Share梗概.md) · [ESS 论文梗概](02-ESS论文梗概.md)
 > **论文**：[ESS arXiv:2512.10576](https://arxiv.org/abs/2512.10576) — *An Offload-Centric Latent-Cache Management Architecture for DeepSeek-V3.2-Exp*（Chen et al., 2025）
 > **论文梗概**：[ESS 论文梗概](02-ESS论文梗概.md)
 

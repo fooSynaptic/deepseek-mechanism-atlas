@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""将 deepseek-tech-notes 文档复制整理为《ds-技术报告》书籍目录（不修改原仓库结构）。"""
+"""将 deepseek-mechanism-atlas 文档复制整理为《ds-技术报告》书籍目录（不修改原仓库结构）。"""
 from __future__ import annotations
 
 import os
@@ -9,7 +9,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 BOOK = Path(__file__).resolve().parent
-REPO_HOME_URL = "https://github.com/fooSynaptic/deepseek-tech-notes"
+REPO_HOME_URL = "https://github.com/fooSynaptic/deepseek-mechanism-atlas"
 
 # 原路径 -> 书中路径（相对 BOOK）
 CHAPTER_MAP: dict[str, str] = {
@@ -773,7 +773,7 @@ def copy_chapters() -> None:
 def write_master_toc() -> None:
     toc = """# DeepSeek 技术报告
 
-> **《ds-技术报告》** — `deepseek-tech-notes` 文档的书籍式读本（**独立目录**，与仓库 `docs/` 并行）。  
+> **《ds-技术报告》** — `deepseek-mechanism-atlas` 文档的书籍式读本（**独立目录**，与仓库 `docs/` 并行）。  
 > [中文导读](./00-前言/02-中文导读.md) · **从这里开始**：[01 版本演进总览](./01-总览/01-版本演进总览.md)（全书主线；其余章节经该文内链展开）
 
 ---
@@ -896,7 +896,7 @@ def write_master_toc() -> None:
 ## 维护说明
 
 ```bash
-# 在 deepseek-tech-notes 根目录执行（仅复制整理，不改原文件）
+# 在 deepseek-mechanism-atlas 根目录执行（仅复制整理，不改原文件）
 python3 《ds-技术报告》/build_book.py
 ```
 

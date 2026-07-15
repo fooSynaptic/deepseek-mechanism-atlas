@@ -1,6 +1,6 @@
 # V4 KV Layout：Classical + State 双池
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 演进总览 §5.3 KV layout](../01-总览/01-版本演进总览.md#v4-kv-layout) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [CSA/HCA 算法专文](../04-版本代际/05-CSA-HCA混合压缩注意力.md) · [V4 梗概 §推理 infra](../04-版本代际/03-V4.md#推理-infra-关注点) · [并列 HiSparse](06-V4-HiSparse.md) · [并列 磁盘 Prefix Cache](07-V4-磁盘Prefix-Cache.md) · [上游 ESS](01-ESS概念.md)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · [← 演进总览 §5.3 KV layout](../01-总览/01-版本演进总览.md#v4-kv-layout) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [CSA/HCA 算法专文](../04-版本代际/05-CSA-HCA混合压缩注意力.md) · [V4 梗概 §推理 infra](../04-版本代际/03-V4.md#推理-infra-关注点) · [并列 HiSparse](06-V4-HiSparse.md) · [并列 磁盘 Prefix Cache](07-V4-磁盘Prefix-Cache.md) · [上游 ESS](01-ESS概念.md)
 > **论文**：[arXiv:2606.19348](https://arxiv.org/abs/2606.19348) §3.5.1 — *DeepSeek-V4*
 > **演进总览 §5.3** 只保留梗概；**layout 细节以本文为准**。
 

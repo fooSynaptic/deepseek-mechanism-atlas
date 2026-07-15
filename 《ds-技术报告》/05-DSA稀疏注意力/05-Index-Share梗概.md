@@ -1,6 +1,6 @@
 # Index Share梗概
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 演进总览 §4](../01-总览/01-版本演进总览.md#4-index-shareindexcache) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [← 版本目录](../01-总览/02-版本梗概索引.md) · [上游 DSA §异构 KV](02-DSA梗概.md#异构-kv-cache) · [并列 ESS](../06-推理基础设施/01-ESS概念.md) · [逻辑详解](06-Index-Share逻辑.md)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · [← 演进总览 §4](../01-总览/01-版本演进总览.md#4-index-shareindexcache) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [← 版本目录](../01-总览/02-版本梗概索引.md) · [上游 DSA §异构 KV](02-DSA梗概.md#异构-kv-cache) · [并列 ESS](../06-推理基础设施/01-ESS概念.md) · [逻辑详解](06-Index-Share逻辑.md)
 
 ---
 

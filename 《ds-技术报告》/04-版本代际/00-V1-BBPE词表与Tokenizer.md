@@ -1,6 +1,6 @@
 # DeepSeek-LLM V1：BBPE 词表与 Tokenizer
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← V1 正文](00-V1-LLM.md) · [← 演进总览 §3.1 V1](../01-总览/01-版本演进总览.md#31-deepseek-llm-v1) · [V1→V3 演进](../01-总览/04-V1到V3演进.md)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · [← V1 正文](00-V1-LLM.md) · [← 演进总览 §3.1 V1](../01-总览/01-版本演进总览.md#31-deepseek-llm-v1) · [V1→V3 演进](../01-总览/04-V1到V3演进.md)
 > **论文**：[DeepSeek-LLM arXiv:2401.02954](https://arxiv.org/abs/2401.02954) §2.1 · [V2 沿用同词表](00-V2-MoE与MLA.md)
 
 ---

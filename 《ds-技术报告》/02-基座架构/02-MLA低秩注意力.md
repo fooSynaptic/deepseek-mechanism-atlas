@@ -1,6 +1,6 @@
 # MLA前向计算流程
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 演进总览 §2](../01-总览/01-版本演进总览.md#2-版本时间线与关系) · [← 算法线导读](../01-总览/05-算法线导读.md) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [← V3 梗概](01-V3基座.md) · [V2 MLA 首发](../04-版本代际/00-V2-MoE与MLA.md) · [V3.1 Hybrid MLA 切换](../04-版本代际/01-V3.1-Terminus.md#mla-模式切换terminus-起) · [下游 DSA](../05-DSA稀疏注意力/02-DSA梗概.md) · [Raschka §3.1 MLA](../08-外部解读/01-Raschka要点速读.md#mla-要点31)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · [← 演进总览 §2](../01-总览/01-版本演进总览.md#2-版本时间线与关系) · [← 算法线导读](../01-总览/05-算法线导读.md) · [← 基础设施线导读](../01-总览/06-基础设施线导读.md) · [← V3 梗概](01-V3基座.md) · [V2 MLA 首发](../04-版本代际/00-V2-MoE与MLA.md) · [V3.1 Hybrid MLA 切换](../04-版本代际/01-V3.1-Terminus.md#mla-模式切换terminus-起) · [下游 DSA](../05-DSA稀疏注意力/02-DSA梗概.md) · [Raschka §3.1 MLA](../08-外部解读/01-Raschka要点速读.md#mla-要点31)
 > **论文**：DeepSeek-V2 首次提出 MLA [arXiv:2405.04434](https://arxiv.org/abs/2405.04434)；V3/R1/V3.1/V3.2 **沿用同一 MLA 结构**
 
 ---

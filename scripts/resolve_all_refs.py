@@ -31,7 +31,7 @@ def repo_targets(href: str) -> list[Path]:
         for p in prefixes:
             out.append(REPO / p / c.removeprefix(p))
     # 兼容历史链接中的仓名前缀
-    for prefix in ("deepseek-tech-notes/", "deepseek-everything/", "deepseek-ai/"):
+    for prefix in ("deepseek-mechanism-atlas/", "deepseek-everything/", "deepseek-ai/"):
         if prefix in norm:
             out.append(REPO / norm.split(prefix, 1)[1])
     if "《ds-技术报告》/" in norm:

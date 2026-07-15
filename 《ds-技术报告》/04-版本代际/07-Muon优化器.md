@@ -1,6 +1,6 @@
 # Muon 优化器
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · [← 演进总览 §3.7](../01-总览/01-版本演进总览.md#37-deepseek-v4) · [V4 梗概](03-V4.md) · [CSA/HCA](05-CSA-HCA混合压缩注意力.md) · [mHC](04-mHC流形约束超连接.md) · [Hash MoE + FP4](06-Hash-MoE-FP4.md)
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · [← 演进总览 §3.7](../01-总览/01-版本演进总览.md#37-deepseek-v4) · [V4 梗概](03-V4.md) · [CSA/HCA](05-CSA-HCA混合压缩注意力.md) · [mHC](04-mHC流形约束超连接.md) · [Hash MoE + FP4](06-Hash-MoE-FP4.md)
 > **论文**：[DeepSeek-V4 arXiv:2606.19348](https://arxiv.org/abs/2606.19348) · **Algorithm 1** · **§2.4 Muon Optimizer** · **§3.4.1 Efficient Implementation of Muon**
 
 ---

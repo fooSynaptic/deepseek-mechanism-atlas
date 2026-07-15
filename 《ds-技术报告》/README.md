@@ -1,6 +1,6 @@
-# DeepSeek 技术报告
+# DeepSeek Mechanism Atlas · 书籍镜像
 
-> **《ds-技术报告》** — `deepseek-tech-notes` 文档的书籍式读本（**独立目录**，与仓库 `docs/` 并行）。  
+> **《ds-技术报告》** — [`deepseek-mechanism-atlas`](https://github.com/fooSynaptic/deepseek-mechanism-atlas) 的 mdBook 镜像（由 `docs/` 生成，勿手改）。  
 > [中文导读](./00-前言/02-中文导读.md) · **从这里开始**：[01 版本演进总览](./01-总览/01-版本演进总览.md)（全书主线；其余章节经该文内链展开）
 
 ---
@@ -123,7 +123,7 @@
 ## 维护说明
 
 ```bash
-# 在 deepseek-tech-notes 根目录执行（仅复制整理，不改原文件）
+# 在 deepseek-mechanism-atlas 根目录执行（仅复制整理，不改原文件）
 python3 《ds-技术报告》/build_book.py
 ```
 

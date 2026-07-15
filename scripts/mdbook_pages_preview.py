@@ -2,7 +2,7 @@
 """Serve mdbook-out with GitHub Pages site-url prefix for local smoke tests.
 
 mdbook serve ignores site-url; after fix_mdbook_paths.py links use
-/deepseek-tech-notes/... — this server strips that prefix so SVG/HTML both work.
+/deepseek-mechanism-atlas/... — this server strips that prefix so SVG/HTML both work.
 """
 from __future__ import annotations
 
@@ -16,7 +16,7 @@ from urllib.parse import unquote
 REPO = Path(__file__).resolve().parents[1]
 OUT = REPO / "mdbook-out"
 PORT = int(os.environ.get("PORT", "3000"))
-PREFIX = "/deepseek-tech-notes"
+PREFIX = "/deepseek-mechanism-atlas"
 
 mimetypes.add_type("image/svg+xml", ".svg")
 

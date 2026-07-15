@@ -1,6 +1,6 @@
 # DeepSeek MoE 线：稠密 FFN → DeepSeekMoE → aux-loss-free → Hash MoE
 
-> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-tech-notes) · 更新：2026-06-27
+> [← 中文导读](../00-前言/02-中文导读.md) · [← 仓库首页（EN）](https://github.com/fooSynaptic/deepseek-mechanism-atlas) · 更新：2026-06-27
 > [← 演进总览 §1](01-版本演进总览.md#1-总览) · [算法线导读](05-算法线导读.md) · [基础设施线导读](06-基础设施线导读.md) · [V1→V3 演进](04-V1到V3演进.md) · [版本梗概索引](02-版本梗概索引.md) · [《ds-技术报告》读本](../README.md)
 
 <a id="moe-line"></a>
