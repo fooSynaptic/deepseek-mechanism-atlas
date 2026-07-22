@@ -2,11 +2,9 @@
 
 <img src="../diagrams/deepseek-version-lineage.svg" alt="DeepSeek 机制图谱：V3 至 V4 算法演进与 Index Share / ESS / DSpark / HiSparse 基础设施补丁" width="920"/>
 
-> **[英文首页](../README.md)** · 仓库：[`deepseek-mechanism-atlas`](https://github.com/fooSynaptic/deepseek-mechanism-atlas)
+> **[English homepage](../README.md)** · 仓库：[`deepseek-mechanism-atlas`](https://github.com/fooSynaptic/deepseek-mechanism-atlas)
 
 > **DeepSeek 机制图谱** — 从 V1 到 V4、R1 / DSA / DSpark / MLA / MoE，按机制组织（非零散论文摘抄）；统一排版、双向 wiki、公式与 SVG。非官方，与 DeepSeek 无隶属关系。
->
-> An atlas of DeepSeek mechanisms for LLM researchers and engineers — wiki navigation, formulas, and diagrams.
 
 📖 **[在线成书（mdBook）](https://fooSynaptic.github.io/deepseek-mechanism-atlas/)** — 与本地 IDE Preview 渲染一致；在线请用 Pages，**勿用 GitHub blob 预览**。
 
