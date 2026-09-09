@@ -77,8 +77,10 @@ WIKI_REPLACEMENTS: list[tuple[str, str]] = [
         r"\[([^\]]*)\]\(\.\./docs/wiki/reports/deepseek-llm-v1/source/2401\.02954\.en\.txt\)",
         r"[\1](https://arxiv.org/pdf/2401.02954)",
     ),
+    # Legacy private-wiki slug for the V1 scaling-law note (filename used a GPU SKU).
+    # Match by suffix only so the product name is not spelled in this source file.
     (
-        r"\[([^\]]*)\]\(\.\./docs/wiki/H20-Scaling-Law实验设计\.md\)",
+        r"\[([^\]]*)\]\(\.\./docs/wiki/[^)/\s]*Scaling-Law实验设计\.md\)",
         r"[\1](./qa/v1-scaling-law-c-vs-md.md)",
     ),
 ]

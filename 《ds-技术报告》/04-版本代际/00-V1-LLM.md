@@ -491,4 +491,4 @@ DeepSeek LLM 是在 **2T 中英 tokens** 上从零训练的开源系列。报告
 - [技术要点提炼](00-V1-BBPE词表与Tokenizer.md)
 - [索引](00-V1-LLM.md)
 - [英文原文](https://arxiv.org/pdf/2401.02954)
-- [H20 八卡 Scaling Law 实验设计](qa/v1-scaling-law-c-vs-md.md)（Figure 3 / Formula 4 / Figure 5 拟合配置）
+- [8× Hopper (96GB HBM) Scaling Law 实验设计](qa/v1-scaling-law-c-vs-md.md)（Figure 3 / Formula 4 / Figure 5 拟合配置）

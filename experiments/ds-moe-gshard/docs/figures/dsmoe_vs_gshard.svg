@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 640"
+     font-family="Helvetica Neue,Arial,sans-serif">
+<defs>
+  <style>
+    .title { font-size: 20px; font-weight: 700; fill: #1a1a2e; }
+    .subtitle { font-size: 12px; fill: #64748b; }
+    .badge-text { font-size: 11px; font-weight: 600; fill: #fff; }
+    .node-title { font-size: 13px; font-weight: 700; fill: #1e293b; }
+    .node-text { font-size: 11.5px; fill: #475569; }
+    .note { font-size: 11px; fill: #475569; }
+    .inv { font-size: 12px; font-weight: 600; fill: #1d4ed8; }
+  </style>
+  <marker id="arrow-gray" viewBox="0 0 10 8" refX="9" refY="4"
+          markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#64748b"/>
+  </marker>
+</defs>
+<rect width="100%" height="100%" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="40" y="38" class="title">Paper 2B validation: GShard vs DeepSeekMoE</text>
+<text x="40" y="58" class="subtitle">Same total expert params (16x FFN) and same activated params (2x FFN). Layout is the only variable.</text>
+<rect x="40" y="74" width="1020" height="44" rx="10" fill="#eff6ff" stroke="#93c5fd"/>
+<text x="550" y="101" text-anchor="middle" class="inv">Invariant: 9L / d=1280 / 10 heads  &#xB7;  16x total experts  &#xB7;  2x activated FFN  &#xB7;  seq 2048  &#xB7;  batch 4M tokens</text>
+<rect x="40" y="138" width="500" height="420" rx="10" fill="#fff" stroke="#e2e8f0"/>
+<rect x="56" y="152" width="220" height="24" rx="12" fill="#334155"/>
+<text x="166" y="168" text-anchor="middle" class="badge-text">Arm A  &#xB7;  GShard</text>
+<text x="56" y="200" class="node-title">16 full-size experts, Top-2</text>
+<rect x="64" y="214" width="452" height="26" rx="8" fill="#dbeafe"/>
+<rect x="64" y="232" width="452" height="8" fill="#dbeafe"/>
+<text x="290" y="233" text-anchor="middle" class="node-title" fill="#1d4ed8">Router (softmax)</text>
+<text x="290" y="258" text-anchor="middle" class="node-text">select 2 of 16</text>
+<rect x="72" y="278" width="48" height="52" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+<text x="96" y="300" text-anchor="middle" class="node-text">E0</text>
+<text x="96" y="318" text-anchor="middle" class="node-text">1x</text>
+<rect x="126" y="278" width="48" height="52" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+<text x="150" y="300" text-anchor="middle" class="node-text">E1</text>
+<text x="150" y="318" text-anchor="middle" class="node-text">1x</text>
+<rect x="180" y="278" width="48" height="52" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="204" y="300" text-anchor="middle" class="node-text">E2</text>
+<text x="204" y="318" text-anchor="middle" class="node-text">1x</text>
+<rect x="234" y="278" width="48" height="52" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="258" y="300" text-anchor="middle" class="node-text">E3</text>
+<text x="258" y="318" text-anchor="middle" class="node-text">1x</text>
+<rect x="288" y="278" width="48" height="52" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="312" y="300" text-anchor="middle" class="node-text">E4</text>
+<text x="312" y="318" text-anchor="middle" class="node-text">1x</text>
+<rect x="342" y="278" width="48" height="52" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="366" y="300" text-anchor="middle" class="node-text">E5</text>
+<text x="366" y="318" text-anchor="middle" class="node-text">1x</text>
+<rect x="396" y="278" width="48" height="52" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="420" y="300" text-anchor="middle" class="node-text">E6</text>
+<text x="420" y="318" text-anchor="middle" class="node-text">1x</text>
+<rect x="450" y="278" width="48" height="52" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="474" y="300" text-anchor="middle" class="node-text">E7</text>
+<text x="474" y="318" text-anchor="middle" class="node-text">1x</text>
+<rect x="72" y="348" width="48" height="52" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="96" y="370" text-anchor="middle" class="node-text">E8</text>
+<text x="96" y="388" text-anchor="middle" class="node-text">1x</text>
+<rect x="126" y="348" width="48" height="52" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="150" y="370" text-anchor="middle" class="node-text">E9</text>
+<text x="150" y="388" text-anchor="middle" class="node-text">1x</text>
+<rect x="180" y="348" width="48" height="52" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="204" y="370" text-anchor="middle" class="node-text">E10</text>
+<text x="204" y="388" text-anchor="middle" class="node-text">1x</text>
+<rect x="234" y="348" width="48" height="52" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="258" y="370" text-anchor="middle" class="node-text">E11</text>
+<text x="258" y="388" text-anchor="middle" class="node-text">1x</text>
+<rect x="288" y="348" width="48" height="52" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="312" y="370" text-anchor="middle" class="node-text">E12</text>
+<text x="312" y="388" text-anchor="middle" class="node-text">1x</text>
+<rect x="342" y="348" width="48" height="52" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="366" y="370" text-anchor="middle" class="node-text">E13</text>
+<text x="366" y="388" text-anchor="middle" class="node-text">1x</text>
+<rect x="396" y="348" width="48" height="52" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="420" y="370" text-anchor="middle" class="node-text">E14</text>
+<text x="420" y="388" text-anchor="middle" class="node-text">1x</text>
+<rect x="450" y="348" width="48" height="52" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="474" y="370" text-anchor="middle" class="node-text">E15</text>
+<text x="474" y="388" text-anchor="middle" class="node-text">1x</text>
+<text x="290" y="430" text-anchor="middle" class="node-text">Yellow = activated this token. Each expert = 1x dense FFN.</text>
+<text x="290" y="508" text-anchor="middle" class="node-title">C(16,2) = 120 combinations</text>
+<text x="290" y="530" text-anchor="middle" class="note">Paper: same total / activated params as DeepSeekMoE; worse Pile and downstream.</text>
+<rect x="560" y="138" width="500" height="420" rx="10" fill="#fff" stroke="#e2e8f0"/>
+<rect x="576" y="152" width="220" height="24" rx="12" fill="#1d4ed8"/>
+<text x="686" y="168" text-anchor="middle" class="badge-text">Arm B  &#xB7;  DeepSeekMoE</text>
+<text x="576" y="200" class="node-title">1 shared + 63 routed quarter-experts</text>
+<rect x="584" y="214" width="452" height="26" rx="8" fill="#dcfce7"/>
+<rect x="584" y="232" width="452" height="8" fill="#dcfce7"/>
+<text x="810" y="233" text-anchor="middle" class="node-title" fill="#15803d">Shared expert  (always on)</text>
+<rect x="760" y="258" width="100" height="40" rx="6" fill="#bbf7d0" stroke="#22c55e"/>
+<text x="810" y="283" text-anchor="middle" class="node-text">S0  &#xB7;  0.25x</text>
+<rect x="584" y="312" width="452" height="26" rx="8" fill="#dbeafe"/>
+<rect x="584" y="330" width="452" height="8" fill="#dbeafe"/>
+<text x="810" y="331" text-anchor="middle" class="node-title" fill="#1d4ed8">Router  &#xB7;  Top-7 of 63 routed</text>
+<rect x="600" y="360" width="56" height="40" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+<text x="628" y="377" text-anchor="middle" class="node-text">R0</text>
+<text x="628" y="392" text-anchor="middle" class="node-text">0.25x</text>
+<rect x="662" y="360" width="56" height="40" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+<text x="690" y="377" text-anchor="middle" class="node-text">R1</text>
+<text x="690" y="392" text-anchor="middle" class="node-text">0.25x</text>
+<rect x="724" y="360" width="56" height="40" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+<text x="752" y="377" text-anchor="middle" class="node-text">R2</text>
+<text x="752" y="392" text-anchor="middle" class="node-text">0.25x</text>
+<rect x="786" y="360" width="56" height="40" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+<text x="814" y="377" text-anchor="middle" class="node-text">R3</text>
+<text x="814" y="392" text-anchor="middle" class="node-text">0.25x</text>
+<rect x="848" y="360" width="56" height="40" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+<text x="876" y="377" text-anchor="middle" class="node-text">R4</text>
+<text x="876" y="392" text-anchor="middle" class="node-text">0.25x</text>
+<rect x="910" y="360" width="56" height="40" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+<text x="938" y="377" text-anchor="middle" class="node-text">R5</text>
+<text x="938" y="392" text-anchor="middle" class="node-text">0.25x</text>
+<rect x="972" y="360" width="56" height="40" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+<text x="1000" y="377" text-anchor="middle" class="node-text">R6</text>
+<text x="1000" y="392" text-anchor="middle" class="node-text">0.25x</text>
+<rect x="600" y="408" width="56" height="40" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="628" y="425" text-anchor="middle" class="node-text">R7</text>
+<text x="628" y="440" text-anchor="middle" class="node-text">0.25x</text>
+<rect x="662" y="408" width="56" height="40" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="690" y="425" text-anchor="middle" class="node-text">R8</text>
+<text x="690" y="440" text-anchor="middle" class="node-text">0.25x</text>
+<rect x="724" y="408" width="56" height="40" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="752" y="425" text-anchor="middle" class="node-text">R9</text>
+<text x="752" y="440" text-anchor="middle" class="node-text">0.25x</text>
+<rect x="786" y="408" width="56" height="40" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="814" y="425" text-anchor="middle" class="node-text">R10</text>
+<text x="814" y="440" text-anchor="middle" class="node-text">0.25x</text>
+<rect x="848" y="408" width="56" height="40" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="876" y="425" text-anchor="middle" class="node-text">R11</text>
+<text x="876" y="440" text-anchor="middle" class="node-text">0.25x</text>
+<rect x="910" y="408" width="56" height="40" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="938" y="425" text-anchor="middle" class="node-text">R12</text>
+<text x="938" y="440" text-anchor="middle" class="node-text">0.25x</text>
+<rect x="972" y="408" width="56" height="40" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="1000" y="425" text-anchor="middle" class="node-text">&#x2026;</text>
+<text x="1000" y="440" text-anchor="middle" class="node-text">0.25x</text>
+<text x="810" y="468" text-anchor="middle" class="node-text">Activated = 1 shared + 7 routed = 8 x 0.25 = 2x FFN.</text>
+<text x="810" y="508" text-anchor="middle" class="node-title">C(63,7) ~ 5.5e8 combinations</text>
+<text x="810" y="530" text-anchor="middle" class="note">Paper: beats GShard 2B; matches GShard x1.5; Pile CE 1.808.</text>
+<text x="550" y="590" text-anchor="middle" class="note">E1 trains both arms to 10B tokens on the frozen 40B mix. Hit = lower val BPB for arm B, no routing collapse.</text>
+<text x="550" y="610" text-anchor="middle" class="note">Absolute paper numbers are out of scope as a target (GPT-2 50k vs 8k BPE; open mix vs internal corpus).</text>
+</svg>

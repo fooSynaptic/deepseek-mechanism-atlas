@@ -1,0 +1,12 @@
+{
+  "jobs": [
+    {
+      "job_id": "e3_gshard_x15",
+      "arch_id": "gshard_x15",
+      "d_tokens": 10000000000,
+      "max_lr": 0.00108,
+      "batch_tokens": 4000000,
+      "seed": 1
+    }
+  ]
+}
