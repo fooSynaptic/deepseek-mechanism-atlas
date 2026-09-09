@@ -15,6 +15,7 @@ If this atlas helps you, please **Star** to bookmark for later.
 | Series | Article | Keywords |
 |--------|---------|----------|
 | **V1** | [DeepSeek-LLM](docs/versions/v1.md) | scaling laws, dense base |
+| **V1 IsoFLOP lab** | [Runnable experiment](experiments/v1-isoflop/README.md) | from-scratch IsoFLOP, Formula 4, a≈0.539 |
 | **V2** | [DeepSeek-V2](docs/versions/v2.md) | MLA, DeepSeekMoE, 128K |
 | **V3** | [DeepSeek-V3](docs/versions/v3.md) | 671B MoE, MTP, aux-loss-free |
 | **R1** | [DeepSeek-R1](docs/versions/r1.md) | reasoning model, RLVR, GRPO |
@@ -41,6 +42,7 @@ Figures live under [`diagrams/`](diagrams/) and are linked from articles. Prefer
 
 | Diagram | Related reading |
 |---------|-----------------|
+| [V1 IsoFLOP measured (L4)](experiments/v1-isoflop/docs/figures/isoflop_measured_l4.svg) | [IsoFLOP lab](experiments/v1-isoflop/README.md) |
 | [Version lineage](diagrams/deepseek-version-lineage.svg) | [Evolution overview](docs/reports/deepseek-version-lineage-20260625.md) |
 | [MLA forward flow](diagrams/mla-forward-flow.svg) | [MLA notes](docs/versions/mla-latent-attention.md) |
 | [GRPO vs PPO](diagrams/grpo-vs-ppo.svg) | [R1](docs/versions/r1.md) · [RLVR](docs/versions/rlvr.md) |

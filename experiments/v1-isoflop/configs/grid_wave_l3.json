@@ -1,0 +1,53 @@
+{
+  "seq_len": 4096,
+  "n_vocab": 50257,
+  "n_jobs": 2,
+  "jobs": [
+    {
+      "job_id": "iso_c3e19_t1",
+      "family": "isoflop",
+      "arch_id": "t1",
+      "c_flops": 3e+19,
+      "D_tokens": 18410701089,
+      "batch_tokens": 686039.6455315663,
+      "max_lr": 0.0011461354725259237,
+      "seed": 1,
+      "n_gpus": 8,
+      "n_layer": 16,
+      "d_model": 896,
+      "n_heads": 7,
+      "seq_len": 4096,
+      "n_vocab": 50257,
+      "ffn_hidden": 2368,
+      "N1": 154140672.0,
+      "M": 1629487104.0,
+      "six_N1": 924844032.0,
+      "six_N2": 1195025664.0,
+      "six_N1_over_M": 0.5675675675675675,
+      "six_N2_over_M": 0.7333753431165541
+    },
+    {
+      "job_id": "iso_c3e19_t0",
+      "family": "isoflop",
+      "arch_id": "t0",
+      "c_flops": 3e+19,
+      "D_tokens": 31165827334,
+      "batch_tokens": 686039.6455315663,
+      "max_lr": 0.0011461354725259237,
+      "seed": 1,
+      "n_gpus": 8,
+      "n_layer": 12,
+      "d_model": 768,
+      "n_heads": 6,
+      "seq_len": 4096,
+      "n_vocab": 50257,
+      "ffn_hidden": 2048,
+      "N1": 84934656.0,
+      "M": 962592768.0,
+      "six_N1": 509607936.0,
+      "six_N2": 741192192.0,
+      "six_N1_over_M": 0.5294117647058824,
+      "six_N2_over_M": 0.7699955958946079
+    }
+  ]
+}

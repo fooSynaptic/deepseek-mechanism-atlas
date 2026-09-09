@@ -45,3 +45,10 @@ mdbook-out/
 
 # Cursor rules (local agent guidance, not for GitHub)
 .cursor/
+
+# IsoFLOP lab runtime (keep published artifacts; ignore local train data)
+experiments/v1-isoflop/.venv/
+experiments/v1-isoflop/.hf/
+experiments/v1-isoflop/data/
+experiments/v1-isoflop/results/
+experiments/v1-isoflop/logs/

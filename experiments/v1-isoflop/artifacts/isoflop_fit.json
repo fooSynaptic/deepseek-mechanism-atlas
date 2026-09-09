@@ -1,0 +1,53 @@
+{
+  "paper": {
+    "a": 0.5243,
+    "b": 0.4757,
+    "M_opt": "0.1715 * C ** 0.5243"
+  },
+  "n_jobs_loaded": 41,
+  "n_jobs_plotted": 39,
+  "skipped": [
+    "iso_c3e19_u3",
+    "iso_c3e19_s6"
+  ],
+  "valley_proxies": [
+    {
+      "c_flops": 3e+18,
+      "job_id": "iso_c3e18_u3",
+      "arch_id": "u3",
+      "M_lab": 802160640.0,
+      "M_paper": 835254450.2183542,
+      "M_lab_over_paper": 0.960378768158969,
+      "best_val_bpb": 0.98,
+      "source": "published"
+    },
+    {
+      "c_flops": 1e+19,
+      "job_id": "iso_c1e19_t1",
+      "arch_id": "t1",
+      "M_lab": 1629487104.0,
+      "M_paper": 1570233087.2484713,
+      "M_lab_over_paper": 1.0377358095640183,
+      "best_val_bpb": 0.777,
+      "source": "published"
+    },
+    {
+      "c_flops": 3e+19,
+      "job_id": "iso_c3e19_t2",
+      "arch_id": "t2",
+      "M_lab": 2768240640.0,
+      "M_paper": 2793307826.62657,
+      "M_lab_over_paper": 0.9910259848958919,
+      "best_val_bpb": 0.715,
+      "source": "published"
+    }
+  ],
+  "fit": {
+    "a": 0.5387506420511691,
+    "b": 0.46124935794883093,
+    "k_M": 0.09080863180008013,
+    "n_points": 3,
+    "two_point_a_first_last": 0.5379424917162149,
+    "note": "Illustrative 3-point OLS on valley proxies, not the paper's 8-budget fit. Two of three proxies sit on older corpus snapshots."
+  }
+}

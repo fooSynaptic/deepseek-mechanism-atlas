@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 980"
+     font-family="PingFang SC,Microsoft YaHei,Helvetica Neue,Arial,sans-serif">
+<defs>
+  <style>
+    .title { font-size: 20px; font-weight: 700; fill: #1a1a2e; }
+    .subtitle { font-size: 12px; fill: #64748b; }
+    .panel-title { font-size: 14px; font-weight: 700; fill: #1e293b; }
+    .axis { font-size: 11px; fill: #64748b; }
+    .axis-title { font-size: 11px; font-weight: 600; fill: #334155; }
+    .tick { font-size: 10px; fill: #64748b; }
+    .legend-text { font-size: 11px; fill: #334155; }
+    .callout { font-size: 11px; fill: #9f1239; font-weight: 600; }
+    .callout-ok { font-size: 11px; fill: #1d4ed8; font-weight: 600; }
+    .note { font-size: 11px; fill: #475569; }
+    .badge-text { font-size: 11px; font-weight: 600; fill: #fff; }
+    .node-title { font-size: 13px; font-weight: 700; fill: #1e293b; }
+    .node-text { font-size: 11.5px; fill: #475569; }
+  </style>
+  <marker id="arrow-blue" viewBox="0 0 10 8" refX="9" refY="4"
+          markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#3b82f6"/>
+  </marker>
+  <marker id="arrow-red" viewBox="0 0 10 8" refX="9" refY="4"
+          markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#e11d48"/>
+  </marker>
+  <marker id="arrow-gray" viewBox="0 0 10 8" refX="9" refY="4"
+          markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#64748b"/>
+  </marker>
+</defs>
+<rect width="100%" height="100%" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="40" y="38" class="title">Paper Figure 4a claim vs this lab's TinyStories pilot</text>
+<text x="40" y="58" class="subtitle">Left is a schematic of DeepSeek-LLM (arXiv:2401.02954) Fig. 4a, not a scan of the paper. Right is measured val BPB.</text>
+<rect x="24" y="74" width="528" height="430" rx="10" fill="#fff" stroke="#e2e8f0"/>
+<rect x="40" y="88" width="168" height="24" rx="12" fill="#2563eb"/>
+<text x="124.0" y="104.3" text-anchor="middle" class="badge-text">Paper claim  (schematic)</text>
+<text x="220" y="105" class="note">fixed C = M&#xB7;D, valley = M_opt</text>
+<rect x="88" y="130" width="420" height="300" fill="#f8fafc" stroke="#e2e8f0"/>
+<line x1="108.4" y1="130" x2="108.4" y2="430" stroke="#e2e8f0"/>
+<text x="108.4" y="446" text-anchor="middle" class="tick">10^8</text>
+<line x1="208.5" y1="130" x2="208.5" y2="430" stroke="#e2e8f0"/>
+<text x="208.5" y="446" text-anchor="middle" class="tick">10^8</text>
+<line x1="318.4" y1="130" x2="318.4" y2="430" stroke="#e2e8f0"/>
+<text x="318.4" y="446" text-anchor="middle" class="tick">10^9</text>
+<line x1="418.5" y1="130" x2="418.5" y2="430" stroke="#e2e8f0"/>
+<text x="418.5" y="446" text-anchor="middle" class="tick">10^9</text>
+<line x1="88" y1="402.7" x2="508" y2="402.7" stroke="#e2e8f0"/>
+<text x="80" y="406.2" text-anchor="end" class="tick">0.75</text>
+<line x1="88" y1="348.2" x2="508" y2="348.2" stroke="#e2e8f0"/>
+<text x="80" y="351.7" text-anchor="end" class="tick">0.85</text>
+<line x1="88" y1="293.6" x2="508" y2="293.6" stroke="#e2e8f0"/>
+<text x="80" y="297.1" text-anchor="end" class="tick">0.95</text>
+<line x1="88" y1="239.1" x2="508" y2="239.1" stroke="#e2e8f0"/>
+<text x="80" y="242.6" text-anchor="end" class="tick">1.05</text>
+<line x1="88" y1="184.5" x2="508" y2="184.5" stroke="#e2e8f0"/>
+<text x="80" y="188.0" text-anchor="end" class="tick">1.15</text>
+<line x1="88" y1="130.0" x2="508" y2="130.0" stroke="#e2e8f0"/>
+<text x="80" y="133.5" text-anchor="end" class="tick">1.25</text>
+<rect x="88" y="130" width="420" height="300" fill="none" stroke="#cbd5e1"/>
+<text x="298.0" y="462" text-anchor="middle" class="axis-title">non-embedding FLOPs / token  M  (log)</text>
+<text x="52" y="280.0" text-anchor="middle" class="axis-title" transform="rotate(-90 52 280.0)">val bits-per-byte</text>
+<polyline points="88.0,208.3 98.5,213.6 109.0,217.7 119.5,220.6 130.0,222.3 140.5,222.7 151.0,222.0 161.5,220.0 172.0,216.8 182.5,212.5 193.0,206.9 203.5,200.1 214.0,192.1 224.5,182.8 235.0,172.4 245.5,160.7 256.0,147.9 266.5,133.8" fill="none" stroke="#93c5fd" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" opacity="1.0"/>
+<circle cx="139.3" cy="222.7" r="4.5" fill="#93c5fd" stroke="#fff" stroke-width="1.2"/>
+<polyline points="88.0,196.2 98.5,207.6 109.0,217.7 119.5,226.7 130.0,234.4 140.5,241.0 151.0,246.3 161.5,250.4 172.0,253.3 182.5,255.0 193.0,255.4 203.5,254.7 214.0,252.8 224.5,249.6 235.0,245.2 245.5,239.6 256.0,232.8 266.5,224.8 277.0,215.6 287.5,205.1 298.0,193.5 308.5,180.6 319.0,166.6 329.5,151.3 340.0,134.8" fill="none" stroke="#60a5fa" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" opacity="1.0"/>
+<circle cx="191.8" cy="255.5" r="4.5" fill="#60a5fa" stroke="#fff" stroke-width="1.2"/>
+<polyline points="88.0,145.0 98.5,163.0 109.0,179.8 119.5,195.4 130.0,209.8 140.5,223.0 151.0,235.0 161.5,245.7 172.0,255.2 182.5,263.6 193.0,270.7 203.5,276.6 214.0,281.3 224.5,284.8 235.0,287.0 245.5,288.1 256.0,287.9 266.5,286.6 277.0,284.0 287.5,280.2 298.0,275.2 308.5,269.0 319.0,261.6 329.5,252.9 340.0,243.1 350.5,232.0 361.0,219.7 371.5,206.2 382.0,191.5 392.5,175.6 403.0,158.5 413.5,140.2" fill="none" stroke="#3b82f6" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" opacity="1.0"/>
+<circle cx="249.4" cy="288.2" r="4.5" fill="#3b82f6" stroke="#fff" stroke-width="1.2"/>
+<polyline points="119.5,138.0 130.0,158.4 140.5,177.6 151.0,195.7 161.5,212.5 172.0,228.1 182.5,242.5 193.0,255.7 203.5,267.6 214.0,278.4 224.5,287.9 235.0,296.3 245.5,303.4 256.0,309.3 266.5,314.0 277.0,317.5 287.5,319.8 298.0,320.8 308.5,320.7 319.0,319.3 329.5,316.7 340.0,312.9 350.5,307.9 361.0,301.7 371.5,294.3 382.0,285.7 392.5,275.8 403.0,264.8 413.5,252.5 424.0,239.0 434.5,224.3 445.0,208.4 455.5,191.3 466.0,172.9 476.5,153.4 487.0,132.6" fill="none" stroke="#1d4ed8" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" opacity="1.0"/>
+<circle cx="301.9" cy="320.9" r="4.5" fill="#1d4ed8" stroke="#fff" stroke-width="1.2"/>
+<line x1="249.4" y1="306.2" x2="249.4" y2="336.2" stroke="#1d4ed8" stroke-width="1.6" marker-end="url(#arrow-blue)"/>
+<text x="257.4" y="350.2" class="callout-ok">M_opt  (moves right as C grows)</text>
+<rect x="400" y="148" width="18" height="3" rx="1" fill="#93c5fd"/>
+<text x="424" y="153" class="legend-text">C=1e17</text>
+<rect x="400" y="164" width="18" height="3" rx="1" fill="#60a5fa"/>
+<text x="424" y="169" class="legend-text">C=3e17</text>
+<rect x="400" y="180" width="18" height="3" rx="1" fill="#3b82f6"/>
+<text x="424" y="185" class="legend-text">C=1e18</text>
+<rect x="400" y="196" width="18" height="3" rx="1" fill="#1d4ed8"/>
+<text x="424" y="201" class="legend-text">C=3e18</text>
+<text x="288" y="478" text-anchor="middle" class="note">Each IsoFLOP slice is U-shaped. Interior min = allocate more model as C grows.</text>
+<rect x="568" y="74" width="528" height="430" rx="10" fill="#fff" stroke="#e2e8f0"/>
+<rect x="584" y="88" width="150" height="24" rx="12" fill="#e11d48"/>
+<text x="659.0" y="104.3" text-anchor="middle" class="badge-text">Pilot  (measured)</text>
+<text x="746" y="105" class="note">TinyStories, L=2048, unique D=462M</text>
+<rect x="632" y="130" width="420" height="300" fill="#f8fafc" stroke="#e2e8f0"/>
+<line x1="654.7" y1="130" x2="654.7" y2="430" stroke="#e2e8f0"/>
+<text x="654.7" y="446" text-anchor="middle" class="tick">10^8</text>
+<line x1="766.2" y1="130" x2="766.2" y2="430" stroke="#e2e8f0"/>
+<text x="766.2" y="446" text-anchor="middle" class="tick">10^8</text>
+<line x1="888.5" y1="130" x2="888.5" y2="430" stroke="#e2e8f0"/>
+<text x="888.5" y="446" text-anchor="middle" class="tick">10^9</text>
+<line x1="1000.1" y1="130" x2="1000.1" y2="430" stroke="#e2e8f0"/>
+<text x="1000.1" y="446" text-anchor="middle" class="tick">10^9</text>
+<line x1="632" y1="415.7" x2="1052" y2="415.7" stroke="#e2e8f0"/>
+<text x="624" y="419.2" text-anchor="end" class="tick">0.4</text>
+<line x1="632" y1="358.6" x2="1052" y2="358.6" stroke="#e2e8f0"/>
+<text x="624" y="362.1" text-anchor="end" class="tick">0.6</text>
+<line x1="632" y1="301.4" x2="1052" y2="301.4" stroke="#e2e8f0"/>
+<text x="624" y="304.9" text-anchor="end" class="tick">0.8</text>
+<line x1="632" y1="244.3" x2="1052" y2="244.3" stroke="#e2e8f0"/>
+<text x="624" y="247.8" text-anchor="end" class="tick">1.0</text>
+<line x1="632" y1="187.1" x2="1052" y2="187.1" stroke="#e2e8f0"/>
+<text x="624" y="190.6" text-anchor="end" class="tick">1.2</text>
+<line x1="632" y1="130.0" x2="1052" y2="130.0" stroke="#e2e8f0"/>
+<text x="624" y="133.5" text-anchor="end" class="tick">1.4</text>
+<rect x="632" y="130" width="420" height="300" fill="none" stroke="#cbd5e1"/>
+<text x="842.0" y="462" text-anchor="middle" class="axis-title">non-embedding FLOPs / token  M  (log)</text>
+<text x="596" y="280.0" text-anchor="middle" class="axis-title" transform="rotate(-90 596 280.0)">val bits-per-byte</text>
+<polyline points="673.4,399.6 748.4,393.8 807.9,374.0 857.4,330.8 899.9,291.6 937.0,237.1 959.6,191.9 1018.2,157.8" fill="none" stroke="#fb7185" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" opacity="1.0"/>
+<polyline points="673.4,406.4 748.4,411.5 807.9,410.0 857.4,395.1 899.9,336.6 937.0,306.6 959.6,309.5 1018.2,201.1" fill="none" stroke="#e11d48" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" opacity="1.0"/>
+<circle cx="673.4" cy="399.6" r="3.6" fill="#fb7185" stroke="#fff" stroke-width="1"/>
+<circle cx="748.4" cy="393.8" r="3.6" fill="#fb7185" stroke="#fff" stroke-width="1"/>
+<circle cx="807.9" cy="374.0" r="3.6" fill="#fb7185" stroke="#fff" stroke-width="1"/>
+<circle cx="857.4" cy="330.8" r="3.6" fill="#fb7185" stroke="#fff" stroke-width="1"/>
+<circle cx="899.9" cy="291.6" r="3.6" fill="#fb7185" stroke="#fff" stroke-width="1"/>
+<circle cx="937.0" cy="237.1" r="3.6" fill="#fb7185" stroke="#fff" stroke-width="1"/>
+<circle cx="959.6" cy="191.9" r="3.6" fill="#fb7185" stroke="#fff" stroke-width="1"/>
+<circle cx="1018.2" cy="157.8" r="3.6" fill="#fb7185" stroke="#fff" stroke-width="1"/>
+<circle cx="673.4" cy="406.4" r="3.6" fill="#e11d48" stroke="#fff" stroke-width="1"/>
+<text x="679.4" y="400.4" class="tick">a</text>
+<circle cx="748.4" cy="411.5" r="3.6" fill="#e11d48" stroke="#fff" stroke-width="1"/>
+<text x="754.4" y="405.5" class="tick">b</text>
+<circle cx="807.9" cy="410.0" r="3.6" fill="#e11d48" stroke="#fff" stroke-width="1"/>
+<circle cx="857.4" cy="395.1" r="3.6" fill="#e11d48" stroke="#fff" stroke-width="1"/>
+<circle cx="899.9" cy="336.6" r="3.6" fill="#e11d48" stroke="#fff" stroke-width="1"/>
+<circle cx="937.0" cy="306.6" r="3.6" fill="#e11d48" stroke="#fff" stroke-width="1"/>
+<circle cx="959.6" cy="309.5" r="3.6" fill="#e11d48" stroke="#fff" stroke-width="1"/>
+<circle cx="1018.2" cy="201.1" r="3.6" fill="#e11d48" stroke="#fff" stroke-width="1"/>
+<text x="1024.2" y="195.1" class="tick">h</text>
+<path d="M685.4,391.6 Q845.8,359.6 1010.2,147.8" fill="none" stroke="#e11d48" stroke-width="1.6" marker-end="url(#arrow-red)"/>
+<text x="713.4" y="355.6" class="callout">C=1e17: monotone  &#x2014;  no valley</text>
+<circle cx="748.4" cy="411.5" r="7" fill="none" stroke="#be123c" stroke-width="1.6"/>
+<text x="758.4" y="429.5" class="callout">C=3e17: weak U at b, then blows up</text>
+<rect x="944" y="148" width="18" height="3" rx="1" fill="#fb7185"/>
+<text x="968" y="153" class="legend-text">C=1e17  measured</text>
+<rect x="944" y="164" width="18" height="3" rx="1" fill="#e11d48"/>
+<text x="968" y="169" class="legend-text">C=3e17  measured</text>
+<text x="832" y="478" text-anchor="middle" class="note">Left arm of the U is missing: even the smallest model already fits TinyStories.</text>
+<rect x="24" y="520" width="1072" height="436" rx="10" fill="#fff" stroke="#e2e8f0"/>
+<rect x="40" y="536" width="210" height="24" rx="12" fill="#0f172a"/>
+<text x="145.0" y="552.3" text-anchor="middle" class="badge-text">Why the U collapsed</text>
+<text x="264" y="553" class="note">IsoFLOP still spent C = M&#xB7;D FLOPs. D was not unique tokens, and the distribution was too easy.</text>
+<rect x="40" y="576" width="336" height="168" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+<rect x="40" y="576" width="336" height="28" rx="8" fill="#be123c"/>
+<rect x="40" y="596" width="336" height="10" fill="#be123c"/>
+<text x="208" y="596" text-anchor="middle" class="badge-text">1  Toy domain</text>
+<text x="56" y="628" class="node-text">TinyStories is a closed children-story</text>
+<text x="56" y="646" class="node-text">distribution. ~8M params already reach</text>
+<text x="56" y="664" class="node-text">BPB 0.46. There is no under-capacity</text>
+<text x="56" y="682" class="node-text">regime, so the left arm of the U never</text>
+<text x="56" y="700" class="node-text">appears.</text>
+<rect x="392" y="576" width="336" height="168" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+<rect x="392" y="576" width="336" height="28" rx="8" fill="#c2410c"/>
+<rect x="392" y="596" width="336" height="10" fill="#c2410c"/>
+<text x="560" y="596" text-anchor="middle" class="badge-text">2  Unique-token loop</text>
+<text x="408" y="628" class="node-text">Only 462M unique train tokens. Jobs</text>
+<text x="408" y="646" class="node-text">with D &gt; 462M (small M, large C)</text>
+<text x="408" y="664" class="node-text">replay the same stories. C=3e17 width a</text>
+<text x="408" y="682" class="node-text">asked for 2.49B tokens ~ 5.4 epochs of</text>
+<text x="408" y="700" class="node-text">the same 462M.</text>
+<rect x="744" y="576" width="336" height="168" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+<rect x="744" y="576" width="336" height="28" rx="8" fill="#1d4ed8"/>
+<rect x="744" y="596" width="336" height="10" fill="#1d4ed8"/>
+<text x="912" y="596" text-anchor="middle" class="badge-text">3  Large-M starvation</text>
+<text x="760" y="628" class="node-text">At fixed C, large M gets tiny D.</text>
+<text x="760" y="646" class="node-text">Width h @ C=1e17 saw 28M tokens.</text>
+<text x="760" y="664" class="node-text">The model is too big for that budget</text>
+<text x="760" y="682" class="node-text">on this domain, so BPB climbs 0.46</text>
+<text x="760" y="700" class="node-text">to 1.30. Only the right arm remains.</text>
+<text x="40" y="772" class="node-title">Scheduled D vs unique tokens  (C=3e17, the worse budget)</text>
+<rect x="40" y="786" width="1040" height="140" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+<rect x="90" y="812.0" width="70" height="92.0" rx="3" fill="#e11d48" opacity="0.85"/>
+<text x="125.0" y="918" text-anchor="middle" class="tick">a</text>
+<text x="125.0" y="808.0" text-anchor="middle" class="tick">2493M</text>
+<rect x="208" y="860.0" width="70" height="44.0" rx="3" fill="#e11d48" opacity="0.85"/>
+<text x="243.0" y="918" text-anchor="middle" class="tick">b</text>
+<text x="243.0" y="856.0" text-anchor="middle" class="tick">1192M</text>
+<rect x="326" y="879.5" width="70" height="24.5" rx="3" fill="#e11d48" opacity="0.85"/>
+<text x="361.0" y="918" text-anchor="middle" class="tick">c</text>
+<text x="361.0" y="875.5" text-anchor="middle" class="tick">663M</text>
+<rect x="444" y="888.9" width="70" height="15.1" rx="3" fill="#64748b" opacity="0.85"/>
+<text x="479.0" y="918" text-anchor="middle" class="tick">d</text>
+<text x="479.0" y="884.9" text-anchor="middle" class="tick">408M</text>
+<rect x="562" y="894.1" width="70" height="9.9" rx="3" fill="#64748b" opacity="0.85"/>
+<text x="597.0" y="918" text-anchor="middle" class="tick">e</text>
+<text x="597.0" y="890.1" text-anchor="middle" class="tick">268M</text>
+<rect x="680" y="897.1" width="70" height="6.9" rx="3" fill="#64748b" opacity="0.85"/>
+<text x="715.0" y="918" text-anchor="middle" class="tick">f</text>
+<text x="715.0" y="893.1" text-anchor="middle" class="tick">186M</text>
+<rect x="798" y="898.5" width="70" height="5.5" rx="3" fill="#64748b" opacity="0.85"/>
+<text x="833.0" y="918" text-anchor="middle" class="tick">g</text>
+<text x="833.0" y="894.5" text-anchor="middle" class="tick">149M</text>
+<rect x="916" y="900.9" width="70" height="3.1" rx="3" fill="#64748b" opacity="0.85"/>
+<text x="951.0" y="918" text-anchor="middle" class="tick">h</text>
+<text x="951.0" y="896.9" text-anchor="middle" class="tick">84M</text>
+<line x1="60" y1="886.9" x2="1060" y2="886.9" stroke="#0f172a" stroke-width="1.6" stroke-dasharray="6,3"/>
+<text x="1056" y="880.9" text-anchor="end" class="axis-title">unique = 462M  (loop above this line)</text>
+</svg>

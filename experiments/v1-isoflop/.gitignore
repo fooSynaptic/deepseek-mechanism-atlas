@@ -1,0 +1,13 @@
+.venv/
+.hf/
+data/
+results/
+logs/
+__pycache__/
+*.pyc
+src/__pycache__/
+configs/grid.json
+artifacts/collected_jobs.json
+artifacts/collected_jobs.csv
+*.log
+.DS_Store

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 900"
+     font-family="PingFang SC,Microsoft YaHei,Helvetica Neue,Arial,sans-serif">
+<defs>
+  <style>
+    .title { font-size: 20px; font-weight: 700; fill: #1a1a2e; }
+    .subtitle { font-size: 12px; fill: #64748b; }
+    .panel-title { font-size: 14px; font-weight: 700; fill: #1e293b; }
+    .axis { font-size: 11px; fill: #64748b; }
+    .axis-title { font-size: 11px; font-weight: 600; fill: #334155; }
+    .tick { font-size: 10px; fill: #64748b; }
+    .legend-text { font-size: 11px; fill: #334155; }
+    .callout { font-size: 11px; fill: #9f1239; font-weight: 600; }
+    .callout-ok { font-size: 11px; fill: #1d4ed8; font-weight: 600; }
+    .note { font-size: 11px; fill: #475569; }
+    .badge-text { font-size: 11px; font-weight: 600; fill: #fff; }
+    .node-title { font-size: 13px; font-weight: 700; fill: #1e293b; }
+    .node-text { font-size: 11.5px; fill: #475569; }
+  </style>
+  <marker id="arrow-blue" viewBox="0 0 10 8" refX="9" refY="4"
+          markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#3b82f6"/>
+  </marker>
+  <marker id="arrow-red" viewBox="0 0 10 8" refX="9" refY="4"
+          markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#e11d48"/>
+  </marker>
+  <marker id="arrow-gray" viewBox="0 0 10 8" refX="9" refY="4"
+          markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#64748b"/>
+  </marker>
+</defs>
+<rect width="100%" height="100%" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="40" y="38" class="title">v2 IsoFLOP: expected shape under paper Formula 4</text>
+<text x="40" y="58" class="subtitle">Dashed U is Formula 4 on this C range, not a BPB forecast. The 1.1B-7B grid sits on the right arm unless this mix is more model-hungry than the paper.</text>
+<rect x="24" y="74" width="1072" height="430" rx="10" fill="#fff" stroke="#e2e8f0"/>
+<rect x="40" y="88" width="132" height="24" rx="12" fill="#0f766e"/>
+<text x="106.0" y="104.3" text-anchor="middle" class="badge-text">Wave A  expected</text>
+<text x="184" y="105" class="note">s1-s6 at L=4096  &#xB7;  C in {3e18, 1e19, 3e19}  &#xB7;  4.0B unique open-mix tokens</text>
+<rect x="88" y="128" width="820" height="310" fill="#f8fafc" stroke="#e2e8f0"/>
+<line x1="238.0" y1="128" x2="238.0" y2="438" stroke="#e2e8f0"/>
+<text x="238.0" y="454" text-anchor="middle" class="tick">10^9</text>
+<line x1="417.7" y1="128" x2="417.7" y2="438" stroke="#e2e8f0"/>
+<text x="417.7" y="454" text-anchor="middle" class="tick">10^9</text>
+<line x1="614.8" y1="128" x2="614.8" y2="438" stroke="#e2e8f0"/>
+<text x="614.8" y="454" text-anchor="middle" class="tick">10^10</text>
+<line x1="794.6" y1="128" x2="794.6" y2="438" stroke="#e2e8f0"/>
+<text x="794.6" y="454" text-anchor="middle" class="tick">10^10</text>
+<line x1="88" y1="408.2" x2="908" y2="408.2" stroke="#e2e8f0"/>
+<text x="80" y="411.7" text-anchor="end" class="tick">0.75</text>
+<line x1="88" y1="348.6" x2="908" y2="348.6" stroke="#e2e8f0"/>
+<text x="80" y="352.1" text-anchor="end" class="tick">0.85</text>
+<line x1="88" y1="289.0" x2="908" y2="289.0" stroke="#e2e8f0"/>
+<text x="80" y="292.5" text-anchor="end" class="tick">0.95</text>
+<line x1="88" y1="229.3" x2="908" y2="229.3" stroke="#e2e8f0"/>
+<text x="80" y="232.8" text-anchor="end" class="tick">1.05</text>
+<line x1="88" y1="169.7" x2="908" y2="169.7" stroke="#e2e8f0"/>
+<text x="80" y="173.2" text-anchor="end" class="tick">1.15</text>
+<rect x="88" y="128" width="820" height="310" fill="none" stroke="#cbd5e1"/>
+<text x="498.0" y="470" text-anchor="middle" class="axis-title">non-embedding FLOPs / token  M  (log)</text>
+<text x="52" y="283.0" text-anchor="middle" class="axis-title" transform="rotate(-90 52 283.0)">val bits-per-byte  (schematic)</text>
+<rect x="594.9" y="128" width="266.4" height="310" fill="#0f766e" opacity="0.06"/>
+<text x="728.1" y="146" text-anchor="middle" class="tick">this lab grid  (1.1B-7B)</text>
+<polyline points="88.0,249.6 101.7,255.5 115.3,260.6 129.0,265.1 142.7,268.8 156.3,271.9 170.0,274.2 183.7,275.9 197.3,276.8 211.0,277.0 224.7,276.5 238.3,275.4 252.0,273.5 265.7,270.9 279.3,267.6 293.0,263.5 306.7,258.8 320.3,253.4 334.0,247.3 347.7,240.4 361.3,232.9 375.0,224.6 388.7,215.7 402.3,206.0 416.0,195.7 429.7,184.6 443.3,172.8 457.0,160.3 470.7,147.1 484.3,133.2" fill="none" stroke="#5eead4" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" opacity="1.0" stroke-dasharray="7,4"/>
+<line x1="208.5" y1="128" x2="208.5" y2="438" stroke="#5eead4" stroke-width="1" stroke-dasharray="3,3" opacity="0.55"/>
+<circle cx="208.5" cy="277.0" r="5" fill="#5eead4" stroke="#fff" stroke-width="1.4"/>
+<polyline points="88.0,230.1 101.7,241.3 115.3,251.8 129.0,261.6 142.7,270.7 156.3,279.1 170.0,286.7 183.7,293.7 197.3,300.0 211.0,305.5 224.7,310.4 238.3,314.5 252.0,318.0 265.7,320.7 279.3,322.7 293.0,324.1 306.7,324.7 320.3,324.6 334.0,323.8 347.7,322.3 361.3,320.1 375.0,317.2 388.7,313.6 402.3,309.2 416.0,304.2 429.7,298.5 443.3,292.0 457.0,284.9 470.7,277.0 484.3,268.5 498.0,259.2 511.7,249.2 525.3,238.6 539.0,227.2 552.7,215.1 566.3,202.3 580.0,188.8 593.7,174.6 607.3,159.7 621.0,144.0" fill="none" stroke="#14b8a6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" opacity="1.0" stroke-dasharray="7,4"/>
+<line x1="311.8" y1="128" x2="311.8" y2="438" stroke="#14b8a6" stroke-width="1" stroke-dasharray="3,3" opacity="0.55"/>
+<circle cx="311.8" cy="324.7" r="5" fill="#14b8a6" stroke="#fff" stroke-width="1.4"/>
+<polyline points="88.0,181.2 101.7,197.3 115.3,212.7 129.0,227.4 142.7,241.3 156.3,254.6 170.0,267.1 183.7,279.0 197.3,290.1 211.0,300.5 224.7,310.2 238.3,319.3 252.0,327.6 265.7,335.2 279.3,342.1 293.0,348.3 306.7,353.8 320.3,358.5 334.0,362.6 347.7,366.0 361.3,368.6 375.0,370.6 388.7,371.9 402.3,372.4 416.0,372.2 429.7,371.4 443.3,369.8 457.0,367.5 470.7,364.5 484.3,360.8 498.0,356.4 511.7,351.3 525.3,345.5 539.0,339.0 552.7,331.8 566.3,323.9 580.0,315.2 593.7,305.9 607.3,295.9 621.0,285.1 634.7,273.7 648.3,261.5 662.0,248.6 675.7,235.1 689.3,220.8 703.0,205.8 716.7,190.1 730.3,173.7 744.0,156.6 757.7,138.8" fill="none" stroke="#0f766e" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" opacity="1.0" stroke-dasharray="7,4"/>
+<line x1="406.1" y1="128" x2="406.1" y2="438" stroke="#0f766e" stroke-width="1" stroke-dasharray="3,3" opacity="0.55"/>
+<circle cx="406.1" cy="372.4" r="5" fill="#0f766e" stroke="#fff" stroke-width="1.4"/>
+<text x="406.1" y="122" text-anchor="middle" class="tick">paper M_opt</text>
+<line x1="594.9" y1="438" x2="594.9" y2="444" stroke="#334155"/>
+<text x="594.9" y="456" text-anchor="middle" class="tick">s1</text>
+<circle cx="594.9" cy="128.0" r="3.2" fill="#5eead4" stroke="#fff" stroke-width="0.8"/>
+<circle cx="594.9" cy="173.2" r="3.2" fill="#14b8a6" stroke="#fff" stroke-width="0.8"/>
+<circle cx="594.9" cy="305.0" r="3.2" fill="#0f766e" stroke="#fff" stroke-width="0.8"/>
+<line x1="673.8" y1="438" x2="673.8" y2="444" stroke="#334155"/>
+<text x="673.8" y="456" text-anchor="middle" class="tick">s2</text>
+<circle cx="673.8" cy="128.0" r="3.2" fill="#5eead4" stroke="#fff" stroke-width="0.8"/>
+<circle cx="673.8" cy="128.0" r="3.2" fill="#14b8a6" stroke="#fff" stroke-width="0.8"/>
+<circle cx="673.8" cy="237.0" r="3.2" fill="#0f766e" stroke="#fff" stroke-width="0.8"/>
+<line x1="740.7" y1="438" x2="740.7" y2="444" stroke="#334155"/>
+<text x="740.7" y="456" text-anchor="middle" class="tick">s3</text>
+<circle cx="740.7" cy="128.0" r="3.2" fill="#5eead4" stroke="#fff" stroke-width="0.8"/>
+<circle cx="740.7" cy="128.0" r="3.2" fill="#14b8a6" stroke="#fff" stroke-width="0.8"/>
+<circle cx="740.7" cy="160.8" r="3.2" fill="#0f766e" stroke="#fff" stroke-width="0.8"/>
+<line x1="799.0" y1="438" x2="799.0" y2="444" stroke="#334155"/>
+<text x="799.0" y="456" text-anchor="middle" class="tick">s4</text>
+<circle cx="799.0" cy="128.0" r="3.2" fill="#5eead4" stroke="#fff" stroke-width="0.8"/>
+<circle cx="799.0" cy="128.0" r="3.2" fill="#14b8a6" stroke="#fff" stroke-width="0.8"/>
+<circle cx="799.0" cy="128.0" r="3.2" fill="#0f766e" stroke="#fff" stroke-width="0.8"/>
+<line x1="850.7" y1="438" x2="850.7" y2="444" stroke="#334155"/>
+<text x="850.7" y="456" text-anchor="middle" class="tick">s5</text>
+<circle cx="850.7" cy="128.0" r="3.2" fill="#5eead4" stroke="#fff" stroke-width="0.8"/>
+<circle cx="850.7" cy="128.0" r="3.2" fill="#14b8a6" stroke="#fff" stroke-width="0.8"/>
+<circle cx="850.7" cy="128.0" r="3.2" fill="#0f766e" stroke="#fff" stroke-width="0.8"/>
+<line x1="861.3" y1="438" x2="861.3" y2="444" stroke="#334155"/>
+<text x="861.3" y="456" text-anchor="middle" class="tick">s6</text>
+<circle cx="861.3" cy="128.0" r="3.2" fill="#5eead4" stroke="#fff" stroke-width="0.8"/>
+<circle cx="861.3" cy="128.0" r="3.2" fill="#14b8a6" stroke="#fff" stroke-width="0.8"/>
+<circle cx="861.3" cy="128.0" r="3.2" fill="#0f766e" stroke="#fff" stroke-width="0.8"/>
+<rect x="930" y="148" width="22" height="3" rx="1" fill="#5eead4"/>
+<text x="958" y="153" class="legend-text">C=3e18</text>
+<rect x="930" y="164" width="22" height="3" rx="1" fill="#14b8a6"/>
+<text x="958" y="169" class="legend-text">C=1e19</text>
+<rect x="930" y="180" width="22" height="3" rx="1" fill="#0f766e"/>
+<text x="958" y="185" class="legend-text">C=3e19</text>
+<text x="930" y="206" class="note">s5 = paper 7B width</text>
+<text x="930" y="222" class="note">30L / d=4096 / 32H</text>
+<text x="930" y="244" class="callout-ok">A  Formula 4 holds:</text>
+<text x="930" y="260" class="note">s1 best on every C</text>
+<text x="930" y="276" class="note">(right arm only)</text>
+<text x="930" y="298" class="callout">B  Mix wants more model:</text>
+<text x="930" y="314" class="note">interior U on s1-s6</text>
+<text x="560" y="478" text-anchor="middle" class="note">Paper M_opt at these C is 0.84B / 1.57B / 2.79B FLOPs/tok, all left of s1 (8.86B). A visible U on 1.1B-7B would mean a larger than 0.52.</text>
+<rect x="24" y="520" width="528" height="352" rx="10" fill="#fff" stroke="#e2e8f0"/>
+<rect x="40" y="536" width="190" height="24" rx="12" fill="#1d4ed8"/>
+<text x="135.0" y="552.3" text-anchor="middle" class="badge-text">Unique-token floor  (met)</text>
+<text x="40" y="580" class="node-title">Scheduled D vs 4.0B unique train tokens</text>
+<rect x="40" y="592" width="496" height="1" fill="#e2e8f0"/>
+<text x="56" y="618" class="node-text-bold" font-weight="600" fill="#1e293b">C=3e18</text>
+<text x="160" y="618" class="node-text">max D  s1 339M   &#xB7;   7B D  s5 71M</text>
+<text x="480" y="618" text-anchor="end" fill="#15803d" font-size="12" font-weight="700">D &lt; 4.0B</text>
+<rect x="40" y="628" width="496" height="1" fill="#f1f5f9"/>
+<text x="56" y="646" class="node-text-bold" font-weight="600" fill="#1e293b">C=1e19</text>
+<text x="160" y="646" class="node-text">max D  s1 1.13B   &#xB7;   7B D  s5 237M</text>
+<text x="480" y="646" text-anchor="end" fill="#15803d" font-size="12" font-weight="700">D &lt; 4.0B</text>
+<rect x="40" y="656" width="496" height="1" fill="#f1f5f9"/>
+<text x="56" y="674" class="node-text-bold" font-weight="600" fill="#1e293b">C=3e19</text>
+<text x="160" y="674" class="node-text">max D  s1 3.39B   &#xB7;   7B D  s5 710M</text>
+<text x="480" y="674" text-anchor="end" fill="#15803d" font-size="12" font-weight="700">D &lt; 4.0B</text>
+<rect x="40" y="684" width="496" height="1" fill="#f1f5f9"/>
+<text x="40" y="710" class="node-text">Pilot failed this test (D up to 2.49B on 462M unique).</text>
+<text x="40" y="730" class="node-text">Mix: FineWeb-Edu + Wiki EN/ZH + math + books + CC WET.</text>
+<text x="40" y="750" class="node-text">Code / C4 slices missed; Wave A can still run.</text>
+<text x="40" y="784" class="node-text">Pilot-style fail: BPB ~0.4 on the smallest width</text>
+<text x="40" y="802" class="node-text">(memorizing an easy domain) plus looping D.</text>
+<text x="40" y="834" class="node-text">Do not fit Formula 4 unless a valley is interior or</text>
+<text x="40" y="852" class="node-text">s1-best plus BPB falling with C at fixed width.</text>
+<rect x="568" y="520" width="528" height="352" rx="10" fill="#fff" stroke="#e2e8f0"/>
+<rect x="584" y="536" width="150" height="24" rx="12" fill="#7c3aed"/>
+<text x="659.0" y="552.3" text-anchor="middle" class="badge-text">How v2 is run</text>
+<rect x="584" y="576" width="496" height="68" rx="8" fill="#fff" stroke="#ddd6fe"/>
+<rect x="584" y="576" width="496" height="24" rx="8" fill="#ede9fe"/>
+<rect x="584" y="592" width="496" height="10" fill="#ede9fe"/>
+<text x="832" y="593" text-anchor="middle" class="node-title" fill="#5b21b6">1  Wave A</text>
+<text x="600" y="618" class="node-text">18 IsoFLOP jobs, packed 8+8+4 GPUs.</text>
+<text x="600" y="634" class="node-text">s5/s6 = 8-GPU FSDP; s1 = 1 GPU.</text>
+<rect x="584" y="652" width="496" height="68" rx="8" fill="#fff" stroke="#ddd6fe"/>
+<rect x="584" y="652" width="496" height="24" rx="8" fill="#ede9fe"/>
+<rect x="584" y="668" width="496" height="10" fill="#ede9fe"/>
+<text x="832" y="669" text-anchor="middle" class="node-title" fill="#5b21b6">2  Read C2</text>
+<text x="600" y="694" class="node-text">Plot val BPB vs M at each C.</text>
+<text x="600" y="710" class="node-text">Interior U, or s1-best + BPB falls with C.</text>
+<rect x="584" y="728" width="496" height="68" rx="8" fill="#fff" stroke="#ddd6fe"/>
+<rect x="584" y="728" width="496" height="24" rx="8" fill="#ede9fe"/>
+<rect x="584" y="744" width="496" height="10" fill="#ede9fe"/>
+<text x="832" y="745" text-anchor="middle" class="node-title" fill="#5b21b6">3  Then C3</text>
+<text x="600" y="770" class="node-text">Fit a only if a valley is identified.</text>
+<text x="600" y="786" class="node-text">Paper a=0.52; band [0.35, 0.70].</text>
+<rect x="584" y="804" width="496" height="68" rx="8" fill="#fff" stroke="#ddd6fe"/>
+<rect x="584" y="804" width="496" height="24" rx="8" fill="#ede9fe"/>
+<rect x="584" y="820" width="496" height="10" fill="#ede9fe"/>
+<text x="832" y="821" text-anchor="middle" class="node-title" fill="#5b21b6">4  Wave B</text>
+<text x="600" y="846" class="node-text">Formula 1 cross at s3, C=3e18.</text>
+<text x="600" y="862" class="node-text">Center inside 0.25% of the min BPB.</text>
+</svg>
