@@ -1,0 +1,21 @@
+{
+  "jobs": [
+    {
+      "job_id": "e2_gshard_w20",
+      "arch_id": "gshard",
+      "d_tokens": 40000000000,
+      "max_lr": 0.00108,
+      "batch_tokens": 4000000,
+      "seed": 1
+    },
+    {
+      "job_id": "e2_dsmoe",
+      "arch_id": "dsmoe",
+      "d_tokens": 40000000000,
+      "max_lr": 0.00108,
+      "batch_tokens": 4000000,
+      "seed": 1,
+      "resume_from": "e1_dsmoe"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 560"
+     font-family="Helvetica Neue,Arial,sans-serif">
+<defs>
+  <style>
+    .title { font-size: 18px; font-weight: 700; fill: #0f172a; }
+    .sub { font-size: 12px; fill: #64748b; }
+    .h { font-size: 13px; font-weight: 700; fill: #1e293b; }
+    .t { font-size: 11.5px; fill: #475569; }
+    .badge { font-size: 11px; font-weight: 600; fill: #fff; }
+  </style>
+  <marker id="arr" viewBox="0 0 10 8" refX="9" refY="4"
+          markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#64748b"/>
+  </marker>
+</defs>
+<rect width="100%" height="100%" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="36" y="34" class="title">§4.5 arms: F (fewer activated) vs S (drop shared)</text>
+<text x="36" y="54" class="sub">Do not merge. F keeps shared. S removes shared and adds one routed slot.</text>
+
+<!-- baseline -->
+<rect x="380" y="80" width="340" height="120" rx="10" fill="#fff" stroke="#cbd5e1"/>
+<rect x="396" y="94" width="140" height="22" rx="11" fill="#334155"/>
+<text x="466" y="109" text-anchor="middle" class="badge">E1 DeepSeekMoE</text>
+<text x="396" y="140" class="h">1 shared + Top-7 / 63</text>
+<text x="396" y="162" class="t">activated = 2.0x dense FFN</text>
+<text x="396" y="184" class="t">val BPB 0.7850 @ 10B train</text>
+
+<!-- F -->
+<rect x="36" y="260" width="480" height="260" rx="10" fill="#fff" stroke="#fde68a"/>
+<rect x="52" y="274" width="70" height="22" rx="11" fill="#d97706"/>
+<text x="87" y="289" text-anchor="middle" class="badge">Arm F</text>
+<text x="52" y="320" class="h">Fewer activated (keep shared)</text>
+<text x="52" y="344" class="t">F-eval (Fig 5): change k at eval on E1 ckpt</text>
+<text x="52" y="366" class="t">k=4 already ≤ same-batch GShard → direction hit</text>
+<text x="52" y="396" class="t">F-train (Fig 6): train 1+Top-3 from scratch</text>
+<text x="52" y="418" class="t">activated = 1.0x dense (half of GShard)</text>
+<text x="52" y="440" class="t">result 0.8014 vs GShard 0.7970 (Δ +0.004)</text>
+<text x="52" y="470" class="t">Attribution: near-match / tokens (16x total experts retained)</text>
+<text x="52" y="492" class="t">Collapse: no (max_frac ≈ 0.12)</text>
+
+<!-- S -->
+<rect x="584" y="260" width="480" height="260" rx="10" fill="#fff" stroke="#fecaca"/>
+<rect x="600" y="274" width="70" height="22" rx="11" fill="#dc2626"/>
+<text x="635" y="289" text-anchor="middle" class="badge">Arm S</text>
+<text x="600" y="320" class="h">Drop shared (matched activated FLOPs)</text>
+<text x="600" y="344" class="t">S-eval: n_shared=0, k_routed=8 on E1 ckpt</text>
+<text x="600" y="366" class="t">0.8204 → 0.9558 (Δ +0.135 BPB)</text>
+<text x="600" y="396" class="t">Large degradation is the surgery claim</text>
+<text x="600" y="418" class="t">Shared not replaceable by +1 routed (eval)</text>
+<text x="600" y="440" class="t">S-train: 0 shared + Top-8 from scratch → 0.7933</text>
+<text x="600" y="462" class="t">vs DSMoE +0.008 (S-A hit); &lt;&lt; S-eval +0.135</text>
+<text x="600" y="484" class="t">S-eval ≠ S-train; both closed</text>
+<text x="600" y="506" class="t">Paper surgery analogue: Pile 1.808 → 2.414</text>
+
+<!-- arrows -->
+<line x1="470" y1="200" x2="220" y2="260" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="630" y1="200" x2="820" y2="260" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="280" y="230" class="t" fill="#d97706">keep shared, cut k</text>
+<text x="780" y="230" class="t" fill="#dc2626">drop shared, k=8</text>
+</svg>

@@ -1,0 +1,9 @@
+{
+  "job_id": "fs_eval",
+  "protocol": "fs_eval_p0_f_s",
+  "ckpt": "e1_lb_dsmoe",
+  "gshard_ckpt": "e1_lb_gshard_w20",
+  "eval_batches": 32,
+  "seed": 1,
+  "world_size": 20
+}
