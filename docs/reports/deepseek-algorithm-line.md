@@ -20,6 +20,7 @@ V3 发布之后，DeepSeek 在 **注意力与残差路径** 上的算法演进�
 | **① MLA** | K/V 压入低维 latent 再缓存；Core 仍做多头注意力 | V2（2024-05）→ V3/R1/V3.1 沿用 | [MLA 低秩注意力](../versions/mla-latent-attention.md) | [2405.04434](https://arxiv.org/abs/2405.04434) |
 | **② DSA** | Lightning Indexer 选 top-$k$ → 仅对 $k$ 个 latent 做 MLA | V3.2-Exp / V3.2（2025） | [DSA 稀疏注意力](../versions/dsa-sparse-attention.md) · [DSA 逻辑详解](../dsa/dsa-logic.md) | [2512.02556](https://arxiv.org/abs/2512.02556) |
 | **③ CSA / HCA** | 4:1 / 128:1 压缩 KV + 内嵌 indexer；百万 token | V4（2026） | [CSA / HCA](../versions/csa-hca-mixed-attention.md) · [DeepSeek-V4](../versions/v4.md) | [2606.19348](https://arxiv.org/abs/2606.19348) |
+| **③′ CSA2** | Full / Reindex / Reuse + Hierarchical Sparse Indexer；叠 FP4 | V4.1-Flash（2026-09） | [DeepSeek-V4.1-Flash](../versions/v4-1-flash.md) · [SWA 答疑 §1.1](../versions/qa/v4-swa-sliding-window.md#indexer-vs-main-kv) | [HF Tech Report](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/blob/main/DeepSeek_V41_Tech_Report.pdf) |
 | **④ mHC** | 残差 Hyper-Connections → 双随机流形约束 | V4 落地 | [mHC](../versions/mhc-manifold-hyper-connections.md)（含 [§3 双随机流形](../versions/mhc-manifold-hyper-connections.md#3-mhc-核心双随机流形约束)）· [HC 基础](../versions/hyper-connections.md) | [2512.24880](https://arxiv.org/abs/2512.24880) |
 
 > **注意**：mHC 改的是 **残差路径**（与 Attention / KV 正交），在演进总览里与 CSA/HCA **并列** 标注，便于对照 V4 全架构；详见 [mHC §7](../versions/mhc-manifold-hyper-connections.md#7-与-attention--moe-线的关系)。

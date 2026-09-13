@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 620" font-family="PingFang SC,Microsoft YaHei,Helvetica Neue,Arial,sans-serif">
+<defs>
+  <style>
+    .title { font-size: 20px; font-weight: 700; fill: #1a1a2e; }
+    .subtitle { font-size: 12px; fill: #64748b; }
+    .badge-text { font-size: 11px; font-weight: 600; fill: #fff; }
+    .node-title { font-size: 13px; font-weight: 600; fill: #1e293b; }
+    .node-text { font-size: 11.5px; fill: #475569; }
+    .mono { font-family: Consolas,Menlo,monospace; font-size: 11px; fill: #334155; }
+    .section-title { font-size: 14px; font-weight: 700; fill: #1e293b; }
+    .arrow-label { font-size: 11px; font-weight: 600; fill: #7c3aed; }
+  </style>
+  <marker id="arrow-violet" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#7c3aed"/>
+  </marker>
+  <marker id="arrow-blue" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#3b82f6"/>
+  </marker>
+  <marker id="arrow-orange" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#ea580c"/>
+  </marker>
+</defs>
+<rect width="100%" height="100%" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="40" y="34" class="title">&#x6CE8;&#x610F;&#x529B;&#xFF1A;CSA &#x2192; CSA2</text>
+<text x="40" y="54" class="subtitle">&#x5DE6;&#xFF1A;V4 CSA&#xFF08;&#x5C42;&#x5185;&#x5B8C;&#x6574;&#x8DEF;&#x5F84;&#xFF09;&#xB7; &#x53F3;&#xFF1A;V4.1 CSA2&#xFF08;&#x5C42;&#x95F4;&#x590D;&#x7528; + &#x89E3;&#x7801;&#x4FA7;&#x5019;&#x9009;&#x6C60; indexer&#xFF09;</text>
+<rect x="28" y="72" width="470" height="470" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+<rect x="44" y="86" width="72" height="26" rx="13" fill="#2563eb"/>
+<text x="80" y="104" text-anchor="middle" class="badge-text">CSA</text>
+<text x="130" y="104" class="section-title">V4 &#xB7; Compressed Sparse Attention</text>
+<rect x="48" y="128" width="430" height="56" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="48" y="128" width="430" height="22" rx="8" fill="#dbeafe"/>
+<rect x="48" y="142" width="430" height="8" fill="#dbeafe"/>
+<text x="263" y="144" text-anchor="middle" class="node-title" fill="#1d4ed8">&#x6BCF;&#x5C42;&#x72EC;&#x7ACB;&#x8DEF;&#x5F84;</text>
+<text x="263" y="170" text-anchor="middle" class="node-text">&#x672C;&#x5C42;&#x7B97; main KV + indexer</text>
+<line x1="263" y1="184" x2="263" y2="198" stroke="#3b82f6" stroke-width="1.6" marker-end="url(#arrow-blue)"/>
+<rect x="48" y="198" width="430" height="56" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="48" y="198" width="430" height="22" rx="8" fill="#dbeafe"/>
+<rect x="48" y="212" width="430" height="8" fill="#dbeafe"/>
+<text x="263" y="214" text-anchor="middle" class="node-title" fill="#1d4ed8">&#x5E8F;&#x5217;&#x538B;&#x7F29;</text>
+<text x="263" y="240" text-anchor="middle" class="node-text">m = 4 · overlap + abs PE</text>
+<line x1="263" y1="254" x2="263" y2="268" stroke="#3b82f6" stroke-width="1.6" marker-end="url(#arrow-blue)"/>
+<rect x="48" y="268" width="430" height="56" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="48" y="268" width="430" height="22" rx="8" fill="#dbeafe"/>
+<rect x="48" y="282" width="430" height="8" fill="#dbeafe"/>
+<text x="263" y="284" text-anchor="middle" class="node-title" fill="#1d4ed8">Indexer K</text>
+<text x="263" y="310" text-anchor="middle" class="node-text">&#x4ECE; hidden &#x53E6;&#x8D70;&#x538B;&#x7F29;&#x8DEF;&#x5F84;</text>
+<line x1="263" y1="324" x2="263" y2="338" stroke="#3b82f6" stroke-width="1.6" marker-end="url(#arrow-blue)"/>
+<rect x="48" y="338" width="430" height="56" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="48" y="338" width="430" height="22" rx="8" fill="#dbeafe"/>
+<rect x="48" y="352" width="430" height="8" fill="#dbeafe"/>
+<text x="263" y="354" text-anchor="middle" class="node-title" fill="#1d4ed8">Top-K + Core</text>
+<text x="263" y="380" text-anchor="middle" class="node-text">&#x9009;&#x4E2D; main KV + &#x672C;&#x5C42; SWA</text>
+<line x1="263" y1="394" x2="263" y2="408" stroke="#3b82f6" stroke-width="1.6" marker-end="url(#arrow-blue)"/>
+<rect x="48" y="408" width="430" height="56" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="48" y="408" width="430" height="22" rx="8" fill="#dbeafe"/>
+<rect x="48" y="422" width="430" height="8" fill="#dbeafe"/>
+<text x="263" y="424" text-anchor="middle" class="node-title" fill="#1d4ed8">&#x540C;&#x4EE3;&#x642D;&#x6863;</text>
+<text x="263" y="450" text-anchor="middle" class="node-text">HCA 128:1 dense · SWA</text>
+<line x1="510" y1="300" x2="560" y2="300" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#arrow-violet)"/>
+<text x="535" y="284" text-anchor="middle" class="arrow-label">V4.1</text>
+<rect x="572" y="72" width="480" height="470" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+<rect x="588" y="86" width="84" height="26" rx="13" fill="#ea580c"/>
+<text x="630" y="104" text-anchor="middle" class="badge-text">CSA2</text>
+<text x="686" y="104" class="section-title">V4.1 &#xB7; &#x4E09;&#x6A21;&#x5F0F; + Hierarchical Indexer</text>
+<rect x="592" y="128" width="140" height="70" rx="8" fill="#fff" stroke="#fb923c"/>
+<rect x="592" y="128" width="140" height="24" rx="8" fill="#ffedd5"/>
+<rect x="592" y="144" width="140" height="8" fill="#ffedd5"/>
+<text x="662" y="146" text-anchor="middle" class="mono">Full</text>
+<text x="662" y="176" text-anchor="middle" class="node-text">&#x7B97; KV + &#x65B0; Top-K</text>
+<rect x="742" y="128" width="140" height="70" rx="8" fill="#fff" stroke="#fb923c"/>
+<rect x="742" y="128" width="140" height="24" rx="8" fill="#fed7aa"/>
+<rect x="742" y="144" width="140" height="8" fill="#fed7aa"/>
+<text x="812" y="146" text-anchor="middle" class="mono">Reindex</text>
+<text x="812" y="176" text-anchor="middle" class="node-text">&#x590D;&#x7528; KV &#xB7; &#x518D;&#x6253;&#x5206;</text>
+<rect x="892" y="128" width="140" height="70" rx="8" fill="#fff" stroke="#fb923c"/>
+<rect x="892" y="128" width="140" height="24" rx="8" fill="#fdba74"/>
+<rect x="892" y="144" width="140" height="8" fill="#fdba74"/>
+<text x="962" y="146" text-anchor="middle" class="mono">Reuse</text>
+<text x="962" y="176" text-anchor="middle" class="node-text">&#x590D;&#x7528; KV + Top-K</text>
+<line x1="812" y1="198" x2="812" y2="218" stroke="#ea580c" stroke-width="1.6" marker-end="url(#arrow-orange)"/>
+<rect x="592" y="222" width="440" height="56" rx="8" fill="#fff" stroke="#fb923c"/>
+<rect x="592" y="222" width="440" height="22" rx="8" fill="#ffedd5"/>
+<rect x="592" y="236" width="440" height="8" fill="#ffedd5"/>
+<text x="812" y="238" text-anchor="middle" class="node-title" fill="#9a3412">&#x538B;&#x7F29;&#x5668;&#x7B80;&#x5316;</text>
+<text x="812" y="264" text-anchor="middle" class="node-text">&#x975E;&#x91CD;&#x53E0;&#x538B;&#x7F29;&#x5757; &#xB7; indexer K &#x7531; main KV &#x6295;&#x5F71;</text>
+<line x1="812" y1="278" x2="812" y2="292" stroke="#ea580c" stroke-width="1.6" marker-end="url(#arrow-orange)"/>
+<rect x="592" y="292" width="440" height="56" rx="8" fill="#fff" stroke="#fb923c"/>
+<rect x="592" y="292" width="440" height="22" rx="8" fill="#ffedd5"/>
+<rect x="592" y="306" width="440" height="8" fill="#ffedd5"/>
+<text x="812" y="308" text-anchor="middle" class="node-title" fill="#9a3412">&#x8DE8;&#x5C42;&#x89E3;&#x8026;&#x590D;&#x7528;</text>
+<text x="812" y="334" text-anchor="middle" class="node-text">main KV &#xB7; indexer K &#xB7; Top-K &#x53EF;&#x5206;&#x522B;&#x5171;&#x4EAB;</text>
+<line x1="812" y1="348" x2="812" y2="362" stroke="#ea580c" stroke-width="1.6" marker-end="url(#arrow-orange)"/>
+<rect x="592" y="362" width="440" height="56" rx="8" fill="#fff" stroke="#fb923c"/>
+<rect x="592" y="362" width="440" height="22" rx="8" fill="#ffedd5"/>
+<rect x="592" y="376" width="440" height="8" fill="#ffedd5"/>
+<text x="812" y="378" text-anchor="middle" class="node-title" fill="#9a3412">Hierarchical Sparse Indexer</text>
+<text x="812" y="404" text-anchor="middle" class="node-text">&#x89E3;&#x7801;&#x4FA7;&#xFF1A;&#x540E;&#x7EED;&#x5C42;&#x53EA;&#x5728; Full &#x5019;&#x9009;&#x6C60;&#x4E0A;&#x6253;&#x5206;</text>
+<line x1="812" y1="418" x2="812" y2="432" stroke="#ea580c" stroke-width="1.6" marker-end="url(#arrow-orange)"/>
+<rect x="592" y="432" width="440" height="56" rx="8" fill="#fff" stroke="#fb923c"/>
+<rect x="592" y="432" width="440" height="22" rx="8" fill="#ffedd5"/>
+<rect x="592" y="446" width="440" height="8" fill="#ffedd5"/>
+<text x="812" y="448" text-anchor="middle" class="node-title" fill="#9a3412">&#x4E0E; FP4 &#x53E0;&#x4E58;</text>
+<text x="812" y="474" text-anchor="middle" class="node-text">&#x5168;&#x5C40; KV &#x2248; 890 B/token&#xFF08;&#x5B98;&#x65B9;&#x53E3;&#x5F84;&#xFF09;</text>
+<rect x="28" y="556" width="1024" height="44" rx="8" fill="#f5f3ff" stroke="#c4b5fd"/>
+<text x="540" y="584" text-anchor="middle" class="node-text">&#x53EF;&#x4E58;&#x4E09;&#x8F74;&#xFF1A;entry &#x5927;&#x5C0F; &#xD7; &#x5E8F;&#x5217;&#x538B;&#x7F29; &#xD7; &#x5C42;&#x95F4;&#x590D;&#x7528;&#x3000;&#xB7;&#x3000;CSA2 &#x540C;&#x65F6;&#x5403;&#x6EE1;&#x4E09;&#x8F74;&#xFF1B;&#x89E3;&#x7801;&#x4FA7;&#x5019;&#x9009;&#x6C60;&#x538B; indexer FLOPs</text>
+</svg>

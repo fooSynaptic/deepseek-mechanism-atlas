@@ -35,11 +35,69 @@
 
 CSA/HCA 把历史 **压短**；SWA 保证 **紧邻上下文** 不丢精度——二者 **互补**，不是替代关系。
 
+![单层 Core Attention：main Q 分两路读 Top-K main KV 与 SWA KV，indexer 只负责选块](../../04-版本代际/figures/kv-types-core-attention.svg)
+
+*Figure: **main KV** 与 **SWA KV** 都会被 **main Q** attend；**indexer K / Top-K** 只服务全局稀疏分支。V4.1 全局侧为 CSA2 的 main KV + FP4；SWA 仍单独分池。*
+
+[图示详情](../../04-版本代际/figures/kv-types-core-attention.svg)
+
+图里左侧全局分支其实有两套 K/Q，职责不同：下面先讲清 **indexer vs main KV**；右侧 **SWA** 为何还要单独一路，见 §2。
+
+<a id="indexer-vs-main-kv"></a>
+
+### 1.1 indexer 与 main KV：粗召回 vs 精确注意力（CSA2）
+
+**一句话**：**indexer K / indexer Q** 是专门做「快速粗筛召回」的轻量检索头；**main KV**（配合 **main Q**）是后面做「精确注意力」的主路径。两套 K/Q 服务两件不同的事——检索打分与最终注意力的目标、维度、压缩策略都分开设计，各自一套专用参数。
+
+流水线是两阶段：**粗召回（Indexer）→ 细计算（main attention）**。
+
+#### Indexer：轻量检索，只出 Top-K
+
+| 对象 | 是什么 | 做什么 |
+|------|--------|--------|
+| **indexer K** | 由 **main KV** 投影得到的 **低维检索 key**（CSA2） | 与 indexer Q 算相似度，从海量 `main entry` 里挑候选 |
+| **indexer Q** | 当前 token 的 **低维检索 query** | Full / Reindex 时本层计算；Reuse 可跳过 |
+| **Top-K** | 粗筛结果（索引表） | 告诉后面的 main 路径读哪几条 entry |
+
+这一阶段的目标是 **快、成本低** 地筛出一小批相关历史条目；真正的 attention 加权求和在下一步完成。
+
+#### main KV：高精度压缩 KV，做最终注意力
+
+**main KV** 是承载真实信息的高维（相对 indexer）压缩 KV，用于最终的 `main Q × 选中 main KV`（再与 **SWA KV** 一路合并进 Core Attention），生成输出表征。它的维度与特征空间按 **最终表示质量** 设计；**indexer** 则把 main KV 再投到 **更适合相似度匹配** 的 index 特征空间。
+
+
+#### 分开的额外收益：CSA2 层间复用
+
+V4.1 CSA2 相对初代 CSA 的重要一点：把 **indexer K** 做成可跨层共享的对象，于是有三种静态模式：
+
+| Mode | 做什么 |
+|------|--------|
+| **Full** | 新建 main KV + indexer K；本层 indexer Q 打分 → 新 Top-K |
+| **Reindex** | **复用**上游 indexer K（与 main KV）；本层只用新的 indexer Q 再打分 |
+| **Reuse** | 直接继承上游 Top-K；indexer Q / K 都不算，跳过检索 |
+
+indexer K 与 main KV 是可解耦的张量时，才能单独共享 indexer K、单独做 Reindex / Reuse；否则每一层都要重复投影、重复全长打分。
+
+#### 类比
+
+| CSA2 | 搜索引擎 |
+|------|----------|
+| **indexer K/Q** | 向量索引 / 倒排：**低维粗筛**，只求快，召回候选文档 |
+| **main KV + main Q** | 拿到候选后的 **精读**：高维原文信息，用来真正提取内容、生成回答 |
+
+搜索引擎用索引做粗筛、用原文做精读；CSA2 用 indexer 做粗筛、用 main KV 做精确注意力——同一套路。
+
 ---
 
-## 2. 为何不能只用压缩 entry
+## 2. 为何还要单独一路 SWA（相对压缩 entry）
 
-块压缩（4:1 / 128:1）会 **损失 token 级精度**。最近几十个 token 对语法、指代、工具调用格式等 **极敏感**；SWA 用 **滑动窗口** 保留这部分 **dense 局部**，与 CSA top-$k$、HCA dense 摘要 **[并行参与](../../04-版本代际/05-CSA-HCA混合压缩注意力.md#v4-mixed-attention)** 同一层 attention 融合。
+块压缩（4:1 / 128:1，以及 V4.1 的 CSA2 main KV）会 **损失 token 级精度**。最近几十个 token 对语法、指代、工具调用格式等 **极敏感**；SWA 用 **滑动窗口** 保留这部分 **dense 局部**，与 CSA / CSA2 的 top-$k$ 主路径、HCA dense 摘要 **[并行参与](../../04-版本代际/05-CSA-HCA混合压缩注意力.md#v4-mixed-attention)** 同一层 attention 融合。
+
+合起来看图里的三块：
+
+1. **indexer**：粗筛远距历史（§1.1）
+2. **main KV**：对选中条目做精确全局注意力
+3. **SWA KV**：近邻精确局部，补压缩路径在窗口内丢掉的精度
 
 ---
 

@@ -50,6 +50,7 @@
 | [01 V3.1-Terminus](./04-版本代际/01-V3.1-Terminus.md) | Hybrid 推理、128K |
 | [02 V3.2-DSA](./04-版本代际/02-V3.2-DSA.md) | 稀疏注意力正式版 |
 | [03 V4](./04-版本代际/03-V4.md) | V4-Pro / V4-Flash 梗概，1M context |
+| [03b V4.1-Flash](./04-版本代际/03b-V4.1-Flash.md) | CED · CSA2 · FP4 KV · SWA Bounded Replay |
 | [05 CSA/HCA 混合压缩注意力](./04-版本代际/05-CSA-HCA混合压缩注意力.md) | 4:1 稀疏 + 128:1 dense；算法线 ③ |
 | [04b Hyper-Connections](./04-版本代际/04b-Hyper-Connections.md) | HC 多路残差流（mHC 前置） |
 | [04 mHC 流形约束超连接](./04-版本代际/04-mHC流形约束超连接.md) | 双随机流形约束；V4 落地 |

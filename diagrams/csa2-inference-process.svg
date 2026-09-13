@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 860" font-family="PingFang SC,Microsoft YaHei,Helvetica Neue,Arial,sans-serif">
+<defs>
+  <style>
+    .title { font-size: 18px; font-weight: 700; fill: #1a1a2e; }
+    .subtitle { font-size: 11.5px; fill: #64748b; }
+    .badge-text { font-size: 11px; font-weight: 600; fill: #fff; }
+    .node-title { font-size: 12.5px; font-weight: 600; fill: #1e293b; }
+    .node-text { font-size: 11px; fill: #475569; }
+    .mono { font-family: Consolas,Menlo,monospace; font-size: 11px; fill: #334155; }
+    .section-title { font-size: 13px; font-weight: 700; fill: #1e293b; }
+    .arrow-label { font-size: 11px; font-weight: 600; }
+    .step-num { font-size: 11px; font-weight: 700; fill: #fff; }
+  </style>
+  <marker id="arrow-blue" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#3b82f6"/>
+  </marker>
+  <marker id="arrow-orange" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#ea580c"/>
+  </marker>
+  <marker id="arrow-violet" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#7c3aed"/>
+  </marker>
+  <marker id="arrow-slate" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#64748b"/>
+  </marker>
+  <marker id="arrow-teal" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#0d9488"/>
+  </marker>
+</defs>
+<rect width="100%" height="100%" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="36" y="32" class="title">CSA2 &#x63A8;&#x7406;&#x8FC7;&#x7A0B;&#xFF1A;&#x4E09;&#x6A21;&#x5F0F;&#x88C5;&#x914D; + &#x89E3;&#x7801;&#x4FA7;&#x5019;&#x9009;&#x6C60;</text>
+<text x="36" y="52" class="subtitle">&#x6BCF;&#x5C42;&#x4ECD;&#x7B97; main Q &#x4E0E; SWA KV&#xFF1B;&#x5DEE;&#x522B;&#x53EA;&#x5728; main KV / indexer K / Top-K &#x4ECE;&#x54EA;&#x6765;</text>
+<rect x="28" y="68" width="1124" height="100" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+<text x="48" y="92" class="section-title">&#x5355;&#x5C42; Core Attention &#x88C5;&#x914D;&#xFF08;&#x4E09;&#x79CD;&#x6A21;&#x5F0F;&#x5171;&#x7528;&#xFF09;</text>
+<rect x="48" y="108" width="200" height="44" rx="8" fill="#fff" stroke="#4ade80"/>
+<text x="148" y="126" text-anchor="middle" class="mono">main Q</text>
+<text x="148" y="142" text-anchor="middle" class="node-text">&#x672C;&#x5C42; hidden &#x6295;&#x5F71;</text>
+<line x1="248" y1="130" x2="268" y2="130" stroke="#0d9488" stroke-width="1.6" marker-end="url(#arrow-teal)"/>
+<rect x="268" y="108" width="200" height="44" rx="8" fill="#fff" stroke="#4ade80"/>
+<text x="368" y="126" text-anchor="middle" class="mono">&#x9009;&#x4E2D; main KV</text>
+<text x="368" y="142" text-anchor="middle" class="node-text">Top-K &#x7A00;&#x758F;&#x6761;&#x76EE;</text>
+<line x1="468" y1="130" x2="508" y2="130" stroke="#0d9488" stroke-width="1.6" marker-end="url(#arrow-teal)"/>
+<rect x="508" y="108" width="200" height="44" rx="8" fill="#fff" stroke="#4ade80"/>
+<text x="608" y="126" text-anchor="middle" class="mono">&#x672C;&#x5C42; SWA KV</text>
+<text x="608" y="142" text-anchor="middle" class="node-text">&#x7A97;&#x53E3;&#x5185;&#x7CBE;&#x786E;&#x5C40;&#x90E8;</text>
+<line x1="708" y1="130" x2="748" y2="130" stroke="#0d9488" stroke-width="1.6" marker-end="url(#arrow-teal)"/>
+<rect x="748" y="108" width="200" height="44" rx="8" fill="#fff" stroke="#4ade80"/>
+<text x="848" y="126" text-anchor="middle" class="mono">Attention Out</text>
+<text x="848" y="142" text-anchor="middle" class="node-text">Q &#xD7; (KV &#x222A; SWA)</text>
+<line x1="948" y1="130" x2="968" y2="130" stroke="#0d9488" stroke-width="1.6" marker-end="url(#arrow-teal)"/>
+<rect x="968" y="108" width="200" height="44" rx="8" fill="#fff" stroke="#4ade80"/>
+<text x="1068" y="126" text-anchor="middle" class="mono">FFN / MoE</text>
+<text x="1068" y="142" text-anchor="middle" class="node-text">&#x5199;&#x56DE;&#x6B8B;&#x5DEE;&#x6D41;</text>
+<rect x="28" y="188" width="356" height="360" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+<rect x="44" y="202" width="84" height="26" rx="13" fill="#2563eb"/>
+<text x="86" y="220" text-anchor="middle" class="badge-text">Full</text>
+<text x="140" y="220" class="section-title">&#x7B97;&#x5168;&#x65B0;&#x5168;&#x5C40;&#x72B6;&#x6001;</text>
+<rect x="44" y="242" width="324" height="48" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="44" y="242" width="324" height="20" rx="8" fill="#dbeafe"/>
+<rect x="44" y="254" width="324" height="8" fill="#dbeafe"/>
+<text x="206" y="256" text-anchor="middle" class="node-title" fill="#1d4ed8">&#x7B97; main KV</text>
+<text x="206" y="278" text-anchor="middle" class="node-text">&#x672C;&#x5C42;&#x538B;&#x7F29; / &#x5199;&#x5165;&#x5168;&#x5C40; cache</text>
+<line x1="206" y1="290" x2="206" y2="298" stroke="#2563eb" stroke-width="1.4" marker-end="url(#arrow-blue)"/>
+<rect x="44" y="298" width="324" height="48" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="44" y="298" width="324" height="20" rx="8" fill="#dbeafe"/>
+<rect x="44" y="310" width="324" height="8" fill="#dbeafe"/>
+<text x="206" y="312" text-anchor="middle" class="node-title" fill="#1d4ed8">&#x7B97; indexer Q</text>
+<text x="206" y="334" text-anchor="middle" class="node-text">&#x672C;&#x5C42; query &#x6253;&#x5206;&#x5411;&#x91CF;</text>
+<line x1="206" y1="346" x2="206" y2="354" stroke="#2563eb" stroke-width="1.4" marker-end="url(#arrow-blue)"/>
+<rect x="44" y="354" width="324" height="48" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="44" y="354" width="324" height="20" rx="8" fill="#dbeafe"/>
+<rect x="44" y="366" width="324" height="8" fill="#dbeafe"/>
+<text x="206" y="368" text-anchor="middle" class="node-title" fill="#1d4ed8">indexer K &#x2190; main KV</text>
+<text x="206" y="390" text-anchor="middle" class="node-text">&#x7531; main KV &#x6295;&#x5F71;&#x5F97;&#x5230;</text>
+<line x1="206" y1="402" x2="206" y2="410" stroke="#2563eb" stroke-width="1.4" marker-end="url(#arrow-blue)"/>
+<rect x="44" y="410" width="324" height="48" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="44" y="410" width="324" height="20" rx="8" fill="#dbeafe"/>
+<rect x="44" y="422" width="324" height="8" fill="#dbeafe"/>
+<text x="206" y="424" text-anchor="middle" class="node-title" fill="#1d4ed8">&#x5168;&#x957F;&#xFF08;&#x6216;&#x538B;&#x7F29;&#x5E8F;&#x5217;&#xFF09;&#x6253;&#x5206;</text>
+<text x="206" y="446" text-anchor="middle" class="node-text">&#x4EA7;&#x51FA;&#x65B0; Top-K</text>
+<line x1="206" y1="458" x2="206" y2="466" stroke="#2563eb" stroke-width="1.4" marker-end="url(#arrow-blue)"/>
+<rect x="44" y="466" width="324" height="48" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="44" y="466" width="324" height="20" rx="8" fill="#dbeafe"/>
+<rect x="44" y="478" width="324" height="8" fill="#dbeafe"/>
+<text x="206" y="480" text-anchor="middle" class="node-title" fill="#1d4ed8">&#x88C5;&#x914D; Core Attention</text>
+<text x="206" y="502" text-anchor="middle" class="node-text">Q + Top-K KV + SWA</text>
+<rect x="412" y="188" width="356" height="360" rx="10" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="1.5"/>
+<rect x="428" y="202" width="84" height="26" rx="13" fill="#7c3aed"/>
+<text x="470" y="220" text-anchor="middle" class="badge-text">Reindex</text>
+<text x="524" y="220" class="section-title">&#x590D;&#x7528; KV &#xB7; &#x91CD;&#x6253;&#x5206;</text>
+<rect x="428" y="242" width="324" height="48" rx="8" fill="#fff" stroke="#a78bfa"/>
+<rect x="428" y="242" width="324" height="20" rx="8" fill="#ede9fe"/>
+<rect x="428" y="254" width="324" height="8" fill="#ede9fe"/>
+<text x="590" y="256" text-anchor="middle" class="node-title" fill="#6d28d9">&#x8BFB;&#x6700;&#x8FD1; Full &#x7684; main KV</text>
+<text x="590" y="278" text-anchor="middle" class="node-text">&#x4E0E;&#x5BF9;&#x5E94; indexer K &#x4E00;&#x5E76;&#x590D;&#x7528;</text>
+<line x1="590" y1="290" x2="590" y2="298" stroke="#7c3aed" stroke-width="1.4" marker-end="url(#arrow-violet)"/>
+<rect x="428" y="298" width="324" height="48" rx="8" fill="#fff" stroke="#a78bfa"/>
+<rect x="428" y="298" width="324" height="20" rx="8" fill="#ede9fe"/>
+<rect x="428" y="310" width="324" height="8" fill="#ede9fe"/>
+<text x="590" y="312" text-anchor="middle" class="node-title" fill="#6d28d9">&#x7B97;&#x672C;&#x5C42; indexer Q</text>
+<text x="590" y="334" text-anchor="middle" class="node-text">&#x5C42;&#x95F4;&#x9009;&#x62E9;&#x53EF;&#x53D8;&#x5316;</text>
+<line x1="590" y1="346" x2="590" y2="354" stroke="#7c3aed" stroke-width="1.4" marker-end="url(#arrow-violet)"/>
+<rect x="428" y="354" width="324" height="48" rx="8" fill="#fff" stroke="#a78bfa"/>
+<rect x="428" y="354" width="324" height="20" rx="8" fill="#ede9fe"/>
+<rect x="428" y="366" width="324" height="8" fill="#ede9fe"/>
+<text x="590" y="368" text-anchor="middle" class="node-title" fill="#6d28d9">&#x5728;&#x590D;&#x7528; K &#x4E0A;&#x518D;&#x6253;&#x5206;</text>
+<text x="590" y="390" text-anchor="middle" class="node-text">decoder &#x6DF1;&#x5C42;&#x9650;&#x5019;&#x9009;&#x6C60;&#xFF0C;&#x89C1;&#x4E0B;</text>
+<line x1="590" y1="402" x2="590" y2="410" stroke="#7c3aed" stroke-width="1.4" marker-end="url(#arrow-violet)"/>
+<rect x="428" y="410" width="324" height="48" rx="8" fill="#fff" stroke="#a78bfa"/>
+<rect x="428" y="410" width="324" height="20" rx="8" fill="#ede9fe"/>
+<rect x="428" y="422" width="324" height="8" fill="#ede9fe"/>
+<text x="590" y="424" text-anchor="middle" class="node-title" fill="#6d28d9">&#x4EA7;&#x51FA;&#x672C;&#x5C42;&#x65B0; Top-K</text>
+<text x="590" y="446" text-anchor="middle" class="node-text">main KV &#x4ECD;&#x5171;&#x4EAB;</text>
+<line x1="590" y1="458" x2="590" y2="466" stroke="#7c3aed" stroke-width="1.4" marker-end="url(#arrow-violet)"/>
+<rect x="428" y="466" width="324" height="48" rx="8" fill="#fff" stroke="#a78bfa"/>
+<rect x="428" y="466" width="324" height="20" rx="8" fill="#ede9fe"/>
+<rect x="428" y="478" width="324" height="8" fill="#ede9fe"/>
+<text x="590" y="480" text-anchor="middle" class="node-title" fill="#6d28d9">&#x88C5;&#x914D; Core Attention</text>
+<text x="590" y="502" text-anchor="middle" class="node-text">Q + &#x65B0; Top-K + SWA</text>
+<rect x="796" y="188" width="356" height="360" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+<rect x="812" y="202" width="84" height="26" rx="13" fill="#ea580c"/>
+<text x="854" y="220" text-anchor="middle" class="badge-text">Reuse</text>
+<text x="908" y="220" class="section-title">KV + Top-K &#x5168;&#x590D;&#x7528;</text>
+<rect x="812" y="242" width="324" height="48" rx="8" fill="#fff" stroke="#fb923c"/>
+<rect x="812" y="242" width="324" height="20" rx="8" fill="#ffedd5"/>
+<rect x="812" y="254" width="324" height="8" fill="#ffedd5"/>
+<text x="974" y="256" text-anchor="middle" class="node-title" fill="#9a3412">&#x8BFB;&#x6700;&#x8FD1;&#x53EF;&#x7528; main KV</text>
+<text x="974" y="278" text-anchor="middle" class="node-text">&#x6765;&#x81EA;&#x4E0A;&#x6E38; Full / Reindex</text>
+<line x1="974" y1="290" x2="974" y2="298" stroke="#ea580c" stroke-width="1.4" marker-end="url(#arrow-orange)"/>
+<rect x="812" y="298" width="324" height="48" rx="8" fill="#fff" stroke="#fb923c"/>
+<rect x="812" y="298" width="324" height="20" rx="8" fill="#ffedd5"/>
+<rect x="812" y="310" width="324" height="8" fill="#ffedd5"/>
+<text x="974" y="312" text-anchor="middle" class="node-title" fill="#9a3412">&#x76F4;&#x63A5;&#x53D6;&#x5DF2;&#x6709; Top-K</text>
+<text x="974" y="334" text-anchor="middle" class="node-text">&#x672C;&#x5C42; indexer &#x4E0D;&#x53C2;&#x4E0E;</text>
+<line x1="974" y1="346" x2="974" y2="354" stroke="#ea580c" stroke-width="1.4" marker-end="url(#arrow-orange)"/>
+<rect x="812" y="354" width="324" height="48" rx="8" fill="#fff" stroke="#fb923c"/>
+<rect x="812" y="354" width="324" height="20" rx="8" fill="#ffedd5"/>
+<rect x="812" y="366" width="324" height="8" fill="#ffedd5"/>
+<text x="974" y="368" text-anchor="middle" class="node-title" fill="#9a3412">&#x672C;&#x5C42;&#x4ECD;&#x7B97; main Q</text>
+<text x="974" y="390" text-anchor="middle" class="node-text">&#x67E5;&#x8BE2;&#x5411;&#x91CF;&#x5C42;&#x5185;&#x72EC;&#x7ACB;</text>
+<line x1="974" y1="402" x2="974" y2="410" stroke="#ea580c" stroke-width="1.4" marker-end="url(#arrow-orange)"/>
+<rect x="812" y="410" width="324" height="48" rx="8" fill="#fff" stroke="#fb923c"/>
+<rect x="812" y="410" width="324" height="20" rx="8" fill="#ffedd5"/>
+<rect x="812" y="422" width="324" height="8" fill="#ffedd5"/>
+<text x="974" y="424" text-anchor="middle" class="node-title" fill="#9a3412">&#x672C;&#x5C42;&#x4ECD;&#x5199; SWA KV</text>
+<text x="974" y="446" text-anchor="middle" class="node-text">&#x5C40;&#x90E8;&#x7A97;&#x53E3;&#x5C42;&#x5185;&#x72EC;&#x7ACB;</text>
+<line x1="974" y1="458" x2="974" y2="466" stroke="#ea580c" stroke-width="1.4" marker-end="url(#arrow-orange)"/>
+<rect x="812" y="466" width="324" height="48" rx="8" fill="#fff" stroke="#fb923c"/>
+<rect x="812" y="466" width="324" height="20" rx="8" fill="#ffedd5"/>
+<rect x="812" y="478" width="324" height="8" fill="#ffedd5"/>
+<text x="974" y="480" text-anchor="middle" class="node-title" fill="#9a3412">&#x88C5;&#x914D; Core Attention</text>
+<text x="974" y="502" text-anchor="middle" class="node-text">&#x6700;&#x5C11; kernel&#xFF08;decode ~11&#xFF09;</text>
+<rect x="28" y="566" width="1124" height="226" rx="10" fill="#ecfeff" stroke="#67e8f9" stroke-width="1.5"/>
+<rect x="44" y="580" width="210" height="26" rx="13" fill="#0891b2"/>
+<text x="149" y="598" text-anchor="middle" class="badge-text">Hierarchical Sparse Indexer</text>
+<text x="268" y="598" class="section-title">&#x4EC5; CED decoder &#xB7; &#x6DF1;&#x5C42; indexer &#x4E0E;&#x5168;&#x957F;&#x89E3;&#x8026;</text>
+<rect x="48" y="622" width="212" height="100" rx="8" fill="#fff" stroke="#22d3ee"/>
+<rect x="48" y="622" width="212" height="24" rx="8" fill="#cffafe"/>
+<rect x="48" y="638" width="212" height="8" fill="#cffafe"/>
+<text x="154" y="640" text-anchor="middle" class="node-title" fill="#0e7490">&#x2460; Decoder &#x9996;&#x4E2A; Full</text>
+<text x="154" y="678" text-anchor="middle" class="node-text">&#x5BF9;&#x53EF;&#x89C1;&#x4E0A;&#x4E0B;&#x6587;&#x6253;&#x5206;</text>
+<text x="154" y="696" text-anchor="middle" class="node-text">&#x53D6; Top-512</text>
+<line x1="260" y1="672" x2="328" y2="672" stroke="#0891b2" stroke-width="1.6" marker-end="url(#arrow-teal)"/>
+<rect x="280" y="622" width="212" height="100" rx="8" fill="#fff" stroke="#22d3ee"/>
+<rect x="280" y="622" width="212" height="24" rx="8" fill="#cffafe"/>
+<rect x="280" y="638" width="212" height="8" fill="#cffafe"/>
+<text x="386" y="640" text-anchor="middle" class="node-title" fill="#0e7490">&#x2461; &#x5757;&#x7EA7;&#x5019;&#x9009;</text>
+<text x="386" y="678" text-anchor="middle" class="node-text">&#x6BCF; 8 token &#x4E00;&#x5757;</text>
+<text x="386" y="696" text-anchor="middle" class="node-text">&#x5757;&#x5206; = &#x5757;&#x5185; max score</text>
+<line x1="492" y1="672" x2="560" y2="672" stroke="#0891b2" stroke-width="1.6" marker-end="url(#arrow-teal)"/>
+<rect x="512" y="622" width="212" height="100" rx="8" fill="#fff" stroke="#22d3ee"/>
+<rect x="512" y="622" width="212" height="24" rx="8" fill="#cffafe"/>
+<rect x="512" y="638" width="212" height="8" fill="#cffafe"/>
+<text x="618" y="640" text-anchor="middle" class="node-title" fill="#0e7490">&#x2462; &#x5019;&#x9009;&#x6C60;</text>
+<text x="618" y="678" text-anchor="middle" class="node-text">Top-2048 &#x5757;</text>
+<text x="618" y="696" text-anchor="middle" class="node-text">&#x2248; 16,384 &#x4F4D;&#x7F6E;</text>
+<line x1="724" y1="672" x2="792" y2="672" stroke="#0891b2" stroke-width="1.6" marker-end="url(#arrow-teal)"/>
+<rect x="744" y="622" width="212" height="100" rx="8" fill="#fff" stroke="#22d3ee"/>
+<rect x="744" y="622" width="212" height="24" rx="8" fill="#cffafe"/>
+<rect x="744" y="638" width="212" height="8" fill="#cffafe"/>
+<text x="850" y="640" text-anchor="middle" class="node-title" fill="#0e7490">&#x2463; &#x540E;&#x7EED; Reindex</text>
+<text x="850" y="678" text-anchor="middle" class="node-text">&#x53EA;&#x5728;&#x6C60;&#x5185;&#x518D;&#x6253;&#x5206;</text>
+<text x="850" y="696" text-anchor="middle" class="node-text">&#x53D6;&#x672C;&#x5C42; Top-512</text>
+<line x1="956" y1="672" x2="1024" y2="672" stroke="#0891b2" stroke-width="1.6" marker-end="url(#arrow-teal)"/>
+<rect x="976" y="622" width="212" height="100" rx="8" fill="#fff" stroke="#22d3ee"/>
+<rect x="976" y="622" width="212" height="24" rx="8" fill="#cffafe"/>
+<rect x="976" y="638" width="212" height="8" fill="#cffafe"/>
+<text x="1082" y="640" text-anchor="middle" class="node-title" fill="#0e7490">&#x2464; Reuse &#x5C42;</text>
+<text x="1082" y="678" text-anchor="middle" class="node-text">&#x76F4;&#x63A5;&#x7528;&#x4E0A;&#x6E38; Top-K</text>
+<text x="1082" y="696" text-anchor="middle" class="node-text">&#x4E0D;&#x518D;&#x6269;&#x5927;&#x641C;&#x7D22;&#x57DF;</text>
+<rect x="48" y="740" width="1084" height="36" rx="8" fill="#fff" stroke="#a5f3fc"/>
+<text x="590" y="762" text-anchor="middle" class="node-text">&#x6548;&#x679C;&#xFF1A;&#x6DF1;&#x5C42; indexer &#x6BCF; query &#x4EE3;&#x4EF7;&#x4E0E;&#x4E0A;&#x4E0B;&#x6587;&#x957F;&#x5EA6;&#x89E3;&#x8026;&#xFF08;&#x56FA;&#x5B9A;&#x5019;&#x9009;&#x6C60;&#xFF09;&#xB7; &#x518D;&#x53E0; FP4 main KV &#x2192; &#x2248; 890 B/token</text>
+</svg>

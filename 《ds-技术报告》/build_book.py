@@ -38,6 +38,7 @@ CHAPTER_MAP: dict[str, str] = {
     "docs/versions/v3-1.md": "04-版本代际/01-V3.1-Terminus.md",
     "docs/versions/v3-2.md": "04-版本代际/02-V3.2-DSA.md",
     "docs/versions/v4.md": "04-版本代际/03-V4.md",
+    "docs/versions/v4-1-flash.md": "04-版本代际/03b-V4.1-Flash.md",
     "docs/versions/csa-hca-mixed-attention.md": "04-版本代际/05-CSA-HCA混合压缩注意力.md",
     "docs/versions/hash-moe-fp4.md": "04-版本代际/06-Hash-MoE-FP4.md",
     "docs/versions/muon-optimizer.md": "04-版本代际/07-Muon优化器.md",
@@ -99,6 +100,15 @@ ASSET_MAP: dict[str, str] = {
     "docs/versions/figures/dsh-architecture.svg": "10-Agent运行时/figures/dsh-architecture.svg",
     "diagrams/dsh-agent-model-boost.svg": "10-Agent运行时/figures/dsh-agent-model-boost.svg",
     "docs/versions/figures/dsh-agent-model-boost.svg": "10-Agent运行时/figures/dsh-agent-model-boost.svg",
+    "diagrams/ced-inference-process.svg": "04-版本代际/figures/ced-inference-process.svg",
+    "docs/versions/figures/ced-inference-process.svg": "04-版本代际/figures/ced-inference-process.svg",
+    "diagrams/csa-vs-csa2.svg": "04-版本代际/figures/csa-vs-csa2.svg",
+    "docs/versions/figures/csa-vs-csa2.svg": "04-版本代际/figures/csa-vs-csa2.svg",
+    "diagrams/csa2-inference-process.svg": "04-版本代际/figures/csa2-inference-process.svg",
+    "docs/versions/figures/csa2-inference-process.svg": "04-版本代际/figures/csa2-inference-process.svg",
+    "diagrams/kv-types-core-attention.svg": "04-版本代际/figures/kv-types-core-attention.svg",
+    "docs/versions/figures/kv-types-core-attention.svg": "04-版本代际/figures/kv-types-core-attention.svg",
+    "docs/figures/v4/kv-types-core-attention.svg": "04-版本代际/figures/kv-types-core-attention.svg",
     "docs/figures/v3/mtp-speculative.svg": "06-推理基础设施/figures/mtp-speculative.svg",
     "diagrams/mtp-speculative.svg": "06-推理基础设施/figures/mtp-speculative.svg",
     "docs/versions/figures/mtp-speculative.svg": "06-推理基础设施/figures/mtp-speculative.svg",
@@ -315,6 +325,7 @@ READING_ORDER: list[str] = [
     "04-版本代际/01-V3.1-Terminus.md",
     "04-版本代际/02-V3.2-DSA.md",
     "04-版本代际/03-V4.md",
+    "04-版本代际/03b-V4.1-Flash.md",
     "04-版本代际/05-CSA-HCA混合压缩注意力.md",
     "04-版本代际/04b-Hyper-Connections.md",
     "04-版本代际/04-mHC流形约束超连接.md",
@@ -829,6 +840,7 @@ def write_master_toc() -> None:
 | [01 V3.1-Terminus](./04-版本代际/01-V3.1-Terminus.md) | Hybrid 推理、128K |
 | [02 V3.2-DSA](./04-版本代际/02-V3.2-DSA.md) | 稀疏注意力正式版 |
 | [03 V4](./04-版本代际/03-V4.md) | V4-Pro / V4-Flash 梗概，1M context |
+| [03b V4.1-Flash](./04-版本代际/03b-V4.1-Flash.md) | CED · CSA2 · FP4 KV · SWA Bounded Replay |
 | [05 CSA/HCA 混合压缩注意力](./04-版本代际/05-CSA-HCA混合压缩注意力.md) | 4:1 稀疏 + 128:1 dense；算法线 ③ |
 | [04b Hyper-Connections](./04-版本代际/04b-Hyper-Connections.md) | HC 多路残差流（mHC 前置） |
 | [04 mHC 流形约束超连接](./04-版本代际/04-mHC流形约束超连接.md) | 双随机流形约束；V4 落地 |

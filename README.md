@@ -9,7 +9,8 @@
 If this atlas helps you, please **Star** to bookmark for later.
 
 > **New · Agent runtime thread:** [DeepSeek Harness (`dsh`)](docs/versions/ds-harness.md) — Cordis plugins · Code Mode · session log. Fourth narrative beside algorithm / infrastructure / MoE.
-
+>
+> **New · V4.1-Flash:** [KV cache compression notes](docs/versions/v4-1-flash.md) — CED · CSA2 · FP4 main KV · SWA Bounded Replay.
 ---
 
 ## Paper catalog
@@ -22,6 +23,7 @@ If this atlas helps you, please **Star** to bookmark for later.
 | **R1** | [DeepSeek-R1](docs/versions/r1.md) | reasoning model, RLVR, GRPO |
 | **V3.2** | [DeepSeek-V3.2](docs/versions/v3-2.md) | sparse attention, DSA |
 | **V4** | [DeepSeek-V4](docs/versions/v4.md) | CSA/HCA, mHC, 1M context |
+| **V4.1-Flash** | [DeepSeek-V4.1-Flash](docs/versions/v4-1-flash.md) | CED, CSA2, FP4 KV, SWA Bounded Replay |
 | **DSA** | [Sparse attention](docs/versions/dsa-sparse-attention.md) | indexer, top-k, lightning indexer |
 | **DSpark** | [Speculative decoding](docs/versions/dspark-speculative-decoding.md) | speculative decoding, MTP fusion |
 | **Harness** | [DeepSeek Harness](docs/versions/ds-harness.md) | agent runtime, Cordis plugins, Code Mode |
@@ -34,7 +36,7 @@ If this atlas helps you, please **Star** to bookmark for later.
 
 **Full index:** [Chinese docs home · article list](docs/README.md#文章) · [Version index](docs/versions/README.md) · [Online book](https://fooSynaptic.github.io/deepseek-mechanism-atlas/)
 
-**Search keywords:** `DeepSeek paper` · `DeepSeek-V2` · `DeepSeek-V3` · `DeepSeek-V4` · `DeepSeek R1` · `reasoning model` · `sparse attention` · `DSpark` · `MLA` · `MoE` · `DeepSeek Harness` · `agent runtime` · `Code Mode` · `llm-papers` · `paper explanation`
+**Search keywords:** `DeepSeek paper` · `DeepSeek-V2` · `DeepSeek-V3` · `DeepSeek-V4` · `DeepSeek-V4.1-Flash` · `DeepSeek R1` · `reasoning model` · `sparse attention` · `CSA2` · `DSpark` · `MLA` · `MoE` · `DeepSeek Harness` · `agent runtime` · `Code Mode` · `llm-papers` · `paper explanation`
 
 ---
 
@@ -51,6 +53,10 @@ Figures live under [`diagrams/`](diagrams/) and are linked from articles. Prefer
 | [DSpark speculative](diagrams/dspark-speculative.svg) | [Speculative decoding](docs/versions/dspark-speculative-decoding.md) |
 | [dsh architecture](diagrams/dsh-architecture.svg) | [DeepSeek Harness](docs/versions/ds-harness.md) |
 | [dsh ↔ model boost](diagrams/dsh-agent-model-boost.svg) | [DeepSeek Harness](docs/versions/ds-harness.md) |
+| [CED inference](diagrams/ced-inference-process.svg) | [V4.1-Flash](docs/versions/v4-1-flash.md) |
+| [CSA vs CSA2](diagrams/csa-vs-csa2.svg) | [V4.1-Flash](docs/versions/v4-1-flash.md) |
+| [CSA2 inference](diagrams/csa2-inference-process.svg) | [V4.1-Flash](docs/versions/v4-1-flash.md) |
+| [KV types · Core Attention](diagrams/kv-types-core-attention.svg) | [SWA Q&A](docs/versions/qa/v4-swa-sliding-window.md) · [V4.1-Flash](docs/versions/v4-1-flash.md) |
 
 ---
 

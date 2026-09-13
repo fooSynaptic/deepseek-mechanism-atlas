@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 780" font-family="PingFang SC,Microsoft YaHei,Helvetica Neue,Arial,sans-serif">
+<defs>
+  <style>
+    .title { font-size: 18px; font-weight: 700; fill: #1a1a2e; }
+    .subtitle { font-size: 11.5px; fill: #64748b; }
+    .badge-text { font-size: 11px; font-weight: 600; fill: #fff; }
+    .node-title { font-size: 12.5px; font-weight: 600; fill: #1e293b; }
+    .node-text { font-size: 11px; fill: #475569; }
+    .mono { font-family: Consolas,Menlo,monospace; font-size: 11px; fill: #334155; }
+    .section-title { font-size: 13px; font-weight: 700; fill: #1e293b; }
+    .arrow-label { font-size: 11px; font-weight: 600; }
+    .step-num { font-size: 11px; font-weight: 700; fill: #fff; }
+  </style>
+  <marker id="arrow-blue" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#3b82f6"/>
+  </marker>
+  <marker id="arrow-orange" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#ea580c"/>
+  </marker>
+  <marker id="arrow-violet" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#7c3aed"/>
+  </marker>
+  <marker id="arrow-slate" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#64748b"/>
+  </marker>
+  <marker id="arrow-teal" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#0d9488"/>
+  </marker>
+</defs>
+<rect width="100%" height="100%" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="36" y="32" class="title">CED &#x63A8;&#x7406;&#x8FC7;&#x7A0B;&#xFF1A;Prefill &#x534A;&#x6DF1;&#x5907; KV &#xB7; Decode &#x5168;&#x6DF1;&#x8BFB;&#x6295;&#x5F71;</text>
+<text x="36" y="52" class="subtitle">40 &#x5C42; = &#x56E0;&#x679C; encoder(1&#x2013;20) + decoder(21&#x2013;40)&#xFF1B;decoder &#x5168;&#x5C40; KV &#x7531; H&#x2082;&#x2080; &#x7ECF;&#x5C42;&#x76F8;&#x5173;&#x6295;&#x5F71;&#x5F97;&#x5230;</text>
+<rect x="28" y="68" width="1064" height="118" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+<text x="48" y="92" class="section-title">&#x7F51;&#x7EDC;&#x9AA8;&#x67B6;&#xFF08;&#x4E00;&#x6B21;&#x524D;&#x5411;&#x7684;&#x5C42;&#x5206;&#x5DE5;&#xFF09;</text>
+<rect x="48" y="106" width="420" height="60" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="48" y="106" width="420" height="22" rx="8" fill="#dbeafe"/>
+<rect x="48" y="120" width="420" height="8" fill="#dbeafe"/>
+<text x="258" y="122" text-anchor="middle" class="node-title" fill="#1d4ed8">Causal Encoder &#xB7; L1&#x2013;L20</text>
+<text x="258" y="148" text-anchor="middle" class="node-text">&#x672C;&#x5C42;&#x7B97; attention + SWA &#xB7; &#x672B;&#x5C42;&#x8F93;&#x51FA; H&#x2082;&#x2080;</text>
+<line x1="468" y1="136" x2="508" y2="136" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-violet)"/>
+<text x="488" y="124" text-anchor="middle" class="arrow-label" fill="#7c3aed">H&#x2082;&#x2080;</text>
+<rect x="508" y="106" width="200" height="60" rx="8" fill="#fff" stroke="#c4b5fd"/>
+<rect x="508" y="106" width="200" height="22" rx="8" fill="#ede9fe"/>
+<rect x="508" y="120" width="200" height="8" fill="#ede9fe"/>
+<text x="608" y="122" text-anchor="middle" class="node-title" fill="#6d28d9">&#x5C42;&#x76F8;&#x5173;&#x6295;&#x5F71;</text>
+<text x="608" y="148" text-anchor="middle" class="mono">C&#x2097; = H&#x2082;&#x2080; W&#x2097;</text>
+<line x1="708" y1="136" x2="748" y2="136" stroke="#ea580c" stroke-width="2" marker-end="url(#arrow-orange)"/>
+<rect x="748" y="106" width="320" height="60" rx="8" fill="#fff" stroke="#fb923c"/>
+<rect x="748" y="106" width="320" height="22" rx="8" fill="#ffedd5"/>
+<rect x="748" y="120" width="320" height="8" fill="#ffedd5"/>
+<text x="908" y="122" text-anchor="middle" class="node-title" fill="#9a3412">Decoder &#xB7; L21&#x2013;L40</text>
+<text x="908" y="148" text-anchor="middle" class="node-text">&#x8BFB;&#x6295;&#x5F71;&#x5168;&#x5C40; KV &#xB7; &#x672C;&#x5C42;&#x4ECD;&#x5199; SWA</text>
+<rect x="28" y="204" width="520" height="500" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+<rect x="44" y="218" width="88" height="26" rx="13" fill="#2563eb"/>
+<text x="88" y="236" text-anchor="middle" class="badge-text">Prefill</text>
+<text x="146" y="236" class="section-title">&#x6FC0;&#x6D3B; &#x2248; 8B &#xB7; &#x53EA;&#x8DD1;&#x524D;&#x534A;&#x7F51;&#x7EDC;&#x5907;&#x5168;&#x5C40; KV</text>
+<circle cx="58" cy="290" r="11" fill="#2563eb"/>
+<text x="58" y="294" text-anchor="middle" class="step-num">1</text>
+<rect x="78" y="262" width="448" height="64" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="78" y="262" width="448" height="22" rx="8" fill="#dbeafe"/>
+<rect x="78" y="276" width="448" height="8" fill="#dbeafe"/>
+<text x="302" y="278" text-anchor="middle" class="node-title" fill="#1d4ed8">&#x8F93;&#x5165; prompt &#x5168;&#x5E8F;&#x5217;</text>
+<text x="302" y="306" text-anchor="middle" class="node-text">&#x5DE5;&#x5177;&#x56DE;&#x704C; / cache miss &#x89E6;&#x53D1;&#x7684;&#x957F; prefill</text>
+<line x1="58" y1="326" x2="58" y2="340" stroke="#3b82f6" stroke-width="1.6" marker-end="url(#arrow-blue)"/>
+<circle cx="58" cy="368" r="11" fill="#2563eb"/>
+<text x="58" y="372" text-anchor="middle" class="step-num">2</text>
+<rect x="78" y="340" width="448" height="64" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="78" y="340" width="448" height="22" rx="8" fill="#dbeafe"/>
+<rect x="78" y="354" width="448" height="8" fill="#dbeafe"/>
+<text x="302" y="356" text-anchor="middle" class="node-title" fill="#1d4ed8">Encoder L1&#x2013;L20 &#x524D;&#x5411;</text>
+<text x="302" y="384" text-anchor="middle" class="node-text">&#x6BCF;&#x5C42;&#xFF1A;&#x5168;&#x5C40;&#x5206;&#x652F; + &#x672C;&#x5C42; SWA KV</text>
+<line x1="58" y1="404" x2="58" y2="418" stroke="#3b82f6" stroke-width="1.6" marker-end="url(#arrow-blue)"/>
+<circle cx="58" cy="446" r="11" fill="#2563eb"/>
+<text x="58" y="450" text-anchor="middle" class="step-num">3</text>
+<rect x="78" y="418" width="448" height="64" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="78" y="418" width="448" height="22" rx="8" fill="#dbeafe"/>
+<rect x="78" y="432" width="448" height="8" fill="#dbeafe"/>
+<text x="302" y="434" text-anchor="middle" class="node-title" fill="#1d4ed8">&#x53D6; H&#x2082;&#x2080; &#x2192; &#x6295;&#x5F71;&#x586B;&#x5E93;</text>
+<text x="302" y="462" text-anchor="middle" class="node-text">&#x4E3A;&#x6BCF;&#x4E2A; decoder &#x5C42;&#x751F;&#x6210;&#x5168;&#x5C40; KV&#xFF08;main / indexer&#xFF09;</text>
+<line x1="58" y1="482" x2="58" y2="496" stroke="#3b82f6" stroke-width="1.6" marker-end="url(#arrow-blue)"/>
+<circle cx="58" cy="524" r="11" fill="#2563eb"/>
+<text x="58" y="528" text-anchor="middle" class="step-num">4</text>
+<rect x="78" y="496" width="448" height="64" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="78" y="496" width="448" height="22" rx="8" fill="#dbeafe"/>
+<rect x="78" y="510" width="448" height="8" fill="#dbeafe"/>
+<text x="302" y="512" text-anchor="middle" class="node-title" fill="#1d4ed8">Decoder SWA Bounded Replay</text>
+<text x="302" y="540" text-anchor="middle" class="node-text">&#x4EC5;&#x91CD;&#x653E;&#x672B; n_win token&#xFF0C;&#x8FD1;&#x4F3C;&#x91CD;&#x5EFA; decoder SWA</text>
+<line x1="58" y1="560" x2="58" y2="574" stroke="#3b82f6" stroke-width="1.6" marker-end="url(#arrow-blue)"/>
+<circle cx="58" cy="602" r="11" fill="#2563eb"/>
+<text x="58" y="606" text-anchor="middle" class="step-num">5</text>
+<rect x="78" y="574" width="448" height="64" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="78" y="574" width="448" height="22" rx="8" fill="#dbeafe"/>
+<rect x="78" y="588" width="448" height="8" fill="#dbeafe"/>
+<text x="302" y="590" text-anchor="middle" class="node-title" fill="#1d4ed8">&#x5168;&#x5C40; KV &#x5C31;&#x7EEA;&#xFF0C;&#x8DF3;&#x8FC7; decoder &#x5168;&#x6DF1; prefill</text>
+<text x="302" y="618" text-anchor="middle" class="node-text">prompt &#x5BF9; decoder &#x5168;&#x5C40;&#x6CE8;&#x610F;&#x529B;&#x51E0;&#x4E4E;&#x65C1;&#x8DEF;</text>
+<rect x="568" y="204" width="524" height="500" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+<rect x="584" y="218" width="88" height="26" rx="13" fill="#ea580c"/>
+<text x="628" y="236" text-anchor="middle" class="badge-text">Decode</text>
+<text x="686" y="236" class="section-title">&#x6FC0;&#x6D3B; &#x2248; 16B &#xB7; &#x65B0; token &#x8D70;&#x5168; 40 &#x5C42;</text>
+<circle cx="598" cy="290" r="11" fill="#ea580c"/>
+<text x="598" y="294" text-anchor="middle" class="step-num">1</text>
+<rect x="618" y="262" width="452" height="64" rx="8" fill="#fff" stroke="#fb923c"/>
+<rect x="618" y="262" width="452" height="22" rx="8" fill="#ffedd5"/>
+<rect x="618" y="276" width="452" height="8" fill="#ffedd5"/>
+<text x="844" y="278" text-anchor="middle" class="node-title" fill="#9a3412">&#x65B0;&#x751F;&#x6210; token &#x5165;&#x7F51;</text>
+<text x="844" y="306" text-anchor="middle" class="node-text">autoregressive&#xFF1B;&#x4E0A;&#x4E0B;&#x6587;&#x5DF2;&#x5728;&#x5168;&#x5C40; KV &#x5E93;&#x4E2D;</text>
+<line x1="598" y1="326" x2="598" y2="340" stroke="#ea580c" stroke-width="1.6" marker-end="url(#arrow-orange)"/>
+<circle cx="598" cy="368" r="11" fill="#ea580c"/>
+<text x="598" y="372" text-anchor="middle" class="step-num">2</text>
+<rect x="618" y="340" width="452" height="64" rx="8" fill="#fff" stroke="#fb923c"/>
+<rect x="618" y="340" width="452" height="22" rx="8" fill="#ffedd5"/>
+<rect x="618" y="354" width="452" height="8" fill="#ffedd5"/>
+<text x="844" y="356" text-anchor="middle" class="node-title" fill="#9a3412">Encoder L1&#x2013;L20 &#x66F4;&#x65B0;</text>
+<text x="844" y="384" text-anchor="middle" class="node-text">&#x8FFD;&#x52A0;&#x672C; token &#x7684; encoder &#x4FA7; KV / SWA</text>
+<line x1="598" y1="404" x2="598" y2="418" stroke="#ea580c" stroke-width="1.6" marker-end="url(#arrow-orange)"/>
+<circle cx="598" cy="446" r="11" fill="#ea580c"/>
+<text x="598" y="450" text-anchor="middle" class="step-num">3</text>
+<rect x="618" y="418" width="452" height="64" rx="8" fill="#fff" stroke="#fb923c"/>
+<rect x="618" y="418" width="452" height="22" rx="8" fill="#ffedd5"/>
+<rect x="618" y="432" width="452" height="8" fill="#ffedd5"/>
+<text x="844" y="434" text-anchor="middle" class="node-title" fill="#9a3412">H&#x2082;&#x2080; &#x518D;&#x6295;&#x5F71;&#xFF08;&#x6216;&#x589E;&#x91CF;&#x5199;&#xFF09;</text>
+<text x="844" y="462" text-anchor="middle" class="node-text">decoder &#x5168;&#x5C40; KV &#x7EE7;&#x7EED;&#x7531; encoder &#x672B;&#x9690;&#x72B6;&#x6001;&#x9A71;&#x52A8;</text>
+<line x1="598" y1="482" x2="598" y2="496" stroke="#ea580c" stroke-width="1.6" marker-end="url(#arrow-orange)"/>
+<circle cx="598" cy="524" r="11" fill="#ea580c"/>
+<text x="598" y="528" text-anchor="middle" class="step-num">4</text>
+<rect x="618" y="496" width="452" height="64" rx="8" fill="#fff" stroke="#fb923c"/>
+<rect x="618" y="496" width="452" height="22" rx="8" fill="#ffedd5"/>
+<rect x="618" y="510" width="452" height="8" fill="#ffedd5"/>
+<text x="844" y="512" text-anchor="middle" class="node-title" fill="#9a3412">Decoder L21&#x2013;L40 &#x8BFB;&#x5E93;</text>
+<text x="844" y="540" text-anchor="middle" class="node-text">&#x5168;&#x5C40;&#x6CE8;&#x610F;&#x529B;&#x8BFB;&#x6295;&#x5F71; KV&#xFF1B;&#x672C;&#x5C42;&#x7B97; Q + SWA</text>
+<line x1="598" y1="560" x2="598" y2="574" stroke="#ea580c" stroke-width="1.6" marker-end="url(#arrow-orange)"/>
+<circle cx="598" cy="602" r="11" fill="#ea580c"/>
+<text x="598" y="606" text-anchor="middle" class="step-num">5</text>
+<rect x="618" y="574" width="452" height="64" rx="8" fill="#fff" stroke="#fb923c"/>
+<rect x="618" y="574" width="452" height="22" rx="8" fill="#ffedd5"/>
+<rect x="618" y="588" width="452" height="8" fill="#ffedd5"/>
+<text x="844" y="590" text-anchor="middle" class="node-title" fill="#9a3412">&#x4EA7;&#x51FA; logits / &#x4E0B;&#x4E00; token</text>
+<text x="844" y="618" text-anchor="middle" class="node-text">&#x76F8;&#x5BF9; prefill&#xFF1A;&#x6DF1;&#x5EA6;&#x7FFB;&#x500D;&#xFF0C;&#x4F46;&#x5E8F;&#x5217;&#x957F; = 1</text>
+<rect x="28" y="720" width="1064" height="42" rx="8" fill="#f5f3ff" stroke="#c4b5fd"/>
+<text x="560" y="746" text-anchor="middle" class="node-text">&#x5B98;&#x65B9;&#x53E3;&#x5F84;&#xFF1A;&#x5E8F;&#x5217; &#x226B; n_win &#x65F6; prefill &#x590D;&#x6742;&#x5EA6;&#x7EA6; O(L) &#x2192; O(L/2)&#xFF1B;agent &#x8F93;&#x5165;&#x91CD;&#x573A;&#x666F;&#x4E13;&#x95E8;&#x53D7;&#x76CA;</text>
+</svg>

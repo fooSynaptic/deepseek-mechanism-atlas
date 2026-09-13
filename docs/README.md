@@ -11,6 +11,8 @@
 > 如果这份图谱对你有帮助，欢迎 **Star ⭐** 方便后续查阅。
 
 > **新增 · Agent 运行时线**：[DeepSeek Harness（`dsh`）](versions/ds-harness.md) — Cordis 插件 · Code Mode · session log；与算法 / 基础设施 / MoE 三线并列。
+>
+> **新增 · V4.1-Flash**：[KV 极限压缩梗概](versions/v4-1-flash.md) — CED · CSA2 · FP4 main KV · SWA Bounded Replay。
 
 ---
 
@@ -31,6 +33,7 @@
 | [**Index Share**](versions/index-share.md) | IndexCache 纯 infra 补丁 |
 | [**ESS**](versions/ess-latent-cache-offload.md) · [论文梗概](versions/ess-paper-highlights.md) | Latent-Cache CPU offload |
 | [**V4**](versions/v4.md) | CSA + HCA + mHC；1M context |
+| [**V4.1-Flash**](versions/v4-1-flash.md) | CED + CSA2 + FP4 KV；全局 KV ≈ 890 B/token |
 | [**CSA / HCA**](versions/csa-hca-mixed-attention.md) | 4:1 稀疏 + 128:1 dense 混合压缩注意力 |
 | [**mHC**](versions/mhc-manifold-hyper-connections.md) | 双随机流形约束超连接 |
 | [**Hash MoE + FP4**](versions/hash-moe-fp4.md) | Hash 路由 + routed expert FP4 |
@@ -47,7 +50,7 @@
 
 **完整版本索引**：[版本目录](versions/README.md) · [演进总览](reports/deepseek-version-lineage-20260625.md)
 
-**搜索关键词**：`DeepSeek 论文解读` · `DeepSeek-V2` · `DeepSeek-V3` · `DeepSeek-V4` · `DeepSeek R1` · `推理模型` · `稀疏注意力` · `DSpark` · `投机解码` · `MLA` · `MoE` · `DeepSeek Harness` · `agent harness` · `Code Mode`
+**搜索关键词**：`DeepSeek 论文解读` · `DeepSeek-V2` · `DeepSeek-V3` · `DeepSeek-V4` · `DeepSeek-V4.1-Flash` · `DeepSeek R1` · `推理模型` · `稀疏注意力` · `CSA2` · `DSpark` · `投机解码` · `MLA` · `MoE` · `DeepSeek Harness` · `agent harness` · `Code Mode`
 
 ---
 

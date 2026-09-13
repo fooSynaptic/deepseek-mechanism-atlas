@@ -40,6 +40,7 @@
 | **Hash MoE + FP4** | [Hash MoE + FP4](./hash-moe-fp4.md) | 前几层 Hash 路由 + routed expert FP4；MoE 线 ⑤ |
 | **Muon** | [Muon 优化器](./muon-optimizer.md) | 矩阵正交化优化器；V4 训练侧替换大部分 AdamW |
 | **V4** | [DeepSeek-V4](./v4.md) | V4-Pro / V4-Flash 梗概，1M context |
+| **V4.1-Flash** | [DeepSeek-V4.1-Flash](./v4-1-flash.md) | CED · CSA2 · FP4 KV · SWA Bounded Replay |
 | **V4 KV layout** | [V4 KV Layout](./v4-kv-layout.md) | Classical + State 双池 |
 | **V4 HiSparse** | [V4 HiSparse](./v4-hisparse.md) | inactive C4 CPU offload；~3× KV 容量 |
 | **V4 磁盘 Prefix** | [V4 磁盘 Prefix Cache](./v4-disk-prefix-cache.md) | CSA/HCA 落盘 + SWA 三档策略（§3.5.2） |
