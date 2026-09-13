@@ -56,6 +56,7 @@ CHAPTER_MAP: dict[str, str] = {
     "docs/versions/v4-kv-layout.md": "06-推理基础设施/05-V4-KV-Layout.md",
     "docs/versions/v4-hisparse.md": "06-推理基础设施/06-V4-HiSparse.md",
     "docs/versions/v4-disk-prefix-cache.md": "06-推理基础设施/07-V4-磁盘Prefix-Cache.md",
+    "docs/versions/ds-harness.md": "10-Agent运行时/01-DeepSeek-Harness.md",
     "docs/engram/README.md": "07-Engram/01-Engram官方README.md",
     "docs/reports/raschka-technical-deepseek-v3-v32-highlights.md": "08-外部解读/01-Raschka要点速读.md",
     "docs/reports/raschka-technical-deepseek-v3-v32.md": "08-外部解读/02-Raschka全文解析.md",
@@ -94,6 +95,10 @@ ASSET_MAP: dict[str, str] = {
     "docs/versions/figures/dspark-semi-ar-draft.svg": "06-推理基础设施/figures/dspark-semi-ar-draft.svg",
     "diagrams/dspark-confidence-scheduler.svg": "06-推理基础设施/figures/dspark-confidence-scheduler.svg",
     "docs/versions/figures/dspark-confidence-scheduler.svg": "06-推理基础设施/figures/dspark-confidence-scheduler.svg",
+    "diagrams/dsh-architecture.svg": "10-Agent运行时/figures/dsh-architecture.svg",
+    "docs/versions/figures/dsh-architecture.svg": "10-Agent运行时/figures/dsh-architecture.svg",
+    "diagrams/dsh-agent-model-boost.svg": "10-Agent运行时/figures/dsh-agent-model-boost.svg",
+    "docs/versions/figures/dsh-agent-model-boost.svg": "10-Agent运行时/figures/dsh-agent-model-boost.svg",
     "docs/figures/v3/mtp-speculative.svg": "06-推理基础设施/figures/mtp-speculative.svg",
     "diagrams/mtp-speculative.svg": "06-推理基础设施/figures/mtp-speculative.svg",
     "docs/versions/figures/mtp-speculative.svg": "06-推理基础设施/figures/mtp-speculative.svg",
@@ -328,6 +333,7 @@ READING_ORDER: list[str] = [
     "06-推理基础设施/05-V4-KV-Layout.md",
     "06-推理基础设施/06-V4-HiSparse.md",
     "06-推理基础设施/07-V4-磁盘Prefix-Cache.md",
+    "10-Agent运行时/01-DeepSeek-Harness.md",
     "07-Engram/01-Engram官方README.md",
     "07-Engram/02-Engram系列导读.md",
     "08-外部解读/01-Raschka要点速读.md",
@@ -851,6 +857,12 @@ def write_master_toc() -> None:
 | [06 V4 HiSparse](./06-推理基础设施/06-V4-HiSparse.md) | 稀疏推理栈 |
 | [07 V4 磁盘 Prefix Cache](./06-推理基础设施/07-V4-磁盘Prefix-Cache.md) | 磁盘前缀缓存 |
 
+### 10 Agent 运行时
+
+| 章 | 内容 |
+|----|------|
+| [01 DeepSeek Harness](./10-Agent运行时/01-DeepSeek-Harness.md) | Cordis 插件化 coding agent；Code Mode；与模型 / infer 增益 |
+
 ### 07 Engram
 
 | 章 | 内容 |
@@ -878,7 +890,7 @@ def write_master_toc() -> None:
 
 ## 阅读入口
 
-**[01 版本演进总览](./01-总览/01-版本演进总览.md)** — 推荐唯一入口；三线导读、版本表与各卷跳转均在该章维护。
+**[01 版本演进总览](./01-总览/01-版本演进总览.md)** — 推荐唯一入口；算法 / infra / MoE / Agent 运行时导读与各卷跳转均在该章维护。
 
 <details>
 <summary>推荐阅读顺序（需要时展开）</summary>
@@ -886,8 +898,9 @@ def write_master_toc() -> None:
 1. **01 版本演进总览** — 全系列地图  
 2. **04 版本代际** + **02 基座架构** — 前代与 V3 底座  
 3. **03 后训练与 R1** — 推理模型  
-4. **05 DSA** + **06 ESS** — V3.2 算法与 infra  
-5. **07 Engram** · **08 外部解读** — 专题与对照
+4. **05 DSA** + **06 推理基础设施** — V3.2 算法与 infra  
+5. **10 Agent 运行时** — DeepSeek Harness  
+6. **07 Engram** · **08 外部解读** — 专题与对照
 
 </details>
 

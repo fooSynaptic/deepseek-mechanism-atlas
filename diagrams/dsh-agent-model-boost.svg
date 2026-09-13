@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 720" font-family="PingFang SC,Microsoft YaHei,Helvetica Neue,Arial,sans-serif">
+<defs>
+  <style>
+    .title { font-size: 20px; font-weight: 700; fill: #1a1a2e; }
+    .subtitle { font-size: 12px; fill: #64748b; }
+    .badge-text { font-size: 11px; font-weight: 600; fill: #fff; }
+    .node-title { font-size: 13px; font-weight: 600; fill: #1e293b; }
+    .node-text { font-size: 11px; fill: #475569; }
+    .mono { font-family: Consolas,Menlo,monospace; font-size: 11px; fill: #334155; }
+    .section-title { font-size: 13px; font-weight: 700; fill: #1e293b; }
+    .arrow-label { font-size: 10.5px; font-weight: 600; fill: #2563eb; }
+    .boost-label { font-size: 10.5px; font-weight: 600; fill: #b45309; }
+  </style>
+  <marker id="arrow-blue" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#3b82f6"/>
+  </marker>
+  <marker id="arrow-green" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#16a34a"/>
+  </marker>
+  <marker id="arrow-amber" viewBox="0 0 10 8" refX="9" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#d97706"/>
+  </marker>
+</defs>
+<rect width="100%" height="100%" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="40" y="34" class="title">Agent &#x8FD0;&#x884C;&#x65F6; &#x2194; &#x6A21;&#x578B;&#x4EA4;&#x4E92; &#xB7; &#x80FD;&#x529B;&#x589E;&#x76CA;</text>
+<text x="40" y="54" class="subtitle">&#x5DE6;&#xFF1A;dsh &#x5FAA;&#x73AF; &#xB7; &#x4E2D;&#xFF1A;&#x6A21;&#x578B;&#x8BF7;&#x6C42;&#x9762; &#xB7; &#x53F3;&#xFF1A;&#x6A21;&#x578B;/&#x63A8;&#x7406;&#x7279;&#x6027;&#x5982;&#x4F55;&#x62AC;&#x5347; harness &#x8868;&#x73B0;</text>
+<rect x="24" y="70" width="330" height="560" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+<rect x="40" y="82" width="128" height="26" rx="13" fill="#2563eb"/>
+<text x="104" y="100" text-anchor="middle" class="badge-text">Agent &#x8FD0;&#x884C;&#x65F6;</text>
+<text x="184" y="100" class="section-title">dsh</text>
+<rect x="40" y="118" width="298" height="56" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="40" y="118" width="298" height="22" rx="8" fill="#dbeafe"/>
+<rect x="40" y="132" width="298" height="8" fill="#dbeafe"/>
+<text x="189" y="134" text-anchor="middle" class="node-title" fill="#1d4ed8">&#x7528;&#x6237; / &#x5916;&#x90E8;&#x89E6;&#x53D1;</text>
+<text x="189" y="160" text-anchor="middle" class="node-text">inbox · webhook · UI</text>
+<line x1="189" y1="174" x2="189" y2="188" stroke="#3b82f6" stroke-width="1.6" marker-end="url(#arrow-blue)"/>
+<rect x="40" y="188" width="298" height="56" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="40" y="188" width="298" height="22" rx="8" fill="#dbeafe"/>
+<rect x="40" y="202" width="298" height="8" fill="#dbeafe"/>
+<text x="189" y="204" text-anchor="middle" class="node-title" fill="#1d4ed8">Turn / Step &#x5FAA;&#x73AF;</text>
+<text x="189" y="230" text-anchor="middle" class="node-text">pre-step → request → stream</text>
+<line x1="189" y1="244" x2="189" y2="258" stroke="#3b82f6" stroke-width="1.6" marker-end="url(#arrow-blue)"/>
+<rect x="40" y="258" width="298" height="56" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="40" y="258" width="298" height="22" rx="8" fill="#dbeafe"/>
+<rect x="40" y="272" width="298" height="8" fill="#dbeafe"/>
+<text x="189" y="274" text-anchor="middle" class="node-title" fill="#1d4ed8">&#x5DE5;&#x5177;&#x7BA1;&#x7EBF;</text>
+<text x="189" y="300" text-anchor="middle" class="node-text">pre → execute → post → result</text>
+<line x1="189" y1="314" x2="189" y2="328" stroke="#3b82f6" stroke-width="1.6" marker-end="url(#arrow-blue)"/>
+<rect x="40" y="328" width="298" height="56" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="40" y="328" width="298" height="22" rx="8" fill="#dbeafe"/>
+<rect x="40" y="342" width="298" height="8" fill="#dbeafe"/>
+<text x="189" y="344" text-anchor="middle" class="node-title" fill="#1d4ed8">Code Mode</text>
+<text x="189" y="370" text-anchor="middle" class="node-text">TS &#x7A0B;&#x5E8F; &#xB7; tools.* &#x7ED1;&#x5B9A;</text>
+<line x1="189" y1="384" x2="189" y2="398" stroke="#3b82f6" stroke-width="1.6" marker-end="url(#arrow-blue)"/>
+<rect x="40" y="398" width="298" height="56" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="40" y="398" width="298" height="22" rx="8" fill="#dbeafe"/>
+<rect x="40" y="412" width="298" height="8" fill="#dbeafe"/>
+<text x="189" y="414" text-anchor="middle" class="node-title" fill="#1d4ed8">SessionEvent log</text>
+<text x="189" y="440" text-anchor="middle" class="node-text">&#x6A21;&#x578B;&#x53EF;&#x89C1; = &#x5DF2;&#x5165;&#x8D26;</text>
+<line x1="189" y1="454" x2="189" y2="468" stroke="#3b82f6" stroke-width="1.6" marker-end="url(#arrow-blue)"/>
+<rect x="40" y="468" width="298" height="56" rx="8" fill="#fff" stroke="#60a5fa"/>
+<rect x="40" y="468" width="298" height="22" rx="8" fill="#dbeafe"/>
+<rect x="40" y="482" width="298" height="8" fill="#dbeafe"/>
+<text x="189" y="484" text-anchor="middle" class="node-title" fill="#1d4ed8">Resume / Fork / Replay</text>
+<text x="189" y="510" text-anchor="middle" class="node-text">&#x540C;&#x4E00;&#x4E8B;&#x4EF6;&#x6D41;&#x6295;&#x5F71;</text>
+<rect x="390" y="110" width="300" height="480" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+<rect x="406" y="122" width="118" height="26" rx="13" fill="#16a34a"/>
+<text x="465" y="140" text-anchor="middle" class="badge-text">&#x6A21;&#x578B;&#x8BF7;&#x6C42;&#x9762;</text>
+<rect x="410" y="168" width="260" height="72" rx="8" fill="#fff" stroke="#4ade80"/>
+<rect x="410" y="168" width="260" height="24" rx="8" fill="#dcfce7"/>
+<rect x="410" y="184" width="260" height="8" fill="#dcfce7"/>
+<text x="540" y="186" text-anchor="middle" class="node-title" fill="#166534">ctx.llm adapter</text>
+<text x="540" y="218" text-anchor="middle" class="node-text">&#x6D88;&#x606F; / &#x6D41;&#x5F0F;&#x8BCD;&#x6C47;&#x8868;</text>
+<rect x="410" y="258" width="260" height="72" rx="8" fill="#fff" stroke="#4ade80"/>
+<rect x="410" y="258" width="260" height="24" rx="8" fill="#dcfce7"/>
+<rect x="410" y="274" width="260" height="8" fill="#dcfce7"/>
+<text x="540" y="276" text-anchor="middle" class="node-title" fill="#166534">Prompt + tool schema</text>
+<text x="540" y="308" text-anchor="middle" class="node-text">systemPrompt &#x88C5;&#x914D;</text>
+<rect x="410" y="348" width="260" height="72" rx="8" fill="#fff" stroke="#4ade80"/>
+<rect x="410" y="348" width="260" height="24" rx="8" fill="#dcfce7"/>
+<rect x="410" y="364" width="260" height="8" fill="#dcfce7"/>
+<text x="540" y="366" text-anchor="middle" class="node-title" fill="#166534">&#x51BB;&#x7ED3;&#x8BF7;&#x6C42;&#x5386;&#x53F2;</text>
+<text x="540" y="398" text-anchor="middle" class="node-text">deriveMessages()</text>
+<path d="M354,188 L390,204" stroke="#3b82f6" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+<text x="360" y="178" class="arrow-label">request</text>
+<path d="M390,280 L354,300" stroke="#16a34a" stroke-width="1.8" fill="none" marker-end="url(#arrow-green)"/>
+<text x="358" y="268" class="arrow-label">tokens</text>
+<path d="M354,400 L390,380" stroke="#3b82f6" stroke-width="1.8" fill="none" marker-end="url(#arrow-blue)"/>
+<text x="352" y="418" class="arrow-label">tool calls</text>
+<rect x="726" y="70" width="370" height="560" rx="10" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.5"/>
+<rect x="742" y="82" width="150" height="26" rx="13" fill="#d97706"/>
+<text x="817" y="100" text-anchor="middle" class="badge-text">&#x6A21;&#x578B;&#x4FA7;&#x589E;&#x76CA;&#x8F74;</text>
+<rect x="742" y="118" width="338" height="72" rx="8" fill="#fff" stroke="#fbbf24"/>
+<rect x="742" y="118" width="338" height="24" rx="8" fill="#fef3c7"/>
+<rect x="742" y="134" width="338" height="8" fill="#fef3c7"/>
+<text x="911" y="136" text-anchor="middle" class="node-title" fill="#92400e">&#x5DE5;&#x5177; / Agent &#x540E;&#x8BAD;&#x7EC3;</text>
+<text x="911" y="162" text-anchor="middle" class="mono">V3.1+ Tool Use · SWE</text>
+<text x="911" y="180" text-anchor="middle" class="node-text">&#x66F4;&#x4F1A;&#x8C03; tools / skills</text>
+<rect x="742" y="206" width="338" height="72" rx="8" fill="#fff" stroke="#fbbf24"/>
+<rect x="742" y="206" width="338" height="24" rx="8" fill="#fef3c7"/>
+<rect x="742" y="222" width="338" height="8" fill="#fef3c7"/>
+<text x="911" y="224" text-anchor="middle" class="node-title" fill="#92400e">&#x957F;&#x4E0A;&#x4E0B;&#x6587;&#x6548;&#x7387;</text>
+<text x="911" y="250" text-anchor="middle" class="mono">DSA · CSA/HCA · 1M</text>
+<text x="911" y="268" text-anchor="middle" class="node-text">&#x66F4;&#x957F; tool/trace &#x625B;&#x5F97;&#x4F4F;</text>
+<rect x="742" y="294" width="338" height="72" rx="8" fill="#fff" stroke="#fbbf24"/>
+<rect x="742" y="294" width="338" height="24" rx="8" fill="#fef3c7"/>
+<rect x="742" y="310" width="338" height="8" fill="#fef3c7"/>
+<text x="911" y="312" text-anchor="middle" class="node-title" fill="#92400e">Decode &#x52A0;&#x901F;</text>
+<text x="911" y="338" text-anchor="middle" class="mono">DSpark · MTP</text>
+<text x="911" y="356" text-anchor="middle" class="node-text">&#x591A;&#x8F6E; loop &#x66F4;&#x8DDF;&#x624B;</text>
+<rect x="742" y="382" width="338" height="72" rx="8" fill="#fff" stroke="#fbbf24"/>
+<rect x="742" y="382" width="338" height="24" rx="8" fill="#fef3c7"/>
+<rect x="742" y="398" width="338" height="8" fill="#fef3c7"/>
+<text x="911" y="400" text-anchor="middle" class="node-title" fill="#92400e">KV / &#x663E;&#x5B58;&#x5C42;&#x7EA7;</text>
+<text x="911" y="426" text-anchor="middle" class="mono">HiSparse · ESS · Prefix</text>
+<text x="911" y="444" text-anchor="middle" class="node-text">&#x540C;&#x5361;&#x6491;&#x66F4;&#x957F;&#x4F1A;&#x8BDD;</text>
+<rect x="742" y="470" width="338" height="72" rx="8" fill="#fff" stroke="#fbbf24"/>
+<rect x="742" y="470" width="338" height="24" rx="8" fill="#fef3c7"/>
+<rect x="742" y="486" width="338" height="8" fill="#fef3c7"/>
+<text x="911" y="488" text-anchor="middle" class="node-title" fill="#92400e">&#x53EF;&#x9A8C;&#x8BC1;&#x63A8;&#x7406;</text>
+<text x="911" y="514" text-anchor="middle" class="mono">R1 · RLVR</text>
+<text x="911" y="532" text-anchor="middle" class="node-text">&#x77ED;&#x7A0B;&#x786C;&#x4EFB;&#x52A1;&#x66F4;&#x7A33;</text>
+<path d="M726,154 L700,220" stroke="#d97706" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrow-amber)"/>
+<text x="698" y="178" class="boost-label">boost</text>
+<path d="M726,330 L700,300" stroke="#d97706" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrow-amber)"/>
+<path d="M726,418 L700,360" stroke="#d97706" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrow-amber)"/>
+<text x="560" y="660" text-anchor="middle" class="subtitle">&#x589E;&#x76CA;&#x8F74;&#x4E0E; harness &#x6B63;&#x4EA4;&#x53EF;&#x53E0;&#x52A0;&#xFF1A;&#x8FD0;&#x884C;&#x65F6;&#x7F16;&#x6392;&#x4E0D;&#x53D8;&#xFF0C;&#x541E;&#x5410; / &#x4E0A;&#x4E0B;&#x6587; / &#x5DE5;&#x5177;&#x80FD;&#x529B;&#x968F;&#x6A21;&#x578B;&#x4E0E; infer &#x6808;&#x63D0;&#x5347;</text>
+<text x="560" y="682" text-anchor="middle" class="subtitle">&#x5BF9;&#x7167;&#xFF1A;Engram / MoE &#x8DEF;&#x7531;&#x6539;&#x53D8;&#x6743;&#x91CD;&#x7A00;&#x758F;&#x5F62;&#x6001;&#xFF1B;Harness &#x8D70; LLM adapter &#x8C03;&#x7528;&#x5DF2;&#x90E8;&#x7F72;&#x6A21;&#x578B;</text>
+</svg>

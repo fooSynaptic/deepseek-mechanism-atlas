@@ -10,6 +10,7 @@
 
 > 如果这份图谱对你有帮助，欢迎 **Star ⭐** 方便后续查阅。
 
+> **新增 · Agent 运行时线**：[DeepSeek Harness（`dsh`）](versions/ds-harness.md) — Cordis 插件 · Code Mode · session log；与算法 / 基础设施 / MoE 三线并列。
 
 ---
 
@@ -37,6 +38,7 @@
 | [**V4 HiSparse**](versions/v4-hisparse.md) | inactive C4 CPU offload |
 | [**V4 磁盘 Prefix**](versions/v4-disk-prefix-cache.md) | CSA/HCA 落盘 + SWA 三档策略 |
 | [**DSpark**](versions/dspark-speculative-decoding.md) | V4 投机解码：半自回归 draft + 置信度验证 |
+| [**DeepSeek Harness**](versions/ds-harness.md) | Agent 运行时：Everything is a plugin · Code Mode |
 | [**MLA**](versions/mla-latent-attention.md) | latent 压缩 KV |
 | [**DeepSeekMoE**](versions/deepseek-moe.md) | 细粒度 routed + shared experts |
 | [**MoE 路由**](versions/aux-loss-free-moe-routing.md) | aux-loss-free 动态 bias 负载均衡 |
@@ -45,7 +47,7 @@
 
 **完整版本索引**：[版本目录](versions/README.md) · [演进总览](reports/deepseek-version-lineage-20260625.md)
 
-**搜索关键词**：`DeepSeek 论文解读` · `DeepSeek-V2` · `DeepSeek-V3` · `DeepSeek-V4` · `DeepSeek R1` · `推理模型` · `稀疏注意力` · `DSpark` · `投机解码` · `MLA` · `MoE`
+**搜索关键词**：`DeepSeek 论文解读` · `DeepSeek-V2` · `DeepSeek-V3` · `DeepSeek-V4` · `DeepSeek R1` · `推理模型` · `稀疏注意力` · `DSpark` · `投机解码` · `MLA` · `MoE` · `DeepSeek Harness` · `agent harness` · `Code Mode`
 
 ---
 
@@ -80,6 +82,7 @@
 
 - **DeepSeek 主线**（见 [算法线](reports/deepseek-algorithm-line.md) · [MoE 线](reports/deepseek-moe-line.md)）：[**MLA**](versions/mla-latent-attention.md)、[**DeepSeekMoE**](versions/deepseek-moe.md)、[**aux-loss-free 路由**](versions/aux-loss-free-moe-routing.md)、[**MTP**](versions/v3.md#三mtpmulti-token-prediction)、[**RLVR**](versions/rlvr.md) / [**R1**](versions/r1.md)、[**DSA**](versions/dsa-sparse-attention.md)、[**CSA / HCA**](versions/csa-hca-mixed-attention.md)、[**mHC**](versions/mhc-manifold-hyper-connections.md)、[**Hash MoE**](versions/hash-moe-fp4.md)、[**V4 异构 KV**](versions/v4-kv-layout.md) 等。
 - **V4 及衍生的推理技术**（见 [基础设施线](reports/deepseek-infra-line.md)）：如 [**DSpark**](versions/dspark-speculative-decoding.md) 投机解码（半自回归 draft + 置信度调度验证）、[**HiSparse**](versions/v4-hisparse.md)、[**磁盘 Prefix Cache**](versions/v4-disk-prefix-cache.md) 等。
+- **Agent 运行时**：[**DeepSeek Harness**](versions/ds-harness.md)（`dsh`）—— Cordis 插件化 coding agent；与算法 / infra / MoE 三线并列的第四条叙事。
 - **叠在 DeepSeek checkpoint 上的衍生工作**——尤其 **AI Infrastructure** 向：
  - [**Index Share / IndexCache**](versions/index-share.md)（清华 + 智谱）：跨层复用 [DSA](versions/dsa-sparse-attention.md) indexer 的 top-$k$ index，纯推理补丁；[逻辑详解](dsa/index-share-logic.md)
  - [**ESS**](versions/ess-latent-cache-offload.md)（百度百舸）：Latent-Cache CPU offload，与 DSA 算法正交；[论文梗概](versions/ess-paper-highlights.md)

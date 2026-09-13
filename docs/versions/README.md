@@ -8,6 +8,7 @@
 | **算法线** | [算法线导读](../reports/deepseek-algorithm-line.md) | MLA → DSA → CSA/HCA + mHC 专题 hub |
 | **基础设施线** | [基础设施线导读](../reports/deepseek-infra-line.md) | MLA KV → 异构 Cache → Index Share → ESS → V4 HiSparse |
 | **MoE 线** | [MoE 线导读](../reports/deepseek-moe-line.md) | 稠密 FFN → DeepSeekMoE → aux-loss-free → Hash MoE |
+| **Agent 运行时线** | [DeepSeek Harness](./ds-harness.md) | Cordis 插件化 coding agent（dsh） |
 
 | 版本 | 文档 | 一句话 |
 |------|------|--------|
@@ -43,3 +44,4 @@
 | **V4 HiSparse** | [V4 HiSparse](./v4-hisparse.md) | inactive C4 CPU offload；~3× KV 容量 |
 | **V4 磁盘 Prefix** | [V4 磁盘 Prefix Cache](./v4-disk-prefix-cache.md) | CSA/HCA 落盘 + SWA 三档策略（§3.5.2） |
 | **DSpark / 投机解码** | [投机解码与 DSpark](./dspark-speculative-decoding.md) | **唯一专文**（MTP + 自测 + DSpark + MTP-1） |
+| **DeepSeek Harness** | [DeepSeek Harness](./ds-harness.md) | Agent 运行时：Cordis 插件 · Code Mode · session log |

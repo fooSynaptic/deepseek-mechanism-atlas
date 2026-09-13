@@ -8,6 +8,8 @@
 
 If this atlas helps you, please **Star** to bookmark for later.
 
+> **New · Agent runtime thread:** [DeepSeek Harness (`dsh`)](docs/versions/ds-harness.md) — Cordis plugins · Code Mode · session log. Fourth narrative beside algorithm / infrastructure / MoE.
+
 ---
 
 ## Paper catalog
@@ -22,6 +24,7 @@ If this atlas helps you, please **Star** to bookmark for later.
 | **V4** | [DeepSeek-V4](docs/versions/v4.md) | CSA/HCA, mHC, 1M context |
 | **DSA** | [Sparse attention](docs/versions/dsa-sparse-attention.md) | indexer, top-k, lightning indexer |
 | **DSpark** | [Speculative decoding](docs/versions/dspark-speculative-decoding.md) | speculative decoding, MTP fusion |
+| **Harness** | [DeepSeek Harness](docs/versions/ds-harness.md) | agent runtime, Cordis plugins, Code Mode |
 | **MLA** | [Latent attention](docs/versions/mla-latent-attention.md) | latent KV, KV cache compression |
 | **MoE** | [DeepSeekMoE](docs/versions/deepseek-moe.md) | routed experts, shared experts |
 | **Index Share** | [IndexCache](docs/versions/index-share.md) | cross-layer index reuse, infra patch |
@@ -31,7 +34,7 @@ If this atlas helps you, please **Star** to bookmark for later.
 
 **Full index:** [Chinese docs home · article list](docs/README.md#文章) · [Version index](docs/versions/README.md) · [Online book](https://fooSynaptic.github.io/deepseek-mechanism-atlas/)
 
-**Search keywords:** `DeepSeek paper` · `DeepSeek-V2` · `DeepSeek-V3` · `DeepSeek-V4` · `DeepSeek R1` · `reasoning model` · `sparse attention` · `DSpark` · `MLA` · `MoE` · `llm-papers` · `paper explanation`
+**Search keywords:** `DeepSeek paper` · `DeepSeek-V2` · `DeepSeek-V3` · `DeepSeek-V4` · `DeepSeek R1` · `reasoning model` · `sparse attention` · `DSpark` · `MLA` · `MoE` · `DeepSeek Harness` · `agent runtime` · `Code Mode` · `llm-papers` · `paper explanation`
 
 ---
 
@@ -46,6 +49,8 @@ Figures live under [`diagrams/`](diagrams/) and are linked from articles. Prefer
 | [GRPO vs PPO](diagrams/grpo-vs-ppo.svg) | [R1](docs/versions/r1.md) · [RLVR](docs/versions/rlvr.md) |
 | [MTP fusion](diagrams/mtp-fusion-scheme.svg) | [DSpark](docs/versions/dspark-speculative-decoding.md) |
 | [DSpark speculative](diagrams/dspark-speculative.svg) | [Speculative decoding](docs/versions/dspark-speculative-decoding.md) |
+| [dsh architecture](diagrams/dsh-architecture.svg) | [DeepSeek Harness](docs/versions/ds-harness.md) |
+| [dsh ↔ model boost](diagrams/dsh-agent-model-boost.svg) | [DeepSeek Harness](docs/versions/ds-harness.md) |
 
 ---
 
@@ -76,6 +81,7 @@ Coverage includes:
 
 - **Core DeepSeek releases** — MLA, MoE routing, MTP, DSA, CSA/HCA, mHC, Hash MoE, V4 KV layout, etc.
 - **V4 inference stack** — **[DSpark](docs/versions/dspark-speculative-decoding.md)** speculative decoding, HiSparse, disk prefix cache.
+- **Agent runtime** — **[DeepSeek Harness](docs/versions/ds-harness.md)** (`dsh`): Cordis plugin coding agent; a fourth narrative thread beside algorithm / infrastructure / MoE.
 - **Adjacent infra work** layered on DeepSeek checkpoints — **[Index Share / IndexCache](docs/versions/index-share.md)** (Tsinghua + Zhipu) and **[ESS](docs/versions/ess-latent-cache-offload.md)** latent-cache offload (Baidu BaiGe), with a dedicated **infrastructure** thread alongside algorithm and MoE.
 
 Organized as wiki-style articles, SVG diagrams, and a book-style layout under [《ds-技术报告》/](《ds-技术报告》/01-总览/01-版本演进总览.md). For full Chinese navigation and article list, use the **[Chinese README](docs/README.md)** or the **[online mdBook](https://fooSynaptic.github.io/deepseek-mechanism-atlas/)**.
@@ -96,7 +102,7 @@ In **[IDE Preview](#recommended-reading)**, click links to jump; on **[Pages](ht
 |--|--|
 | **Online book (Pages)** | **[fooSynaptic.github.io/deepseek-mechanism-atlas](https://fooSynaptic.github.io/deepseek-mechanism-atlas/)** — or clone and use **IDE Preview** |
 | **Chinese README** | [docs/README.md](docs/README.md) |
-| **Evolution hub** | [Version lineage overview](docs/reports/deepseek-version-lineage-20260625.md) — algorithm / infrastructure / MoE threads |
+| **Evolution hub** | [Version lineage overview](docs/reports/deepseek-version-lineage-20260625.md) — algorithm / infrastructure / MoE / agent-runtime threads |
 | **Book mirror (repo)** | [《ds-技术报告》/01-总览/01-版本演进总览.md](《ds-技术报告》/01-总览/01-版本演进总览.md) |
 
 ---

@@ -12,11 +12,12 @@ DeepSeek 开源主线分两段：
 1. **V1 → V2 → V3（2024）**：稠密双语基座 → **MLA + MoE** → **671B 旗舰**（详见 [V1→V3 演进](./deepseek-v1-to-v3-lineage.md)）
 2. **V3 之后（2025–2026）**：R1 / V3.1 / V3.2 / V4 与 infra 补丁
 
-V3 发布后的 **Attention / KV infra** 与全系列的 **MoE** 可概括为三条线：
+V3 发布后的 **Attention / KV infra** 与全系列的 **MoE** 可概括为三条线；本仓库另记 **Agent 运行时** 为第四条叙事：
 
 1. **算法线**：[MLA](../versions/mla-latent-attention.md) → [DSA 稀疏注意力](../versions/dsa-sparse-attention.md) → [CSA/HCA 混合压缩注意力](../versions/csa-hca-mixed-attention.md) + [mHC](../versions/mhc-manifold-hyper-connections.md)
 2. **基础设施线**：[标准 MLA KV cache](../versions/mla-latent-attention.md) → [Indexer/Latent 异构 cache](../versions/dsa-sparse-attention.md#异构-kv-cache) → [Index Share](../versions/index-share.md) → [ESS offload](../versions/ess-latent-cache-offload.md) → [V4 异构 KV + HiSparse](../versions/v4.md#推理-infra-关注点)
 3. **MoE 线**：稠密 FFN → [DeepSeekMoE](../versions/deepseek-moe.md) → [aux-loss-free 路由](../versions/aux-loss-free-moe-routing.md) + [$L_{\mathrm{Bal}}$](../versions/moe-sequence-wise-balance-loss.md) → [Hash MoE + FP4](../versions/hash-moe-fp4.md)
+4. **Agent 运行时线**：[DeepSeek Harness](../versions/ds-harness.md)（`dsh`）— Cordis 插件化 coding agent；与上三线正交可叠加
 
 <a id="优化方向分类"></a>
 
@@ -591,6 +592,7 @@ V4 的 cache **不再是单一 MLA latent**，而是多类型并存：
 | [Engram 系列导读](../material/papers/engram/engram-series-overview.md) | Engram / CXL Pooling / Tiny-Engram 深度笔记 |
 | [DSA 系列](../dsa/README.md) · [ESS 概念](../versions/ess-latent-cache-offload.md) · [Index Share](../versions/index-share.md) | V3.2 稀疏注意力 + 推理 infra 补丁（与 §3.6 / §5.2 对应） |
 | [DSpark / DeepSpec](../versions/dspark-speculative-decoding.md) | V4 **投机解码** 线上加速；与 KV/offload **正交**（§3.7 / §6） |
+| [DeepSeek Harness](../versions/ds-harness.md) | **Agent 运行时线**：Cordis 插件化 coding agent；消费 V3.1+ 工具能力与 V4 长上下文，受益于 DSpark / HiSparse 等 infer |
 | [Visual Primitives](../papers/thinking-with-visual-primitives-highlights.md) | V4-Flash 多模态：**visual primitives CoT** + ViT；CSA 压视觉 KV（§3.8） |
 | [DeepSeek-R1 训练 pipeline](../material/papers/deepseek-r1/training-pipeline.md) | R1 四阶段；[RLVR 概念](../versions/rlvr.md) |
 
